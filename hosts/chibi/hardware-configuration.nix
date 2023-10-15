@@ -1,5 +1,5 @@
 
-{ config, lib, pkgs, modulesPath, ...}:
+{ config, lib, pkgs, modulesPath, host, ...}:
 
 {
     imports = [ ];
@@ -26,7 +26,10 @@
 
     swapDevices = [ ];
 
-    networking.useDHCP = lib.mkDefault true;
+    networking = with host; {
+        useDHCP = lib.mkDefault true;
+        hostName = hostName;
+    };
     nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
     hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
