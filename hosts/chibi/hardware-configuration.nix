@@ -19,7 +19,7 @@
             fsType = "ext4";
         };
         "/boot" = {
-            device = "/dev/disk/by-uuid/401D-E0A4"; # TODO
+            device = "/dev/disk/by-uuid/401D-E8A4"; # TODO
             fsType = "vfat";
         };
     };
