@@ -14,7 +14,7 @@
             };
             timeout = 5;
         };
-        kernePackages = pkgs.linuxPackages_latest;
+        kernelPackages = pkgs.linuxPackages_latest;
     };
 
     hardware = {

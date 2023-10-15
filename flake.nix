@@ -23,7 +23,7 @@
         ...
     } @ inputs:
     let
-        /* inherit (self) outputs; */
+        inherit (self) outputs;
         /* systems = flake-utils.lib.system; */
         /* /1* defaultModules = [ *1/ */
         /*     agenix.nixOsModules.default */
@@ -33,7 +33,7 @@
     {
         nixosConfigurations = (
             import ./hosts {
-                inherit (nixpkgs) libs;
+                inherit (nixpkgs) lib;
                 inherit inputs nixpkgs nixpkgs-unstable home;
             }
         );
