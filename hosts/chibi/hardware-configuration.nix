@@ -15,11 +15,11 @@
 
     fileSystems = {
         "/" = {
-            device = "/dev/disk/by-uuid/e2d0aa33-9e54-4c56-a2ec-56cdd1221fda"; # TODO
+            device = "/dev/disk/by-uuid/2c69de82-1d9c-49bc-8402-d1fddadb4703"; # TODO
             fsType = "ext4";
         };
         "/boot" = {
-            device = "/dev/disk/by-uuid/401D-E8A4"; # TODO
+            device = "/dev/disk/by-uuid/3965-6BBA"; # TODO
             fsType = "vfat";
         };
     };
