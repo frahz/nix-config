@@ -3,7 +3,9 @@
 {
     imports = [
         ../users/frahz
-    ];
+    ] ++ (
+        import ../modules/services
+    );
 
     programs.zsh.enable = true;
 
@@ -24,6 +26,7 @@
             tokei
             wget
             lazydocker
+            tailscale
             tmux
         ];
         variables = {
