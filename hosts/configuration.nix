@@ -18,6 +18,7 @@
             ripgrep
             binutils
             coreutils
+            docker
             fd
             git
             btop
