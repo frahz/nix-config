@@ -1,6 +1,11 @@
 {config, ...}:
 
 {
+    networking.firewall = {
+        allowedTCPPorts = [ 53 8035 ];
+        allowedUDPPorts = [ 53 ];
+    };
+
     virtualisation.oci-containers.containers.pihole = {
         autoStart = true;
         image = "pihole/pihole:2023.10.0";
