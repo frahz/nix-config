@@ -1,7 +1,10 @@
 { lib, pkgs, ...}:
 
 {
-    imports = [./hardware-configuration.nix];
+    imports = [
+        ./hardware-configuration.nix
+        ../../modules/containers/pihole.nix
+    ];
 
     boot = {
         loader = {
@@ -32,4 +35,10 @@
     environment.systemPackages = with pkgs; [
         hugo
     ];
+
+    virtualisation.docker = {
+        enable = true;
+        autoPrune.enable = true;
+    };
+
 }
