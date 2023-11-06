@@ -27,7 +27,7 @@
             tokei
             wget
             lazydocker
-            unstable.tailscale
+            tailscale
             tmux
         ];
         variables = {
