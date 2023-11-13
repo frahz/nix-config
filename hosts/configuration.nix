@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ...}:
+{ config, lib, pkgs, overlay-unstable, ...}:
 
 {
     imports = [
@@ -11,6 +11,9 @@
 
     time.timeZone = "America/Los_Angeles";
     i18n.defaultLocale = "en_US.UTF-8";
+
+    nixpkgs.overlays = [ overlay-unstable ];
+    nixpkgs.config.allowUnfree = true;
 
     environment = {
         systemPackages = with pkgs; [
@@ -27,7 +30,7 @@
             tokei
             wget
             lazydocker
-            tailscale
+            unstable.tailscale
             tmux
         ];
         variables = {
@@ -41,7 +44,6 @@
             experimental-features = [ "nix-command" "flakes" ];
         };
     };
-    nixpkgs.config.allowUnfree = true;
 
     services.openssh = {
         enable = true;
