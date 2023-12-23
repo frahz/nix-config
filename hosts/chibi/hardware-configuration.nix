@@ -22,6 +22,10 @@
             device = "/dev/disk/by-uuid/3965-6BBA"; # TODO
             fsType = "vfat";
         };
+        "/mnt/kuki" = {
+            device = "/dev/disk/by-uuid/dca6c8c2-c5e4-4c4d-9641-06306f102bf0";
+            fsType = "ext4";
+        };
     };
 
     swapDevices = [ ];
