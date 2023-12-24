@@ -69,6 +69,7 @@
         pg_volumes = [
             "/mnt/kuki/containers/linkwarden/pg_data:/var/lib/postgresql/data"
         ];
+        env_files = [ /mnt/kuki/containers/linkwarden/linkwarden.env ];
     };
 
 }

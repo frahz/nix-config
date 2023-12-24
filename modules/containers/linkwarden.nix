@@ -10,6 +10,9 @@ in {
         pg_volumes = mkOption {
             type = with types; listOf str;
         };
+        env_files = mkOption {
+            type = with types; listOf path;
+        };
     };
 
     config = {
@@ -25,7 +28,7 @@ in {
             environment = {
                 TZ = "America/Los_Angeles";
             };
-            environmentFiles = [ ./linkwarden.env ];
+            environmentFiles = cfg.env_files;
             ports = [
                 "3020:3000"
             ];
@@ -39,7 +42,7 @@ in {
             environment = {
                 TZ = "America/Los_Angeles";
             };
-            environmentFiles = [ ./linkwarden.env ];
+            environmentFiles = cfg.env_files;
         };
     };
 }
