@@ -12,7 +12,6 @@
         volumes = [ "/var/lib/pihole:/etc/pihole/" ];
         environment = {
             TZ = "America/Los_Angeles";
-            VIRTUAL_HOST = "https://pihole.iatze.cc";
         };
         ports = [
             "53:53/tcp"
