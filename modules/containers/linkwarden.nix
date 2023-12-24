@@ -49,6 +49,8 @@ in {
             volumes = cfg.pg_volumes;
             environment = {
                 TZ = "America/Los_Angeles";
+                POSTGRES_USER = "frahz";
+                POSTGRES_DB = "linkwarden";
             };
             environmentFiles = cfg.env_files;
             extraOptions = [ "--network=linkwarden-br" ];
