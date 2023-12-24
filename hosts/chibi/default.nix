@@ -4,6 +4,8 @@
     imports = [
         ./hardware-configuration.nix
         ../../modules/containers/pihole.nix
+        ../../modules/containers/homarr.nix
+        ../../modules/containers/nginxproxymanager.nix
     ];
 
     boot = {
@@ -43,6 +45,20 @@
             autoPrune.enable = true;
         };
 
+    };
+
+    container.homarr = {
+        volumes = [
+            "/mnt/kuki/containers/homarr/configs:/app/data/configs"
+            "/mnt/kuki/containers/homarr/icons:/app/public/icons"
+            "/mnt/kuki/containers/homarr/data:/data"
+        ];
+    };
+    container.nginxproxymanager = {
+        volumes = [
+            "/mnt/kuki/containers/nginxproxymanager/data:/data"
+            "/mnt/kuki/containers/nginxproxymanager/letsencrypt:/etc/letsencrypt"
+        ];
     };
 
 }
