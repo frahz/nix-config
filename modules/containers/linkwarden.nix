@@ -1,4 +1,4 @@
-{config, lib, ...}:
+{config, lib, pkgs, ...}:
 with lib;
 let
     cfg = config.container.linkwarden;
@@ -27,7 +27,7 @@ in {
             wantedBy = [ "multi-user.target" ];
 
             serviceConfig.type = "oneshot";
-            script = let docker = "docker";
+            script = let docker = "${pkgs.docker}/bin/docker";
                 in ''
                     check=$(${docker}) network ls | grep "linkwarden-br" || true
                     if [ -z "$check" ]; then
