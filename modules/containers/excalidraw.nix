@@ -13,7 +13,7 @@
             TZ = "America/Los_Angeles";
         };
         ports = [
-            "3030:3000"
+            "3030:80"
         ];
     };
 }
