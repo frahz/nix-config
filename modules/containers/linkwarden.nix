@@ -17,8 +17,8 @@ in {
 
     config = {
         networking.firewall = {
-            allowedTCPPorts = [ 3020 ];
-            allowedUDPPorts = [ 3020 ];
+            allowedTCPPorts = [ 3000 ];
+            allowedUDPPorts = [ 3000 ];
         };
 
         system.activationScripts.init-linkwarden-network = let
@@ -37,7 +37,7 @@ in {
             };
             environmentFiles = cfg.env_files;
             ports = [
-                "3020:3000"
+                "3000:3000"
             ];
             dependsOn = [ "linkwarden_pg" ];
             extraOptions = [ "--network=linkwarden-br" ];
@@ -49,8 +49,6 @@ in {
             volumes = cfg.pg_volumes;
             environment = {
                 TZ = "America/Los_Angeles";
-                POSTGRES_USER = "frahz";
-                POSTGRES_DB = "linkwarden";
             };
             environmentFiles = cfg.env_files;
             extraOptions = [ "--network=linkwarden-br" ];
