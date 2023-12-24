@@ -6,6 +6,8 @@
         ../../modules/containers/pihole.nix
         ../../modules/containers/homarr.nix
         ../../modules/containers/nginxproxymanager.nix
+        ../../modules/containers/linkwarden.nix
+        ../../modules/containers/excalidraw.nix
     ];
 
     boot = {
@@ -58,6 +60,14 @@
         volumes = [
             "/mnt/kuki/containers/nginxproxymanager/data:/data"
             "/mnt/kuki/containers/nginxproxymanager/letsencrypt:/etc/letsencrypt"
+        ];
+    };
+    container.linkwarden = {
+        volumes = [
+            "/mnt/kuki/containers/linkwarden/data:/data/data"
+        ];
+        pg_volumes = [
+            "/mnt/kuki/containers/linkwarden/pg_data:/var/lib/postgresql/data"
         ];
     };
 
