@@ -18,6 +18,9 @@
             "53:53/udp"
             "8053:80/tcp"
         ];
-        extraOptions = [  "--cap-add=NET_ADMIN" ];
+        extraOptions = [
+            "--cap-add=NET_ADMIN"
+            "--network=host"
+        ];
     };
 }
