@@ -1,24 +1,35 @@
-{config, ...}:
+{config, lib, ...}:
+with lib;
+let
+    cfg = config.container.pihole;
+in {
 
-{
-    networking.firewall = {
-        allowedTCPPorts = [ 53 8035 ];
-        allowedUDPPorts = [ 53 ];
+    options.container.pihole = {
+        volumes = mkOption {
+            type = with types; listOf str;
+        };
     };
 
-    virtualisation.oci-containers.containers.pihole = {
-        autoStart = true;
-        image = "pihole/pihole:2023.10.0";
-        volumes = [ "/var/lib/pihole:/etc/pihole/" ];
-        environment = {
-            TZ = "America/Los_Angeles";
-            DNSMASQ_LISTENING = "all";
+    config = {
+        networking.firewall = {
+            allowedTCPPorts = [ 53 8035 ];
+            allowedUDPPorts = [ 53 ];
         };
-        ports = [
-            "53:53/tcp"
-            "53:53/udp"
-            "8053:80/tcp"
-        ];
-        extraOptions = [ "--cap-add=NET_ADMIN" ];
+
+        virtualisation.oci-containers.containers.pihole = {
+            autoStart = true;
+            image = "pihole/pihole:2023.10.0";
+            volumes = cfg.volumes;
+            environment = {
+                TZ = "America/Los_Angeles";
+                DNSMASQ_LISTENING = "all";
+            };
+            ports = [
+                "53:53/tcp"
+                    "53:53/udp"
+                    "8053:80/tcp"
+            ];
+            extraOptions = [ "--cap-add=NET_ADMIN" ];
+        };
     };
 }

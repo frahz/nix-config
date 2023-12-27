@@ -49,6 +49,12 @@
 
     };
 
+    container.pihole = {
+        volumes = [
+            "/mnt/kuki/containers/pihole/etc/pihole:/etc/pihole/"
+            "/mnt/kuki/containers/pihole/etc/dnsmasq.d:/etc/dnsmasq.d"
+        ];
+    };
     container.homarr = {
         volumes = [
             "/mnt/kuki/containers/homarr/configs:/app/data/configs"
