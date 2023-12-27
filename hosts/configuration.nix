@@ -4,10 +4,9 @@
     imports = [
         ../users/frahz
     ] ++ (
-        import ../modules/services
+        import ../modules/services ++
+        import ../modules/shell
     );
-
-    programs.zsh.enable = true;
 
     time.timeZone = "America/Los_Angeles";
     i18n.defaultLocale = "en_US.UTF-8";
