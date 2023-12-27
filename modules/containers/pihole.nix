@@ -12,6 +12,7 @@
         volumes = [ "/var/lib/pihole:/etc/pihole/" ];
         environment = {
             TZ = "America/Los_Angeles";
+            DNSMASQ_LISTENING = "all";
         };
         ports = [
             "53:53/tcp"
