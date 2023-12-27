@@ -9,7 +9,7 @@
         ohMyZsh = {
             enable = true;
             plugins = [ "git" "tmux" ];
-
+            theme = "lambda"; # change to my own theme later on
         };
         shellAliases = {
             vim = "nvim";
