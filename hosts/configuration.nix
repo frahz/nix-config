@@ -1,4 +1,4 @@
-{ config, lib, pkgs, overlay-unstable, ...}:
+{ inputs, config, lib, pkgs, overlay-unstable, system, ...}:
 
 {
     imports = [
@@ -16,6 +16,7 @@
 
     environment = {
         systemPackages = with pkgs; [
+            inputs.agenix.packages."${system}".default
             bat
             ripgrep
             binutils

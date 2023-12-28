@@ -1,4 +1,4 @@
-{ lib, inputs, nixpkgs, nixpkgs-unstable, ...}:
+{ lib, inputs, nixpkgs, nixpkgs-unstable, defaultModules, ...}:
 
 let
     system = "x86_64-linux";
@@ -24,6 +24,6 @@ in
         modules = [
             ./chibi
             ./configuration.nix
-        ];
+        ] ++ defaultModules;
     };
 }
