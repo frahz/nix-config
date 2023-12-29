@@ -46,7 +46,6 @@
             enable = true;
             autoPrune.enable = true;
         };
-
     };
 
     container.pihole = {
