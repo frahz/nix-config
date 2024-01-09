@@ -8,10 +8,10 @@ pkgs.rustPlatform.buildRustPackage rec {
         owner = "frahz";
         repo = "nemui";
         rev = "v${version}";
-        hash = "";
+        hash = "sha256-MBoBHc1TQgMwzImBdKxPcSFSwMdxUwCkcQwThynaWbk=";
     };
 
-    cargoHash = "";
+    cargoHash = "sha256-ffJi+n9ZQSr7MkLmL8It+4yXxfbnhwvCl/O2zjfMqpA=";
 
     meta = with lib; {
         description = "This utility is meant to run in the your main server. Once it receives a specific byte over it will put the server to sleep.";
