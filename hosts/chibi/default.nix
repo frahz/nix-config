@@ -48,6 +48,10 @@
         };
     };
 
+    # Services
+    services.sugoi.enable = true;
+
+    # Containers
     container.pihole = {
         volumes = [
             "/mnt/kuki/containers/pihole/etc/pihole:/etc/pihole/"

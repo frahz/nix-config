@@ -10,13 +10,15 @@ let
         };
     };
 
+    overlay-local = import ../pkgs;
+
     lib = nixpkgs.lib;
 in
 {
     chibi = lib.nixosSystem {
         inherit system;
         specialArgs = {
-            inherit inputs system overlay-unstable;
+            inherit inputs system overlay-unstable overlay-local;
             host = {
                 hostName = "chibi";
             };

@@ -1,3 +1,4 @@
 [
     ./tailscale.nix
+    ./sugoi.nix
 ]

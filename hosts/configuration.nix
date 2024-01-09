@@ -1,4 +1,4 @@
-{ inputs, config, lib, pkgs, overlay-unstable, system, ...}:
+{ inputs, config, lib, pkgs, overlay-unstable, overlay-local, system, ...}:
 
 {
     imports = [
@@ -11,7 +11,7 @@
     time.timeZone = "America/Los_Angeles";
     i18n.defaultLocale = "en_US.UTF-8";
 
-    nixpkgs.overlays = [ overlay-unstable ];
+    nixpkgs.overlays = [ overlay-unstable overlay-local ];
     nixpkgs.config.allowUnfree = true;
 
     environment = {
