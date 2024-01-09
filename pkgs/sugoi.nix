@@ -11,7 +11,10 @@ pkgs.rustPlatform.buildRustPackage rec {
         hash = "sha256-GTcLVDes4XF0bPclC7/rMoXNVDAdecpxjhn1XpZW/Kg=";
     };
 
-    cargoHash = "";
+    cargoLock = {
+        lockFile = "${src}/Cargo.lock";
+        allowBuiltinFetchGit = true;
+    };
 
     meta = with lib; {
         description = "small web server for waking up and putting my server to sleep.";
