@@ -28,4 +28,18 @@ in
             ./configuration.nix
         ] ++ defaultModules;
     };
+
+    inari = lib.nixosSystem {
+        inherit system;
+        specialArgs = {
+            inherit inputs system overlay-unstable overlay-local;
+            host = {
+                hostName = "inari";
+            };
+        };
+        modules = [
+            ./inari
+            ./configuration.nix
+        ] ++ defaultModules;
+    };
 }

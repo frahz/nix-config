@@ -4,5 +4,7 @@
 
 - Yanai
 - Chibi
+- Inari
+- Kumo
 
 
