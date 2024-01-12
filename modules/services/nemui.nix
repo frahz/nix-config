@@ -5,7 +5,7 @@ let
     cfg = config.services.nemui;
 in
 {
-    option.services.nemui = {
+    options.services.nemui = {
         enable = mkEnableOption "nemui daemon";
     };
 
