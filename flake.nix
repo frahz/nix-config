@@ -9,8 +9,8 @@
         home.url = "github:nix-community/home-manager";
         home.inputs.nixpkgs.follows = "nixpkgs";
 
-        agenix.url = "github:ryantm/agenix";
-        agenix.inputs.nixpkgs.follows = "nixpkgs";
+        sops-nix.url = "github:Mic92/sops-nix";
+        sops-nix.inputs.nixpkgs.follows = "nixpkgs";
     };
 
     outputs = {
@@ -19,14 +19,14 @@
         nixpkgs-unstable,
         flake-utils,
         home,
-        agenix,
+        sops-nix,
         ...
     } @ inputs:
     let
         inherit (self) outputs;
         /* systems = flake-utils.lib.system; */
         defaultModules = [
-            agenix.nixosModules.default
+            sops-nix.nixosModules.default
             /* home.nixOsModules.default */
         ];
     in

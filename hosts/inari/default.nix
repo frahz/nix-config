@@ -1,4 +1,4 @@
-{ lib, pkgs, ...}:
+{ config, lib, pkgs, ...}:
 
 {
     imports = [
@@ -42,4 +42,13 @@
             autoPrune.enable = true;
         };
     };
+
+    # Services
+    sops.secrets.tsauth-inari = {};
+    services.tailscale-autoconnect = {
+        enable = true;
+        authKeyFile = config.sops.secrets.tsauth-inari.path;
+    };
+
+    services.nemui.enable = true;
 }
