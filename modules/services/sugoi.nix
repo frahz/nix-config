@@ -1,16 +1,15 @@
 { config, pkgs, lib, ... }:
 
+with lib;
 let
     cfg = config.services.sugoi;
 in
 {
-    options = {
-        services.sugoi = {
-            enable = lib.mkEnableOption "sugoi daemon";
-        };
+    options.services.sugoi = {
+        enable = mkEnableOption "sugoi daemon";
     };
 
-    config = lib.mkIf cfg.enable {
+    config = mkIf cfg.enable {
         networking.firewall = {
             allowedTCPPorts = [ 8080 ];
             allowedUDPPorts = [ 8080 ];

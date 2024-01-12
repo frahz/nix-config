@@ -1,16 +1,15 @@
 { config, pkgs, lib, ... }:
 
+with lib;
 let
     cfg = config.services.nemui;
 in
 {
-    options = {
-        services.nemui = {
-            enable = lib.mkEnableOption "nemui daemon";
-        };
+    option.services.nemui = {
+        enable = mkEnableOption "nemui daemon";
     };
 
-    config = lib.mkIf cfg.enable {
+    config = mkIf cfg.enable {
         networking.firewall = {
             allowedTCPPorts = [ 8253 ];
             allowedUDPPorts = [ 8253 ];
