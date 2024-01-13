@@ -68,6 +68,7 @@
                 path = "/mnt/kuki/sharing";
                 comment = "shared directory";
                 browseable = "yes";
+                "valid users" = "frahz";
                 "read only" = "no";
                 "inherit permissions" = "yes";
             };
