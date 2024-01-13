@@ -51,6 +51,29 @@
     # Services
     services.sugoi.enable = true;
 
+    services.samba-wsdd = {
+        enable = true;
+        openFirewall = true;
+    };
+    services.samba = {
+        enable = true;
+        extraConfig = ''
+            workgroup = WORKGROUP
+            server string = inari server
+            map to guest = bad user
+        ''
+        ;
+        shares = {
+            sharing = {
+                path = "/mnt/kuki/sharing";
+                comment = "shared directory";
+                browseable = "yes";
+                "read only" = "no";
+                "inherit permissions" = "yes";
+            };
+        };
+    };
+
     # Containers
     container.pihole = {
         volumes = [
