@@ -8,7 +8,7 @@
         ../../modules/containers/radarr.nix
         /* ../../modules/containers/kavita.nix */
         /* ../../modules/containers/gitea.nix */
-        /* ../../modules/containers/jellyseerr.nix */
+        ../../modules/containers/jellyseerr.nix
         ../../modules/containers/jellyfin.nix
     ];
 
@@ -103,11 +103,11 @@
     /*     ]; */
     /* }; */
 
-    /* container.jellyseerr = { */
-    /*     volumes = [ */
-    /*         "/mnt/mizu/containers/jellyseer/config:/app/config" */
-    /*     ]; */
-    /* }; */
+    container.jellyseerr = {
+        volumes = [
+            "/mnt/mizu/containers/jellyseer/config:/app/config"
+        ];
+    };
 
     container.jellyfin = {
         volumes = [
