@@ -4,8 +4,8 @@
     imports = [
         ./hardware-configuration.nix
         ../../modules/containers/torrent.nix
-        /* ../../modules/containers/sonarr.nix */
-        /* ../../modules/containers/radarr.nix */
+        ../../modules/containers/sonarr.nix
+        ../../modules/containers/radarr.nix
         /* ../../modules/containers/kavita.nix */
         /* ../../modules/containers/gitea.nix */
         /* ../../modules/containers/jellyseerr.nix */
@@ -82,18 +82,18 @@
         vpn_info_file = config.sops.secrets.gluetun.path;
     };
 
-    /* container.sonarr = { */
-    /*     volumes = [ */
-    /*         "/mnt/mizu/containers/sonarr/config:/config" */
-    /*         "/mnt/mizu:/data" */
-    /*     ]; */
-    /* }; */
-    /* container.radarr = { */
-    /*     volumes = [ */
-    /*         "/mnt/mizu/containers/radarr/config:/config" */
-    /*         "/mnt/mizu:/data" */
-    /*     ]; */
-    /* }; */
+    container.sonarr = {
+        volumes = [
+            "/mnt/mizu/containers/sonarr/config:/config"
+            "/mnt/mizu:/data"
+        ];
+    };
+    container.radarr = {
+        volumes = [
+            "/mnt/mizu/containers/radarr/config:/config"
+            "/mnt/mizu:/data"
+        ];
+    };
 
     /* container.kavita = { */
     /*     volumes = [ */
