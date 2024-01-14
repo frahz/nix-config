@@ -7,7 +7,7 @@
         ../../modules/containers/sonarr.nix
         ../../modules/containers/radarr.nix
         /* ../../modules/containers/kavita.nix */
-        /* ../../modules/containers/gitea.nix */
+        ../../modules/containers/gitea.nix
         ../../modules/containers/jellyseerr.nix
         ../../modules/containers/jellyfin.nix
     ];
@@ -117,21 +117,21 @@
         ];
     };
 
-    /* sops.secrets.gitea = {}; */
-    /* container.gitea = { */
-    /*     gitea_volumes = [ */
-    /*         "/mnt/mizu/containers/gitea/data:/data" */
-    /*         "/etc/timezone:/etc/timezone:ro" */
-    /*     ]; */
-    /*     pg_volumes = [ */
-    /*         "/mnt/mizu/containers/gitea/postgres:/var/lib/postgresql/data" */
-    /*     ]; */
-    /*     runner_volumes = [ */
-    /*         "/mnt/mizu/containers/gitea_runner/config.yaml:/config.yaml" */
-    /*         "/mnt/mizu/containers/gitea_runner/data:/data" */
-    /*         "/var/run/docker.sock/:/var/run/docker.sock" */
-    /*     ]; */
-    /*     env_file = config.sops.secrets.gitea.path; */
-    /* }; */
+    sops.secrets.gitea = {};
+    container.gitea = {
+        gitea_volumes = [
+            "/mnt/mizu/containers/gitea/data:/data"
+            "/etc/timezone:/etc/timezone:ro"
+        ];
+        pg_volumes = [
+            "/mnt/mizu/containers/gitea/postgres:/var/lib/postgresql/data"
+        ];
+        runner_volumes = [
+            "/mnt/mizu/containers/gitea_runner/config.yaml:/config.yaml"
+            "/mnt/mizu/containers/gitea_runner/data:/data"
+            "/var/run/docker.sock/:/var/run/docker.sock"
+        ];
+        env_file = config.sops.secrets.gitea.path;
+    };
 
 }
