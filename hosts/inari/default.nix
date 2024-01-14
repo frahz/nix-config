@@ -9,7 +9,7 @@
         /* ../../modules/containers/kavita.nix */
         /* ../../modules/containers/gitea.nix */
         /* ../../modules/containers/jellyseerr.nix */
-        /* ../../modules/containers/jellyfin.nix */
+        ../../modules/containers/jellyfin.nix
     ];
 
     boot = {
@@ -109,13 +109,13 @@
     /*     ]; */
     /* }; */
 
-    /* container.jellyfin = { */
-    /*     volumes = [ */
-    /*         "/mnt/mizu/containers/jellyfin/config:/config" */
-    /*         "/mnt/mizu/containers/jellyfin/cache:/cache" */
-    /*         "/mnt/mizu/media:/media" */
-    /*     ]; */
-    /* }; */
+    container.jellyfin = {
+        volumes = [
+            "/mnt/mizu/containers/jellyfin/config:/config"
+            "/mnt/mizu/containers/jellyfin/cache:/cache"
+            "/mnt/mizu/media:/media"
+        ];
+    };
 
     /* sops.secrets.gitea = {}; */
     /* container.gitea = { */
