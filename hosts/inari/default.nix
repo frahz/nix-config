@@ -3,7 +3,7 @@
 {
     imports = [
         ./hardware-configuration.nix
-        /* ../../modules/containers/torrent.nix */
+        ../../modules/containers/torrent.nix
         /* ../../modules/containers/sonarr.nix */
         /* ../../modules/containers/radarr.nix */
         /* ../../modules/containers/kavita.nix */
@@ -69,18 +69,18 @@
     services.nemui.enable = true;
 
     # Containers
-    /* sops.secrets.gluetun = {}; */
-    /* container.torrent = { */
-    /*     qb_volumes = [ */
-    /*         "/mnt/mizu/torrents:/torrents" */
-    /*         "/mnt/mizu/containers/qbittorrent/config:/config" */
-    /*     ]; */
-    /*     gluetun_volumes = [ */
-    /*         "/mnt/mizu/containers/gluetun/config:/config" */
-    /*         "/mnt/mizu/containers/gluetun/servers.json:/gluetun/servers.json" */
-    /*     ]; */
-    /*     vpn_info_file = config.sops.secrets.gluetun.path; */
-    /* }; */
+    sops.secrets.gluetun = {};
+    container.torrent = {
+        qb_volumes = [
+            "/mnt/mizu/torrents:/torrents"
+            "/mnt/mizu/containers/qbittorrent/config:/config"
+        ];
+        gluetun_volumes = [
+            "/mnt/mizu/containers/gluetun/config:/config"
+            "/mnt/mizu/containers/gluetun/servers.json:/gluetun/servers.json"
+        ];
+        vpn_info_file = config.sops.secrets.gluetun.path;
+    };
 
     /* container.sonarr = { */
     /*     volumes = [ */
