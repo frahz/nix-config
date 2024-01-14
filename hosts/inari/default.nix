@@ -24,6 +24,12 @@
             timeout = 5;
         };
         kernelPackages = pkgs.linuxPackages_latest;
+        swraid = {
+            enable = true;
+            mdadmConf = ''
+                ARRAY /dev/md/yanai:0 metadata=1.2 name=yanai:0 UUID=dbb1c332:9130b9ad:e2d8640b:7a533ded
+            '';
+        };
     };
 
     hardware = {

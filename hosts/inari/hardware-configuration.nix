@@ -21,10 +21,10 @@
             device = "/dev/disk/by-uuid/BC28-BF3A";
             fsType = "vfat";
         };
-        /* "/mnt/mizu" = { */
-        /*     device = "/dev/disk/by-uuid/TODO"; */
-        /*     fsType = "ext4"; */
-        /* }; */
+        "/mnt/mizu" = {
+            device = "/dev/disk/by-uuid/e2ebcdeb-7d33-4004-a4f9-147b45d45bc5";
+            fsType = "ext4";
+        };
     };
 
     swapDevices = [ ];
