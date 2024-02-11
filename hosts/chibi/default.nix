@@ -8,6 +8,7 @@
         ../../modules/containers/nginxproxymanager.nix
         ../../modules/containers/linkwarden.nix
         ../../modules/containers/excalidraw.nix
+        ../../modules/containers/freshrss.nix
     ];
 
     boot = {
@@ -105,6 +106,11 @@
             "/mnt/kuki/containers/linkwarden/pg_data:/var/lib/postgresql/data"
         ];
         env_files = [ /mnt/kuki/containers/linkwarden/linkwarden.env ];
+    };
+    container.freshrss = {
+        volumes = [
+            "/mnt/kuki/containers/freshrss/config:/config"
+        ];
     };
 
 }
