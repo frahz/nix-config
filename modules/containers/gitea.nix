@@ -26,12 +26,19 @@ in
             allowedUDPPorts = [ 3000 2221 ];
         };
 
-        system.activationScripts.init-gitea-network = let
-            docker = config.virtualisation.oci-containers.backend;
-            dockerBin = "${pkgs.${docker}}/bin/${docker}";
-        in ''
-            ${dockerBin} network inspect gitea >/dev/null 2>&1 || ${dockerBin} network create gitea
-        '';
+        systemd.services.init-gitea-network = {
+            description = "Create bridge for gitea";
+            after = [ "network.target" ];
+            wantedBy = [ "multi-user.target" ];
+
+            serviceConfig.Type = "oneshot";
+            script = let
+                docker = config.virtualisation.oci-containers.backend;
+                dockerBin = "${pkgs.${docker}}/bin/${docker}";
+            in ''
+                ${dockerBin} network inspect gitea >/dev/null 2>&1 || ${dockerBin} network create gitea
+            '';
+        };
 
         virtualisation.oci-containers.containers.gitea = {
             autoStart = true;

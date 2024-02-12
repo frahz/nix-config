@@ -21,12 +21,19 @@ in {
             allowedUDPPorts = [ 3000 ];
         };
 
-        system.activationScripts.init-linkwarden-network = let
-            docker = config.virtualisation.oci-containers.backend;
-            dockerBin = "${pkgs.${docker}}/bin/${docker}";
-        in ''
-            ${dockerBin} network inspect linkwarden-br >/dev/null 2>&1 || ${dockerBin} network create linkwarden-br
-        '';
+        systemd.services.init-linkwarden-network = {
+            description = "Create bridge for linkwarden";
+            after = [ "network.target" ];
+            wantedBy = [ "multi-user.target" ];
+
+            serviceConfig.Type = "oneshot";
+            script = let
+                docker = config.virtualisation.oci-containers.backend;
+                dockerBin = "${pkgs.${docker}}/bin/${docker}";
+            in ''
+                ${dockerBin} network inspect linkwarden-br >/dev/null 2>&1 || ${dockerBin} network create linkwarden-br
+            '';
+        };
 
         virtualisation.oci-containers.containers.linkwarden = {
             autoStart = true;

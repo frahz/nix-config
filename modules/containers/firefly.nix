@@ -29,12 +29,19 @@ in
             allowedUDPPorts = [ 4040 4041 ];
         };
 
-        system.activationScripts.init-firefly-network = let
-            docker = config.virtualisation.oci-containers.backend;
-            dockerBin = "${pkgs.${docker}}/bin/${docker}";
-        in ''
-            ${dockerBin} network inspect firefly_iii >/dev/null 2>&1 || ${dockerBin} network create firefly_iii
-        '';
+        systemd.services.init-firefly-network = {
+            description = "Create bridge for firefly";
+            after = [ "network.target" ];
+            wantedBy = [ "multi-user.target" ];
+
+            serviceConfig.Type = "oneshot";
+            script = let
+                docker = config.virtualisation.oci-containers.backend;
+                dockerBin = "${pkgs.${docker}}/bin/${docker}";
+            in ''
+                ${dockerBin} network inspect firefly_iii >/dev/null 2>&1 || ${dockerBin} network create firefly_iii
+            '';
+        };
 
         virtualisation.oci-containers.containers.firefly = {
             autoStart = true;
