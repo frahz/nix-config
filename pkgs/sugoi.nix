@@ -8,7 +8,7 @@ pkgs.rustPlatform.buildRustPackage rec {
         owner = "frahz";
         repo = "sugoi";
         rev = "v${version}";
-        hash = "sha256-XHNrZ/aQ5MNsKPnna03nQtQxu0t3+Fm6J78uH4v9EhE=";
+        hash = "sha256-8MBJ0xNMz6FQhpKbwmJBwiUP8q/aEvtaQ0rW31Hz3+k=";
     };
 
     cargoLock = {
