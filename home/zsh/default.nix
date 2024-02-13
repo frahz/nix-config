@@ -13,6 +13,7 @@
         oh-my-zsh = {
             enable = true;
             plugins = [ "git" "tmux" ];
+            custom = "$HOME/.oh-my-zsh/custom";
             theme = "frahz";
         };
 
