@@ -27,7 +27,7 @@
         /* systems = flake-utils.lib.system; */
         defaultModules = [
             sops-nix.nixosModules.default
-            /* home.nixOsModules.default */
+            home.nixosModules.home-manager
         ];
     in
     {
