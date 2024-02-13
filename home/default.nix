@@ -10,7 +10,7 @@
         homeDirectory = "/home/frahz";
         packages = with pkgs; [
             fd
-            rg
+            ripgrep
             yt-dlp
             unzip
             unrar

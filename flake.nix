@@ -6,7 +6,7 @@
 
         flake-utils.url = "github:numtide/flake-utils";
 
-        home.url = "github:nix-community/home-manager";
+        home.url = "github:nix-community/home-manager/release-23.11";
         home.inputs.nixpkgs.follows = "nixpkgs";
 
         sops-nix.url = "github:Mic92/sops-nix";
@@ -28,6 +28,15 @@
         defaultModules = [
             sops-nix.nixosModules.default
             home.nixosModules.home-manager
+            {
+                home-manager = {
+                    useGlobalPkgs = true;
+                    extraSpecialArgs = { inherit inputs; };
+                    users.frahz = {
+                        imports = [ ./home ];
+                    };
+                };
+            }
         ];
     in
     {
