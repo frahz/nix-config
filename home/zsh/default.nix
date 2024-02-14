@@ -1,7 +1,7 @@
-{...}:
+{ config, ... }:
 
 {
-    home.file.".oh-my-zsh/custom/themes/frahz.zsh-theme" = {
+    xdg.configFile."omz/themes/frahz.zsh-theme" = {
         source = ./frahz.zsh-theme;
     };
 
@@ -13,7 +13,7 @@
         oh-my-zsh = {
             enable = true;
             plugins = [ "git" "tmux" ];
-            custom = "$HOME/.oh-my-zsh/custom";
+            custom = "${config.xdg.configHome}/omz";
             theme = "frahz";
         };
 
