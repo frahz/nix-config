@@ -7,8 +7,8 @@ let
         src = pkgs.fetchFromGitHub {
             owner = "frahz";
             repo = "catppuccin-tmux";
-            rev = "";
-            hash = "";
+            rev = "62a03d68775df1e69f35b9e40e37b2a1c274d859";
+            hash = "sha256-VvVZHAZNGQ4YUYrVHK09wQ9DijhtUwL2jiLuco1MBxE=";
         };
     };
 in {
