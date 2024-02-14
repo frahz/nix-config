@@ -1,7 +1,8 @@
 {pkgs, ...}: {
     imports = [
-        ./zsh
+        ./terminal
         ./git
+        ./zsh
     ];
 
     programs.home-manager.enable = true;
