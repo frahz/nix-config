@@ -1,17 +1,6 @@
 { pkgs, ... }:
 
-let
-    catppuccin-frahz = pkgs.tmuxPlugins.mkTmuxPlugin {
-        pluginName = "catppuccin-frahz";
-        version = "recent";
-        src = pkgs.fetchFromGitHub {
-            owner = "frahz";
-            repo = "catppuccin-tmux";
-            rev = "62a03d68775df1e69f35b9e40e37b2a1c274d859";
-            hash = "sha256-VvVZHAZNGQ4YUYrVHK09wQ9DijhtUwL2jiLuco1MBxE=";
-        };
-    };
-in {
+{
     programs.tmux = {
         enable = true;
 
@@ -22,7 +11,14 @@ in {
 
         plugins = with pkgs.tmuxPlugins; [
             resurrect
-            catppuccin-frahz
+            (catppuccin.overrideAttrs ( _: {
+                src = pkgs.fetchFromGitHub {
+                    owner = "frahz";
+                    repo = "catppuccin-tmux";
+                    rev = "62a03d68775df1e69f35b9e40e37b2a1c274d859";
+                    hash = "sha256-VvVZHAZNGQ4YUYrVHK09wQ9DijhtUwL2jiLuco1MBxE=";
+                };
+            }))
         ];
 
         extraConfig = ''
