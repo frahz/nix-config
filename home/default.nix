@@ -1,24 +1,22 @@
-{pkgs, ...}:
+{pkgs, ...}: {
+  imports = [
+    ./terminal
+    ./git
+    ./zsh
+  ];
 
-{
-    imports = [
-        ./terminal
-        ./git
-        ./zsh
+  programs.home-manager.enable = true;
+
+  home = {
+    username = "frahz";
+    homeDirectory = "/home/frahz";
+    packages = with pkgs; [
+      fd
+      ripgrep
+      yt-dlp
+      unzip
+      unrar
     ];
-
-    programs.home-manager.enable = true;
-
-    home = {
-        username = "frahz";
-        homeDirectory = "/home/frahz";
-        packages = with pkgs; [
-            fd
-            ripgrep
-            yt-dlp
-            unzip
-            unrar
-        ];
-        stateVersion = "23.11";
-    };
+    stateVersion = "23.11";
+  };
 }

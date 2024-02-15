@@ -1,7 +1,7 @@
 {
-    imports = [
-        ./bat.nix
-        ./btop.nix
-        ./tmux.nix
-    ];
+  imports = [
+    ./bat.nix
+    ./btop.nix
+    ./tmux.nix
+  ];
 }

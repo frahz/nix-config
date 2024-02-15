@@ -1,3 +1,3 @@
 [
-    ./zsh.nix
+  ./zsh.nix
 ]

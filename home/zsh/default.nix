@@ -1,29 +1,26 @@
-{ config, ... }:
+{config, ...}: {
+  xdg.configFile."omz/themes/frahz.zsh-theme" = {
+    source = ./frahz.zsh-theme;
+  };
 
-{
-    xdg.configFile."omz/themes/frahz.zsh-theme" = {
-        source = ./frahz.zsh-theme;
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    enableAutosuggestions = true;
+
+    oh-my-zsh = {
+      enable = true;
+      plugins = ["git" "tmux"];
+      custom = "${config.xdg.configHome}/omz";
+      theme = "frahz";
     };
 
-    programs.zsh = {
-        enable = true;
-        enableCompletion = true;
-        enableAutosuggestions = true;
-
-        oh-my-zsh = {
-            enable = true;
-            plugins = [ "git" "tmux" ];
-            custom = "${config.xdg.configHome}/omz";
-            theme = "frahz";
-        };
-
-        syntaxHighlighting = {
-            enable = true;
-        };
-
-        shellAliases = {
-            vim = "nvim";
-        };
-
+    syntaxHighlighting = {
+      enable = true;
     };
+
+    shellAliases = {
+      vim = "nvim";
+    };
+  };
 }
