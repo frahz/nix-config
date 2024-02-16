@@ -8,7 +8,7 @@ in {
   xdg.configFile = {
     ${path}.source = pkgs.fetchurl {
       url = "https://raw.githubusercontent.com/catppuccin/delta/main/themes/mocha.gitconfig";
-      hash = "";
+      hash = "sha256-I2sD5TEYjnvvms5JWFEM/wW+4V3ofTOwaRBhdQko0CM=";
     };
   };
 
