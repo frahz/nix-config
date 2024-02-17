@@ -37,7 +37,7 @@ in {
       core = {
         editor = "nvim";
       };
-      merge.conflictstyle = "diff3";
+      merge.conflictstyle = "zdiff3";
       diff.colorMoved = "default";
       init.defaultBranch = "main";
     };
