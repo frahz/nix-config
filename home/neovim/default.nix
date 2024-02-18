@@ -7,6 +7,15 @@
 
     extraLuaConfig = builtins.readFile "${./init.lua}";
     plugins = with pkgs.vimPlugins; [
+      # Theme
+      {
+        plugin = catppuccin-nvim;
+        type = "lua";
+        config = ''
+          require("config.theme")
+          '';
+      }
+
       # Autocomplete
       {
         plugin = nvim-cmp;
@@ -143,15 +152,6 @@
         type = "lua";
         config = ''
           require("osc52").setup({silent = true})
-        '';
-      }
-
-      # Theme
-      {
-        plugin = catppuccin-nvim;
-        type = "lua";
-        config = ''
-          require("config.theme")
         '';
       }
 
