@@ -175,4 +175,9 @@
       sumneko-lua-language-server
     ];
   };
+
+  xdg.configFile."nvim/lua/config" = {
+    recursive = true;
+    source = ./config;
+  };
 }
