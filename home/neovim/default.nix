@@ -172,7 +172,7 @@
       nodePackages.typescript-language-server
       nodePackages.pyright
       rust-analyzer
-      sumneko-lua-language-server
+      luajitPackages.lua-lsp
     ];
   };
 
