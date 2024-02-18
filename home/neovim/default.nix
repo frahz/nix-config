@@ -8,7 +8,13 @@
     extraLuaConfig = builtins.readFile "${./init.lua}";
     plugins = with pkgs.vimPlugins; [
       # Autocomplete
-      nvim-cmp
+      {
+        plugin = nvim-cmp;
+        type = "lua";
+        config = ''
+          require("config.completion")
+        '';
+      }
       cmp-nvim-lsp
       cmp-path
       cmp-buffer
@@ -16,7 +22,13 @@
       cmp_luasnip
 
       # LSP Config
-      nvim-lspconfig
+      {
+        plugin = nvim-lspconfig;
+        type = "lua";
+        config = ''
+          require("config.lsp")
+        '';
+      }
       {
         plugin = fidget-nvim;
         type = "lua";
@@ -26,11 +38,23 @@
       }
 
       # Treesitter / Syntax Highlighting
-      nvim-treesitter.withAllGrammars
+      {
+        plugin = nvim-treesitter.withAllGrammars;
+        type = "lua";
+        config = ''
+          require("config.treesitter")
+        '';
+      }
 
       # Telescope
       plenary-nvim
-      telescope-nvim
+      {
+        plugin = telescope-nvim;
+        type = "lua";
+        config = ''
+          require("config.telescope")
+        '';
+      }
       telescope-fzf-native-nvim
 
       # Snippets
@@ -38,13 +62,25 @@
       friendly-snippets
 
       # Symbol Viewer
-      aerial-nvim
+      {
+        plugin = aerial-nvim;
+        type = "lua";
+        config = ''
+          require("config.tags")
+        '';
+      }
 
       # Better comment keybinds
       vim-commentary
 
       # Autopairs (works with cmp engine)
-      nvim-autopairs
+      {
+        plugin = nvim-autopairs;
+        type = "lua";
+        config = ''
+          require("config.autopairs")
+        '';
+      }
 
       # Indent guides
       {
@@ -72,16 +108,34 @@
 
       # Statusline
       nvim-web-devicons
-      lualine-nvim
+      {
+        plugin = lualine-nvim;
+        type = "lua";
+        config = ''
+          require("config.statusline")
+        '';
+      }
 
       # Git support
-      gitsigns-nvim
+      {
+        plugin = gitsigns-nvim;
+        type = "lua";
+        config = ''
+          require("config.gitsigns")
+        '';
+      }
 
       # Nicer looking netrw
       # TODO: add prichrd/netrw.nvim
 
       # Greeter
-      alpha-nvim
+      {
+        plugin = alpha-nvim;
+        type = "lua";
+        config = ''
+          require("config.alpha")
+        '';
+      }
 
       # Copy in ssh/tmux
       {
@@ -93,7 +147,13 @@
       }
 
       # Theme
-      catppuccin-nvim
+      {
+        plugin = catppuccin-nvim;
+        type = "lua";
+        config = ''
+          require("config.theme")
+        '';
+      }
 
       # Improve startuptime
       # impatient-nvim
@@ -114,10 +174,5 @@
       rust-analyzer
       sumneko-lua-language-server
     ];
-  };
-
-  xdg.configFile."nvim/lua/config" = {
-    recursive = true;
-    source = ./config;
   };
 }
