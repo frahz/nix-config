@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./terminal
+    ./neovim
     ./git
     ./zsh
   ];
