@@ -28,9 +28,12 @@ local on_attach = function(client)
     vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 nvim_lsp.rust_analyzer.setup({
     on_attach = on_attach,
+    capabilities = capabilities,
     settings = {
         ["rust-analyzer"] = {
             imports = {
@@ -53,6 +56,7 @@ nvim_lsp.rust_analyzer.setup({
 
 nvim_lsp.lua_ls.setup({
     on_attach = on_attach,
+    capabilities = capabilities,
     settings = {
         Lua = {
             runtime = {
@@ -75,6 +79,7 @@ nvim_lsp.lua_ls.setup({
 -- TODO: fix "error" where diagnostics virtual text doesn't show up unless I reload nvim
 nvim_lsp.clangd.setup({
     on_attach = on_attach,
+    capabilities = capabilities,
     cmd = {
         "clangd",
         "--background-index",
@@ -89,16 +94,29 @@ nvim_lsp.clangd.setup({
 
 nvim_lsp.bashls.setup({
     on_attach = on_attach,
+    capabilities = capabilities,
 })
 nvim_lsp.pyright.setup({
     on_attach = on_attach,
+    capabilities = capabilities,
 })
 
 nvim_lsp.tsserver.setup({
     on_attach = on_attach,
+    capabilities = capabilities,
 })
 
 nvim_lsp.nil_ls.setup({
     on_attach = on_attach,
+    auto_start = true,
+    capabilities = capabilities,
+    settings = {
+      ['nil'] = {
+        flake = {
+            autoArchive = true,
+            autoEvalInputs = true,
+        }
+      },
+    },
 })
 
