@@ -111,12 +111,15 @@ nvim_lsp.nil_ls.setup({
     auto_start = true,
     capabilities = capabilities,
     settings = {
-      ['nil'] = {
-        flake = {
-            autoArchive = true,
-            autoEvalInputs = true,
-        }
-      },
+        ['nil'] = {
+            nix = {
+                maxMemoryMB = 4096,
+                flake = {
+                    autoArchive = false,
+                    autoEvalInputs = true,
+                },
+            }
+        },
     },
 })
 
