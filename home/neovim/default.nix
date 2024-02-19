@@ -173,7 +173,7 @@
       nodePackages.typescript-language-server
       nodePackages.pyright
       rust-analyzer
-      luajitPackages.lua-lsp
+      lua-language-server
     ];
   };
 
