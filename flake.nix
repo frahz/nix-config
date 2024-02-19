@@ -9,6 +9,9 @@
     home.url = "github:nix-community/home-manager/release-23.11";
     home.inputs.nixpkgs.follows = "nixpkgs";
 
+    nil.url = "github:oxalica/nil";
+    nil.inputs.nixpkgs.follows = "nixpkgs";
+
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
   };

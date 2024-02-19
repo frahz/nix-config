@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   programs.neovim = {
     enable = true;
 
@@ -13,7 +17,7 @@
         type = "lua";
         config = ''
           require("config.theme")
-          '';
+        '';
       }
 
       # Autocomplete
@@ -168,7 +172,7 @@
 
       # LSP stuff
       libclang
-      nil
+      inputs.nil.packages.x86_64-linux.default
       nodePackages.bash-language-server
       nodePackages.typescript-language-server
       nodePackages.pyright
