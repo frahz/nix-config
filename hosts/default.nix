@@ -1,13 +1,11 @@
 {
-  lib,
   inputs,
   nixpkgs,
   nixpkgs-unstable,
   defaultModules,
+  system,
   ...
 }: let
-  system = "x86_64-linux";
-
   overlay-unstable = final: prev: {
     unstable = import nixpkgs-unstable {
       inherit system;
