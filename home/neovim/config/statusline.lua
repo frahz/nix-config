@@ -1,9 +1,6 @@
 local lualine = require("lualine")
 
-local section_separators = { left = "", right = ""}
-if vim.fn.has("mac") == 1 then
-    section_separators = { left = "", right = ""}
-end
+local section_separators = { left = "", right = ""}
 
 local function shiftwidth()
     return " "..vim.api.nvim_get_option_value("shiftwidth", {})
