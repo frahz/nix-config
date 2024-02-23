@@ -63,78 +63,86 @@
     };
   };
 
-  # Services
-  sops.secrets.tsauth-inari = {};
-  services.tailscale-autoconnect = {
-    enable = true;
-    authKeyFile = config.sops.secrets.tsauth-inari.path;
+  # Secrets
+  sops.secrets = {
+    tsauth-inari = {};
+    gluetun = {};
+    gitea = {};
   };
 
-  services.nemui.enable = true;
+  # Services
+  services = {
+    tailscale-autoconnect = {
+      enable = true;
+      authKeyFile = config.sops.secrets.tsauth-inari.path;
+    };
+
+    nemui.enable = true;
+  };
 
   # Containers
-  sops.secrets.gluetun = {};
-  container.torrent = {
-    qb_volumes = [
-      "/mnt/mizu/torrents:/torrents"
-      "/mnt/mizu/containers/qbittorrent/config:/config"
-    ];
-    gluetun_volumes = [
-      "/mnt/mizu/containers/gluetun/config:/config"
-      "/mnt/mizu/containers/gluetun/servers.json:/gluetun/servers.json"
-    ];
-    vpn_info_file = config.sops.secrets.gluetun.path;
-  };
+  container = {
+    torrent = {
+      qb_volumes = [
+        "/mnt/mizu/torrents:/torrents"
+        "/mnt/mizu/containers/qbittorrent/config:/config"
+      ];
+      gluetun_volumes = [
+        "/mnt/mizu/containers/gluetun/config:/config"
+        "/mnt/mizu/containers/gluetun/servers.json:/gluetun/servers.json"
+      ];
+      vpn_info_file = config.sops.secrets.gluetun.path;
+    };
 
-  container.sonarr = {
-    volumes = [
-      "/mnt/mizu/containers/sonarr/config:/config"
-      "/mnt/mizu:/data"
-    ];
-  };
-  container.radarr = {
-    volumes = [
-      "/mnt/mizu/containers/radarr/config:/config"
-      "/mnt/mizu:/data"
-    ];
-  };
+    sonarr = {
+      volumes = [
+        "/mnt/mizu/containers/sonarr/config:/config"
+        "/mnt/mizu:/data"
+      ];
+    };
+    radarr = {
+      volumes = [
+        "/mnt/mizu/containers/radarr/config:/config"
+        "/mnt/mizu:/data"
+      ];
+    };
 
-  container.kavita = {
-    volumes = [
-      "/mnt/mizu/containers/kavita/config:/kavita/config"
-      "/mnt/mizu/library/manga:/manga"
-      "/mnt/mizu/library/lightnovels:/lightnovels"
-    ];
-  };
+    kavita = {
+      volumes = [
+        "/mnt/mizu/containers/kavita/config:/kavita/config"
+        "/mnt/mizu/library/manga:/manga"
+        "/mnt/mizu/library/lightnovels:/lightnovels"
+      ];
+    };
 
-  container.jellyseerr = {
-    volumes = [
-      "/mnt/mizu/containers/jellyseer/config:/app/config"
-    ];
-  };
+    jellyseerr = {
+      volumes = [
+        "/mnt/mizu/containers/jellyseer/config:/app/config"
+      ];
+    };
 
-  container.jellyfin = {
-    volumes = [
-      "/mnt/mizu/containers/jellyfin/config:/config"
-      "/mnt/mizu/containers/jellyfin/cache:/cache"
-      "/mnt/mizu/media:/media"
-    ];
-  };
+    jellyfin = {
+      volumes = [
+        "/mnt/mizu/containers/jellyfin/config:/config"
+        "/mnt/mizu/containers/jellyfin/cache:/cache"
+        "/mnt/mizu/media:/media"
+      ];
+    };
 
-  sops.secrets.gitea = {};
-  container.gitea = {
-    gitea_volumes = [
-      "/mnt/mizu/containers/gitea/data:/data"
-      "/etc/timezone:/etc/timezone:ro"
-    ];
-    pg_volumes = [
-      "/mnt/mizu/containers/gitea/postgres:/var/lib/postgresql/data"
-    ];
-    runner_volumes = [
-      "/mnt/mizu/containers/gitea_runner/config.yaml:/config.yaml"
-      "/mnt/mizu/containers/gitea_runner/data:/data"
-      "/var/run/docker.sock/:/var/run/docker.sock"
-    ];
-    env_file = config.sops.secrets.gitea.path;
+    gitea = {
+      gitea_volumes = [
+        "/mnt/mizu/containers/gitea/data:/data"
+        "/etc/timezone:/etc/timezone:ro"
+      ];
+      pg_volumes = [
+        "/mnt/mizu/containers/gitea/postgres:/var/lib/postgresql/data"
+      ];
+      runner_volumes = [
+        "/mnt/mizu/containers/gitea_runner/config.yaml:/config.yaml"
+        "/mnt/mizu/containers/gitea_runner/data:/data"
+        "/var/run/docker.sock/:/var/run/docker.sock"
+      ];
+      env_file = config.sops.secrets.gitea.path;
+    };
   };
 }

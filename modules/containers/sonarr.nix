@@ -21,7 +21,7 @@ in {
     virtualisation.oci-containers.containers.sonarr = {
       autoStart = true;
       image = "lscr.io/linuxserver/sonarr:4.0.1.929-ls222";
-      volumes = cfg.volumes;
+      inherit (cfg) volumes;
       environment = {
         PUID = "1000";
         PGID = "1000";

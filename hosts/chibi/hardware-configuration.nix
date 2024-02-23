@@ -36,7 +36,7 @@
 
   networking = with host; {
     useDHCP = lib.mkDefault true;
-    hostName = hostName;
+    inherit hostName;
   };
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";

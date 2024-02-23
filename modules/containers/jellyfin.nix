@@ -21,7 +21,7 @@ in {
     virtualisation.oci-containers.containers.jellyfin = {
       autoStart = true;
       image = "jellyfin/jellyfin";
-      volumes = cfg.volumes;
+      inherit (cfg) volumes;
       environment = {
         PUID = "1000";
         PGID = "100";

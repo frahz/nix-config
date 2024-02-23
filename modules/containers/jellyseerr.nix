@@ -21,7 +21,7 @@ in {
     virtualisation.oci-containers.containers.jellyseerr = {
       autoStart = true;
       image = "fallenbagel/jellyseerr:latest";
-      volumes = cfg.volumes;
+      inherit (cfg) volumes;
       environment = {
         PUID = "1000";
         PGID = "1000";

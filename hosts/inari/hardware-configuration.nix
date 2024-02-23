@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   host,
   ...
 }: {
@@ -35,7 +34,7 @@
 
   networking = with host; {
     useDHCP = lib.mkDefault true;
-    hostName = hostName;
+    inherit hostName;
   };
   # networking.interfaces.enp0s31f6.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp2s0.useDHCP = lib.mkDefault true;

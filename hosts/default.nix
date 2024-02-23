@@ -15,7 +15,7 @@
 
   overlay-local = import ../pkgs;
 
-  lib = nixpkgs.lib;
+  inherit (nixpkgs) lib;
 in {
   chibi = lib.nixosSystem {
     inherit system;

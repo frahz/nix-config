@@ -27,8 +27,11 @@
     sops-nix,
     ...
   } @ inputs: let
-
     system = "x86_64-linux";
+
+    pkgs = import nixpkgs {
+      inherit system;
+    };
 
     defaultModules = [
       sops-nix.nixosModules.default
@@ -53,12 +56,19 @@
         };
       };
     };
-    formatter.${system} = nixpkgs.alejandra;
-    nixosConfigurations = (
-      import ./hosts {
-        inherit (nixpkgs) lib;
-        inherit inputs nixpkgs nixpkgs-unstable home defaultModules system;
-      }
-    );
+    devShells.${system}.default = pkgs.mkShell {
+      inherit (self.checks.pre-commit-check) shellHook;
+      packages = with pkgs; [
+        git
+        sops
+        alejandra
+        statix
+      ];
+    };
+    formatter.${system} = pkgs.alejandra;
+    nixosConfigurations = import ./hosts {
+      inherit (nixpkgs) lib;
+      inherit inputs nixpkgs nixpkgs-unstable home defaultModules system;
+    };
   };
 }

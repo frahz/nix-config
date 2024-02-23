@@ -21,7 +21,7 @@ in {
     virtualisation.oci-containers.containers.nginxproxymanager = {
       autoStart = true;
       image = "jc21/nginx-proxy-manager:2.10.4";
-      volumes = cfg.volumes;
+      inherit (cfg) volumes;
       environment = {
         TZ = "America/Los_Angeles";
       };

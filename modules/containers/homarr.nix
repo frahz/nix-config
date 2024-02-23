@@ -21,7 +21,7 @@ in {
     virtualisation.oci-containers.containers.homarr = {
       autoStart = true;
       image = "ghcr.io/ajnart/homarr:0.14.6";
-      volumes = cfg.volumes;
+      inherit (cfg) volumes;
       environment = {
         TZ = "America/Los_Angeles";
       };

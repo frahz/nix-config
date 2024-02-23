@@ -21,7 +21,7 @@ in {
     virtualisation.oci-containers.containers.pihole = {
       autoStart = true;
       image = "pihole/pihole:2023.10.0";
-      volumes = cfg.volumes;
+      inherit (cfg) volumes;
       environment = {
         TZ = "America/Los_Angeles";
         DNSMASQ_LISTENING = "all";

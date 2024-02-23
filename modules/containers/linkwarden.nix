@@ -42,7 +42,7 @@ in {
     virtualisation.oci-containers.containers.linkwarden = {
       autoStart = true;
       image = "ghcr.io/linkwarden/linkwarden:v2.3.0";
-      volumes = cfg.volumes;
+      inherit (cfg) volumes;
       environment = {
         TZ = "America/Los_Angeles";
       };

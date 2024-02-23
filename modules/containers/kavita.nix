@@ -21,7 +21,7 @@ in {
     virtualisation.oci-containers.containers.kavita = {
       autoStart = true;
       image = "kizaing/kavita:latest";
-      volumes = cfg.volumes;
+      inherit (cfg) volumes;
       environment = {
         PUID = "1000";
         PGID = "1000";

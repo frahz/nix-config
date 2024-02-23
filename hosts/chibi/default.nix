@@ -53,65 +53,69 @@
   };
 
   # Services
-  services.sugoi.enable = true;
+  services = {
+    sugoi.enable = true;
 
-  services.samba-wsdd = {
-    enable = true;
-    openFirewall = true;
-  };
-  services.samba = {
-    enable = true;
-    extraConfig = ''
-      workgroup = WORKGROUP
-      server string = inari server
-      server role = standalone server
-      pam password change = yes
-      map to guest = bad user
-      usershare allow guests = yes
-    '';
-    shares = {
-      sharing = {
-        path = "/mnt/kuki/sharing";
-        comment = "shared directory";
-        browseable = "yes";
-        "read only" = "no";
-        "inherit permissions" = "yes";
+    samba-wsdd = {
+      enable = true;
+      openFirewall = true;
+    };
+    samba = {
+      enable = true;
+      extraConfig = ''
+        workgroup = WORKGROUP
+        server string = inari server
+        server role = standalone server
+        pam password change = yes
+        map to guest = bad user
+        usershare allow guests = yes
+      '';
+      shares = {
+        sharing = {
+          path = "/mnt/kuki/sharing";
+          comment = "shared directory";
+          browseable = "yes";
+          "read only" = "no";
+          "inherit permissions" = "yes";
+        };
       };
     };
   };
 
   # Containers
-  container.pihole = {
-    volumes = [
-      "/mnt/kuki/containers/pihole/etc/pihole:/etc/pihole/"
-      "/mnt/kuki/containers/pihole/etc/dnsmasq.d:/etc/dnsmasq.d"
-    ];
-  };
-  container.homarr = {
-    volumes = [
-      "/mnt/kuki/containers/homarr/configs:/app/data/configs"
-      "/mnt/kuki/containers/homarr/icons:/app/public/icons"
-      "/mnt/kuki/containers/homarr/data:/data"
-    ];
-  };
-  container.nginxproxymanager = {
-    volumes = [
-      "/mnt/kuki/containers/nginxproxymanager/data:/data"
-      "/mnt/kuki/containers/nginxproxymanager/letsencrypt:/etc/letsencrypt"
-    ];
-  };
-  container.linkwarden = {
-    volumes = [
-      "/mnt/kuki/containers/linkwarden/data:/data/data"
-    ];
-    pg_volumes = [
-      "/mnt/kuki/containers/linkwarden/pg_data:/var/lib/postgresql/data"
-    ];
-    env_files = [/mnt/kuki/containers/linkwarden/linkwarden.env];
-  };
-  container.freshrss = {
-    volumes = [
-      "/mnt/kuki/containers/freshrss/config:/config"
-    ];
+  container = {
+    pihole = {
+      volumes = [
+        "/mnt/kuki/containers/pihole/etc/pihole:/etc/pihole/"
+        "/mnt/kuki/containers/pihole/etc/dnsmasq.d:/etc/dnsmasq.d"
+      ];
+    };
+    homarr = {
+      volumes = [
+        "/mnt/kuki/containers/homarr/configs:/app/data/configs"
+        "/mnt/kuki/containers/homarr/icons:/app/public/icons"
+        "/mnt/kuki/containers/homarr/data:/data"
+      ];
+    };
+    nginxproxymanager = {
+      volumes = [
+        "/mnt/kuki/containers/nginxproxymanager/data:/data"
+        "/mnt/kuki/containers/nginxproxymanager/letsencrypt:/etc/letsencrypt"
+      ];
+    };
+    linkwarden = {
+      volumes = [
+        "/mnt/kuki/containers/linkwarden/data:/data/data"
+      ];
+      pg_volumes = [
+        "/mnt/kuki/containers/linkwarden/pg_data:/var/lib/postgresql/data"
+      ];
+      env_files = [/mnt/kuki/containers/linkwarden/linkwarden.env];
+    };
+    freshrss = {
+      volumes = [
+        "/mnt/kuki/containers/freshrss/config:/config"
+      ];
+    };
   };
 }
