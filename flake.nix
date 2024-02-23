@@ -49,9 +49,11 @@
         src = ./.;
         hooks = {
           alejandra.enable = true;
+          statix.enable = true;
         };
       };
     };
+    formatter.${system} = nixpkgs.alejandra;
     nixosConfigurations = (
       import ./hosts {
         inherit (nixpkgs) lib;
