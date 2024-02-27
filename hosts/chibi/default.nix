@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   pkgs,
   ...
@@ -52,6 +53,9 @@
     };
   };
 
+  # Secrets
+  sops.secrets.raulyrs = {};
+
   # Services
   services = {
     sugoi.enable = true;
@@ -79,6 +83,10 @@
           "inherit permissions" = "yes";
         };
       };
+    };
+    raulyrs = {
+      enable = true;
+      environmentFile = config.sops.secrets.raulyrs.path;
     };
   };
 

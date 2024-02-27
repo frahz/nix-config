@@ -1,5 +1,13 @@
 {
   description = "le nix config";
+
+  nixConfig = {
+    extra-trusted-substituters = ["https://frahz-pkgs.cachix.org"];
+    extra-trusted-public-keys = [
+      "frahz-pkgs.cachix.org-1:76ecCnIcJvDeJzHqFyAI6ElUndNZK0RXAO3HQrmV468="
+    ];
+  };
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -15,6 +23,14 @@
 
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
     pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
+
+    raulyrs = {
+      url = "github:frahz/rauly.rs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs-unstable";
+        pre-commit-hooks.follows = "pre-commit-hooks";
+      };
+    };
   };
 
   outputs = {
@@ -25,6 +41,7 @@
     home,
     pre-commit-hooks,
     sops-nix,
+    raulyrs,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -35,6 +52,7 @@
 
     defaultModules = [
       sops-nix.nixosModules.default
+      raulyrs.nixosModules.default
       home.nixosModules.home-manager
       {
         home-manager = {
@@ -68,7 +86,7 @@
     formatter.${system} = pkgs.alejandra;
     nixosConfigurations = import ./hosts {
       inherit (nixpkgs) lib;
-      inherit inputs nixpkgs nixpkgs-unstable home defaultModules system;
+      inherit inputs nixpkgs nixpkgs-unstable home raulyrs defaultModules system;
     };
   };
 }

@@ -11,6 +11,7 @@
   imports =
     [
       ../users/frahz
+      ../modules/nix.nix
     ]
     ++ (
       import ../modules/services
@@ -19,9 +20,6 @@
 
   time.timeZone = "America/Los_Angeles";
   i18n.defaultLocale = "en_US.UTF-8";
-
-  nixpkgs.overlays = [overlay-unstable overlay-local];
-  nixpkgs.config.allowUnfree = true;
 
   environment = {
     systemPackages = with pkgs; [
@@ -44,12 +42,6 @@
     variables = {
       EDITOR = "nvim";
       VISUAL = "nvim";
-    };
-  };
-
-  nix = {
-    settings = {
-      experimental-features = ["nix-command" "flakes"];
     };
   };
 
