@@ -9,14 +9,31 @@
 
     plugins = with pkgs.tmuxPlugins; [
       resurrect
-      (catppuccin.overrideAttrs (_: {
-        src = pkgs.fetchFromGitHub {
-          owner = "frahz";
-          repo = "catppuccin-tmux";
-          rev = "62a03d68775df1e69f35b9e40e37b2a1c274d859";
-          hash = "sha256-VvVZHAZNGQ4YUYrVHK09wQ9DijhtUwL2jiLuco1MBxE=";
-        };
-      }))
+      {
+        plugin = catppuccin.overrideAttrs (_: {
+          src = pkgs.fetchFromGitHub {
+            owner = "catppuccin";
+            repo = "tmux";
+            rev = "a0119d25283ba2b18287447c1f86720a255fb652";
+            hash = "sha256-SGJjDrTrNNxnurYV1o1KbHRIHFyfmbXDX/t4KN8VCao=";
+          };
+        });
+
+        extraConfig = ''
+          set -g @catppuccin_window_number_position "left"
+
+          set -g @catppuccin_window_default_fill "number"
+          set -g @catppuccin_window_default_text "#W"
+
+          set -g @catppuccin_window_current_fill "number"
+          set -g @catppuccin_window_current_text "#W"
+
+          set -g @catppuccin_status_modules_right "directory session"
+          set -g @catppuccin_status_left_separator "█"
+          set -g @catppuccin_status_right_separator "█"
+          set -g @catppuccin_directory_text "#{b:pane_current_path}"
+        '';
+      }
     ];
 
     extraConfig = ''
