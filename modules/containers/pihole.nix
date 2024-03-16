@@ -20,7 +20,7 @@ in {
 
     virtualisation.oci-containers.containers.pihole = {
       autoStart = true;
-      image = "pihole/pihole:2023.10.0";
+      image = "pihole/pihole:2024.02.2";
       inherit (cfg) volumes;
       environment = {
         TZ = "America/Los_Angeles";

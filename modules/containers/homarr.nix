@@ -20,7 +20,7 @@ in {
 
     virtualisation.oci-containers.containers.homarr = {
       autoStart = true;
-      image = "ghcr.io/ajnart/homarr:0.14.6";
+      image = "ghcr.io/ajnart/homarr:0.15.2";
       inherit (cfg) volumes;
       environment = {
         TZ = "America/Los_Angeles";
