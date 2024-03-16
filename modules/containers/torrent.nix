@@ -42,7 +42,14 @@ in {
         VPN_SERVICE_PROVIDER = "airvpn";
         VPN_TYPE = "wireguard";
       };
-      extraOptions = ["--cap-add=NET_ADMIN"];
+      extraOptions = [
+        "--cap-add=NET_ADMIN"
+        "--health-cmd=/gluetun-entrypoint healthcheck"
+        "--health-timeout=5s"
+        "--health-interval=5s"
+        "--health-start-period=10s"
+        "--health-retries=1"
+      ];
     };
 
     virtualisation.oci-containers.containers.qbittorrent = {
