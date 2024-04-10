@@ -29,7 +29,7 @@ in {
 
     virtualisation.oci-containers.containers.gluetun = {
       autoStart = true;
-      image = "qmcgaw/gluetun:v3.37.0";
+      image = "qmcgaw/gluetun:v3.38.0";
       volumes = cfg.gluetun_volumes;
       ports = [
         "8888:8888/tcp"
@@ -41,20 +41,16 @@ in {
         TZ = "America/Los_Angeles";
         VPN_SERVICE_PROVIDER = "airvpn";
         VPN_TYPE = "wireguard";
+        HEALTH_VPN_DURATION_INITIAL = "120s";
       };
       extraOptions = [
         "--cap-add=NET_ADMIN"
-        "--health-cmd=/gluetun-entrypoint healthcheck"
-        "--health-timeout=5s"
-        "--health-interval=5s"
-        "--health-start-period=10s"
-        "--health-retries=1"
       ];
     };
 
     virtualisation.oci-containers.containers.qbittorrent = {
       autoStart = true;
-      image = "lscr.io/linuxserver/qbittorrent:4.6.2-r0-ls303";
+      image = "lscr.io/linuxserver/qbittorrent:4.6.2-r0-ls323";
       volumes = cfg.qb_volumes;
       environment = {
         TZ = "America/Los_Angeles";
