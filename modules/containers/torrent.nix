@@ -50,7 +50,7 @@ in {
 
     virtualisation.oci-containers.containers.qbittorrent = {
       autoStart = true;
-      image = "lscr.io/linuxserver/qbittorrent:4.6.2-r0-ls323";
+      image = "lscr.io/linuxserver/qbittorrent:4.6.4-r0-ls323";
       volumes = cfg.qb_volumes;
       environment = {
         TZ = "America/Los_Angeles";
