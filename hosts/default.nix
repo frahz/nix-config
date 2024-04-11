@@ -48,4 +48,20 @@ in {
       ]
       ++ defaultModules;
   };
+
+  anmoku = lib.nixosSystem {
+    inherit system;
+    specialArgs = {
+      inherit inputs system overlay-unstable overlay-local;
+      host = {
+        hostName = "anmoku";
+      };
+    };
+    modules =
+      [
+        ./anmoku
+        ./configuration.nix
+      ]
+      ++ defaultModules;
+  };
 }
