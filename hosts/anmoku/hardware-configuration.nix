@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  pkgs,
+  host,
   modulesPath,
   ...
 }: {
@@ -27,7 +27,10 @@
 
   swapDevices = [];
 
-  networking.useDHCP = lib.mkDefault true;
+  networking = with host; {
+    useDHCP = lib.mkDefault true;
+    inherit hostName;
+  };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   virtualisation.hypervGuest.enable = true;
