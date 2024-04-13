@@ -20,7 +20,7 @@ in {
 
     virtualisation.oci-containers.containers.radarr = {
       autoStart = true;
-      image = "lscr.io/linuxserver/radarr:latest";
+      image = "lscr.io/linuxserver/radarr:5.4.6.8723-ls213";
       inherit (cfg) volumes;
       environment = {
         PUID = "1000";
