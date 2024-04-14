@@ -37,11 +37,7 @@
     self,
     nixpkgs,
     nixpkgs-unstable,
-    flake-utils,
-    home,
     pre-commit-hooks,
-    sops-nix,
-    raulyrs,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -49,21 +45,6 @@
     pkgs = import nixpkgs {
       inherit system;
     };
-
-    defaultModules = [
-      sops-nix.nixosModules.default
-      raulyrs.nixosModules.default
-      home.nixosModules.home-manager
-      {
-        home-manager = {
-          useGlobalPkgs = true;
-          extraSpecialArgs = {inherit inputs;};
-          users.frahz = {
-            imports = [./home];
-          };
-        };
-      }
-    ];
   in {
     checks = {
       pre-commit-check = pre-commit-hooks.lib.${system}.run {
@@ -86,7 +67,7 @@
     formatter.${system} = pkgs.alejandra;
     nixosConfigurations = import ./hosts {
       inherit (nixpkgs) lib;
-      inherit inputs nixpkgs nixpkgs-unstable home raulyrs defaultModules system;
+      inherit inputs nixpkgs nixpkgs-unstable system;
     };
   };
 }

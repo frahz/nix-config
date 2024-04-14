@@ -1,8 +1,6 @@
 {
-  config,
   lib,
   host,
-  modulesPath,
   ...
 }: {
   imports = [];

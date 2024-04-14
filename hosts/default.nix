@@ -1,26 +1,23 @@
 {
   inputs,
-  nixpkgs,
+  lib,
   nixpkgs-unstable,
-  defaultModules,
   system,
   ...
 }: let
-  overlay-unstable = final: prev: {
-    unstable = import nixpkgs-unstable {
-      inherit system;
-      config.allowUnfree = true;
-    };
-  };
+  sops-module = inputs.sops-nix.nixosModules.default;
+  hm-module = inputs.home.nixosModules.home-manager;
+  raulyrs-module = inputs.raulyrs.nixosModules.default;
 
-  overlay-local = import ../pkgs;
-
-  inherit (nixpkgs) lib;
+  defaultModules = [
+    sops-module
+    hm-module
+  ];
 in {
   chibi = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system overlay-unstable overlay-local;
+      inherit inputs system nixpkgs-unstable;
       host = {
         hostName = "chibi";
       };
@@ -29,6 +26,16 @@ in {
       [
         ./chibi
         ./configuration.nix
+        raulyrs-module
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            extraSpecialArgs = {inherit inputs;};
+            users.frahz = {
+              imports = [../home];
+            };
+          };
+        }
       ]
       ++ defaultModules;
   };
@@ -36,7 +43,7 @@ in {
   inari = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system overlay-unstable overlay-local;
+      inherit inputs system nixpkgs-unstable;
       host = {
         hostName = "inari";
       };
@@ -45,6 +52,15 @@ in {
       [
         ./inari
         ./configuration.nix
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            extraSpecialArgs = {inherit inputs;};
+            users.frahz = {
+              imports = [../home];
+            };
+          };
+        }
       ]
       ++ defaultModules;
   };
@@ -52,7 +68,7 @@ in {
   anmoku = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system overlay-unstable overlay-local;
+      inherit inputs system nixpkgs-unstable;
       host = {
         hostName = "anmoku";
       };
@@ -61,6 +77,15 @@ in {
       [
         ./anmoku
         ./configuration.nix
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            extraSpecialArgs = {inherit inputs;};
+            users.frahz = {
+              imports = [../home];
+            };
+          };
+        }
       ]
       ++ defaultModules;
   };
