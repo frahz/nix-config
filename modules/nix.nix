@@ -19,9 +19,11 @@ in {
     trusted-users = ["root" "@wheel"];
     substituters = [
       "https://frahz-pkgs.cachix.org"
+      "https://hyprland.cachix.org"
     ];
     trusted-public-keys = [
       "frahz-pkgs.cachix.org-1:76ecCnIcJvDeJzHqFyAI6ElUndNZK0RXAO3HQrmV468="
+      "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
     ];
   };
 }
