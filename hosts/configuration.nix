@@ -3,7 +3,6 @@
   config,
   lib,
   pkgs,
-  overlay-unstable,
   overlay-local,
   system,
   ...
@@ -36,7 +35,7 @@
       tokei
       wget
       lazydocker
-      unstable.tailscale
+      tailscale
       tmux
     ];
     variables = {

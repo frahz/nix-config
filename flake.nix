@@ -9,10 +9,9 @@
   };
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    home.url = "github:nix-community/home-manager/release-23.11";
+    home.url = "github:nix-community/home-manager";
     home.inputs.nixpkgs.follows = "nixpkgs";
 
     nil.url = "github:oxalica/nil";
@@ -24,19 +23,13 @@
     pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
     pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
 
-    raulyrs = {
-      url = "github:frahz/rauly.rs";
-      inputs = {
-        nixpkgs.follows = "nixpkgs-unstable";
-        pre-commit-hooks.follows = "pre-commit-hooks";
-      };
-    };
+    raulyrs.url = "github:frahz/rauly.rs";
+    raulyrs.inputs.pre-commit-hooks.follows = "pre-commit-hooks";
   };
 
   outputs = {
     self,
     nixpkgs,
-    nixpkgs-unstable,
     pre-commit-hooks,
     ...
   } @ inputs: let
@@ -67,7 +60,7 @@
     formatter.${system} = pkgs.alejandra;
     nixosConfigurations = import ./hosts {
       inherit (nixpkgs) lib;
-      inherit inputs nixpkgs nixpkgs-unstable system;
+      inherit inputs nixpkgs system;
     };
   };
 }

@@ -1,21 +1,13 @@
 {
   inputs,
-  nixpkgs-unstable,
   system,
   ...
 }: let
-  overlay-unstable = final: prev: {
-    unstable = import nixpkgs-unstable {
-      inherit system;
-      config.allowUnfree = true;
-    };
-  };
   overlay-local = import ../pkgs;
 in {
   nixpkgs = {
     overlays = [
       overlay-local
-      overlay-unstable
       inputs.raulyrs.overlays.default
     ];
     config = {

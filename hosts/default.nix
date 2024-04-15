@@ -1,7 +1,6 @@
 {
   inputs,
   lib,
-  nixpkgs-unstable,
   system,
   ...
 }: let
@@ -17,7 +16,7 @@ in {
   chibi = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system nixpkgs-unstable;
+      inherit inputs system;
       host = {
         hostName = "chibi";
       };
@@ -43,7 +42,7 @@ in {
   inari = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system nixpkgs-unstable;
+      inherit inputs system;
       host = {
         hostName = "inari";
       };
@@ -68,7 +67,7 @@ in {
   anmoku = lib.nixosSystem {
     inherit system;
     specialArgs = {
-      inherit inputs system nixpkgs-unstable;
+      inherit inputs system;
       host = {
         hostName = "anmoku";
       };
