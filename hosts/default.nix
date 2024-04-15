@@ -77,13 +77,16 @@ in {
       [
         ./anmoku
         ./configuration.nix
-        hyprlandModule
         {
           home-manager = {
             useGlobalPkgs = true;
             extraSpecialArgs = {inherit inputs;};
             users.frahz = {
-              imports = [../home ../home/desktop];
+              imports = [
+                ../home
+                ../home/desktop
+                hyprlandModule
+              ];
             };
           };
         }
