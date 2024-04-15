@@ -14,6 +14,9 @@
     home.url = "github:nix-community/home-manager";
     home.inputs.nixpkgs.follows = "nixpkgs";
 
+    hyprland.url = "github:hyprwm/Hyprland";
+    xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
+
     nil.url = "github:oxalica/nil";
 
     sops-nix.url = "github:Mic92/sops-nix";

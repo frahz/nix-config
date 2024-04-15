@@ -6,6 +6,7 @@
 }: let
   sops-module = inputs.sops-nix.nixosModules.default;
   hm-module = inputs.home.nixosModules.home-manager;
+  hyprlandModule = inputs.hyprland.homeManagerModules.default;
   raulyrs-module = inputs.raulyrs.nixosModules.default;
 
   defaultModules = [
@@ -76,12 +77,13 @@ in {
       [
         ./anmoku
         ./configuration.nix
+        hyprlandModule
         {
           home-manager = {
             useGlobalPkgs = true;
             extraSpecialArgs = {inherit inputs;};
             users.frahz = {
-              imports = [../home];
+              imports = [../home ../home/desktop];
             };
           };
         }
