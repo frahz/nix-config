@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: {
-  imports = [];
+  imports = [./services/greetd.nix];
 
   environment = {
     systemPackages = with pkgs; [
