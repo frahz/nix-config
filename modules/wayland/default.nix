@@ -34,5 +34,6 @@
       xdg-desktop-portal-gtk
       inputs.xdg-portal-hyprland.packages.${pkgs.system}.default
     ];
+    config.common.default = "*";
   };
 }
