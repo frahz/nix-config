@@ -7,15 +7,12 @@
   system,
   ...
 }: {
-  imports =
-    [
-      ../users/frahz
-      ../modules/nix.nix
-    ]
-    ++ (
-      import ../modules/services
-      ++ import ../modules/shell
-    );
+  imports = [
+    ../users/frahz
+    ../modules/nix.nix
+    ../modules/services
+    ../modules/shell
+  ];
 
   time.timeZone = "America/Los_Angeles";
   i18n.defaultLocale = "en_US.UTF-8";
