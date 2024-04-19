@@ -84,7 +84,13 @@
       }
 
       # Better comment keybinds
-      vim-commentary
+      {
+        plugin = comment-nvim;
+        type = "lua";
+        config = ''
+          require("Comment").setup({})
+        '';
+      }
 
       # Autopairs (works with cmp engine)
       {

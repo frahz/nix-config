@@ -113,7 +113,7 @@ nvim_lsp.nil_ls.setup({
     settings = {
         ['nil'] = {
             nix = {
-                maxMemoryMB = 4096,
+                maxMemoryMB = 8196,
                 flake = {
                     autoArchive = false,
                     autoEvalInputs = true,
