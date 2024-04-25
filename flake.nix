@@ -23,7 +23,6 @@
     pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
 
     raulyrs.url = "github:frahz/rauly.rs";
-    raulyrs.inputs.pre-commit-hooks.follows = "pre-commit-hooks";
   };
 
   outputs = {
