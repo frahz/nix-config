@@ -9,7 +9,6 @@
     ./services
     ../../modules/containers/torrent.nix
     ../../modules/containers/sonarr.nix
-    ../../modules/containers/radarr.nix
     ../../modules/containers/kavita.nix
     ../../modules/containers/gitea.nix
     ../../modules/containers/jellyseerr.nix
@@ -101,12 +100,24 @@
         "/mnt/mizu:/data"
       ];
     };
+    /*
     radarr = {
-      volumes = [
-        "/mnt/mizu/containers/radarr/config:/config"
-        "/mnt/mizu:/data"
-      ];
+    */
+    /*
+    volumes = [
+    */
+    /*
+    "/mnt/mizu/containers/radarr/config:/config"
+    */
+    /*
+    "/mnt/mizu:/data"
+    */
+    /*
+    ];
+    */
+    /*
     };
+    */
 
     kavita = {
       volumes = [
