@@ -6,6 +6,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
+    ./services
     ../../modules/containers/torrent.nix
     ../../modules/containers/sonarr.nix
     ../../modules/containers/radarr.nix
