@@ -100,24 +100,6 @@
         "/mnt/mizu:/data"
       ];
     };
-    /*
-    radarr = {
-    */
-    /*
-    volumes = [
-    */
-    /*
-    "/mnt/mizu/containers/radarr/config:/config"
-    */
-    /*
-    "/mnt/mizu:/data"
-    */
-    /*
-    ];
-    */
-    /*
-    };
-    */
 
     kavita = {
       volumes = [
