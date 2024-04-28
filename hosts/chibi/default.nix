@@ -6,8 +6,11 @@
   ...
 }: {
   imports = [
+    ./services
     ./hardware-configuration.nix
+    /*
     ../../modules/containers/pihole.nix
+    */
     ../../modules/containers/homarr.nix
     ../../modules/containers/nginxproxymanager.nix
     ../../modules/containers/linkwarden.nix
@@ -95,12 +98,24 @@
 
   # Containers
   container = {
+    /*
     pihole = {
-      volumes = [
-        "/mnt/kuki/containers/pihole/etc/pihole:/etc/pihole/"
-        "/mnt/kuki/containers/pihole/etc/dnsmasq.d:/etc/dnsmasq.d"
-      ];
+    */
+    /*
+    volumes = [
+    */
+    /*
+    "/mnt/kuki/containers/pihole/etc/pihole:/etc/pihole/"
+    */
+    /*
+    "/mnt/kuki/containers/pihole/etc/dnsmasq.d:/etc/dnsmasq.d"
+    */
+    /*
+    ];
+    */
+    /*
     };
+    */
     homarr = {
       volumes = [
         "/mnt/kuki/containers/homarr/configs:/app/data/configs"
