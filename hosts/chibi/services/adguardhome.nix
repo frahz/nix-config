@@ -11,6 +11,7 @@ in {
     openFirewall = true;
     settings = {
       bind_port = ui_port;
+      http.address = "0.0.0.0:${toString ui_port}";
       theme = "dark";
       users = [
         {
@@ -24,24 +25,27 @@ in {
         bootstrap_dns = ["1.1.1.1" "8.8.8.8"];
         upstream_dns = ["1.1.1.1" "8.8.8.8"];
         ratelimit = 100;
-        filters = [
-          {
-            name = "AdGuard DNS filter";
-            url = "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt";
-            enabled = true;
-          }
-          {
-            name = "AdAway Default Blocklist";
-            url = "https://adaway.org/hosts.txt";
-            enabled = true;
-          }
-          {
-            name = "OISD Blocklist Big";
-            url = "https://big.oisd.nl";
-            enabled = true;
-          }
-        ];
       };
+      filters = [
+        {
+          name = "AdGuard DNS filter";
+          url = "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt";
+          enabled = true;
+          id = 1;
+        }
+        {
+          name = "AdAway Default Blocklist";
+          url = "https://adaway.org/hosts.txt";
+          enabled = true;
+          id = 2;
+        }
+        {
+          name = "OISD Blocklist Big";
+          url = "https://big.oisd.nl";
+          enabled = true;
+          id = 3;
+        }
+      ];
     };
   };
 }
