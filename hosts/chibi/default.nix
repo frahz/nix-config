@@ -85,10 +85,8 @@
         };
       };
     };
-    # TODO: fix the default `package` value in the raulyrs repo
     raulyrs = {
       enable = true;
-      package = inputs.raulyrs.packages."x86_64-linux".default;
       environmentFile = config.sops.secrets.raulyrs.path;
     };
   };
