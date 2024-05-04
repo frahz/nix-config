@@ -9,9 +9,8 @@ in {
   services.adguardhome = {
     enable = true;
     openFirewall = true;
+    port = ui_port;
     settings = {
-      bind_port = ui_port;
-      http.address = "0.0.0.0:${toString ui_port}";
       theme = "dark";
       users = [
         {
