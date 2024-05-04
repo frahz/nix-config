@@ -6,13 +6,13 @@
 }:
 pkgs.rustPlatform.buildRustPackage rec {
   pname = "sugoi";
-  version = "0.1.1";
+  version = "0.1.2";
 
   src = fetchFromGitHub {
     owner = "frahz";
     repo = "sugoi";
     rev = "v${version}";
-    hash = "sha256-8MBJ0xNMz6FQhpKbwmJBwiUP8q/aEvtaQ0rW31Hz3+k=";
+    hash = "sha256-l0ozQseH0AIEwRLvCOIusF8ekrIfLTggR4BaoOttR1Q=";
   };
 
   cargoLock = {
