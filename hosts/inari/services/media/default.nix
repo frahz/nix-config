@@ -5,7 +5,7 @@
 }: let
   cfg = config.media;
 in {
-  imports = [./radarr.nix];
+  imports = [./kavita.nix ./radarr.nix];
 
   options.media = with lib; {
     storage = mkOption {
