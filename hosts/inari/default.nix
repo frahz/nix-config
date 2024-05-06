@@ -9,9 +9,6 @@
     ./services
     ../../modules/containers/torrent.nix
     ../../modules/containers/sonarr.nix
-    /*
-    ../../modules/containers/kavita.nix
-    */
     ../../modules/containers/gitea.nix
     ../../modules/containers/jellyseerr.nix
     ../../modules/containers/jellyfin.nix
@@ -102,28 +99,6 @@
         "/mnt/mizu:/data"
       ];
     };
-
-    /*
-    kavita = {
-    */
-    /*
-    volumes = [
-    */
-    /*
-    "/mnt/mizu/containers/kavita/config:/kavita/config"
-    */
-    /*
-    "/mnt/mizu/library/manga:/manga"
-    */
-    /*
-    "/mnt/mizu/library/lightnovels:/lightnovels"
-    */
-    /*
-    ];
-    */
-    /*
-    };
-    */
 
     jellyseerr = {
       volumes = [
