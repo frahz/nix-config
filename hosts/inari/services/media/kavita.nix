@@ -5,7 +5,7 @@ in {
 
   services.kavita = {
     enable = true;
-    dataDir = "${cfg.storage}/containers/kavita/config";
+    dataDir = "${cfg.storage}/containers/kavita";
     tokenKeyFile = config.sops.secrets.kavita.path;
   };
   users.users.kavita.extraGroups = ["media"];
