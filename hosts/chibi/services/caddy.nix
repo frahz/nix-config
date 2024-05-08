@@ -67,67 +67,67 @@ in {
     virtualHosts = {
       "${domain}" = {
         extraConfig = ''
-          reverse_proxy http://${chibi.ip}/${toString chibi.homarr.port}
+          reverse_proxy http://${chibi.ip}:${toString chibi.homarr.port}
         '';
       };
       "${chibi.linkwarden.domain}.${domain}" = {
         extraConfig = ''
-          reverse_proxy http://${chibi.ip}/${toString chibi.linkwarden.port}
+          reverse_proxy http://${chibi.ip}:${toString chibi.linkwarden.port}
         '';
       };
       "${chibi.freshrss.domain}.${domain}" = {
         extraConfig = ''
-          reverse_proxy http://${chibi.ip}/${toString chibi.freshrss.port}
+          reverse_proxy http://${chibi.ip}:${toString chibi.freshrss.port}
         '';
       };
       "${chibi.excalidraw.domain}.${domain}" = {
         extraConfig = ''
-          reverse_proxy http://${chibi.ip}/${toString chibi.excalidraw.port}
+          reverse_proxy http://${chibi.ip}:${toString chibi.excalidraw.port}
         '';
       };
       "${chibi.adguardhome.domain}.${domain}" = {
         extraConfig = ''
-          reverse_proxy http://${chibi.ip}/${toString chibi.adguardhome.port}
+          reverse_proxy http://${chibi.ip}:${toString chibi.adguardhome.port}
         '';
       };
       "${inari.sonarr.domain}.${domain}" = {
         extraConfig = ''
-          reverse_proxy http://${inari.ip}/${toString inari.sonarr.port}
+          reverse_proxy http://${inari.ip}:${toString inari.sonarr.port}
         '';
       };
       "${inari.radarr.domain}.${domain}" = {
         extraConfig = ''
-          reverse_proxy http://${inari.ip}/${toString inari.radarr.port}
+          reverse_proxy http://${inari.ip}:${toString inari.radarr.port}
         '';
       };
       "${inari.jellyfin.domain}.${domain}" = {
         extraConfig = ''
-          reverse_proxy http://${inari.ip}/${toString inari.jellyfin.port}
+          reverse_proxy http://${inari.ip}:${toString inari.jellyfin.port}
         '';
       };
       "${inari.qbitorrent.domain}.${domain}" = {
         extraConfig = ''
-          reverse_proxy http://${inari.ip}/${toString inari.qbitorrent.port}
+          reverse_proxy http://${inari.ip}:${toString inari.qbitorrent.port}
         '';
       };
       "${inari.jellyseerr.domain}.${domain}" = {
         extraConfig = ''
-          reverse_proxy http://${inari.ip}/${toString inari.jellyseerr.port}
+          reverse_proxy http://${inari.ip}:${toString inari.jellyseerr.port}
         '';
       };
       "${inari.kavita.domain}.${domain}" = {
         extraConfig = ''
-          reverse_proxy http://${inari.ip}/${toString inari.kavita.port}
+          reverse_proxy http://${inari.ip}:${toString inari.kavita.port}
         '';
       };
       "${inari.gitea.domain}.${domain}" = {
         extraConfig = ''
-          reverse_proxy http://${inari.ip}/${toString inari.gitea.port}
+          reverse_proxy http://${inari.ip}:${toString inari.gitea.port}
         '';
       };
       "${inari.scrutiny.domain}.${domain}" = {
         extraConfig = ''
-          reverse_proxy http://${inari.ip}/${toString inari.scrutiny.port}
+          reverse_proxy http://${inari.ip}:${toString inari.scrutiny.port}
         '';
       };
     };
