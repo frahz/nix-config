@@ -1,4 +1,8 @@
-{config, ...}: let
+{
+  config,
+  pkgs,
+  ...
+}: let
   domain = "iatze.cc";
 
   chibi = {
@@ -63,10 +67,27 @@
 in {
   services.caddy = {
     enable = false;
+    package = pkgs.caddy-with-porkbun;
 
     virtualHosts = {
+      "*.${domain}" = {
+        extraConfig = ''
+          tls {
+            dns porkbun {
+              api_key {env.PORKBUN_API_KEY}
+              api_secret_key {env.PORKBUN_API_PASSWORD}
+            }
+          }
+        '';
+      };
       "${domain}" = {
         extraConfig = ''
+          tls {
+            dns porkbun {
+              api_key {env.PORKBUN_API_KEY}
+              api_secret_key {env.PORKBUN_API_PASSWORD}
+            }
+          }
           reverse_proxy http://${chibi.ip}:${toString chibi.homarr.port}
         '';
       };
@@ -132,6 +153,10 @@ in {
       };
     };
   };
+
+  sops.secrets.porkbun = {};
+  systemd.services.caddy.serviceConfig.EnvironmentFile = config.sops.secrets.porkbun.path;
+
   networking.firewall = {
     allowedTCPPorts = [80 443];
     allowedUDPPorts = [80 443];
