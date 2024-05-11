@@ -9,7 +9,6 @@
     ./services
     ./hardware-configuration.nix
     ../../modules/containers/homarr.nix
-    ../../modules/containers/nginxproxymanager.nix
     ../../modules/containers/linkwarden.nix
     ../../modules/containers/excalidraw.nix
     ../../modules/containers/freshrss.nix
@@ -98,12 +97,6 @@
         "/mnt/kuki/containers/homarr/configs:/app/data/configs"
         "/mnt/kuki/containers/homarr/icons:/app/public/icons"
         "/mnt/kuki/containers/homarr/data:/data"
-      ];
-    };
-    nginxproxymanager = {
-      volumes = [
-        "/mnt/kuki/containers/nginxproxymanager/data:/data"
-        "/mnt/kuki/containers/nginxproxymanager/letsencrypt:/etc/letsencrypt"
       ];
     };
     linkwarden = {

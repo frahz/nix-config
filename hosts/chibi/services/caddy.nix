@@ -66,28 +66,19 @@
   };
 in {
   services.caddy = {
-    enable = false;
+    enable = true;
+    email = "me@frahz.dev";
     package = pkgs.caddy-with-porkbun;
+    globalConfig = ''
+      acme_dns porkbun {
+        api_key {env.PORKBUN_API_KEY}
+        api_secret_key {env.PORKBUN_API_SECRET_KEY}
+      }
+    '';
 
     virtualHosts = {
-      "*.${domain}" = {
-        extraConfig = ''
-          tls {
-            dns porkbun {
-              api_key {env.PORKBUN_API_KEY}
-              api_secret_key {env.PORKBUN_API_PASSWORD}
-            }
-          }
-        '';
-      };
       "${domain}" = {
         extraConfig = ''
-          tls {
-            dns porkbun {
-              api_key {env.PORKBUN_API_KEY}
-              api_secret_key {env.PORKBUN_API_PASSWORD}
-            }
-          }
           reverse_proxy http://${chibi.ip}:${toString chibi.homarr.port}
         '';
       };
