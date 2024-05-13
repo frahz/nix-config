@@ -17,6 +17,7 @@
       yt-dlp
       unzip
       unrar
+      gh
     ];
     stateVersion = "23.11";
   };
