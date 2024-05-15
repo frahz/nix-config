@@ -3,13 +3,13 @@
   config,
   lib,
   pkgs,
-  overlay-local,
-  system,
   ...
 }: {
   imports = [
     ../users/frahz
+    # TODO: make a default thing for these two
     ../modules/nix.nix
+    ../modules/nh.nix
     ../modules/services
     ../modules/shell
   ];

@@ -1,8 +1,4 @@
-{
-  inputs,
-  system,
-  ...
-}: let
+{inputs, ...}: let
   overlay-local = import ../pkgs;
 in {
   nixpkgs = {
