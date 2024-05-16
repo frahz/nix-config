@@ -69,19 +69,6 @@ in {
         environmentFiles = [cfg.env_file];
         extraOptions = ["--network=gitea"];
       };
-
-      gitea_runner = {
-        autoStart = true;
-        image = "gitea/act_runner:latest";
-        volumes = cfg.runner_volumes;
-        environmentFiles = [cfg.env_file];
-        environment = {
-          CONFIG_FILE = "/config.yaml";
-          GITEA_INSTANCE_URL = "https://git.iatze.cc";
-          GITEA_RUNNER_NAME = "runner_1";
-        };
-        extraOptions = ["--network=gitea"];
-      };
     };
   };
 }

@@ -122,11 +122,6 @@
       pg_volumes = [
         "/mnt/mizu/containers/gitea/postgres:/var/lib/postgresql/data"
       ];
-      runner_volumes = [
-        "/mnt/mizu/containers/gitea_runner/config.yaml:/config.yaml"
-        "/mnt/mizu/containers/gitea_runner/data:/data"
-        "/var/run/docker.sock/:/var/run/docker.sock"
-      ];
       env_file = config.sops.secrets.gitea.path;
     };
   };
