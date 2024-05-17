@@ -112,6 +112,9 @@ nvim_lsp.nil_ls.setup({
     capabilities = capabilities,
     settings = {
         ['nil'] = {
+            formatting = {
+                command = { "alejandra" },
+            },
             nix = {
                 maxMemoryMB = 8196,
                 flake = {
