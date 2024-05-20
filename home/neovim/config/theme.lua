@@ -2,6 +2,7 @@ local catppuccin = require("catppuccin");
 
 catppuccin.setup({
     flavour = "mocha",
+    no_italic = true;
     styles = {
         comments = {},
         conditionals = {},
