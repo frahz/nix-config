@@ -56,7 +56,7 @@
       domain = "radarr";
     };
     sonarr = {
-      port = 8990;
+      port = 8989;
       domain = "sonarr";
     };
     scrutiny = {
