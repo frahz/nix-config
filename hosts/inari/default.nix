@@ -8,7 +8,6 @@
     ./hardware-configuration.nix
     ./services
     ../../modules/containers/torrent.nix
-    # ../../modules/containers/sonarr.nix
     ../../modules/containers/gitea.nix
     ../../modules/containers/jellyseerr.nix
     ../../modules/containers/jellyfin.nix
@@ -92,13 +91,6 @@
       ];
       vpn_info_file = config.sops.secrets.gluetun.path;
     };
-
-    # sonarr = {
-    #   volumes = [
-    #     "/mnt/mizu/containers/sonarr/config:/config"
-    #     "/mnt/mizu:/data"
-    #   ];
-    # };
 
     jellyseerr = {
       volumes = [
