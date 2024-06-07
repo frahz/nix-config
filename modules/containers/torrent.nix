@@ -55,7 +55,7 @@ in {
       environment = {
         TZ = "America/Los_Angeles";
         PUID = "1000";
-        PGID = "1000";
+        PGID = "992"; # media
         WEB_UI_PORT = "8080";
       };
       dependsOn = ["gluetun"];

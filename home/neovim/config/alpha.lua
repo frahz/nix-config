@@ -67,26 +67,26 @@ dashboard.section.buttons.val = {
 }
 dashboard.section.buttons.opts.hl = "String"
 
-local function footer()
-    local plugins = ""
-    if vim.fn.has("linux") == 1 or vim.fn.has("mac") == 1 then
-        local handle = io.popen('fd -d 2 . $HOME/.local/share/nvim/site/pack/packer | grep pack | wc -l | tr -d "\n" ')
-        if handle == nil then
-            return nil
-        end
-        plugins = handle:read("*a")
-        handle:close()
-
-        plugins = plugins:gsub("^%s*(.-)%s*$", "%1")
-    else
-        plugins = "N/A"
-    end
-    local datetime = os.date("%m-%d-%Y  %H:%M:%S")
-    return plugins .. " Plugins  " .. datetime
-end
-
-dashboard.section.footer.val = footer()
-dashboard.section.footer.opts.hl = "Constant"
+-- local function footer()
+--     local plugins = ""
+--     if vim.fn.has("linux") == 1 or vim.fn.has("mac") == 1 then
+--         local handle = io.popen('fd -d 2 . $HOME/.local/share/nvim/site/pack/packer | grep pack | wc -l | tr -d "\n" ')
+--         if handle == nil then
+--             return nil
+--         end
+--         plugins = handle:read("*a")
+--         handle:close()
+--
+--         plugins = plugins:gsub("^%s*(.-)%s*$", "%1")
+--     else
+--         plugins = "N/A"
+--     end
+--     local datetime = os.date("%m-%d-%Y  %H:%M:%S")
+--     return plugins .. " Plugins  " .. datetime
+-- end
+--
+-- dashboard.section.footer.val = footer()
+-- dashboard.section.footer.opts.hl = "Constant"
 
 local head_button_padding = 2
 local height = #dashboard.section.header.val + 2 * #dashboard.section.buttons.val + head_button_padding
