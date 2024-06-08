@@ -1,31 +1,35 @@
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   programs.alacritty = {
     enable = true;
-    settings = {
-      window = {
-        decorations = "none";
-        dynamic_padding = true;
-        padding = {
-          x = 5;
-          y = 5;
+    settings =
+      {
+        window = {
+          decorations = "none";
+          dynamic_padding = true;
+          padding = {
+            x = 5;
+            y = 5;
+          };
+          startup_mode = "Maximized";
         };
-        startup_mode = "Maximized";
-      };
 
-      scrolling.history = 10000;
+        scrolling.history = 10000;
 
-      font = {
-        normal.family = "Iosevka Term NF";
-        bold.family = "Iosevka Term NF";
-        size = 11;
-      };
-
-      imports = [
-        (pkgs.fetchurl {
-          url = "https://raw.githubusercontent.com/catppuccin/alacritty/3c808cbb4f9c87be43ba5241bc57373c793d2f17/catppuccin-mocha.yml";
-          hash = "sha256-28Tvtf8A/rx40J9PKXH6NL3h/OKfn3TQT1K9G8iWCkM=";
+        font = {
+          normal.family = "Iosevka";
+          bold.family = "Iosevka";
+          size = 11;
+        };
+      }
+      // (
+        lib.importTOML (pkgs.fetchurl {
+          url = "https://raw.githubusercontent.com/catppuccin/alacritty/94800165c13998b600a9da9d29c330de9f28618e/catppuccin-mocha.toml";
+          hash = "";
         })
-      ];
-    };
+      );
   };
 }
