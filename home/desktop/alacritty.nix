@@ -20,9 +20,9 @@
         scrolling.history = 10000;
 
         font = {
-          normal.family = "Iosevka Term NF";
-          bold.family = "Iosevka Term NF";
-          size = 11;
+          normal.family = "Iosevka NF";
+          bold.family = "Iosevka NF";
+          size = 12;
         };
       }
       // (
