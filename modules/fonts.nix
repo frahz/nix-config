@@ -4,6 +4,9 @@
     fontDir.enable = true;
     packages = with pkgs; [
       iosevka
+      (nerdfonts.override {
+        fonts = ["IosevkaTerm"];
+      })
       noto-fonts
       noto-fonts-cjk
       twitter-color-emoji
