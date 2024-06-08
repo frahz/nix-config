@@ -1,5 +1,5 @@
 _: {
-  imports = [./config/binds.nix];
+  imports = [./config/binds.nix ./config/general.nix];
 
   wayland.windowManager.hyprland = {
     enable = true;
