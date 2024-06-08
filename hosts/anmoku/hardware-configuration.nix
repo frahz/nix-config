@@ -1,4 +1,5 @@
 {
+  config,
   lib,
   host,
   ...
@@ -7,20 +8,22 @@
 
   boot = {
     initrd = {
-      availableKernelModules = ["sd_mod" "sr_mod"];
+      availableKernelModules = ["nvme" "xhci_pci" "thunderbolt" "usbhid" "usb_storage" "sd_mod"];
       kernelModules = [];
     };
-    kernelModules = [];
+    kernelModules = ["kvm-amd"];
     extraModulePackages = [];
   };
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/ecc544f6-77d8-4bc8-9a2b-4275a48847e2";
-    fsType = "ext4";
+    device = "/dev/disk/by-label/main";
+    fsType = "btrfs";
+    options = ["subvol=@"];
   };
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/F33A-98F9";
+    device = "/dev/disk/by-label/BOOT";
     fsType = "vfat";
+    options = ["fmask=0022" "dmask=0022"];
   };
 
   swapDevices = [];
@@ -29,7 +32,9 @@
     useDHCP = lib.mkDefault true;
     inherit hostName;
   };
+  # networking.interfaces.enp2s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlp3s0.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  virtualisation.hypervGuest.enable = true;
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
