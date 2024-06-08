@@ -37,10 +37,10 @@
       alsa.support32Bit = true;
       pulse.enable = true;
     };
-    security = {
-      rtkit.enable = true;
-      polkit.enable = true;
-    };
+  };
+  security = {
+    rtkit.enable = true;
+    polkit.enable = true;
   };
 
   hardware.pulseaudio.enable = false;
