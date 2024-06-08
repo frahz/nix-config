@@ -26,16 +26,24 @@
 
   programs.hyprland = {
     enable = true;
-    #  finalPackage = inputs.hyprland.packages.${pkgs.system}.default;
-    portalPackage = inputs.xdg-portal-hyprland.packages.${pkgs.system}.default;
+    # finalPackage = inputs.hyprland.packages.${pkgs.system}.default;
+    # portalPackage = inputs.xdg-portal-hyprland.packages.${pkgs.system}.default;
   };
 
   services = {
+    flatpak.enable = true;
     pipewire = {
       enable = true;
       alsa.enable = true;
       alsa.support32Bit = true;
       pulse.enable = true;
+    };
+    xserver = {
+      enable = true;
+      xkb = {
+        layout = "us";
+        variant = "";
+      };
     };
   };
   security = {
@@ -43,7 +51,14 @@
     polkit.enable = true;
   };
 
-  hardware.pulseaudio.enable = false;
+  hardware = {
+    pulseaudio.enable = false;
+    opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+    };
+  };
 
   networking.networkmanager.enable = true;
 }
