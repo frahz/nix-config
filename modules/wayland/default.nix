@@ -32,7 +32,7 @@
     enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-gtk
-      inputs.xdg-portal-hyprland.packages.${pkgs.system}.default
+      # inputs.xdg-portal-hyprland.packages.${pkgs.system}.default
     ];
     config.common.default = "*";
   };
