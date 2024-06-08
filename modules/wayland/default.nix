@@ -13,15 +13,15 @@
       slurp
       satty
       wl-clipboard
-      wlr-randr
+      # wlr-randr
     ];
     sessionVariables = {
       XDG_SESSION_TYPE = "wayland";
       QT_QPA_PLATFORM = "wayland";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
       MOZ_ENABLE_WAYLAND = "1";
-      WLR_BACKEND = "vulkan";
-      WLR_RENDERER = "vulkan";
+      # WLR_BACKEND = "vulkan";
+      # WLR_RENDERER = "vulkan";
       NIXOS_OZONE_WL = "1";
       EDITOR = "nvim";
       TERMINAL = "alacritty";
