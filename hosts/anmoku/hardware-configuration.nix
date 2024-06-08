@@ -4,11 +4,12 @@
   host,
   ...
 }: {
-  imports = [];
+  imports = [
+  ];
 
   boot = {
     initrd = {
-      availableKernelModules = ["nvme" "xhci_pci" "thunderbolt" "usbhid" "usb_storage" "sd_mod"];
+      availableKernelModules = ["nvme" "xhci_pci" "ahci" "thunderbolt" "usbhid" "usb_storage" "sd_mod"];
       kernelModules = [];
     };
     kernelModules = ["kvm-amd"];
