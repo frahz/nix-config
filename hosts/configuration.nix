@@ -52,5 +52,7 @@
   networking.networkmanager.enable = true;
   */
 
+  hardware.enableRedistributableFirmware = lib.mkDefault true;
+
   system.stateVersion = "23.11";
 }
