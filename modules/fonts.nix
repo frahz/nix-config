@@ -5,7 +5,7 @@
     packages = with pkgs; [
       iosevka
       (nerdfonts.override {
-        fonts = ["IosevkaTerm"];
+        fonts = ["Iosevka"];
       })
       noto-fonts
       noto-fonts-cjk
@@ -16,14 +16,10 @@
       enable = true;
       allowBitmaps = true;
       defaultFonts = {
-        monospace = ["Iosevka Term NF" "Twitter Color Emoji"];
+        monospace = ["Iosevka NF" "Twitter Color Emoji"];
         serif = ["Noto Serif" "Twitter Color Emoji"];
         sansSerif = ["Noto Sans" "Twitter Color Emoji"];
         emoji = ["Twitter Color Emoji"];
-      };
-      hinting = {
-        enable = true;
-        style = "slight";
       };
     };
   };
