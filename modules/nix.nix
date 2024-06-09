@@ -4,6 +4,10 @@ in {
   nixpkgs = {
     overlays = [
       overlay-local
+      inputs.hypridle.overlays.default
+      inputs.hyprlock.overlays.default
+      inputs.hyprpaper.overlays.default
+      inputs.hyprpicker.overlays.default
       inputs.raulyrs.overlays.default
     ];
     config = {

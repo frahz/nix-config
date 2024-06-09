@@ -15,6 +15,10 @@
     home.inputs.nixpkgs.follows = "nixpkgs";
 
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    hypridle.url = "github:hyprwm/hypridle";
+    hyprlock.url = "github:hyprwm/hyprlock";
+    hyprpicker.url = "github:hyprwm/hyprpicker";
+    hyprpaper.url = "github:hyprwm/hyprpaper";
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
 
     nil.url = "github:oxalica/nil";
