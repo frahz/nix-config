@@ -4,6 +4,10 @@ _: {
       monitor = [
         "HDMI-A-1,2560x1440@143.91, 0x0, auto"
       ];
+      exec-once = [
+        "waybar &"
+        "hyprpaper"
+      ];
       env = [
         "XCURSOR_SIZE,24"
         "HYPRCURSOR_SIZE,24"
@@ -20,7 +24,6 @@ _: {
         gaps_in = 5;
         gaps_out = 10;
         border_size = 0;
-        # "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
         "col.active_border" = "rgba(88888888)";
         "col.inactive_border" = "rgba(00000088)";
         layout = "dwindle";

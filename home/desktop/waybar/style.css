@@ -1,0 +1,85 @@
+* {
+    border: none;
+    border-radius: 0px;
+    min-height: 0px;
+    font-family: Iosevka NF;
+    font-weight: normal;
+    opacity: 0.98;
+}
+
+window#waybar {
+    background: transparent;
+}
+
+#workspaces {
+    font-size: 15px;
+    background: black;
+    border-radius: 5px;
+    padding: 2px 6px;
+    margin: 10px 10px 0px;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
+    border: 1px solid #9399b2;
+}
+
+#workspaces button {
+    border-radius: 0px;
+    color: white;
+}
+
+#workspaces button.persistent {
+    color: white;
+}
+
+#workspaces button.empty {
+    color: grey;
+}
+
+#workspaces button.active {
+    color: red;
+}
+
+#workspaces button:hover {
+    background-color: transparent;
+    color: blue;
+}
+
+
+#tray {
+    background: black;
+    border-radius: 5px;
+    padding: 2px 6px;
+    margin: 10px 10px 0px;
+    font-weight: bold;
+    box-shadow: 0px 0px 3px rgba(0,0,0,1);
+    border: 1px solid #9399b2;
+}
+
+#clock {
+    font-size: 15px;
+    color: #cdd6f4;
+    background: black;
+    border-radius: 5px;
+    padding: 2px 6px;
+    margin: 10px 10px 0px;
+    font-weight: bold;
+    box-shadow: 0px 0px 3px rgba(0,0,0,1);
+    border: 1px solid #9399b2;
+}
+
+#pulseaudio,
+#network {
+    font-size: 15px;
+    color: #cdd6f4;
+    margin: 0;
+    padding: 0 10px;
+}
+
+#group-applets {
+  background: black;
+  border-radius: 5px;
+  padding: 2px 6px;
+  margin: 10px 10px 0px;
+  box-shadow: 0px 0px 3px rgba(0,0,0,1);
+  border: 1px solid #9399b2;
+}
+

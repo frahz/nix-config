@@ -7,7 +7,10 @@ _: {
       "$mainMod, V, togglefloating,"
       "$mainMod, F, fullscreen,"
       # add one for rofi, like alt+space
+      "Alt, Space, exec, killall rofi || rofi -show drun"
+      "$mainMod, B, exec, pkill waybar || waybar &"
       "$mainMod, E, exec, $fileManager"
+      "$mainMod, M, exit,"
       "$mainMod, P, pseudo," # dwindle
       "$mainMod, J, togglesplit," # dwindle
 
