@@ -1,15 +1,22 @@
-{pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: {
   fonts = {
     enableDefaultPackages = false;
     fontDir.enable = true;
     packages = with pkgs; [
       iosevka
+      (pkgs.iosevka-bin.override {variant = "Slab";})
       (nerdfonts.override {
         fonts = ["Iosevka"];
       })
       noto-fonts
       noto-fonts-cjk
       twitter-color-emoji
+
+      inputs.apple-fonts.packages.${pkgs.system}.ny
     ];
 
     fontconfig = {

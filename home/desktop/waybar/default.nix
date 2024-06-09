@@ -40,7 +40,7 @@
             sort-by-number = true;
           };
           persistent-workspaces = {
-            "*" = 10;
+            "*" = 5;
           };
         };
 

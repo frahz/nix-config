@@ -21,6 +21,10 @@
     hyprpaper.url = "github:hyprwm/hyprpaper";
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
 
+    # Do not follow nixpkgs as it takes forever to build each time
+    # Does not matter anyway, it's just fonts
+    apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
+
     nil.url = "github:oxalica/nil";
 
     sops-nix.url = "github:Mic92/sops-nix";

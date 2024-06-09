@@ -26,7 +26,6 @@
 
   programs.hyprland = {
     enable = true;
-    # finalPackage = inputs.hyprland.packages.${pkgs.system}.default;
     portalPackage = inputs.xdg-portal-hyprland.packages.${pkgs.system}.default;
   };
 
@@ -49,6 +48,7 @@
   security = {
     rtkit.enable = true;
     polkit.enable = true;
+    pam.services.hyprlock = {};
   };
 
   hardware = {
