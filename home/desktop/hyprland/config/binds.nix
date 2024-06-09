@@ -1,4 +1,8 @@
-_: {
+{
+  lib,
+  config,
+  ...
+}: {
   wayland.windowManager.hyprland.settings = {
     "$mainMod" = "SUPER";
     bind = [
@@ -9,6 +13,7 @@ _: {
       # add one for rofi, like alt+space
       "Alt, Space, exec, killall rofi || rofi -show drun"
       "$mainMod, B, exec, pkill waybar || waybar &"
+      "$mainMod, L, exec, ${lib.getExe config.programs.hyprlock.package}"
       "$mainMod, E, exec, $fileManager"
       "$mainMod, M, exit,"
       "$mainMod, P, pseudo," # dwindle

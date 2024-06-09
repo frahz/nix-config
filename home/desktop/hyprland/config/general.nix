@@ -5,8 +5,9 @@ _: {
         "HDMI-A-1,2560x1440@143.91, 0x0, auto"
       ];
       exec-once = [
-        "waybar &"
+        "hyprlock"
         "hyprpaper"
+        "waybar &"
       ];
       env = [
         "XCURSOR_SIZE,24"
