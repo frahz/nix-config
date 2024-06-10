@@ -7,8 +7,9 @@
     ./programs
     ./utils
     ./hyprland
-    ./hyprland/services/hyprpaper.nix
     ./hyprland/programs/hyprlock.nix
+    ./hyprland/services/hyprpaper.nix
+    ./hyprland/services/hypridle.nix
   ];
 
   home.packages = with pkgs; [

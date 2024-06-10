@@ -6,7 +6,6 @@ _: {
       ];
       exec-once = [
         "hyprlock"
-        "hyprpaper"
         "waybar &"
       ];
       env = [
