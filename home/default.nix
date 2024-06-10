@@ -1,9 +1,6 @@
 {pkgs, ...}: {
   imports = [
     ./terminal
-    ./neovim
-    ./git
-    ./zsh
   ];
 
   programs.home-manager.enable = true;

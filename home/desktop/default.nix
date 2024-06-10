@@ -4,13 +4,11 @@
   ...
 }: {
   imports = [
-    ./alacritty.nix
-    ./firefox.nix
+    ./programs
+    ./utils
     ./hyprland
-    ./rofi
-    ./waybar
-    ./services/hyprpaper.nix
-    ./hyprlock.nix
+    ./hyprland/services/hyprpaper.nix
+    ./hyprland/programs/hyprlock.nix
   ];
 
   home.packages = with pkgs; [
