@@ -14,6 +14,7 @@
 
   home.packages = with pkgs; [
     anki-bin
+    dconf
     gimp
     ffmpeg
     hyprpicker

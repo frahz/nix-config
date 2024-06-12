@@ -24,6 +24,10 @@
     kernelPackages = pkgs.linuxPackages_latest;
   };
 
+  environment.systemPackages = with pkgs; [
+    libnotify
+  ];
+
   programs.hyprland = {
     enable = true;
     portalPackage = inputs.xdg-portal-hyprland.packages.${pkgs.system}.default;
