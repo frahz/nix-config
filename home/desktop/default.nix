@@ -15,6 +15,7 @@
   home.packages = with pkgs; [
     anki-bin
     dconf
+    libsForQt5.dolphin
     gimp
     ffmpeg
     hyprpicker

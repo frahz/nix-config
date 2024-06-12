@@ -41,6 +41,8 @@
     };
   };
 
+  catppuccin.flavor = "mocha";
+
   services.openssh = {
     enable = true;
     settings = {

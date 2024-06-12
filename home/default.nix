@@ -5,6 +5,11 @@
 
   programs.home-manager.enable = true;
 
+  catppuccin = {
+    accent = "pink";
+    flavor = "mocha";
+  };
+
   home = {
     username = "frahz";
     homeDirectory = "/home/frahz";

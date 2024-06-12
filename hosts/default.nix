@@ -4,14 +4,18 @@
   system,
   ...
 }: let
-  sops-module = inputs.sops-nix.nixosModules.default;
-  hm-module = inputs.home.nixosModules.home-manager;
+  catppuccin-hm = inputs.catppuccin.homeManagerModules.catppuccin;
   hyprlandModule = inputs.hyprland.homeManagerModules.default;
+
+  hm-module = inputs.home.nixosModules.home-manager;
+  catppuccin-module = inputs.catppuccin.nixosModules.catppuccin;
+  sops-module = inputs.sops-nix.nixosModules.default;
   raulyrs-module = inputs.raulyrs.nixosModules.default;
 
   defaultModules = [
-    sops-module
+    catppuccin-module
     hm-module
+    sops-module
   ];
 in {
   chibi = lib.nixosSystem {
@@ -32,7 +36,7 @@ in {
             useGlobalPkgs = true;
             extraSpecialArgs = {inherit inputs;};
             users.frahz = {
-              imports = [../home];
+              imports = [../home catppuccin-hm];
             };
           };
         }
@@ -57,7 +61,7 @@ in {
             useGlobalPkgs = true;
             extraSpecialArgs = {inherit inputs;};
             users.frahz = {
-              imports = [../home];
+              imports = [../home catppuccin-hm];
             };
           };
         }
@@ -85,6 +89,7 @@ in {
               imports = [
                 ../home
                 ../home/desktop
+                catppuccin-hm
                 hyprlandModule
               ];
             };
