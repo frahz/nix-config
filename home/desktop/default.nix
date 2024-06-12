@@ -15,7 +15,7 @@
   home.packages = with pkgs; [
     anki-bin
     dconf
-    libsForQt5.dolphin
+    xfce.thunar # file manager for now
     gimp
     ffmpeg
     hyprpicker
@@ -27,5 +27,11 @@
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Classic";
     size = 18;
+  };
+
+  xdg = {
+    enable = true;
+    mime.enable = true;
+    mimeApps.enable = true;
   };
 }
