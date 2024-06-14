@@ -70,6 +70,7 @@ _: {
       };
       misc = {
         disable_hyprland_logo = true;
+        focus_on_activate = true;
       };
     };
   };

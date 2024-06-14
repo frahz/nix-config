@@ -5,7 +5,7 @@ _: {
     ./gtk.nix
     ./imv.nix
     ./mpv.nix
-    ./qt.nix
+    # ./qt.nix
     ./zathura.nix
   ];
 }

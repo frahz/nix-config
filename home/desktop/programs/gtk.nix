@@ -7,10 +7,6 @@
       tweaks = ["rimless"];
       icon.enable = true;
     };
-    font = {
-      name = "Roboto 12";
-      package = pkgs.roboto;
-    };
 
     gtk4.extraConfig = {
       gtk-xft-antialias = 1;

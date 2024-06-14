@@ -10,4 +10,8 @@
       modernx
     ];
   };
+  xdg.mimeApps.defaultApplications = {
+    "audio/*" = ["mpv.desktop"];
+    "video/*" = ["mpv.dekstop"];
+  };
 }
