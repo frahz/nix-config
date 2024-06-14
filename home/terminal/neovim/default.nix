@@ -181,7 +181,7 @@
       inputs.nil.packages.x86_64-linux.default
       nodePackages.bash-language-server
       nodePackages.typescript-language-server
-      nodePackages.pyright
+      pyright
       rust-analyzer
       lua-language-server
     ];
