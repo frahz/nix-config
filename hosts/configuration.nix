@@ -23,6 +23,7 @@
       ripgrep
       binutils
       coreutils
+      killall
       docker
       fd
       git
