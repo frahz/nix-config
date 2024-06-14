@@ -43,6 +43,10 @@
 
   catppuccin.flavor = "mocha";
 
+  console = {
+    catppuccin.enable = true;
+  };
+
   services.openssh = {
     enable = true;
     settings = {

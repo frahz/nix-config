@@ -1,3 +1,8 @@
+@define-color black     #1B1D1D;
+@define-color brblack   #47423E;
+@define-color brgreen   #B1B946;
+@define-color white     #E0CDA5;
+
 * {
     border: none;
     border-radius: 0px;
@@ -18,29 +23,34 @@ window#waybar {
     padding: 2px 6px;
     margin: 10px 10px 0px;
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
-    border: 1px solid #9399b2;
+    border: 1px solid @black;
 }
 
 #workspaces button {
     border-radius: 0px;
-    color: white;
+    color: @white;
 }
 
 #workspaces button.persistent {
-    color: white;
+    color: @white;
 }
 
 #workspaces button.empty {
-    color: grey;
+    color: @brblack;
 }
 
 #workspaces button.active {
-    color: red;
+    color: @brgreen;
+    text-shadow:
+        0.25px 0.25px 0 @brgreen,
+        -0.25px 0.25px 0 @brgreen,
+        -0.25px -0.25px 0 @brgreen,
+        0.25px -0.25px 0 @brgreen;
 }
 
 #workspaces button:hover {
     background-color: transparent;
-    color: blue;
+    color: @brgreen;
 }
 
 
@@ -51,25 +61,25 @@ window#waybar {
     margin: 10px 10px 0px;
     font-weight: bold;
     box-shadow: 0px 0px 3px rgba(0,0,0,1);
-    border: 1px solid #9399b2;
+    border: 1px solid @black;
 }
 
 #clock {
     font-size: 15px;
-    color: #cdd6f4;
+    color: @white;
     background: black;
     border-radius: 5px;
     padding: 2px 6px;
     margin: 10px 10px 0px;
     font-weight: bold;
     box-shadow: 0px 0px 3px rgba(0,0,0,1);
-    border: 1px solid #9399b2;
+    border: 1px solid @black;
 }
 
 #pulseaudio,
 #network {
     font-size: 15px;
-    color: #cdd6f4;
+    color: @white;
     margin: 0;
     padding: 0 10px;
 }
@@ -80,6 +90,6 @@ window#waybar {
   padding: 2px 6px;
   margin: 10px 10px 0px;
   box-shadow: 0px 0px 3px rgba(0,0,0,1);
-  border: 1px solid #9399b2;
+  border: 1px solid @black;
 }
 
