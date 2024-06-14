@@ -12,16 +12,13 @@
       # wlr-randr
     ];
     sessionVariables = {
-      # __GL_GSYNC_ALLOWED = "0";
-      # __GL_VRR_ALLOWED = "0";
-      # WLR_DRM_NO_ATOMIC = "1";
       XDG_SESSION_TYPE = "wayland";
       QT_QPA_PLATFORM = "wayland";
+      QT_QPA_PLATFORMTHEME = "qt5ct";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+      QT_AUTO_SCREEN_SCALE_FACTOR = "1";
       GDK_BACKEND = "wayland";
       MOZ_ENABLE_WAYLAND = "1";
-      # WLR_BACKEND = "vulkan";
-      # WLR_RENDERER = "vulkan";
       NIXOS_OZONE_WL = "1";
       EDITOR = "nvim";
       TERMINAL = "alacritty";

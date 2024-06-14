@@ -48,6 +48,10 @@
         variant = "";
       };
     };
+
+    gvfs.enable = true;
+    tumbler.enable = true;
+    udisks2.enable = true;
   };
   security = {
     rtkit.enable = true;
