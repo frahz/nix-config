@@ -5,7 +5,7 @@
 }: let
   cfg = config.media;
 in {
-  imports = [./kavita.nix ./radarr.nix ./sonarr.nix];
+  imports = [./jellyfin.nix ./kavita.nix ./radarr.nix ./sonarr.nix];
 
   options.media = with lib; {
     storage = mkOption {

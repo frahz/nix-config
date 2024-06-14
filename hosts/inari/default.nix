@@ -9,8 +9,6 @@
     ./services
     ../../modules/containers/torrent.nix
     ../../modules/containers/gitea.nix
-    ../../modules/containers/jellyseerr.nix
-    ../../modules/containers/jellyfin.nix
   ];
 
   boot = {
@@ -90,20 +88,6 @@
         "/mnt/mizu/containers/gluetun/servers.json:/gluetun/servers.json"
       ];
       vpn_info_file = config.sops.secrets.gluetun.path;
-    };
-
-    jellyseerr = {
-      volumes = [
-        "/mnt/mizu/containers/jellyseer/config:/app/config"
-      ];
-    };
-
-    jellyfin = {
-      volumes = [
-        "/mnt/mizu/containers/jellyfin/config:/config"
-        "/mnt/mizu/containers/jellyfin/cache:/cache"
-        "/mnt/mizu/media:/media"
-      ];
     };
 
     gitea = {
