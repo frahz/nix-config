@@ -18,6 +18,7 @@
     xfce.thunar # file manager for now
     gimp
     ffmpeg
+    jellyfin-media-player
     pavucontrol
     hyprpicker
     miru
