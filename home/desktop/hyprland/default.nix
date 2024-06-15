@@ -10,7 +10,7 @@
       grim -g "$(slurp)" - | wl-copy
     '')
     (pkgs.writeShellScriptBin "screenshot-edit" ''
-      grim -g "$(slurp)" - | satty -f - --output-filename ~/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png --early-exit --copy-command 'wl-copy'
+      grim -g "$(slurp)" - | satty -f - --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png --early-exit --copy-command 'wl-copy'
     '')
   ];
 
