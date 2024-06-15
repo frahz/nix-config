@@ -20,6 +20,8 @@
       "$mainMod Shift, W, exec, firefox --private-window"
 
       "$mainMod, E, exec, thunar"
+      "$mainMod Shift, C, exec, pkill hyprpicker || hyprpicker --autocopy --no-fancy --format=hex"
+
       "$mainMod, M, exit,"
       "$mainMod, P, pseudo," # dwindle
       "$mainMod, J, togglesplit," # dwindle
