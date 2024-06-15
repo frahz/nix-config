@@ -49,7 +49,7 @@
           spacing = 8;
         };
 
-        pulseaudio = {
+        wireplumber = {
           format = "{icon}";
           format-muted = "󰖁 ";
           format-icons = {
@@ -70,7 +70,7 @@
         "group/group-applets" = {
           orientation = "inherit";
           modules = [
-            "pulseaudio"
+            "wireplumber"
             "network"
           ];
         };

@@ -76,7 +76,7 @@ window#waybar {
   border: 1px solid @black;
 }
 
-#pulseaudio,
+#wireplumber,
 #network {
   font-size: 15px;
   color: @white;
