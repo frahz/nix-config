@@ -10,10 +10,15 @@
       "$mainMod, Q, killactive,"
       "$mainMod, V, togglefloating,"
       "$mainMod, F, fullscreen,"
-      # add one for rofi, like alt+space
+
       "Alt, Space, exec, killall rofi || rofi -show drun"
       "$mainMod, B, exec, killall .waybar-wrapped && waybar &"
       "$mainMod, L, exec, ${lib.getExe config.programs.hyprlock.package}"
+
+      # browser
+      "$mainMod,       W, exec, firefox"
+      "$mainMod Shift, W, exec, firefox --private-window"
+
       "$mainMod, E, exec, thunar"
       "$mainMod, M, exit,"
       "$mainMod, P, pseudo," # dwindle
