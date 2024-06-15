@@ -52,6 +52,11 @@
     gvfs.enable = true;
     tumbler.enable = true;
     udisks2.enable = true;
+
+    mullvad-vpn = {
+      enable = true;
+      package = pkgs.mullvad-vpn;
+    };
   };
   security = {
     rtkit.enable = true;
@@ -69,4 +74,6 @@
   };
 
   networking.networkmanager.enable = true;
+  # Mullvad enable support: https://discourse.nixos.org/t/connected-to-mullvadvpn-but-no-internet-connection/35803/10?u=lion
+  networking.resolvconf.enable = false;
 }
