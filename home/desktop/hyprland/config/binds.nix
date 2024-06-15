@@ -10,6 +10,9 @@
       "$mainMod, Q, killactive,"
       "$mainMod, V, togglefloating,"
       "$mainMod, F, fullscreen,"
+      "$mainMod, M, exit,"
+      "$mainMod, P, pseudo," # dwindle
+      "$mainMod, J, togglesplit," # dwindle
 
       "Alt, Space, exec, killall rofi || rofi -show drun"
       "$mainMod, B, exec, killall .waybar-wrapped && waybar &"
@@ -22,9 +25,9 @@
       "$mainMod, E, exec, thunar"
       "$mainMod Shift, C, exec, pkill hyprpicker || hyprpicker --autocopy --no-fancy --format=hex"
 
-      "$mainMod, M, exit,"
-      "$mainMod, P, pseudo," # dwindle
-      "$mainMod, J, togglesplit," # dwindle
+      # screenshot utilities
+      "$mainMod      , S, exec, screenshot"
+      "$mainMod Shift, S, exec, screenshot-edit"
 
       # Good ol Alt+Tab
       "Alt,       Tab, cyclenext"
