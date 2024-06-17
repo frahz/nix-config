@@ -31,7 +31,6 @@
 
           fail_text = "$FAIL <b>($ATTEMPTS)</b>";
           placeholder_text = "Password...";
-          font_family = "Iosevka Slab";
           swap_font_color = false;
           fade_on_empty = false;
           dots_spacing = 0.2;
@@ -61,7 +60,6 @@
           color = "rgb(ebdbb2)";
           font_family = "New York";
           font_size = 120;
-          font_weight = "bold";
           position = "0, -100";
           valign = "top";
           halign = "center";

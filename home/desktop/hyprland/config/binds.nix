@@ -17,6 +17,7 @@
       "Alt, Space, exec, killall rofi || rofi -show drun"
       "$mainMod, B, exec, killall .waybar-wrapped && waybar &"
       "$mainMod, L, exec, ${lib.getExe config.programs.hyprlock.package}"
+      "$mainMod, Escape, exec, powermenu"
 
       # browser
       "$mainMod,       W, exec, firefox"
