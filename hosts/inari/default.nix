@@ -33,16 +33,20 @@
     };
   };
 
+  nixpkgs.config.packageOverrides = pkgs: {
+    intel-vaapi-driver = pkgs.intel-vaapi-driver.override {enableHybridCodec = true;};
+  };
   hardware = {
     opengl = {
       # Hardware Accelerated Video
       enable = true;
       extraPackages = with pkgs; [
         intel-media-driver
-        vaapiIntel
+        intel-vaapi-driver # previously vaapiIntel
         vaapiVdpau
         libvdpau-va-gl
         intel-compute-runtime # OpenCL filter support (hardware tonemapping and subtitle burn-in)
+        vpl-gpu-rt
       ];
     };
   };
