@@ -6,6 +6,7 @@ _: {
     ./imv.nix
     ./mpv.nix
     # ./qt.nix
+    ./spicetify.nix
     ./zathura.nix
   ];
 }

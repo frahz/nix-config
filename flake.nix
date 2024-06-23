@@ -27,6 +27,9 @@
     # Does not matter anyway, it's just fonts
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
 
+    spicetify-nix.url = "github:the-argus/spicetify-nix";
+    spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
+
     nil.url = "github:oxalica/nil";
 
     sops-nix.url = "github:Mic92/sops-nix";
