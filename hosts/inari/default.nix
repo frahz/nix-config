@@ -37,7 +37,7 @@
     intel-vaapi-driver = pkgs.intel-vaapi-driver.override {enableHybridCodec = true;};
   };
   hardware = {
-    opengl = {
+    graphics = {
       # Hardware Accelerated Video
       enable = true;
       extraPackages = with pkgs; [
