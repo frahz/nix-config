@@ -8,5 +8,6 @@
     ./direnv.nix
     ./fzf.nix
     ./tmux.nix
+    ./ssh.nix
   ];
 }

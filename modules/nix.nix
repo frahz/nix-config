@@ -20,6 +20,7 @@ in {
     experimental-features = ["nix-command" "flakes"];
     builders-use-substitutes = true;
     keep-outputs = true;
+    allowed-users = ["@wheel"];
     trusted-users = ["root" "@wheel"];
     substituters = [
       "https://frahz-pkgs.cachix.org"
