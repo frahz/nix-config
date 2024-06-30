@@ -16,9 +16,11 @@ in {
   };
 
   nix.settings = {
+    warn-dirty = false;
     auto-optimise-store = true;
     experimental-features = ["nix-command" "flakes"];
     builders-use-substitutes = true;
+    keep-derivations = true;
     keep-outputs = true;
     allowed-users = ["@wheel"];
     trusted-users = ["root" "@wheel"];
