@@ -1,6 +1,11 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
   programs.waybar = {
     enable = true;
+    package = inputs.waybar.packages.${pkgs.system}.waybar;
     settings = {
       mainBar = {
         position = "top";

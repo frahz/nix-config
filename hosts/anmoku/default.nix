@@ -30,7 +30,6 @@
 
   programs.hyprland = {
     enable = true;
-    portalPackage = inputs.xdg-portal-hyprland.packages.${pkgs.system}.default;
   };
 
   services = {

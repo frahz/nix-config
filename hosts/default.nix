@@ -5,7 +5,6 @@
   ...
 }: let
   catppuccin-hm = inputs.catppuccin.homeManagerModules.catppuccin;
-  hyprlandModule = inputs.hyprland.homeManagerModules.default;
 
   hm-module = inputs.home.nixosModules.home-manager;
   catppuccin-module = inputs.catppuccin.nixosModules.catppuccin;
@@ -90,7 +89,6 @@ in {
                 ../home
                 ../home/desktop
                 catppuccin-hm
-                hyprlandModule
               ];
             };
           };

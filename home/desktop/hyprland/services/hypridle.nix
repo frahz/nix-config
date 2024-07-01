@@ -19,8 +19,8 @@
         }
         {
           timeout = 600;
-          on-timeout = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
-          on-resume = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+          on-timeout = "hyprctl dispatch dpms off";
+          on-resume = "hyprctl dispatch dpms on";
         }
         {
           timeout = 1800;

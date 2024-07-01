@@ -1,5 +1,14 @@
-{pkgs, ...}: {
-  imports = [./config/binds.nix ./config/general.nix ./config/rules.nix];
+{
+  pkgs,
+  inputs,
+  ...
+}: {
+  imports = [
+    inputs.hyprland.homeManagerModules.default
+    ./config/binds.nix
+    ./config/general.nix
+    ./config/rules.nix
+  ];
 
   home.packages = with pkgs; [
     grim

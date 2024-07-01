@@ -1,13 +1,6 @@
 {
   description = "le nix config";
 
-  # nixConfig = {
-  #   extra-trusted-substituters = ["https://frahz-pkgs.cachix.org"];
-  #   extra-trusted-public-keys = [
-  #     "frahz-pkgs.cachix.org-1:76ecCnIcJvDeJzHqFyAI6ElUndNZK0RXAO3HQrmV468="
-  #   ];
-  # };
-
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
@@ -19,9 +12,14 @@
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     hypridle.url = "github:hyprwm/hypridle";
     hyprlock.url = "github:hyprwm/hyprlock";
-    hyprpicker.url = "github:hyprwm/hyprpicker";
     hyprpaper.url = "github:hyprwm/hyprpaper";
-    xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
+    hyprpicker.url = "github:hyprwm/hyprpicker";
+
+    # For now, until that hyprland recompilation thing is fixed
+    waybar = {
+      url = "github:Alexays/Waybar";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     # Do not follow nixpkgs as it takes forever to build each time
     # Does not matter anyway, it's just fonts
