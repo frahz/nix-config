@@ -47,6 +47,9 @@ nvim_lsp.rust_analyzer.setup({
                     enable = true,
                 },
             },
+            files = {
+                excludeDirs = { ".direnv" },
+            },
             procMacro = {
                 enable = true
             },
