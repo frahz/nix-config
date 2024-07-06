@@ -14,16 +14,16 @@
       };
       listener = [
         {
-          timeout = 400;
+          timeout = 1400;
           on-timeout = "${lib.getExe config.programs.hyprlock.package}";
         }
         {
-          timeout = 600;
+          timeout = 1600;
           on-timeout = "hyprctl dispatch dpms off";
           on-resume = "hyprctl dispatch dpms on";
         }
         {
-          timeout = 1800;
+          timeout = 2800;
           on-timeout = "${pkgs.systemd}/bin/systemctl suspend";
         }
       ];
