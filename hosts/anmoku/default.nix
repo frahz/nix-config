@@ -32,6 +32,10 @@
     enable = true;
   };
 
+  programs.adb = {
+    enable = true;
+  };
+
   services = {
     flatpak.enable = true;
     pipewire = {
@@ -56,6 +60,9 @@
       enable = true;
       package = pkgs.mullvad-vpn;
     };
+    udev.extraRules = ''
+      SUBSYSTEM=="usb", ATTRS{idVendor}=="2fc6", MODE="0666"
+    '';
   };
   security = {
     rtkit.enable = true;

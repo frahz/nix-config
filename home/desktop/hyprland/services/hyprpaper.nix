@@ -9,9 +9,10 @@
       preload = [
         "~/Pictures/wl.jpg"
         "~/Pictures/wl2.png"
+        "~/Pictures/GP2qRG5bAAAuXOa.jpg"
       ];
       wallpaper = [
-        "HDMI-A-1,~/Pictures/wl2.png"
+        "HDMI-A-1,~/Pictures/GP2qRG5bAAAuXOa.jpg"
       ];
     };
   };
