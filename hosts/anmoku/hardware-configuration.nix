@@ -10,9 +10,10 @@
   boot = {
     initrd = {
       availableKernelModules = ["nvme" "xhci_pci" "ahci" "thunderbolt" "usbhid" "usb_storage" "sd_mod"];
-      kernelModules = [];
+      # enable amdgpu kernel module
+      kernelModules = ["amdgpu"];
     };
-    kernelModules = ["kvm-amd"];
+    kernelModules = ["kvm-amd" "amdgpu"];
     extraModulePackages = [];
   };
 

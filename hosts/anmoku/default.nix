@@ -28,12 +28,18 @@
     libnotify
   ];
 
-  programs.hyprland = {
-    enable = true;
-  };
+  programs = {
+    adb.enable = true;
+    hyprland.enable = true;
 
-  programs.adb = {
-    enable = true;
+    # gaming
+    gamemode.enable = true;
+    steam = {
+      enable = true;
+      extraCompatPackages = [
+        pkgs.proton-ge-bin.steamcompattool
+      ];
+    };
   };
 
   services = {
@@ -50,6 +56,8 @@
         layout = "us";
         variant = "";
       };
+      # enable amdgpu xorg drivers
+      videoDrivers = ["amdgpu"];
     };
 
     gvfs.enable = true;
@@ -75,6 +83,22 @@
     graphics = {
       enable = true;
       enable32Bit = true;
+      # enables AMDVLK & OpenCL support
+      extraPackages = with pkgs; [
+        # opencl drivers
+        # rocm-opencl-icd
+        # rocm-opencl-runtime
+        amdvlk
+
+        # mesa
+        mesa
+
+        # vulkan
+        vulkan-tools
+        vulkan-loader
+        vulkan-validation-layers
+        vulkan-extension-layer
+      ];
     };
   };
 
