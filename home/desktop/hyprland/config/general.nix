@@ -68,6 +68,9 @@ _: {
         name = "epic-mouse-v1";
         sensitivity = "-0.5";
       };
+      cursor = {
+        hide_on_key_press = true;
+      };
       misc = {
         disable_hyprland_logo = true;
         focus_on_activate = true;

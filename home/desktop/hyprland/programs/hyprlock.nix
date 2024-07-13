@@ -5,7 +5,7 @@
       mainMonitor = "HDMI-A-1";
     in {
       background = let
-        wallpaper = "~/Pictures/wl2.png";
+        wallpaper = "~/Pictures/GORIhEsX0AA4Pmt.jpg";
       in [
         {
           monitor = mainMonitor;
