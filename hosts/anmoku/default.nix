@@ -102,7 +102,17 @@
     };
   };
 
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    dns = "systemd-resolved";
+  };
   # Mullvad enable support: https://discourse.nixos.org/t/connected-to-mullvadvpn-but-no-internet-connection/35803/10?u=lion
   networking.resolvconf.enable = false;
+  services.resolved = {
+    enable = true;
+    dnssec = "allow-downgrade";
+    domains = ["~."];
+    fallbackDns = ["1.1.1.1" "8.8.8.8"];
+    dnsovertls = "true";
+  };
 }
