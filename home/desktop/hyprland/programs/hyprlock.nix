@@ -13,6 +13,7 @@
           blur_passes = 3;
           blur_size = 4;
           brightness = 0.5;
+          noise = 0.0117;
         }
       ];
       general = {
@@ -21,19 +22,26 @@
       input-field = [
         {
           monitor = mainMonitor;
-          size = "250, 50";
+          size = "200, 40";
           position = "0, 100";
-          outline_thickness = 3;
+          outline_thickness = 2;
+          rounding = 8;
 
-          outer_color = "rgb(7c6f64)";
-          inner_color = "rgba(40, 40, 40, 0.8)";
-          font_color = "rgb(ebdbb2)";
+          outer_color = "rgb(a6adc8)";
+          inner_color = "rgb(1e1e2e)";
+          font_color = "rgb(a6adc8)";
 
-          fail_text = "$FAIL <b>($ATTEMPTS)</b>";
-          placeholder_text = "Password...";
+          capslock_color = "rgb(eba0ac)";
+          check_color = "rgb(f9e2af)";
+          fail_color = "rgb(f38ba8)";
+          fail_text = ''<span font_family="Iosevka">$FAIL <b>($ATTEMPTS)</b></span>'';
+          fail_transition = 300;
+
+          placeholder_text = ''<span font_family="Iosevka"><b>Password...</b></span>'';
           swap_font_color = false;
           fade_on_empty = false;
-          dots_spacing = 0.2;
+          dots_size = 0.2;
+          dots_spacing = 0.64;
           dots_center = true;
 
           halign = "center";
@@ -46,7 +54,7 @@
           text = ''
             cmd[update:1000] echo $(date +"%A, %B %-d")
           '';
-          color = "rgb(ebdbb2)";
+          color = "rgb(a6adc8)";
           font_family = "Iosevka Slab";
           position = "0, -80";
           valign = "top";
@@ -57,7 +65,7 @@
           text = ''
             cmd[update:1000] echo $(date +"%-I:%M")
           '';
-          color = "rgb(ebdbb2)";
+          color = "rgb(a6adc8)";
           font_family = "New York";
           font_size = 120;
           position = "0, -100";
