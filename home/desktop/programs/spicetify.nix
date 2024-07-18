@@ -2,12 +2,12 @@
   inputs,
   pkgs,
   ...
-}: let
-  spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
-in {
-  imports = [inputs.spicetify-nix.homeManagerModule];
+}: {
+  imports = [inputs.spicetify-nix.homeManagerModules.default];
 
-  programs.spicetify = {
+  programs.spicetify = let
+    spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.system};
+  in {
     enable = true;
     theme = spicePkgs.themes.text;
     colorScheme = "custom";
