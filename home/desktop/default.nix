@@ -2,7 +2,20 @@
   inputs,
   pkgs,
   ...
-}: {
+}: let
+  # patching jellyfin player to use xwayland because with normal wayland it looks weird
+  jellyfin-media-player-wayland = pkgs.jellyfin-media-player.overrideAttrs (prevAttrs: {
+    nativeBuildInputs =
+      (prevAttrs.nativeBuildInputs or [])
+      ++ [pkgs.makeBinaryWrapper];
+
+    postInstall =
+      (prevAttrs.postInstall or "")
+      + ''
+        wrapProgram $out/bin/jellyfinmediaplayer --set QT_QPA_PLATFORM xcb
+      '';
+  });
+in {
   imports = [
     ./programs
     ./utils
@@ -18,7 +31,7 @@
     xfce.thunar # file manager for now
     gimp
     ffmpeg
-    jellyfin-media-player
+    jellyfin-media-player-wayland
     pavucontrol
     hyprpicker
     miru
