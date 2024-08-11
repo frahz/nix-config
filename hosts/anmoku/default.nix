@@ -21,6 +21,10 @@
       };
       timeout = 5;
     };
+    # Blacklisting `hid_sensor_hub` because its causing boot to fail for
+    # some reason. When I have all my USB devices, connected it causes
+    # this issue, which means, before booting, I would need to disconnect all
+    # my USB devices then boot the PC to get the login screen.
     blacklistedKernelModules = ["hid_sensor_hub"];
     kernelPackages = pkgs.linuxPackages_latest;
   };
