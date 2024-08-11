@@ -21,6 +21,7 @@
       };
       timeout = 5;
     };
+    blacklistedKernelModules = ["hid_sensor_hub"];
     kernelPackages = pkgs.linuxPackages_latest;
   };
 
