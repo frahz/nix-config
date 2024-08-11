@@ -1,11 +1,9 @@
 {
+  self,
   inputs,
-  lib,
-  system,
+  homeImports,
   ...
 }: let
-  catppuccin-hm = inputs.catppuccin.homeManagerModules.catppuccin;
-
   hm-module = inputs.home.nixosModules.home-manager;
   catppuccin-module = inputs.catppuccin.nixosModules.catppuccin;
   sops-module = inputs.sops-nix.nixosModules.default;
@@ -17,83 +15,67 @@
     sops-module
   ];
 in {
-  chibi = lib.nixosSystem {
-    inherit system;
-    specialArgs = {
-      inherit inputs system;
-      host = {
-        hostName = "chibi";
-      };
-    };
-    modules =
-      [
-        ./chibi
-        ./configuration.nix
-        raulyrs-module
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            extraSpecialArgs = {inherit inputs;};
-            users.frahz = {
-              imports = [../home catppuccin-hm];
-            };
-          };
-        }
-      ]
-      ++ defaultModules;
-  };
+  flake.nixosConfigurations = let
+    inherit (inputs.nixpkgs.lib) nixosSystem;
 
-  inari = lib.nixosSystem {
-    inherit system;
-    specialArgs = {
-      inherit inputs system;
-      host = {
-        hostName = "inari";
-      };
-    };
-    modules =
-      [
-        ./inari
-        ./configuration.nix
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            extraSpecialArgs = {inherit inputs;};
-            users.frahz = {
-              imports = [../home catppuccin-hm];
+    specialArgs = {inherit inputs self;};
+  in {
+    chibi = nixosSystem {
+      inherit specialArgs;
+      modules =
+        [
+          ./chibi
+          ./configuration.nix
+          raulyrs-module
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              extraSpecialArgs = specialArgs;
+              users.frahz = {
+                imports = homeImports.default;
+              };
             };
-          };
-        }
-      ]
-      ++ defaultModules;
-  };
+          }
+        ]
+        ++ defaultModules;
+    };
 
-  anmoku = lib.nixosSystem {
-    inherit system;
-    specialArgs = {
-      inherit inputs system;
-      host = {
-        hostName = "anmoku";
-      };
-    };
-    modules =
-      [
-        ./anmoku
-        ./configuration.nix
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            extraSpecialArgs = {inherit inputs;};
-            users.frahz = {
-              imports = [
-                ../home
-                ../home/desktop
-                catppuccin-hm
-              ];
+    inari = nixosSystem {
+      inherit specialArgs;
+      modules =
+        [
+          ./inari
+          ./configuration.nix
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              extraSpecialArgs = specialArgs;
+              users.frahz = {
+                imports = homeImports.default;
+              };
             };
-          };
-        }
-      ]
-      ++ defaultModules;
+          }
+        ]
+        ++ defaultModules;
+    };
+
+    anmoku = nixosSystem {
+      inherit specialArgs;
+      modules =
+        [
+          ./anmoku
+          ./configuration.nix
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              extraSpecialArgs = specialArgs;
+              users.frahz = {
+                imports = homeImports."frahz@desktop";
+              };
+            };
+          }
+        ]
+        ++ defaultModules;
+    };
   };
 }

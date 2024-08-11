@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  host,
   ...
 }: {
   imports = [];
@@ -32,9 +31,9 @@
 
   swapDevices = [];
 
-  networking = with host; {
+  networking = {
     useDHCP = lib.mkDefault true;
-    inherit hostName;
+    hostName = "chibi";
   };
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";

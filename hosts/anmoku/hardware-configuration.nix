@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  host,
   ...
 }: {
   imports = [
@@ -30,9 +29,9 @@
 
   swapDevices = [];
 
-  networking = with host; {
+  networking = {
     useDHCP = lib.mkDefault true;
-    inherit hostName;
+    hostName = "anmoku";
   };
   # networking.interfaces.enp2s0.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp3s0.useDHCP = lib.mkDefault true;

@@ -9,6 +9,8 @@
 
     catppuccin.url = "github:catppuccin/nix";
 
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
     hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
     hypridle.url = "github:hyprwm/hypridle";
     hyprlock.url = "github:hyprwm/hyprlock";
@@ -40,40 +42,42 @@
     raulyrs.url = "github:frahz/rauly.rs";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    pre-commit-hooks,
-    ...
-  } @ inputs: let
-    system = "x86_64-linux";
+  outputs = inputs @ {flake-parts, ...}:
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      imports = [
+        inputs.pre-commit-hooks.flakeModule
+        ./home/profiles
+        ./hosts
+      ];
 
-    pkgs = import nixpkgs {
-      inherit system;
-    };
-  in {
-    checks = {
-      pre-commit-check = pre-commit-hooks.lib.${system}.run {
-        src = ./.;
-        hooks = {
-          alejandra.enable = true;
-          statix.enable = true;
+      systems = ["x86_64-linux"];
+
+      perSystem = {
+        config,
+        pkgs,
+        ...
+      }: {
+        pre-commit = {
+          check.enable = true;
+          settings = {
+            hooks = {
+              alejandra.enable = true;
+              statix.enable = true;
+            };
+          };
         };
+
+        devShells.default = pkgs.mkShell {
+          shellHook = config.pre-commit.installationScript;
+          packages = with pkgs; [
+            git
+            sops
+            alejandra
+            statix
+          ];
+        };
+
+        formatter = pkgs.alejandra;
       };
     };
-    devShells.${system}.default = pkgs.mkShell {
-      inherit (self.checks.pre-commit-check) shellHook;
-      packages = with pkgs; [
-        git
-        sops
-        alejandra
-        statix
-      ];
-    };
-    formatter.${system} = pkgs.alejandra;
-    nixosConfigurations = import ./hosts {
-      inherit (nixpkgs) lib;
-      inherit inputs nixpkgs system;
-    };
-  };
 }

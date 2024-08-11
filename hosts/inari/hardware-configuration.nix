@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  host,
   ...
 }: {
   imports = [];
@@ -32,9 +31,9 @@
 
   swapDevices = [];
 
-  networking = with host; {
+  networking = {
     useDHCP = lib.mkDefault true;
-    inherit hostName;
+    hostName = "inari";
   };
   # networking.interfaces.enp0s31f6.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp2s0.useDHCP = lib.mkDefault true;
