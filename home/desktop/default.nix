@@ -36,6 +36,7 @@ in {
     hyprpicker
     miru
     vesktop
+    obs-studio
   ];
 
   home.pointerCursor = {
