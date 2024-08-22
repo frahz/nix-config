@@ -9,6 +9,9 @@ in {
       # Firefox PiP
       "float, ${pip}"
       "keepaspectratio, ${pip}"
+
+      # Jellyfin running in XWayland
+      "tile, class:^(Jellyfin Media Player)$"
     ];
   };
 }

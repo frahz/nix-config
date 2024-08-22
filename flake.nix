@@ -17,6 +17,8 @@
     hyprpaper.url = "github:hyprwm/hyprpaper";
     hyprpicker.url = "github:hyprwm/hyprpicker";
 
+    anyrun.url = "github:Kirottu/anyrun";
+
     # For now, until that hyprland recompilation thing is fixed
     waybar = {
       url = "github:Alexays/Waybar";

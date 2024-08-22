@@ -1,15 +1,19 @@
-_: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   services.greetd = {
     enable = true;
     settings = rec {
-      initial_session = {
-        command = "Hyprland";
-        user = "frahz";
+      tuigreet_session = let
+        session = "Hyprland";
+        tuigreet = "${lib.getExe pkgs.greetd.tuigreet}";
+      in {
+        command = "${tuigreet} --time --remember --cmd ${session}";
+        user = "greeter";
       };
-      default_session = initial_session;
+      default_session = tuigreet_session;
     };
   };
-  environment.etc."greetd/environments".text = ''
-    Hyprland
-  '';
 }

@@ -14,7 +14,7 @@
       "$mainMod, P, pseudo," # dwindle
       "$mainMod, J, togglesplit," # dwindle
 
-      "Alt, Space, exec, killall rofi || rofi -show drun"
+      "Alt, Space, exec, anyrun"
       "$mainMod, B, exec, killall .waybar-wrapped && waybar &"
       "$mainMod, L, exec, ${lib.getExe config.programs.hyprlock.package}"
       "$mainMod, Escape, exec, powermenu"
