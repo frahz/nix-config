@@ -15,15 +15,21 @@
         modules-right = ["tray" "group/group-applets" "clock"];
 
         clock = {
-          # calendar = {
-          #   format = {today = "<span color='#b4befe'><b>{}</b></span>";};
-          # };
           format = "{:%I:%M %p | %D}";
           tooltip = "false";
-          # tooltip-format = ''
-          #   <big>{:%Y %B}</big>
-          #   <tt><small>{calendar}</small></tt>'';
-          # format-alt = " {:%m/%d/%y}";
+          tooltip-format = ''<tt><big>{calendar}</big></tt>'';
+          calendar = {
+            format = {
+              months = "<span color='#B1B946'>{}</span>";
+              days = "<span color='#E0CDA5'>{}</span>";
+              weekdays = "<span color='#E0CDA5'>{}</span>";
+              today = "<span color='#E0CDA5'>{}</span>";
+            };
+          };
+          actions = {
+            on-scroll-up = "shift_up";
+            on-scroll-down = "shift_down";
+          };
         };
 
         "hyprland/workspaces" = {
