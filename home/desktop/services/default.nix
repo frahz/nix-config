@@ -1,3 +1,6 @@
 _: {
-  services.udiskie.enable = true;
+  services.udiskie = {
+    enable = true;
+    tray = "never";
+  };
 }
