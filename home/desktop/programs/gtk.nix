@@ -9,6 +9,7 @@
     };
 
     gtk4.extraConfig = {
+      gtk-application-prefer-dark-theme = true;
       gtk-xft-antialias = 1;
       gtk-xft-hinting = 1;
       gtk-xft-hintstyle = "hintslight";
@@ -18,6 +19,7 @@
     };
 
     gtk3.extraConfig = {
+      gtk-application-prefer-dark-theme = true;
       gtk-xft-antialias = 1;
       gtk-xft-hinting = 1;
       gtk-xft-hintstyle = "hintslight";
