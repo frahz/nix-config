@@ -45,7 +45,7 @@
   catppuccin.flavor = "mocha";
 
   console = {
-    font = "${pkgs.terminus_font}/share/consolefonts/ter-d18n.psf.gz";
+    font = "${pkgs.terminus_font}/share/consolefonts/ter-d24n.psf.gz";
     catppuccin.enable = true;
   };
 
