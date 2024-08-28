@@ -39,7 +39,7 @@
       enable = true;
       allowBitmaps = true;
       defaultFonts = let
-        addAll = builtins.mapAttrs (_: v: ["Symbols Nerd Font"] ++ v ++ ["Twitter Color Emoji"]);
+        addAll = builtins.mapAttrs (_: v: v ++ ["Twitter Color Emoji"] ++ ["Symbols Nerd Font" "Noto Sans Symbols" "Noto Sans Symbols 2"]);
       in
         addAll {
           monospace = ["Iosevka"];
