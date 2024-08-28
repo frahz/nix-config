@@ -30,7 +30,7 @@
     alternate-active-background: var(active);
     alternate-active-foreground: var(background);
 
-    font: "Iosevka NF 14";
+    font: "Inter 14";
 }
 
 /*****----- Main Window -----*****/

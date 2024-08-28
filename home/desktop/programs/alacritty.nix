@@ -22,8 +22,8 @@
       scrolling.history = 10000;
 
       font = {
-        normal.family = "Iosevka NF";
-        bold.family = "Iosevka NF";
+        normal.family = "Iosevka";
+        bold.family = "Iosevka";
         size = 12;
       };
     };

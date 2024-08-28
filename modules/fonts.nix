@@ -15,10 +15,13 @@
       dejavu_fonts
       inter
 
+      jetbrains-mono
       iosevka
-      (pkgs.iosevka-bin.override {variant = "Slab";})
+      (pkgs.iosevka-bin.override {
+        variant = "Slab";
+      })
       (nerdfonts.override {
-        fonts = ["Iosevka"];
+        fonts = ["NerdFontsSymbolsOnly"];
       })
 
       noto-fonts
@@ -35,12 +38,15 @@
     fontconfig = {
       enable = true;
       allowBitmaps = true;
-      defaultFonts = {
-        monospace = ["Iosevka NF" "Noto Sans Symbols" "Noto Sans Symbols2"];
-        serif = ["Noto Serif" "Twitter Color Emoji"];
-        sansSerif = ["Noto Sans" "Twitter Color Emoji"];
-        emoji = ["Twitter Color Emoji"];
-      };
+      defaultFonts = let
+        addAll = builtins.mapAttrs (_: v: ["Symbols Nerd Font"] ++ v ++ ["Twitter Color Emoji"]);
+      in
+        addAll {
+          monospace = ["Iosevka"];
+          serif = ["Noto Serif"];
+          sansSerif = ["Inter"];
+          emoji = [];
+        };
     };
   };
 }
