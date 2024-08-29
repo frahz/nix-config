@@ -7,8 +7,6 @@
     enableDefaultPackages = false;
     fontDir.enable = true;
     packages = with pkgs; [
-      corefonts
-
       source-sans
       source-serif
 
