@@ -12,6 +12,7 @@
 
       dejavu_fonts
       inter
+      roboto
 
       jetbrains-mono
       iosevka
