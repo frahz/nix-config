@@ -1081,11 +1081,11 @@
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1715929535,
-        "narHash": "sha256-cFgYkRiko9QBTrsXVTjrqgOsP0UoQXJZYH/QhjxuGqg=",
+        "lastModified": 1725513547,
+        "narHash": "sha256-czQoRDCeJyA+mw7v93J6BjYM8LREBqXz6EvKy97PBbo=",
         "owner": "frahz",
         "repo": "rauly.rs",
-        "rev": "92a3ea36851c75a6bda271f7e3b9b127a411baf5",
+        "rev": "e4d1b1215413924c016c69a0b188aa28f89e4905",
         "type": "github"
       },
       "original": {
