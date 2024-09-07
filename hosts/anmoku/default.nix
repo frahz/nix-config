@@ -33,7 +33,7 @@
     hyprland.enable = true;
 
     # gaming
-    gamemode.enable = false;
+    gamemode.enable = true;
     steam = {
       enable = true;
       extraCompatPackages = [
