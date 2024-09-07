@@ -17,7 +17,8 @@ _: {
 
        -- term window settings
        adjust_window_size_when_changing_font_size = false,
-       window_background_opacity = 0.85,
+       -- window_background_opacity = 0.85,
+       window_background_opacity = 1,
        window_padding = { left = 12, right = 12, top = 12, bottom = 12, },
        window_close_confirmation = "NeverPrompt",
        inactive_pane_hsb = {
@@ -46,13 +47,11 @@ _: {
 
        -- perf
        front_end = "WebGpu",
-       enable_wayland = true,
+       enable_wayland = false,
        scrollback_lines = 10000,
 
        -- colors
-       -- the followSystem theme is defined in colorSchemes.nix
-       -- as per my base16 theming options
-       color_scheme = "followSystem",
+       color_scheme = "Catppuccin Mocha",
       }
 
       return baseConfig
