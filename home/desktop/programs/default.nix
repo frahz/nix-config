@@ -8,6 +8,7 @@ _: {
     ./mpv.nix
     # ./qt.nix
     ./spicetify.nix
+    ./wezterm
     ./zathura.nix
   ];
 }

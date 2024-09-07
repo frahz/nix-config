@@ -3,7 +3,7 @@ local lualine = require("lualine")
 local section_separators = { left = "", right = ""}
 
 local function shiftwidth()
-    return " "..vim.api.nvim_get_option_value("shiftwidth", {})
+    return "󰌒 "..vim.api.nvim_get_option_value("shiftwidth", {})
 end
 
 lualine.setup({

@@ -59,11 +59,11 @@ end
 
 local leader = "space"
 dashboard.section.buttons.val = {
-    button("SPC f f", " Find file", leader, "<CMD>Telescope find_files<CR>"),
-    button("SPC f w", " Find word", leader, "<CMD>Telescope live_grep<CR>"),
-    button("SPC f o", " Recent file", leader, "<CMD>Telescope oldfiles<CR>"),
-    button('SPC k', ' List Keymaps', leader, "<CMD>Telescope keymaps<CR>"),
-    button("q"," Quit",  leader,  "<CMD>qa<CR>"),
+    button("SPC f f", "󰈞  Find file", leader, "<CMD>Telescope find_files<CR>"),
+    button("SPC f w", "󰈬  Find word", leader, "<CMD>Telescope live_grep<CR>"),
+    button("SPC f o", "  Recent file", leader, "<CMD>Telescope oldfiles<CR>"),
+    button('SPC k',   "  List Keymaps", leader, "<CMD>Telescope keymaps<CR>"),
+    button("q",       "󰅚  Quit",  leader,  "<CMD>qa<CR>"),
 }
 dashboard.section.buttons.opts.hl = "String"
 
