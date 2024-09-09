@@ -15,12 +15,12 @@
       roboto
 
       jetbrains-mono
-      iosevka
+      iosevka-bin
       (pkgs.iosevka-bin.override {
         variant = "Slab";
       })
       (nerdfonts.override {
-        fonts = ["NerdFontsSymbolsOnly"];
+        fonts = ["IosevkaTerm" "NerdFontsSymbolsOnly"];
       })
 
       noto-fonts

@@ -40,7 +40,7 @@ _: {
        -- font config
        font_size = 12.0,
        font = wezterm.font_with_fallback {
-        { family = "Iosevka", weight = "DemiLight" },
+        { family = "Iosevka Term", weight = "DemiLight" },
         { family = "Symbols Nerd Font", weight = "Regular" }
        },
 
