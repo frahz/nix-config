@@ -18,7 +18,7 @@ _: {
        -- term window settings
        adjust_window_size_when_changing_font_size = false,
        window_background_opacity = 1,
-       window_padding = { left = 12, right = 12, top = 12, bottom = 12, },
+       -- window_padding = { left = 12, right = 12, top = 12, bottom = 12, },
        window_close_confirmation = "NeverPrompt",
        inactive_pane_hsb = {
         saturation = 1.0,
