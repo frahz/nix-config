@@ -6,6 +6,7 @@
   programs.waybar = {
     enable = true;
     package = inputs.waybar.packages.${pkgs.system}.waybar;
+    systemd.enable = true;
     settings = {
       mainBar = {
         position = "top";
