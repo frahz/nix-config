@@ -66,16 +66,16 @@
     };
     samba = {
       enable = true;
-      extraConfig = ''
-        workgroup = WORKGROUP
-        server string = inari server
-        server role = standalone server
-        pam password change = yes
-        map to guest = bad user
-        usershare allow guests = yes
-      '';
-      shares = {
-        sharing = {
+      settings = {
+        "global" = {
+          "workgroup" = "WORKGROUP";
+          "server string" = "inari server";
+          "server role" = "standalone server";
+          "pam password change" = "yes";
+          "map to guest" = "bad user";
+          "usershare allow guests" = "yes";
+        };
+        "sharing" = {
           path = "/mnt/kuki/sharing";
           comment = "shared directory";
           browseable = "yes";
