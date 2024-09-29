@@ -38,6 +38,7 @@ in {
     miru
     vesktop
     obs-studio
+    obsidian
   ];
 
   home.pointerCursor = {

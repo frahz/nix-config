@@ -1,6 +1,7 @@
 _: {
   imports = [
     ./alacritty.nix
+    ./brave.nix
     ./firefox.nix
     ./gaming.nix
     ./gtk.nix
