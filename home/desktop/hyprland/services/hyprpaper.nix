@@ -10,9 +10,10 @@
         "~/Pictures/wl.jpg"
         "~/Pictures/wl2.png"
         "~/Pictures/GP2qRG5bAAAuXOa.jpg"
+        "~/Pictures/camille-villanueva-zsAPsRjzXRI-unsplash.jpg"
       ];
       wallpaper = [
-        "HDMI-A-1,~/Pictures/GP2qRG5bAAAuXOa.jpg"
+        "HDMI-A-1,~/Pictures/camille-villanueva-zsAPsRjzXRI-unsplash.jpg"
       ];
     };
   };
