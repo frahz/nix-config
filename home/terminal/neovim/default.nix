@@ -178,7 +178,7 @@
 
       # LSP stuff
       libclang
-      inputs.nil.packages.x86_64-linux.default
+      nil
       nodePackages.bash-language-server
       nodePackages.typescript-language-server
       pyright
