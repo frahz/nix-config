@@ -27,6 +27,10 @@
       port = 3000;
       domain = "lw";
     };
+    navidrome = {
+      port = 4533;
+      domain = "music";
+    };
   };
 
   inari = {
@@ -100,6 +104,11 @@ in {
       "${chibi.adguardhome.domain}.${domain}" = {
         extraConfig = ''
           reverse_proxy http://${chibi.ip}:${toString chibi.adguardhome.port}
+        '';
+      };
+      "${chibi.navidrome.domain}.${domain}" = {
+        extraConfig = ''
+          reverse_proxy http://${chibi.ip}:${toString chibi.navidrome.port}
         '';
       };
       "${inari.sonarr.domain}.${domain}" = {
