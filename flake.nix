@@ -19,11 +19,7 @@
 
     anyrun.url = "github:Kirottu/anyrun";
 
-    # For now, until that hyprland recompilation thing is fixed
-    waybar = {
-      url = "github:Alexays/Waybar";
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
+    ironbar.url = "github:JakeStanger/ironbar/";
 
     # Do not follow nixpkgs as it takes forever to build each time
     # Does not matter anyway, it's just fonts

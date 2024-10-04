@@ -4,8 +4,8 @@
   ...
 }: {
   programs.waybar = {
-    enable = true;
-    package = inputs.waybar.packages.${pkgs.system}.waybar;
+    enable = false;
+    # package = inputs.waybar.packages.${pkgs.system}.waybar;
     systemd.enable = true;
     settings = {
       mainBar = {
