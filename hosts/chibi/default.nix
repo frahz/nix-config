@@ -82,6 +82,13 @@
           "read only" = "no";
           "inherit permissions" = "yes";
         };
+        "music" = {
+          path = "/mnt/kuki/music";
+          comment = "shared directory";
+          browseable = "yes";
+          "read only" = "no";
+          "inherit permissions" = "yes";
+        };
       };
     };
     raulyrs = {
