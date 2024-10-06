@@ -53,7 +53,6 @@ window#waybar {
   color: @accent;
 }
 
-
 #tray {
   background: black;
   border-radius: 5px;

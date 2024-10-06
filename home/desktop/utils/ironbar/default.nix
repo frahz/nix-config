@@ -8,7 +8,9 @@
     enable = true;
     systemd = true;
     config = {
+      name = "iron-420";
       position = "top";
+      icon_theme = "Papirus-Dark";
       start = [
         {
           type = "workspaces";
@@ -40,13 +42,11 @@
               type = "volume";
               format = "{icon}";
               icons = {
-                volume_high = "";
+                volume_high = "󰕾";
                 volume_medium = "󰖀";
                 volume_low = "󰕿";
-                muted = "󰖁 ";
+                muted = "󰖁";
               };
-              # tooltip-format = "{volume}%";
-              # on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
             }
             {
               type = "network_manager";

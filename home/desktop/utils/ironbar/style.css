@@ -1,0 +1,155 @@
+@define-color black   #1B1D1D;
+@define-color accent  #f5bde6;
+@define-color brblack #47423E;
+@define-color white   #E0CDA5;
+@define-color offpink #130F12;
+
+* {
+  border: none;
+  border-radius: 0px;
+  font-family: Iosevka;
+  font-weight: normal;
+  font-size: 15px;
+  opacity: 1;
+}
+
+/* TODO: find way to make the bacground transparent and also make it so it doesnt affect other components*/
+#iron-420,
+.background {
+  background: transparent;
+}
+
+.workspaces {
+  background: black;
+  border-radius: 5px;
+  padding: 2px 2px;
+  margin: 5px 10px 0px;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
+  border: 1px solid @black;
+}
+
+.workspaces .item {
+  background: black;
+  border-radius: 0px;
+  padding: 1px;
+  color: @white;
+}
+
+/* workspace: no active windows*/
+.workspaces .item.inactive {
+  color: @brblack;
+}
+
+/* workspace: has active windows*/
+.workspaces .item.visible {
+  color: @white;
+}
+
+.workspaces .item.focused {
+  color: @accent;
+  text-shadow:
+    0.25px 0.25px 0 @accent,
+    -0.25px 0.25px 0 @accent,
+    -0.25px -0.25px 0 @accent,
+    0.25px -0.25px 0 @accent;
+}
+
+.workspaces .item:hover {
+  background: transparent;
+  border-radius: 4px;
+  color: @accent;
+}
+
+.tray {
+  background: black;
+  border-radius: 5px;
+  padding: 2px 2px;
+  margin: 5px 10px 0px;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
+  border: 1px solid @black;
+  font-weight: bold;
+}
+
+.tray .item {
+  padding: 5px;
+}
+
+.tray .item:hover {
+  background: transparent;
+  border-radius: 4px;
+  color: @accent;
+}
+
+#applets {
+  background: black;
+  border-radius: 5px;
+  padding: 2px 2px;
+  margin: 5px 10px 0px;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
+  border: 1px solid @black;
+}
+
+#applets .widget:hover {
+  background: transparent;
+  border-radius: 4px;
+}
+
+.volume,
+.network_manager {
+  background: black;
+  color: white;
+  padding: 0px 5px;
+}
+
+.volume label {
+  font-size: 20px;
+}
+
+.popup-volume {
+  background: black;
+  border-radius: 5px;
+  padding: 5px 6px;
+  margin: 5px 0px 0px;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
+  border: 1px solid @black;
+}
+
+.popup-volume .device-box .device-selector,
+.popup-volume .device-box .btn-mute,
+.popup-volume .device-box .slider,
+.popup-volume .apps-box .app-box .btn-mute {
+  border-radius: 4px;
+  border: 1px solid @black;
+}
+
+.clock {
+  background: black;
+  border-radius: 5px;
+  padding: 2px 6px;
+  margin: 5px 10px 0px;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
+  border: 1px solid @black;
+  color: white;
+}
+
+.clock label {
+  font-weight: bold;
+}
+
+.popup-clock {
+  background: black;
+  border-radius: 5px;
+  padding: 2px 6px;
+  margin: 5px 5px 0px;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 1);
+  border: 1px solid @black;
+}
+.popup-clock .calendar {
+  background: black;
+}
+
+.popup-clock .calendar:selected {
+  background: white;
+  border-radius: 3px;
+  color: black;
+}
