@@ -1,6 +1,6 @@
 @define-color black #1B1D1D;
 @define-color brblack #47423E;
-@define-color brgreen #B1B946;
+@define-color accent #f5bde6;
 @define-color white #E0CDA5;
 
 * {
@@ -40,17 +40,17 @@ window#waybar {
 }
 
 #workspaces button.active {
-  color: @brgreen;
+  color: @accent;
   text-shadow:
-    0.25px 0.25px 0 @brgreen,
-    -0.25px 0.25px 0 @brgreen,
-    -0.25px -0.25px 0 @brgreen,
-    0.25px -0.25px 0 @brgreen;
+    0.25px 0.25px 0 @accent,
+    -0.25px 0.25px 0 @accent,
+    -0.25px -0.25px 0 @accent,
+    0.25px -0.25px 0 @accent;
 }
 
 #workspaces button:hover {
   background-color: transparent;
-  color: @brgreen;
+  color: @accent;
 }
 
 
