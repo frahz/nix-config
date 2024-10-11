@@ -9,32 +9,25 @@
 
     plugins = with pkgs.tmuxPlugins; [
       resurrect
-      {
-        plugin = catppuccin.overrideAttrs (_: {
-          src = pkgs.fetchFromGitHub {
-            owner = "catppuccin";
-            repo = "tmux";
-            rev = "a0119d25283ba2b18287447c1f86720a255fb652";
-            hash = "sha256-SGJjDrTrNNxnurYV1o1KbHRIHFyfmbXDX/t4KN8VCao=";
-          };
-        });
-
-        extraConfig = ''
-          set -g @catppuccin_window_number_position "left"
-
-          set -g @catppuccin_window_default_fill "number"
-          set -g @catppuccin_window_default_text "#W"
-
-          set -g @catppuccin_window_current_fill "number"
-          set -g @catppuccin_window_current_text "#W"
-
-          set -g @catppuccin_status_modules_right "directory session"
-          set -g @catppuccin_status_left_separator "█"
-          set -g @catppuccin_status_right_separator "█"
-          set -g @catppuccin_directory_text "#{b:pane_current_path}"
-        '';
-      }
     ];
+
+    catppuccin = {
+      enable = true;
+      extraConfig = ''
+        set -g @catppuccin_window_number_position "left"
+
+        set -g @catppuccin_window_default_fill "number"
+        set -g @catppuccin_window_default_text "#W"
+
+        set -g @catppuccin_window_current_fill "number"
+        set -g @catppuccin_window_current_text "#W"
+
+        set -g @catppuccin_status_modules_right "directory session"
+        set -g @catppuccin_status_left_separator "█"
+        set -g @catppuccin_status_right_separator "█"
+        set -g @catppuccin_directory_text "#{b:pane_current_path}"
+      '';
+    };
 
     extraConfig = ''
       set -ag terminal-overrides ",xterm-256color:RGB"
