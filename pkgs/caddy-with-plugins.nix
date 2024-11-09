@@ -33,20 +33,20 @@
 in
   buildGoModule rec {
     pname = "caddy";
-    version = "2.7.6";
+    version = "2.8.4";
 
     dist = fetchFromGitHub {
       owner = "caddyserver";
       repo = "dist";
       rev = "v${version}";
-      hash = "sha256-aZ7hdAZJH1PvrX9GQLzLquzzZG3LZSKOvt7sWQhTiR8=";
+      hash = "sha256-O4s7PhSUTXoNEIi+zYASx8AgClMC5rs7se863G6w+l0=";
     };
 
     src = fetchFromGitHub {
       owner = "caddyserver";
       repo = "caddy";
       rev = "v${version}";
-      hash = "sha256-th0R3Q1nGT0q5PGOygtD1/CpJmrT5TYagrwQR4t/Fvg=";
+      hash = "sha256-CBfyqtWp3gYsYwaIxbfXO3AYaBiM7LutLC7uZgYXfkQ=";
     };
 
     inherit vendorHash;
