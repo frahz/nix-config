@@ -40,6 +40,7 @@
     pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
 
     raulyrs.url = "github:frahz/rauly.rs";
+    sugoi.url = "github:frahz/sugoi";
   };
 
   outputs = inputs @ {flake-parts, ...}:

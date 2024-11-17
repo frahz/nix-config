@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   lib,
   pkgs,
@@ -17,16 +18,14 @@ in {
       allowedUDPPorts = [8080];
     };
 
-    systemd.packages = [pkgs.sugoi];
-
     systemd.services.sugoi = {
       enable = true;
-      description = "Sugoi wakeup service";
+      description = "sugoi Wakeup Service";
       after = ["network.target"];
       wantedBy = ["multi-user.target"];
       serviceConfig = {
         Type = "simple";
-        ExecStart = ''${pkgs.sugoi}/bin/sugoi'';
+        ExecStart = ''${inputs.sugoi.packages.${pkgs.system}.default}/bin/sugoi'';
       };
     };
   };

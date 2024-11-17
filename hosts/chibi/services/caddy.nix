@@ -31,6 +31,10 @@
       port = 4533;
       domain = "music";
     };
+    sugoi = {
+      port = 8080;
+      domain = "sugoi";
+    };
   };
 
   inari = {
@@ -109,6 +113,11 @@ in {
       "${chibi.navidrome.domain}.${domain}" = {
         extraConfig = ''
           reverse_proxy http://${chibi.ip}:${toString chibi.navidrome.port}
+        '';
+      };
+      "${chibi.sugoi.domain}.${domain}" = {
+        extraConfig = ''
+          reverse_proxy http://${chibi.ip}:${toString chibi.sugoi.port}
         '';
       };
       "${inari.sonarr.domain}.${domain}" = {
