@@ -1,4 +1,4 @@
-_: {
+{config, ...}: {
   services.navidrome = {
     enable = true;
     settings = {
@@ -8,4 +8,7 @@ _: {
     };
     openFirewall = true;
   };
+
+  sops.secrets.navidrome = {};
+  systemd.services.navidrome.serviceConfig.EnvironmentFile = config.sops.secrets.navidrome.path;
 }
