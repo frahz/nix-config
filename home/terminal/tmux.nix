@@ -15,8 +15,10 @@
       enable = true;
       extraConfig = ''
 
-        set -g @catppuccin_window_text "#W"
-        set -g @catppuccin_window_current_text "#W"
+        set -g @catppuccin_window_text " #W"
+        set -g @catppuccin_window_text_color "#{@thm_bg}"
+        set -g @catppuccin_window_current_text " #W"
+        set -g @catppuccin_window_current_text_color "#{@thm_bg}"
 
         set -g @catppuccin_status_background none
 
@@ -29,7 +31,7 @@
 
         set -g @catppuccin_status_left_separator "█"
         set -g @catppuccin_status_right_separator "█"
-        set -g @catppuccin_directory_text "#{b:pane_current_path}"
+        set -g @catppuccin_directory_text " #{b:pane_current_path}"
       '';
     };
 
