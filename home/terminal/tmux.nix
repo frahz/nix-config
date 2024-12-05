@@ -14,15 +14,19 @@
     catppuccin = {
       enable = true;
       extraConfig = ''
-        set -g @catppuccin_window_number_position "left"
 
-        set -g @catppuccin_window_default_fill "number"
-        set -g @catppuccin_window_default_text "#W"
-
-        set -g @catppuccin_window_current_fill "number"
+        set -g @catppuccin_window_text "#W"
         set -g @catppuccin_window_current_text "#W"
 
-        set -g @catppuccin_status_modules_right "directory session"
+        set -g @catppuccin_status_background none
+
+        set -g status-left-length 100
+        set -g status-left ""
+
+        set -g status-right-length 100
+        set -g status-right "#{E:@catppuccin_status_directory}"
+        set -ag status-right "#{E:@catppuccin_status_session}"
+
         set -g @catppuccin_status_left_separator "█"
         set -g @catppuccin_status_right_separator "█"
         set -g @catppuccin_directory_text "#{b:pane_current_path}"
