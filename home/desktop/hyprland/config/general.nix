@@ -32,14 +32,9 @@ _: {
           passes = 2;
           new_optimizations = true;
         };
-
-        active_opacity = 1.0;
-        inactive_opacity = 1.0;
-
-        drop_shadow = true;
-        shadow_range = 4;
-        shadow_render_power = 3;
-        "col.shadow" = "rgba(00000099)";
+        shadow = {
+          color = "rgba(00000099)";
+        };
       };
       animations = {
         enabled = true;

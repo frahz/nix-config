@@ -19,12 +19,11 @@
       (pkgs.iosevka-bin.override {
         variant = "Slab";
       })
-      (nerdfonts.override {
-        fonts = ["IosevkaTerm" "NerdFontsSymbolsOnly"];
-      })
+      nerd-fonts.iosevka-term
+      nerd-fonts.symbols-only
 
       noto-fonts
-      noto-fonts-cjk
+      noto-fonts-cjk-sans
       twitter-color-emoji
       noto-fonts-color-emoji
 
