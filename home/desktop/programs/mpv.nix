@@ -1,7 +1,6 @@
 {pkgs, ...}: {
   programs.mpv = {
     enable = true;
-    catppuccin.enable = true;
     config = {
       osc = "no";
       border = "no";
@@ -10,6 +9,7 @@
       modernx
     ];
   };
+  catppuccin.mpv.enable = true;
   xdg.mimeApps.defaultApplications = {
     "audio/*" = ["mpv.desktop"];
     "video/*" = ["mpv.dekstop"];

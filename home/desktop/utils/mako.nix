@@ -5,6 +5,6 @@ _: {
     font = "Iosevka 14";
     borderSize = 1;
     borderRadius = 5;
-    catppuccin.enable = true;
   };
+  catppuccin.mako.enable = true;
 }

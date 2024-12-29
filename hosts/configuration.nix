@@ -46,8 +46,8 @@
 
   console = {
     font = "${pkgs.terminus_font}/share/consolefonts/ter-d24n.psf.gz";
-    catppuccin.enable = true;
   };
+  catppuccin.tty.enable = true;
 
   services.openssh = {
     enable = true;

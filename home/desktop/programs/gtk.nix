@@ -1,12 +1,6 @@
 {pkgs, ...}: {
   gtk = {
     enable = true;
-    catppuccin = {
-      enable = true;
-      size = "compact";
-      tweaks = ["rimless"];
-      icon.enable = true;
-    };
 
     gtk4.extraConfig = {
       gtk-application-prefer-dark-theme = true;
@@ -36,5 +30,11 @@
       gtk-enable-event-sounds=0
       gtk-enable-input-feedback-sounds=0
     '';
+  };
+  catppuccin.gtk = {
+    enable = true;
+    size = "compact";
+    tweaks = ["rimless"];
+    icon.enable = true;
   };
 }

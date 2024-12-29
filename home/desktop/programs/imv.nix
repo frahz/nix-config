@@ -1,8 +1,8 @@
 _: {
   programs.imv = {
     enable = true;
-    catppuccin.enable = true;
   };
+  catppuccin.imv.enable = true;
 
   xdg.mimeApps.defaultApplications = {
     "image/gif" = ["imv.desktop"];

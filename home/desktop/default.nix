@@ -39,7 +39,7 @@ in {
     vesktop
     obs-studio
     obsidian
-    feishin
+    # feishin
   ];
 
   home.pointerCursor = {
