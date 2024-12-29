@@ -18,6 +18,7 @@
     hyprpicker.url = "github:hyprwm/hyprpicker";
 
     anyrun.url = "github:Kirottu/anyrun";
+    ghostty.url = "github:ghostty-org/ghostty";
 
     # For now, until that hyprland recompilation thing is fixed
     waybar = {

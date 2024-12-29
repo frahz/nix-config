@@ -4,6 +4,7 @@ _: {
     ./brave.nix
     ./firefox.nix
     ./gaming.nix
+    ./ghostty.nix
     ./gtk.nix
     ./imv.nix
     ./mpv.nix
