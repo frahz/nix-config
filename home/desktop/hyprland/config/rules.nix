@@ -8,6 +8,7 @@ in {
 
       # Firefox PiP
       "float, ${pip}"
+      "pin, ${pip}"
       "keepaspectratio, ${pip}"
 
       # Jellyfin running in XWayland
