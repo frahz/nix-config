@@ -8,7 +8,6 @@ in {
       inputs.hyprlock.overlays.default
       inputs.hyprpaper.overlays.default
       inputs.hyprpicker.overlays.default
-      inputs.raulyrs.overlays.default
     ];
     config = {
       allowUnfree = true;
