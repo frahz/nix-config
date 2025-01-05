@@ -29,7 +29,7 @@ in {
 
     virtualisation.oci-containers.containers.gluetun = {
       autoStart = true;
-      image = "qmcgaw/gluetun:v3.39.1";
+      image = "qmcgaw/gluetun:v3.40.0";
       volumes = cfg.gluetun_volumes;
       ports = [
         "8888:8888/tcp"
@@ -45,6 +45,7 @@ in {
       };
       extraOptions = [
         "--cap-add=NET_ADMIN"
+        "--device=/dev/net/tun"
       ];
     };
 
