@@ -20,6 +20,7 @@
       unzip
       unrar
       gh
+      dig
     ];
     stateVersion = "23.11";
   };
