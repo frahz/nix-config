@@ -34,12 +34,12 @@ in {
     ffmpeg
     jellyfin-media-player-wayland
     pavucontrol
-    hyprpicker
     miru
     vesktop
     obs-studio
     obsidian
-    # feishin
+    feishin
+    inputs.hyprpicker.packages.${pkgs.system}.hyprpicker
   ];
 
   home.pointerCursor = {

@@ -45,6 +45,7 @@
   services = {
     blueman.enable = true;
     flatpak.enable = true;
+    pulseaudio.enable = false;
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -82,7 +83,6 @@
   hardware = {
     bluetooth.enable = true;
 
-    pulseaudio.enable = false;
     graphics = {
       enable = true;
       enable32Bit = true;

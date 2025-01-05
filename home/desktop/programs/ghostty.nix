@@ -3,17 +3,15 @@
   pkgs,
   ...
 }: {
-  home.packages = [
-    inputs.ghostty.packages.${pkgs.system}.default
-  ];
-
-  xdg.configFile."ghostty/config".text = ''
-    theme = catppuccin-mocha
-
-    window-padding-x = 4,4
-    window-padding-y = 4,4
-
-    gtk-titlebar = false
-    font-family = Iosevka Term
-  '';
+  programs.ghostty = {
+    enable = true;
+    enableZshIntegration = true;
+    settings = {
+      theme = "catppuccin-mocha";
+      font-family = "Iosevka Term";
+      gtk-titlebar = false;
+      window-padding-x = 4;
+      window-padding-y = 4;
+    };
+  };
 }
