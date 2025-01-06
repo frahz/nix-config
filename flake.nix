@@ -72,6 +72,11 @@
 
     raulyrs.url = "github:frahz/rauly.rs";
     sugoi.url = "github:frahz/sugoi";
+
+    tailray = {
+      url = "github:frahz/tailray";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {flake-parts, ...}:

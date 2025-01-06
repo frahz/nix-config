@@ -1270,6 +1270,7 @@
         "sops-nix": "sops-nix",
         "spicetify-nix": "spicetify-nix",
         "sugoi": "sugoi",
+        "tailray": "tailray",
         "waybar": "waybar"
       }
     },
@@ -1459,6 +1460,26 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default-linux",
+        "type": "github"
+      }
+    },
+    "tailray": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1736122085,
+        "narHash": "sha256-TdY7FfCKLt0TpqAYmHiRwV1k3Jmv4VEmO8OdmD+UvkY=",
+        "owner": "frahz",
+        "repo": "tailray",
+        "rev": "fafe50e1c5e621b80a698906597064f6bdb21bc5",
+        "type": "github"
+      },
+      "original": {
+        "owner": "frahz",
+        "repo": "tailray",
         "type": "github"
       }
     },
