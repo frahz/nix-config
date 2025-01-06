@@ -4,6 +4,9 @@ _: {
       monitor = [
         "HDMI-A-1,2560x1440@143.91, 0x0, auto"
       ];
+      env = [
+        "XCURSOR_SIZE,22"
+      ];
       input = {
         kb_layout = "us";
         follow_mouse = 1;
