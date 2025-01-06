@@ -42,10 +42,12 @@ in {
     inputs.hyprpicker.packages.${pkgs.system}.hyprpicker
   ];
 
+  # TODO: move to hyprcursor later
   home.pointerCursor = {
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Classic";
-    size = 18;
+    size = 22;
+    gtk.enable = true;
   };
 
   xdg = {

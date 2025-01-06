@@ -5,7 +5,6 @@ _: {
         "HDMI-A-1,2560x1440@143.91, 0x0, auto"
       ];
       env = [
-        "XCURSOR_SIZE,18"
         "HYPRCURSOR_SIZE,18"
       ];
       input = {
