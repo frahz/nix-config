@@ -79,6 +79,11 @@
       # Scroll through existing workspaces with mainMod + scroll
       "$mainMod, mouse_down, workspace, e+1"
       "$mainMod, mouse_up, workspace, e-1"
+
+      # Grouped windows
+      "$mainMod, T, togglegroup,"
+      "$mainMod SHIFT, N, changegroupactive, f"
+      "$mainMod SHIFT, P, changegroupactive, b"
     ];
     bindm = [
       # Move/resize windows with mainMod + LMB/RMB and dragging
