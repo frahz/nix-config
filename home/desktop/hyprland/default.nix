@@ -25,7 +25,15 @@
 
   wayland.windowManager.hyprland = {
     enable = true;
-    systemd.enable = true;
+    # TODO: move to uwsm cuz that seems to be a thing now?
+    systemd = {
+      enable = true;
+      variables = ["--all"];
+      extraCommands = [
+        "systemctl --user stop graphical-session.target"
+        "systemctl --user start hyprland-session.target"
+      ];
+    };
     xwayland.enable = true;
   };
 }
