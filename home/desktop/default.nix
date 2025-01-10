@@ -34,6 +34,7 @@ in {
     ffmpeg
     jellyfin-media-player-wayland
     pavucontrol
+    newsflash
     miru
     vesktop
     obs-studio
