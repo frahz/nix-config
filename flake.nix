@@ -48,7 +48,11 @@
       };
     };
 
-    anyrun.url = "github:Kirottu/anyrun";
+    walker = {
+      url = "github:abenz1267/walker";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+    };
 
     # For now, until that hyprland recompilation thing is fixed
     waybar = {

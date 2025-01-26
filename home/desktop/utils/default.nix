@@ -1,8 +1,8 @@
 _: {
   imports = [
     ./mako.nix
-    ./anyrun
     ./rofi
+    ./walker
     ./waybar
   ];
 }
