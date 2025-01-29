@@ -1,14 +1,5 @@
-{
-  lib,
-  pkgs,
-  ...
-}: {
-  home = {
-    packages = with pkgs; [bemoji];
-    sessionVariables = {
-      BEMOJI_PICKER_CMD = "${lib.getExe pkgs.fuzzel} --dmenu";
-    };
-  };
+{pkgs, ...}: {
+  home.packages = with pkgs; [bemoji];
   programs.fuzzel = {
     enable = true;
     settings = {

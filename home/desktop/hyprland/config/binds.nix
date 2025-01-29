@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: {
   wayland.windowManager.hyprland.settings = {
@@ -15,7 +16,7 @@
       "$mainMod, J, togglesplit," # dwindle
 
       "Alt, Space, exec, fuzzel"
-      "$mainMod, period, exec, bemoji"
+      "$mainMod, period, exec, BEMOJI_PICKER_CMD='${lib.getExe pkgs.fuzzel} --dmenu' bemoji"
       "$mainMod, B, exec, killall .waybar-wrapped && waybar &"
       "$mainMod, L, exec, ${lib.getExe config.programs.hyprlock.package}"
       "$mainMod, Escape, exec, powermenu"
