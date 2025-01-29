@@ -1062,7 +1062,6 @@
         "spicetify-nix": "spicetify-nix",
         "sugoi": "sugoi",
         "tailray": "tailray",
-        "walker": "walker",
         "waybar": "waybar"
       }
     },
@@ -1225,21 +1224,6 @@
         "type": "github"
       }
     },
-    "systems_2": {
-      "locked": {
-        "lastModified": 1689347949,
-        "narHash": "sha256-12tWmuL2zgBgZkdoB6qXZsgJEH9LR3oUgpaQq2RbI80=",
-        "owner": "nix-systems",
-        "repo": "default-linux",
-        "rev": "31732fcf5e8fea42e59c2488ad31a0e651500f68",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-systems",
-        "repo": "default-linux",
-        "type": "github"
-      }
-    },
     "tailray": {
       "inputs": {
         "nixpkgs": [
@@ -1257,30 +1241,6 @@
       "original": {
         "owner": "frahz",
         "repo": "tailray",
-        "type": "github"
-      }
-    },
-    "walker": {
-      "inputs": {
-        "flake-parts": [
-          "flake-parts"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "systems": "systems_2"
-      },
-      "locked": {
-        "lastModified": 1737646530,
-        "narHash": "sha256-w43if1UiAUs8eP2VcyJDzR4hS4KWIQCUEEecjrN3HvA=",
-        "owner": "abenz1267",
-        "repo": "walker",
-        "rev": "a47c5c622acb2381313a776fb7f02d5d117e35c7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "abenz1267",
-        "repo": "walker",
         "type": "github"
       }
     },

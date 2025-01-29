@@ -1,8 +1,8 @@
 _: {
   imports = [
+    ./fuzzel.nix
     ./mako.nix
     ./rofi
-    ./walker
     ./waybar
   ];
 }
