@@ -14,12 +14,21 @@
     grim
     slurp
     satty
+    wayfreeze
     wl-clipboard
     (pkgs.writeShellScriptBin "screenshot" ''
-      grim -g "$(slurp)" - | wl-copy
+      wayfreeze --after-freeze-cmd 'grim -g "$(slurp)" - | wl-copy; killall wayfreeze'
     '')
     (pkgs.writeShellScriptBin "screenshot-edit" ''
-      grim -g "$(slurp)" - | satty -f - --output-filename ~/Pictures/Screenshots/satty-$(date '+%Y%m%d-%H:%M:%S').png --early-exit --copy-command 'wl-copy'
+      wayfreeze &
+      WAYFREEZE_PID=$!
+      sleep 0.1
+      FILENAME_IN=~/Pictures/Screenshots/satty-$(date "+%Y%m%d-%H:%M:%S").png
+      grim -g "$(slurp)" "$FILENAME_IN"
+      kill $WAYFREEZE_PID
+      FILENAME_OUT=~/Pictures/Screenshots/satty-$(date "+%Y%m%d-%H:%M:%S").png
+      satty --filename "$FILENAME_IN" --output-filename "$FILENAME_OUT" --early-exit --copy-command "wl-copy"
+      rm "$FILENAME_IN"
     '')
   ];
 
