@@ -13,6 +13,8 @@ in {
 
       # Jellyfin running in XWayland
       "tile, class:^(Jellyfin Media Player)$"
+
+      "minsize 600 400, class:^(com.gabm.satty)$"
     ];
   };
 }
