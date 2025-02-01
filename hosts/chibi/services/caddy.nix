@@ -35,14 +35,14 @@
       port = 8080;
       domain = "sugoi";
     };
+    forgejo = {
+      port = 3200;
+      domain = "git";
+    };
   };
 
   inari = {
     ip = "100.68.202.4";
-    gitea = {
-      port = 3000;
-      domain = "git";
-    };
     jellyfin = {
       port = 8096;
       domain = "jellyfin";
@@ -123,6 +123,11 @@ in {
           reverse_proxy http://${chibi.ip}:${toString chibi.sugoi.port}
         '';
       };
+      "${chibi.forgejo.domain}.${domain}" = {
+        extraConfig = ''
+          reverse_proxy http://${chibi.ip}:${toString chibi.forgejo.port}
+        '';
+      };
       "${inari.sonarr.domain}.${domain}" = {
         extraConfig = ''
           reverse_proxy http://${inari.ip}:${toString inari.sonarr.port}
@@ -151,11 +156,6 @@ in {
       "${inari.kavita.domain}.${domain}" = {
         extraConfig = ''
           reverse_proxy http://${inari.ip}:${toString inari.kavita.port}
-        '';
-      };
-      "${inari.gitea.domain}.${domain}" = {
-        extraConfig = ''
-          reverse_proxy http://${inari.ip}:${toString inari.gitea.port}
         '';
       };
       "${inari.scrutiny.domain}.${domain}" = {
