@@ -8,7 +8,6 @@
     ./hardware-configuration.nix
     ./services
     ../../modules/containers/torrent.nix
-    ../../modules/containers/gitea.nix
   ];
 
   boot = {
@@ -92,17 +91,6 @@
         "/mnt/mizu/containers/gluetun/servers.json:/gluetun/servers.json"
       ];
       vpn_info_file = config.sops.secrets.gluetun.path;
-    };
-
-    gitea = {
-      gitea_volumes = [
-        "/mnt/mizu/containers/gitea/data:/data"
-        "/etc/timezone:/etc/timezone:ro"
-      ];
-      pg_volumes = [
-        "/mnt/mizu/containers/gitea/postgres:/var/lib/postgresql/data"
-      ];
-      env_file = config.sops.secrets.gitea.path;
     };
   };
 }
