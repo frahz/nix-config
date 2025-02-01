@@ -13,9 +13,9 @@ _: {
           IdentityFile ~/.ssh/id_ed25519_servers
 
       Host git.iatze.cc
-          Hostname 100.68.202.4
+          Hostname 100.87.38.99
           IdentityFile ~/.ssh/id_ed25519
-          Port 2221
+          Port 2222
 
       Host github.com
           Hostname github.com
