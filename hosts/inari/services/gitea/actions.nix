@@ -2,7 +2,7 @@
   sops.secrets.gitea-actions-runner = {};
 
   services.gitea-actions-runner.instances.runner_1 = {
-    enable = true;
+    enable = false;
     name = "runner_1";
     url = "https://git.iatze.cc";
     tokenFile = config.sops.secrets.gitea-actions-runner.path;
