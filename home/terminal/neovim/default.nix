@@ -184,6 +184,11 @@
       pyright
       rust-analyzer
       lua-language-server
+      gopls
+      vscode-langservers-extracted
+      htmx-lsp
+      tailwindcss-language-server
+      svelte-language-server
     ];
   };
 

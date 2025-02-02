@@ -95,20 +95,6 @@ nvim_lsp.clangd.setup({
     filetypes = { "c", "cpp", "cc" },
 })
 
-nvim_lsp.bashls.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-})
-nvim_lsp.pyright.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-})
-
-nvim_lsp.ts_ls.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-})
-
 nvim_lsp.nil_ls.setup({
     on_attach = on_attach,
     auto_start = true,
@@ -129,3 +115,41 @@ nvim_lsp.nil_ls.setup({
     },
 })
 
+nvim_lsp.bashls.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+})
+nvim_lsp.pyright.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+})
+
+nvim_lsp.ts_ls.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+})
+
+nvim_lsp.gopls.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+})
+
+nvim_lsp.html.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+})
+
+nvim_lsp.htmx.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+})
+
+nvim_lsp.tailwindcss.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+})
+
+nvim_lsp.svelte.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+})
