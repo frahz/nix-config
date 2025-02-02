@@ -19,8 +19,12 @@
       port = 9123;
       domain = "freshrss";
     };
-    homarr = {
-      port = 7575;
+    # homarr = {
+    #   port = 7575;
+    #   domain = "";
+    # };
+    glance = {
+      port = 7576;
       domain = "";
     };
     linkwarden = {
@@ -88,9 +92,14 @@ in {
     '';
 
     virtualHosts = {
+      # "${domain}" = {
+      #   extraConfig = ''
+      #     reverse_proxy http://${chibi.ip}:${toString chibi.homarr.port}
+      #   '';
+      # };
       "${domain}" = {
         extraConfig = ''
-          reverse_proxy http://${chibi.ip}:${toString chibi.homarr.port}
+          reverse_proxy http://${chibi.ip}:${toString chibi.glance.port}
         '';
       };
       "${chibi.linkwarden.domain}.${domain}" = {

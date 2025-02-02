@@ -18,6 +18,7 @@ in {
       allowedUDPPorts = [7575];
     };
 
+    # TODO: fully remove once I add support for jellyseerr and sonarr calendar events to glance
     virtualisation.oci-containers.containers.homarr = {
       autoStart = true;
       image = "ghcr.io/ajnart/homarr:0.15.3";
