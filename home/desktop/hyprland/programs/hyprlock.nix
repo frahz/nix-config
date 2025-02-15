@@ -40,7 +40,6 @@
           check_color = "rgb(f9e2af)";
           fail_color = "rgb(f38ba8)";
           fail_text = ''<span font_family="Iosevka">$FAIL <b>($ATTEMPTS)</b></span>'';
-          fail_transition = 300;
 
           placeholder_text = ''<span font_family="Iosevka"><b>Password...</b></span>'';
           swap_font_color = false;

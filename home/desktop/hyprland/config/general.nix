@@ -1,11 +1,11 @@
-_: {
+{config, ...}: {
   wayland.windowManager.hyprland = {
     settings = {
       monitor = [
         "HDMI-A-1,2560x1440@143.91, 0x0, auto"
       ];
       env = [
-        "XCURSOR_SIZE,22"
+        "XCURSOR_SIZE,${toString config.home.pointerCursor.size}"
       ];
       input = {
         kb_layout = "us";
