@@ -52,6 +52,7 @@
       alsa.support32Bit = true;
       pulse.enable = true;
     };
+    tailscale.useRoutingFeatures = "client";
     xserver = {
       enable = true;
       xkb = {
