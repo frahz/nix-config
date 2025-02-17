@@ -1293,11 +1293,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1736215694,
-        "narHash": "sha256-c9FIPv6s1+lBUwtybQAEaqVHvBCRMtYJXPSCUOkZwsY=",
+        "lastModified": 1739826923,
+        "narHash": "sha256-cL39HPsJL57cdSyOPMzfq/Tf7EggJWlYn6UGZX48MDI=",
         "owner": "frahz",
         "repo": "tailray",
-        "rev": "fba69fcd5e23635cc983eee78fe426492d073fec",
+        "rev": "611ec8811cd55c4210d1f39e10b4184bd63294da",
         "type": "github"
       },
       "original": {
