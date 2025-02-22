@@ -40,6 +40,8 @@ in {
     obs-studio
     obsidian
     # feishin
+    typst
+
     inputs.hyprpicker.packages.${pkgs.system}.hyprpicker
   ];
 

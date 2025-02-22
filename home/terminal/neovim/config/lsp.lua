@@ -153,3 +153,8 @@ nvim_lsp.svelte.setup({
     on_attach = on_attach,
     capabilities = capabilities,
 })
+
+nvim_lsp.tinymist.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+})
