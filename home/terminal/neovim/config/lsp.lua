@@ -157,4 +157,7 @@ nvim_lsp.svelte.setup({
 nvim_lsp.tinymist.setup({
     on_attach = on_attach,
     capabilities = capabilities,
+    settings = {
+        formatterMode = "typstyle",
+    },
 })

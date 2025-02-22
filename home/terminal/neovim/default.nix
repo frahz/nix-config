@@ -204,6 +204,9 @@
       tailwindcss-language-server
       svelte-language-server
       tinymist
+
+      # Formatters
+      typstyle
     ];
   };
 
