@@ -49,7 +49,7 @@ in {
         SSH_LISTEN_PORT = sshPort;
       };
       service = {
-        DISABLE_REGISTRATION = false;
+        DISABLE_REGISTRATION = true;
       };
       session = {
         COOKIE_SECURE = true;

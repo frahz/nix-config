@@ -39,17 +39,7 @@
                   username = "frahz";
                   password = "\${ADGUARD_PASSWORD}";
                 }
-                {
-                  type = "twitch-channels";
-                  channels = [
-                    "theprimeagen"
-                    "s0mcs"
-                    "tarik"
-                    "Ottomated"
-                    "hyoon"
-                    "zanderfps"
-                  ];
-                }
+                # TODO: add media-requests widget here: https://github.com/glanceapp/glance/pull/345
               ];
             }
             {
@@ -64,110 +54,71 @@
                     {
                       title = "jellyfin";
                       url = "https://jellyfin.iatze.cc";
-                      icon = "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/jellyfin.svg";
+                      icon = "di:jellyfin";
                     }
                     {
                       title = "scrutiny";
                       url = "https://scrutiny.iatze.cc";
-                      icon = "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/scrutiny.svg";
+                      icon = "di:scrutiny";
                     }
                     {
                       title = "sonarr";
                       url = "https://sonarr.iatze.cc";
-                      icon = "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/sonarr.svg";
+                      icon = "di:sonarr";
                     }
                     {
                       title = "forgejo";
                       url = "https://git.iatze.cc";
-                      icon = "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/forgejo.svg";
+                      icon = "di:forgejo";
                     }
                     {
                       title = "adguard";
                       url = "https://adguard.iatze.cc";
-                      icon = "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/adguard-home.svg";
+                      icon = "di:adguard-home";
                     }
                     {
                       title = "radarr";
                       url = "https://radarr.iatze.cc";
-                      icon = "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/radarr.svg";
+                      icon = "di:radarr";
                     }
                     {
                       title = "jellyseerr";
                       url = "https://jellyseerr.iatze.cc";
-                      icon = "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/jellyseerr.svg";
+                      icon = "di:jellyseerr";
                     }
                     {
                       title = "kavita";
                       url = "https://kavita.iatze.cc";
-                      icon = "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/kavita.svg";
+                      icon = "di:kavita";
                     }
                     {
                       title = "freshrss";
                       url = "https://freshrss.iatze.cc";
-                      icon = "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/freshrss.svg";
+                      icon = "di:freshrss";
                     }
                     {
                       title = "qbittorrent";
                       url = "https://qb.iatze.cc";
-                      icon = "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/qbittorrent.svg";
+                      icon = "di:qbittorrent";
                     }
                     {
                       title = "linkwarden";
                       url = "https://lw.iatze.cc";
-                      icon = "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/linkwarden.png";
+                      icon = "di:linkwarden.png";
                     }
                     {
                       title = "navidrome";
                       url = "https://music.iatze.cc";
-                      icon = "https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/navidrome.svg";
+                      icon = "di:navidrome";
                     }
                   ];
-                }
-                {
-                  type = "group";
-                  widgets = let
-                    shared-properties = {
-                      collapse-after = 10;
-                      limit = 13;
-                      cache = "1h";
-                    };
-                  in [
-                    ({
-                        type = "hacker-news";
-                      }
-                      // shared-properties)
-                    ({
-                        type = "rss";
-                        feeds = [
-                          {
-                            url = "https://freshrss.iatze.cc/i/?a=rss&state=3";
-                            title = "FreshRSS";
-                          }
-                        ];
-                      }
-                      // shared-properties)
-                    ({
-                        type = "reddit";
-                        subreddit = "selfhosted";
-                      }
-                      // shared-properties)
-                  ];
-                }
-              ];
-            }
-            {
-              size = "small";
-              widgets = [
-                {
-                  type = "weather";
-                  location = "San Diego, California, United States";
-                  units = "imperial";
                 }
                 {
                   type = "bookmarks";
                   style = "dynamic-columns-experimental";
                   groups = [
                     {
+                      title = "Main";
                       color = "267 84 81";
                       links = [
                         {
@@ -177,6 +128,10 @@
                         {
                           title = "GitHub";
                           url = "https://github.com";
+                        }
+                        {
+                          title = "FotMob";
+                          url = "https://fotmob.com";
                         }
                         {
                           title = "AniList";
@@ -228,6 +183,59 @@
                         }
                       ];
                     }
+                  ];
+                }
+                {
+                  type = "group";
+                  widgets = let
+                    shared-properties = {
+                      collapse-after = 7;
+                      limit = 10;
+                      cache = "30m";
+                    };
+                  in [
+                    ({
+                        type = "hacker-news";
+                      }
+                      // shared-properties)
+                    ({
+                        type = "rss";
+                        feeds = [
+                          {
+                            url = "https://freshrss.iatze.cc/i/?a=rss&state=3";
+                            title = "FreshRSS";
+                          }
+                        ];
+                      }
+                      // shared-properties)
+                    ({
+                        type = "reddit";
+                        subreddit = "selfhosted";
+                      }
+                      // shared-properties)
+                  ];
+                }
+              ];
+            }
+            {
+              size = "small";
+              widgets = [
+                {
+                  type = "weather";
+                  location = "San Diego, California, United States";
+                  units = "imperial";
+                }
+                {
+                  type = "twitch-channels";
+                  channels = [
+                    "theprimeagen"
+                    "s0mcs"
+                    "tarik"
+                    "Ottomated"
+                    "hyoon"
+                    "zanderfps"
+                    "tenz"
+                    "xeppaa"
                   ];
                 }
                 {
