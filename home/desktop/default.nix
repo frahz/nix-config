@@ -31,6 +31,7 @@ in {
     dconf
     xfce.thunar # file manager for now
     gimp
+    gnome-calculator
     ffmpeg
     jellyfin-media-player-wayland
     pavucontrol
