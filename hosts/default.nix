@@ -8,11 +8,13 @@
   catppuccin-module = inputs.catppuccin.nixosModules.catppuccin;
   sops-module = inputs.sops-nix.nixosModules.default;
   raulyrs-module = inputs.raulyrs.nixosModules.default;
+  lix-module = inputs.lix-module.nixosModules.default;
 
   defaultModules = [
     catppuccin-module
     hm-module
     sops-module
+    lix-module
   ];
 in {
   flake.nixosConfigurations = let

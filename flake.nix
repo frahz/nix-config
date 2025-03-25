@@ -11,6 +11,11 @@
 
     flake-parts.url = "github:hercules-ci/flake-parts";
 
+    lix-module = {
+      url = "https://git.lix.systems/lix-project/nixos-module/archive/release-2.92.tar.gz";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     hyprland.url = "git+https://github.com/hyprwm/Hyprland";
     hypridle = {
       url = "github:hyprwm/hypridle";
