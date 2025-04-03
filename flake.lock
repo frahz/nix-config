@@ -1419,11 +1419,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1739826923,
-        "narHash": "sha256-cL39HPsJL57cdSyOPMzfq/Tf7EggJWlYn6UGZX48MDI=",
+        "lastModified": 1743644832,
+        "narHash": "sha256-Aga1FBvRF2ddzH2hJOFbCaSu6PJ879MwFtAb4pJQPec=",
         "owner": "frahz",
         "repo": "tailray",
-        "rev": "611ec8811cd55c4210d1f39e10b4184bd63294da",
+        "rev": "6716fe6109fb104a5d84c728fb3e1659abaa184d",
         "type": "github"
       },
       "original": {
