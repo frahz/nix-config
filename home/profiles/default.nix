@@ -9,11 +9,11 @@
     "frahz@desktop" = [
       ../.
       ./anmoku.nix
-      inputs.catppuccin.homeManagerModules.catppuccin
+      inputs.catppuccin.homeModules.catppuccin
     ];
     default = [
       ../.
-      inputs.catppuccin.homeManagerModules.catppuccin
+      inputs.catppuccin.homeModules.catppuccin
     ];
   };
 
