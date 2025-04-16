@@ -1,6 +1,6 @@
 _: {
   imports = [
-    ./tailray.nix
+    # ./tailray.nix
   ];
 
   services.udiskie = {
