@@ -2,7 +2,7 @@ _: {
   imports = [
     ./fuzzel.nix
     ./mako.nix
-    ./rofi
+    ./powermenu.nix
     ./waybar
   ];
 }
