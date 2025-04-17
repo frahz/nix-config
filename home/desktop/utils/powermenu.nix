@@ -19,7 +19,7 @@
       yes="Yes"
       no="No"
 
-      chosen=$(echo -e "$lock\n$suspend\n$logout\n$reboot\n$shutdown" | $fuzzel --dmenu --lines 5 --prompt " " --placeholder "$uptime")
+      chosen=$(echo -e "$lock\n$suspend\n$logout\n$reboot\n$shutdown" | $fuzzel --dmenu --lines 5 --prompt "  " --placeholder "$uptime")
 
       confirm_exit() {
         echo -e "$yes\n$no" | $fuzzel --dmenu --lines 2 --prompt "Are you sure? "
