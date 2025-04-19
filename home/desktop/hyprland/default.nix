@@ -12,6 +12,7 @@
 
   home.packages = with pkgs; [
     grim
+    hyprland-preview-share-picker
     slurp
     satty
     wayfreeze
@@ -44,5 +45,14 @@
       ];
     };
     xwayland.enable = true;
+  };
+
+  xdg.configFile."hypr/xdph.conf" = {
+    text = ''
+      screencopy {
+        custom_picker_binary = ${pkgs.hyprland-preview-share-picker}/bin/hyprland-preview-share-picker
+        allow_token_by_default = true
+      }
+    '';
   };
 }
