@@ -34,7 +34,7 @@
       vim = "nvim";
     };
 
-    initExtra = ''
+    initContent = ''
       # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
       zstyle ':completion:*' menu no
       # preview directory's content with exa when completing cd
