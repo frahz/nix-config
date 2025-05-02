@@ -8,7 +8,6 @@
   imports = [
     ./services
     ./hardware-configuration.nix
-    ../../modules/containers/homarr.nix
     ../../modules/containers/linkwarden.nix
     ../../modules/containers/excalidraw.nix
     ../../modules/containers/freshrss.nix
@@ -99,13 +98,6 @@
 
   # Containers
   container = {
-    homarr = {
-      volumes = [
-        "/mnt/kuki/containers/homarr/configs:/app/data/configs"
-        "/mnt/kuki/containers/homarr/icons:/app/public/icons"
-        "/mnt/kuki/containers/homarr/data:/data"
-      ];
-    };
     linkwarden = {
       volumes = [
         "/mnt/kuki/containers/linkwarden/data:/data/data"
