@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: let
   domain = "iatze.cc";
@@ -19,10 +20,6 @@
       port = 9123;
       domain = "freshrss";
     };
-    # homarr = {
-    #   port = 7575;
-    #   domain = "";
-    # };
     glance = {
       port = 7576;
       domain = "";
@@ -80,7 +77,7 @@ in {
   services.caddy = {
     enable = true;
     email = "me@frahz.dev";
-    package = pkgs.caddy.withPlugins {
+    package = inputs.nixpkgs-caddy.legacyPackages.${pkgs.system}.caddy.withPlugins {
       plugins = ["github.com/caddy-dns/porkbun@v0.2.1"];
       hash = "sha256-ayd1WnjBjQOIXtiCkR/aWML2Nc4eRyuTugsjHXOU5uQ=";
     };
@@ -92,11 +89,6 @@ in {
     '';
 
     virtualHosts = {
-      # "${domain}" = {
-      #   extraConfig = ''
-      #     reverse_proxy http://${chibi.ip}:${toString chibi.homarr.port}
-      #   '';
-      # };
       "${domain}" = {
         extraConfig = ''
           reverse_proxy http://${chibi.ip}:${toString chibi.glance.port}

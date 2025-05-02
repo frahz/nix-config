@@ -4,6 +4,9 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    # Needed until https://github.com/caddy-dns/porkbun/issues/24 is fixed
+    nixpkgs-caddy.url = "github:NixOS/nixpkgs/229640ed3a1d0a1c637a729f0db1f482c1ee063b";
+
     home.url = "github:nix-community/home-manager";
     home.inputs.nixpkgs.follows = "nixpkgs";
 

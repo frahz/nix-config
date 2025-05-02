@@ -905,6 +905,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-caddy": {
+      "locked": {
+        "lastModified": 1740268709,
+        "narHash": "sha256-Yu212AvZBJNllYWo8/TU95RlcUrNqaEgtyOFLeLdD44=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "229640ed3a1d0a1c637a729f0db1f482c1ee063b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "229640ed3a1d0a1c637a729f0db1f482c1ee063b",
+        "type": "github"
+      }
+    },
     "nixpkgs-lib": {
       "locked": {
         "lastModified": 1743296961,
@@ -1178,6 +1194,7 @@
         "hyprpicker": "hyprpicker",
         "lix-module": "lix-module",
         "nixpkgs": "nixpkgs_4",
+        "nixpkgs-caddy": "nixpkgs-caddy",
         "pre-commit-hooks": "pre-commit-hooks_2",
         "raulyrs": "raulyrs",
         "sops-nix": "sops-nix",
