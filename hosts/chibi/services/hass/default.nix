@@ -3,6 +3,13 @@
   pkgs,
   ...
 }: {
+  sops.secrets."hass-secrets" = {
+    sopsFile = ../../../../secrets/hass-secrets.yaml;
+    owner = "hass";
+    group = "hass";
+    path = "${config.services.home-assistant.configDir}/secrets.yaml";
+    restartUnits = ["home-assistant.service"];
+  };
   services.home-assistant = {
     enable = true;
     openFirewall = true;
@@ -26,6 +33,8 @@
         unit_system = "us_customary";
         temperature_unit = "F";
         country = "US";
+        latitude = "!secret latitude";
+        longitude = "!secret longitude";
       };
       http = {
         use_x_forwarded_for = true;
