@@ -8,6 +8,7 @@
     openFirewall = true;
 
     extraComponents = [
+      "aranet"
       "cast"
       "isal"
       "met"

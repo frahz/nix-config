@@ -28,6 +28,7 @@
   };
 
   hardware = {
+    bluetooth.enable = true;
     graphics = {
       # Hardware Accelerated Video
       enable = true;
