@@ -40,6 +40,10 @@
       port = 3200;
       domain = "git";
     };
+    home-assistant = {
+      port = 8123;
+      domain = "home";
+    };
   };
 
   inari = {
@@ -127,6 +131,11 @@ in {
       "${chibi.forgejo.domain}.${domain}" = {
         extraConfig = ''
           reverse_proxy http://${chibi.ip}:${toString chibi.forgejo.port}
+        '';
+      };
+      "${chibi.home-assistant.domain}.${domain}" = {
+        extraConfig = ''
+          reverse_proxy http://${chibi.ip}:${toString chibi.home-assistant.port}
         '';
       };
       "${inari.sonarr.domain}.${domain}" = {

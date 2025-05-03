@@ -4,6 +4,7 @@ _: {
     ./caddy.nix
     ./forgejo.nix
     ./glance.nix
+    ./hass
     ./navidrome.nix
   ];
 }
