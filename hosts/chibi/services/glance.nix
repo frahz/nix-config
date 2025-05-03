@@ -111,6 +111,16 @@
                       url = "https://music.iatze.cc";
                       icon = "di:navidrome";
                     }
+                    {
+                      title = "home-assistant";
+                      url = "https://home.iatze.cc";
+                      icon = "di:home-assistant";
+                    }
+                    {
+                      title = "sugoi";
+                      url = "https://sugoi.iatze.cc";
+                      icon = "https://sugoi.iatze.cc/assets/favicon.webp";
+                    }
                   ];
                 }
                 {
@@ -168,6 +178,10 @@
                         {
                           title = "Mastodon";
                           url = "https://phanpy.social/";
+                        }
+                        {
+                          title = "Bluesky";
+                          url = "https://bsky.app";
                         }
                         {
                           title = "Claude";
