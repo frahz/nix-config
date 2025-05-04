@@ -9,7 +9,7 @@
   chibi = {
     ip = "100.87.38.99";
     adguardhome = {
-      port = 8053;
+      inherit (config.services.adguardhome) port;
       domain = "adguard";
     };
     excalidraw = {
@@ -21,7 +21,7 @@
       domain = "freshrss";
     };
     glance = {
-      port = 7576;
+      inherit (config.services.glance.settings.server) port;
       domain = "";
     };
     linkwarden = {
@@ -29,19 +29,19 @@
       domain = "lw";
     };
     navidrome = {
-      port = 4533;
+      port = config.services.navidrome.settings.Port;
       domain = "music";
     };
     sugoi = {
-      port = 8080;
+      inherit (config.services.sugoi) port;
       domain = "sugoi";
     };
     forgejo = {
-      port = 3200;
+      port = config.services.forgejo.settings.server.HTTP_PORT;
       domain = "git";
     };
     home-assistant = {
-      port = 8123;
+      port = config.services.home-assistant.config.http.server_port;
       domain = "home";
     };
   };
