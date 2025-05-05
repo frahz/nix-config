@@ -15,6 +15,8 @@ in {
     ];
   };
 
+  users.users.immich.extraGroups = ["video" "render"];
+
   services.caddy.virtualHosts."photos.iatze.cc" = let
     cfg = config.services.immich;
   in {
