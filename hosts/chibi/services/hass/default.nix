@@ -47,6 +47,20 @@
       frontend = {
         themes = "!include_dir_merge_named themes";
       };
+      rest_command = {
+        wakeup_server = {
+          url = "https://sugoi.iatze.cc/api/wake";
+          method = "POST";
+          content_type = "application/x-www-form-urlencoded";
+          payload = "mac_address=9C:6B:00:22:FC:96";
+        };
+        sleep_server = {
+          url = "https://sugoi.iatze.cc/api/sleep";
+          method = "POST";
+          content_type = "application/x-www-form-urlencoded";
+          payload = "address=inari:8253";
+        };
+      };
 
       "automation manual" = [
         {
