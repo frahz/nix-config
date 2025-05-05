@@ -79,6 +79,15 @@
       ACTION=="add" SUBSYSTEM=="pci" ATTR{vendor}=="0x1022" ATTR{device}=="0x161e" ATTR{power/wakeup}="disabled"
     '';
   };
+
+  virtualisation = {
+    oci-containers.backend = "docker";
+    docker = {
+      enable = true;
+      autoPrune.enable = true;
+    };
+  };
+
   security = {
     rtkit.enable = true;
     polkit.enable = true;
