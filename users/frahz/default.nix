@@ -7,7 +7,7 @@
 in {
   users.users.${username} = {
     isNormalUser = true;
-    extraGroups = ["wheel" "networkmanager" "audio" "video" "lp" "docker"];
+    extraGroups = ["wheel" "networkmanager" "audio" "video" "lp" "docker" "immich"];
     shell = pkgs.zsh;
     description = "frahz";
     uid = 1000;

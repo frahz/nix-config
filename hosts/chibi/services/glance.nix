@@ -117,6 +117,11 @@
                       icon = "di:home-assistant";
                     }
                     {
+                      title = "immich";
+                      url = "https://photos.iatze.cc";
+                      icon = "di:immich";
+                    }
+                    {
                       title = "sugoi";
                       url = "https://sugoi.iatze.cc";
                       icon = "https://sugoi.iatze.cc/assets/favicon.webp";

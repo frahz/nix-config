@@ -5,6 +5,7 @@ _: {
     ./forgejo.nix
     ./glance.nix
     ./hass
+    ./immich.nix
     ./navidrome.nix
   ];
 }
