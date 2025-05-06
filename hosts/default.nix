@@ -5,10 +5,11 @@
   ...
 }: let
   hm-module = inputs.home.nixosModules.home-manager;
-  catppuccin-module = inputs.catppuccin.nixosModules.catppuccin;
-  sops-module = inputs.sops-nix.nixosModules.default;
-  raulyrs-module = inputs.raulyrs.nixosModules.default;
   lix-module = inputs.lix-module.nixosModules.default;
+  sops-module = inputs.sops-nix.nixosModules.default;
+  sugoi-module = inputs.sugoi.nixosModules.default;
+  raulyrs-module = inputs.raulyrs.nixosModules.default;
+  catppuccin-module = inputs.catppuccin.nixosModules.catppuccin;
 
   defaultModules = [
     catppuccin-module
@@ -29,6 +30,7 @@ in {
           ./chibi
           ./configuration.nix
           raulyrs-module
+          sugoi-module
           {
             home-manager = {
               useGlobalPkgs = true;

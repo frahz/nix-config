@@ -13,6 +13,7 @@ in {
     ./hass
     ./immich.nix
     ./navidrome.nix
+    ./sugoi.nix
   ];
 
   options.homelab = {

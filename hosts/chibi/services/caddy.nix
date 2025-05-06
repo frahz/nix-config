@@ -16,10 +16,6 @@
       port = 3000;
       domain = "lw";
     };
-    sugoi = {
-      inherit (config.services.sugoi) port;
-      domain = "sugoi";
-    };
   };
 
   inari = {
@@ -77,11 +73,6 @@ in {
       "${chibi.freshrss.domain}.${domain}" = {
         extraConfig = ''
           reverse_proxy http://${chibi.ip}:${toString chibi.freshrss.port}
-        '';
-      };
-      "${chibi.sugoi.domain}.${domain}" = {
-        extraConfig = ''
-          reverse_proxy http://${chibi.ip}:${toString chibi.sugoi.port}
         '';
       };
       "${inari.sonarr.domain}.${domain}" = {
