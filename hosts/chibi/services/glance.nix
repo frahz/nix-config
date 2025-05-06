@@ -1,7 +1,16 @@
-{config, ...}: {
+{config, ...}: let
+  host = "0.0.0.0";
+  port = 7576;
+in {
   sops.secrets.glance = {};
   systemd.services.glance = {
     serviceConfig.EnvironmentFile = config.sops.secrets.glance.path;
+  };
+
+  services.caddy.virtualHosts.${config.homelab.domain} = {
+    extraConfig = ''
+      reverse_proxy http://${host}:${toString port}
+    '';
   };
 
   services.glance = {
@@ -9,8 +18,8 @@
     openFirewall = true;
     settings = {
       server = {
-        host = "0.0.0.0";
-        port = 7576;
+        inherit host;
+        inherit port;
       };
       branding = {
         hide-footer = true;

@@ -7,8 +7,9 @@
   inherit (lib.modules) mkAfter mkForce;
   inherit (lib.strings) removePrefix removeSuffix;
 
+  httpPort = 3200;
   sshPort = 2222;
-  domain = "git.iatze.cc";
+  domain = "git.${config.homelab.domain}";
 
   # stole from https://github.com/isabelroses/dotfiles/blob/main/modules/nixos/services/selfhosted/forgejo.nix
   theme = pkgs.fetchzip {
@@ -42,7 +43,7 @@ in {
       server = {
         DOMAIN = domain;
         ROOT_URL = "https://${domain}";
-        HTTP_PORT = 3200;
+        HTTP_PORT = httpPort;
         START_SSH_SERVER = true;
         BUILTIN_SSH_SERVER_USER = "git";
         SSH_PORT = sshPort;
@@ -67,5 +68,11 @@ in {
         );
       };
     };
+  };
+
+  services.caddy.virtualHosts.${domain} = {
+    extraConfig = ''
+      reverse_proxy http://localhost:${toString httpPort}
+    '';
   };
 }

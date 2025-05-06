@@ -4,14 +4,10 @@
   inputs,
   ...
 }: let
-  domain = "iatze.cc";
+  inherit (config.homelab) domain;
 
   chibi = {
     ip = "100.87.38.99";
-    adguardhome = {
-      inherit (config.services.adguardhome) port;
-      domain = "adguard";
-    };
     excalidraw = {
       port = 3030;
       domain = "excalidraw";
@@ -20,29 +16,13 @@
       port = 9123;
       domain = "freshrss";
     };
-    glance = {
-      inherit (config.services.glance.settings.server) port;
-      domain = "";
-    };
     linkwarden = {
       port = 3000;
       domain = "lw";
     };
-    navidrome = {
-      port = config.services.navidrome.settings.Port;
-      domain = "music";
-    };
     sugoi = {
       inherit (config.services.sugoi) port;
       domain = "sugoi";
-    };
-    forgejo = {
-      port = config.services.forgejo.settings.server.HTTP_PORT;
-      domain = "git";
-    };
-    home-assistant = {
-      port = config.services.home-assistant.config.http.server_port;
-      domain = "home";
     };
   };
 
@@ -93,11 +73,6 @@ in {
     '';
 
     virtualHosts = {
-      "${domain}" = {
-        extraConfig = ''
-          reverse_proxy http://${chibi.ip}:${toString chibi.glance.port}
-        '';
-      };
       "${chibi.linkwarden.domain}.${domain}" = {
         extraConfig = ''
           reverse_proxy http://${chibi.ip}:${toString chibi.linkwarden.port}
@@ -113,29 +88,9 @@ in {
           reverse_proxy http://${chibi.ip}:${toString chibi.excalidraw.port}
         '';
       };
-      "${chibi.adguardhome.domain}.${domain}" = {
-        extraConfig = ''
-          reverse_proxy http://${chibi.ip}:${toString chibi.adguardhome.port}
-        '';
-      };
-      "${chibi.navidrome.domain}.${domain}" = {
-        extraConfig = ''
-          reverse_proxy http://${chibi.ip}:${toString chibi.navidrome.port}
-        '';
-      };
       "${chibi.sugoi.domain}.${domain}" = {
         extraConfig = ''
           reverse_proxy http://${chibi.ip}:${toString chibi.sugoi.port}
-        '';
-      };
-      "${chibi.forgejo.domain}.${domain}" = {
-        extraConfig = ''
-          reverse_proxy http://${chibi.ip}:${toString chibi.forgejo.port}
-        '';
-      };
-      "${chibi.home-assistant.domain}.${domain}" = {
-        extraConfig = ''
-          reverse_proxy http://${chibi.ip}:${toString chibi.home-assistant.port}
         '';
       };
       "${inari.sonarr.domain}.${domain}" = {

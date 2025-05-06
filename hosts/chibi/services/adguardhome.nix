@@ -1,4 +1,4 @@
-_: let
+{config, ...}: let
   dns_port = 53;
   ui_port = 8053;
 in {
@@ -46,5 +46,11 @@ in {
         }
       ];
     };
+  };
+
+  services.caddy.virtualHosts."adguard.${config.homelab.domain}" = {
+    extraConfig = ''
+      reverse_proxy http://localhost:${toString ui_port}
+    '';
   };
 }

@@ -1,4 +1,10 @@
-_: {
+{
+  lib,
+  config,
+  ...
+}: let
+  cfg = config.homelab;
+in {
   imports = [
     ./adguardhome.nix
     ./caddy.nix
@@ -8,4 +14,14 @@ _: {
     ./immich.nix
     ./navidrome.nix
   ];
+
+  options.homelab = {
+    domain = lib.mkOption {
+      default = "iatze.cc";
+      type = lib.types.str;
+      description = ''
+        Base domain for homelab services.
+      '';
+    };
+  };
 }
