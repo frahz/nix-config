@@ -8,10 +8,6 @@
 
   chibi = {
     ip = "100.87.38.99";
-    excalidraw = {
-      port = 3030;
-      domain = "excalidraw";
-    };
     freshrss = {
       port = 9123;
       domain = "freshrss";
@@ -81,11 +77,6 @@ in {
       "${chibi.freshrss.domain}.${domain}" = {
         extraConfig = ''
           reverse_proxy http://${chibi.ip}:${toString chibi.freshrss.port}
-        '';
-      };
-      "${chibi.excalidraw.domain}.${domain}" = {
-        extraConfig = ''
-          reverse_proxy http://${chibi.ip}:${toString chibi.excalidraw.port}
         '';
       };
       "${chibi.sugoi.domain}.${domain}" = {

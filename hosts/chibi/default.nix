@@ -9,7 +9,6 @@
     ./services
     ./hardware-configuration.nix
     ../../modules/containers/linkwarden.nix
-    ../../modules/containers/excalidraw.nix
     ../../modules/containers/freshrss.nix
   ];
 
