@@ -9,7 +9,7 @@ table.insert(runtime_path, "lua/?/init.lua")
 local on_attach = function(client)
     -- Don't know what this does ??
     -- require("cmp").on_attach(client)
-    local bufopts = { noremap=true, silent=true, buffer=bufnr }
+    local bufopts = { noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
@@ -137,12 +137,13 @@ nvim_lsp.gopls.setup({
 nvim_lsp.html.setup({
     on_attach = on_attach,
     capabilities = capabilities,
+    filetypes = { "django-html", "htmldjango", "html", "templ" }
 })
 
-nvim_lsp.htmx.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-})
+-- nvim_lsp.htmx.setup({
+--     on_attach = on_attach,
+--     capabilities = capabilities,
+-- })
 
 nvim_lsp.tailwindcss.setup({
     on_attach = on_attach,
