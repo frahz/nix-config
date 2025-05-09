@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  inputs,
   ...
 }: let
   inherit (config.homelab) domain;
@@ -53,9 +52,9 @@ in {
   services.caddy = {
     enable = true;
     email = "me@frahz.dev";
-    package = inputs.nixpkgs-caddy.legacyPackages.${pkgs.system}.caddy.withPlugins {
-      plugins = ["github.com/caddy-dns/porkbun@v0.2.1"];
-      hash = "sha256-ayd1WnjBjQOIXtiCkR/aWML2Nc4eRyuTugsjHXOU5uQ=";
+    package = pkgs.caddy.withPlugins {
+      plugins = ["github.com/caddy-dns/porkbun@v0.3.0"];
+      hash = "sha256-wIM5CAdQedQL/kGEFb8GAxBJB4HtT/NXVDG2f4jECA4=";
     };
     globalConfig = ''
       acme_dns porkbun {
