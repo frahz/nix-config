@@ -1,10 +1,12 @@
 _: {
   services.mako = {
     enable = true;
-    defaultTimeout = 5000;
-    font = "Iosevka 14";
-    borderSize = 1;
-    borderRadius = 5;
+    settings = {
+      default-timeout = 5000;
+      font = "Iosevka 14";
+      border-size = 1;
+      border-radius = 5;
+    };
   };
   catppuccin.mako.enable = true;
 }
