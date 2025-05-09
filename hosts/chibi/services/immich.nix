@@ -33,6 +33,5 @@ in {
   fileSystems."/var/lib/immich" = {
     device = mediaDir;
     options = ["bind"];
-    neededForBoot = true; # if necessary
   };
 }
