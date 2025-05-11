@@ -54,6 +54,7 @@
 
       set -g @catppuccin_status_left_separator "█"
       set -g @catppuccin_status_right_separator "█"
+      set -g @catppuccin_directory_icon "  "
       set -g @catppuccin_directory_text " #{b:pane_current_path}"
     '';
   };
