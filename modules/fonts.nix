@@ -33,6 +33,7 @@
       inputs.apple-fonts.packages.${pkgs.system}.ny
 
       inputs.private-flake.packages.${pkgs.system}.berkeley-mono
+      inputs.private-flake.packages.${pkgs.system}.berkeley-mono-semi-condensed
     ];
 
     fontconfig = {

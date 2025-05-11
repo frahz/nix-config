@@ -9,9 +9,9 @@
         anchor = "top";
         y-margin = 360;
         lines = 5;
-        width = 48;
+        width = 40;
         tabs = 4;
-        horizontal-pad = 24;
+        horizontal-pad = 20;
         line-height = 30;
       };
       colors = {

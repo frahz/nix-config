@@ -1166,11 +1166,11 @@
         "nixpkgs": "nixpkgs_5"
       },
       "locked": {
-        "lastModified": 1746916925,
-        "narHash": "sha256-y7/ad7E0KnAIkCRpb+Bxk7NEcK0XoDCLs+NpjjDaW8o=",
+        "lastModified": 1746926019,
+        "narHash": "sha256-vg3PrUHRQNKp8qAUZAQBqiycewHLFHP/i3w+rLWVoOw=",
         "ref": "refs/heads/main",
-        "rev": "107d42db6c6b0e390b7a497fd203b19be4c627eb",
-        "revCount": 1,
+        "rev": "7777c23870ba532618bbb26aabdc7a22279a8c6b",
+        "revCount": 2,
         "type": "git",
         "url": "ssh://git@github.com/frahz/private-flake.git"
       },
