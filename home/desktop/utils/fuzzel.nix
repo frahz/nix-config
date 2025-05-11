@@ -4,7 +4,7 @@
     enable = true;
     settings = {
       main = {
-        font = "Iosevka:size=12";
+        font = "Berkeley Mono:size=12";
         icon-theme = "Papirus";
         anchor = "top";
         y-margin = 360;

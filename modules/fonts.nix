@@ -31,6 +31,8 @@
       material-design-icons
 
       inputs.apple-fonts.packages.${pkgs.system}.ny
+
+      inputs.private-flake.packages.${pkgs.system}.berkeley-mono
     ];
 
     fontconfig = {
@@ -40,7 +42,7 @@
         addAll = builtins.mapAttrs (_: v: v ++ ["Twitter Color Emoji"] ++ ["Symbols Nerd Font" "Noto Sans Symbols" "Noto Sans Symbols 2"]);
       in
         addAll {
-          monospace = ["Iosevka"];
+          monospace = ["Berkeley Mono"];
           serif = ["Noto Serif"];
           sansSerif = ["Inter"];
           emoji = [];

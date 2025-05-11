@@ -76,6 +76,8 @@
     raulyrs.url = "github:frahz/rauly.rs";
     sugoi.url = "github:frahz/sugoi";
 
+    private-flake.url = "git+ssh://git@github.com/frahz/private-flake.git";
+
     tailray = {
       url = "github:frahz/tailray";
       inputs.nixpkgs.follows = "nixpkgs";

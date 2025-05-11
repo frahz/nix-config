@@ -39,9 +39,9 @@
           capslock_color = "rgb(eba0ac)";
           check_color = "rgb(f9e2af)";
           fail_color = "rgb(f38ba8)";
-          fail_text = ''<span font_family="Iosevka">$FAIL <b>($ATTEMPTS)</b></span>'';
+          fail_text = ''<span font_family="Berkeley Mono">$FAIL <b>($ATTEMPTS)</b></span>'';
 
-          placeholder_text = ''<span font_family="Iosevka"><b>Password...</b></span>'';
+          placeholder_text = ''<span font_family="Berkeley Mono"><b>Password...</b></span>'';
           swap_font_color = false;
           fade_on_empty = false;
           dots_size = 0.2;
@@ -59,7 +59,7 @@
             cmd[update:1000] echo $(date +"%A, %B %-d")
           '';
           color = "rgb(a6adc8)";
-          font_family = "Iosevka Slab";
+          font_family = "Berkeley Mono";
           position = "0, -80";
           valign = "top";
           halign = "center";

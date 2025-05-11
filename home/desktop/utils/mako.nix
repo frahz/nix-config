@@ -3,7 +3,7 @@ _: {
     enable = true;
     settings = {
       default-timeout = 5000;
-      font = "Iosevka 14";
+      font = "Berkeley Mono 14";
       border-size = 1;
       border-radius = 5;
     };

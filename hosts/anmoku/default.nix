@@ -124,26 +124,26 @@
     networkmanager = {
       enable = true;
       dns = "systemd-resolved";
-      wifi.backend = "iwd";
+      # wifi.backend = "iwd";
     };
     nameservers = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
     # Mullvad enable support: https://discourse.nixos.org/t/connected-to-mullvadvpn-but-no-internet-connection/35803/10?u=lion
     resolvconf.enable = false;
-    wireless = {
-      iwd = {
-        enable = true;
-        settings = {
-          Settings.AutoConnect = true;
-          General = {
-            EnableNetworkConfiguration = true;
-          };
-          Network = {
-            EnableIPv6 = true;
-            RoutePriorityOffset = 300;
-          };
-        };
-      };
-    };
+    # wireless = {
+    #   iwd = {
+    #     enable = true;
+    #     settings = {
+    #       Settings.AutoConnect = true;
+    #       General = {
+    #         EnableNetworkConfiguration = true;
+    #       };
+    #       Network = {
+    #         EnableIPv6 = true;
+    #         RoutePriorityOffset = 300;
+    #       };
+    #     };
+    #  };
+    # };
   };
   services.resolved = {
     enable = true;
