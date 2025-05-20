@@ -53,12 +53,6 @@
       };
     };
 
-    # For now, until that hyprland recompilation thing is fixed
-    waybar = {
-      url = "github:Alexays/Waybar";
-      # inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     # Do not follow nixpkgs as it takes forever to build each time
     # Does not matter anyway, it's just fonts
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
