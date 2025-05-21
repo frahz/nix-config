@@ -84,6 +84,7 @@
     oci-containers.backend = "docker";
     docker = {
       enable = true;
+      enableOnBoot = false;
       autoPrune.enable = true;
     };
   };
