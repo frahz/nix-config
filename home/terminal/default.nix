@@ -7,6 +7,7 @@
     ./btop.nix
     ./direnv.nix
     ./fzf.nix
+    ./jujutsu.nix
     ./tmux.nix
     ./ssh.nix
   ];
