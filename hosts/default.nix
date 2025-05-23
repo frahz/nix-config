@@ -5,7 +5,6 @@
   ...
 }: let
   hm-module = inputs.home.nixosModules.home-manager;
-  lix-module = inputs.lix-module.nixosModules.default;
   sops-module = inputs.sops-nix.nixosModules.default;
   sugoi-module = inputs.sugoi.nixosModules.default;
   raulyrs-module = inputs.raulyrs.nixosModules.default;
@@ -15,7 +14,6 @@
     catppuccin-module
     hm-module
     sops-module
-    lix-module
   ];
 in {
   flake.nixosConfigurations = let
