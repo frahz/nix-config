@@ -1,10 +1,5 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
-    inputs.hyprland.nixosModules.default
     ./hardware-configuration.nix
     ../../modules/fonts.nix
     ../../modules/wayland

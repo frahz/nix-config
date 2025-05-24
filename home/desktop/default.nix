@@ -1,8 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   # patching jellyfin player to use xwayland because with normal wayland it looks weird
   jellyfin-media-player-wayland = pkgs.jellyfin-media-player.overrideAttrs (prevAttrs: {
     nativeBuildInputs =
@@ -43,7 +39,7 @@ in {
     # feishin
     typst
 
-    inputs.hyprpicker.packages.${pkgs.system}.hyprpicker
+    hyprpicker
   ];
 
   # TODO: move to hyprcursor later

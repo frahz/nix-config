@@ -1,15 +1,8 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: let
-  hyprpaper = inputs.hyprpaper.packages.${pkgs.system}.default;
-in {
-  home.packages = [hyprpaper];
+{pkgs, ...}: {
+  home.packages = [pkgs.hyprpaper];
 
   services.hyprpaper = {
     enable = true;
-    package = hyprpaper;
     settings = {
       ipc = true;
       splash = false;

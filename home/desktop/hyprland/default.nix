@@ -1,10 +1,5 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+{pkgs, ...}: {
   imports = [
-    inputs.hyprland.homeManagerModules.default
     ./config/binds.nix
     ./config/general.nix
     ./config/rules.nix
