@@ -1,4 +1,8 @@
-{config, ...}: let
+{
+  config,
+  pkgs,
+  ...
+}: let
   inherit (config.programs) git;
 in {
   programs.jujutsu = {
@@ -24,6 +28,7 @@ in {
 
       ui = {
         default-command = "status";
+        pager = "${pkgs.delta}/bin/delta";
       };
 
       template-aliases = {
