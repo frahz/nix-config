@@ -10,12 +10,24 @@ in {
         email = git.userEmail;
       };
 
+      aliases = {
+        tug = [
+          "bookmark"
+          "move"
+          "--from"
+          "heads(::@- & bookmarks())"
+          "--to"
+          "@-"
+        ];
+        ll = ["log" "-r" "::"];
+      };
+
       ui = {
         default-command = "status";
       };
 
       template-aliases = {
-        "format_short_signature(signature)" = "signature.email().local()";
+        "format_short_id(id)" = "id.shortest()";
       };
     };
   };
