@@ -11,5 +11,6 @@ _: {
     # ./qt.nix
     ./spicetify.nix
     ./zathura.nix
+    ./zed
   ];
 }
