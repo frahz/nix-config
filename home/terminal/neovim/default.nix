@@ -204,6 +204,7 @@
       tailwindcss-language-server
       svelte-language-server
       tinymist
+      marksman
 
       # Formatters
       typstyle
