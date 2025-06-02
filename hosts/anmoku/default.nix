@@ -21,6 +21,7 @@
 
   environment.systemPackages = with pkgs; [
     libnotify
+    cifs-utils
   ];
 
   programs = {
@@ -114,6 +115,18 @@
         vulkan-extension-layer
       ];
     };
+  };
+
+  # SMB share, move to different location after
+  sops.secrets.smb-secrets = {
+    path = "/etc/nixos/smb-secrets";
+  };
+  fileSystems."/home/frahz/sharing" = {
+    device = "//chibi/sharing";
+    fsType = "cifs";
+    options = let
+      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,user,users";
+    in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1000,gid=100"];
   };
 
   networking = {
