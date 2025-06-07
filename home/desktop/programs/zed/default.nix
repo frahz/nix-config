@@ -23,6 +23,7 @@
       "catppuccin-icons"
     ];
     userSettings = {
+      autosave = "on_focus_change";
       ui_font_size = 14;
       ui_font_family = "Berkeley Mono";
       buffer_font_size = 14;
