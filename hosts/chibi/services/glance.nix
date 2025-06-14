@@ -3,9 +3,6 @@
   port = 7576;
 in {
   sops.secrets.glance = {};
-  systemd.services.glance = {
-    serviceConfig.EnvironmentFile = config.sops.secrets.glance.path;
-  };
 
   services.caddy.virtualHosts.${config.homelab.domain} = {
     extraConfig = ''
@@ -16,6 +13,7 @@ in {
   services.glance = {
     enable = true;
     openFirewall = true;
+    environmentFile = config.sops.secrets.glance.path;
     settings = {
       server = {
         inherit host;
