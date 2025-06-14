@@ -136,12 +136,13 @@ in {
                               | getResponse }}
 
                             {{ if eq $infoCall.Response.StatusCode 200 }}
-                              {{ $itemName = $infoCall.JSON.String "name" }}
                               {{ $itemBackdropPath = $infoCall.JSON.String "backdropPath" }}
                               {{ $itemPosterPath = $infoCall.JSON.String "posterPath" }}
                               {{ if eq $mediaType "tv" }}
+                                  {{ $itemName = $infoCall.JSON.String "name" }}
                                   {{ $itemAirDate = $infoCall.JSON.String "firstAirDate" }}
                               {{ else }}
+                                  {{ $itemName = $infoCall.JSON.String "title" }}
                                   {{ $itemAirDate = $infoCall.JSON.String "releaseDate" }}
                               {{ end }}
                             {{ end }}
