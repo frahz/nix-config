@@ -71,6 +71,8 @@
       # Moondrop DAC
       SUBSYSTEM=="usb", ATTRS{idVendor}=="2fc6", MODE="0666"
       # These two devices cause sleep to fail the first time
+      # USB XHC0 = keyboard
+      # USB XHC1 = mouse
       ACTION=="add" SUBSYSTEM=="pci" ATTR{vendor}=="0x1022" ATTR{device}=="0x161d" ATTR{power/wakeup}="disabled"
       ACTION=="add" SUBSYSTEM=="pci" ATTR{vendor}=="0x1022" ATTR{device}=="0x161e" ATTR{power/wakeup}="disabled"
     '';
