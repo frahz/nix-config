@@ -127,6 +127,9 @@ in {
                             {{ $itemPosterPath := "" }}
                             {{ $itemAirDate := "" }}
                             {{ $itemInfoUrl := printf "%s/api/v1/%s/%d" $baseURL $mediaType $mediaTmdbId }}
+                            {{ $popoverSummary := "TBA" }}
+                            {{ $genres := "" }}
+
 
                             {{ $infoCall := newRequest $itemInfoUrl
                               | withHeader "X-Api-Key" $apiKey
@@ -136,6 +139,9 @@ in {
                             {{ if eq $infoCall.Response.StatusCode 200 }}
                               {{ $itemBackdropPath = $infoCall.JSON.String "backdropPath" }}
                               {{ $itemPosterPath = $infoCall.JSON.String "posterPath" }}
+                              {{ $popoverSummary = $infoCall.JSON.String "overview" }}
+                              {{ $genres = $infoCall.JSON.Array "genres" }}
+
                               {{ if eq $mediaType "tv" }}
                                   {{ $itemName = $infoCall.JSON.String "name" }}
                                   {{ $itemAirDate = $infoCall.JSON.String "firstAirDate" }}
@@ -149,7 +155,30 @@ in {
 
                             <li class="media-requests thumbnail-parent">
                                 <div class="flex gap-10 items-start">
-                                    <img class="media-requests-thumbnail thumbnail" loading="lazy" src="{{ $posterImageUrl }}" alt="">
+                                    <div>
+                                       <div data-popover-type="html" data-popover-position="above" data-popover-show-delay="500" style=" align-content: center;">
+                                         <div data-popover-html>
+                                           <div style="margin: 5px;">
+                                             <a class="size-h4 color-primary" href="{{ $mediaLink }}" target="_blank" rel="noreferrer" title="{{ $itemName }}">{{ $itemName }}</a>
+                                             <p class="margin-top-20" style="overflow-y: auto; text-align: justify; max-height: 20rem;">
+                                               {{ if ne $popoverSummary "" }}
+                                                 {{ $popoverSummary }}
+                                               {{ else }}
+                                                 TBA
+                                               {{ end }}
+                                             </p>
+                                             {{ if gt (len $genres) 0 }}
+                                             <ul class="attachments margin-top-20">
+                                               {{ range $genres }}
+                                                 <li>{{ .String "name" }}</li>
+                                               {{ end }}
+                                             </ul>
+                                             {{ end }}
+                                          </div>
+                                        </div>
+                                        <img class="media-requests-thumbnail thumbnail" loading="lazy" src="{{ $posterImageUrl }}" alt="">
+                                      </div>
+                                    </div>
                                     <div class="min-width-0">
                                         <a class="title size-h3 color-highlight text-truncate block" href="{{ $mediaLink }}" target="_blank" rel="noreferrer" title="{{ $itemName }}">
                                             {{ $itemName }}
