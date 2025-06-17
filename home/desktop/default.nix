@@ -40,6 +40,8 @@ in {
     typst
 
     hyprpicker
+    iwmenu
+    bzmenu
   ];
 
   # TODO: move to hyprcursor later
