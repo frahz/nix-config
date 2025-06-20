@@ -88,6 +88,11 @@
     customComponents = [
       pkgs.hass-smartrent
     ];
+
+    extraPackages = python3Packages:
+      with python3Packages; [
+        pyatv
+      ];
   };
 
   # prevent home-assistant fail to load when UI automations aren't defined yet
