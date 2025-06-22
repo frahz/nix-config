@@ -27,6 +27,7 @@
 
     raulyrs.url = "github:frahz/rauly.rs";
     sugoi.url = "github:frahz/sugoi";
+    nvim-flake.url = "github:frahz/nvim-flake";
 
     private-flake.url = "git+ssh://git@github.com/frahz/private-flake.git";
 
