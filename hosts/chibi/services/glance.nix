@@ -155,7 +155,7 @@ in {
 
                             <li class="media-requests thumbnail-parent">
                                 <div class="flex gap-10 items-start">
-                                    <div>
+                                    <div style="flex: none;">
                                        <div data-popover-type="html" data-popover-position="above" data-popover-show-delay="500" style=" align-content: center;">
                                          <div data-popover-html>
                                            <div style="margin: 5px;">
