@@ -22,8 +22,8 @@
       scrolling.history = 10000;
 
       font = {
-        normal.family = "Iosevka Term";
-        bold.family = "Iosevka Term";
+        normal.family = "Berkeley Mono SemiCondensed";
+        bold.family = "Berkeley Mono SemiBold SemiCondensed";
         size = 12;
       };
     };
