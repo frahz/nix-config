@@ -5,6 +5,15 @@
 }: {
   programs.ghostty = {
     enable = true;
+    # https://github.com/ghostty-org/ghostty/discussions/7720
+    # until fixed in next kernel release
+    package = pkgs.ghostty.overrideAttrs (_: {
+      preBuild = ''
+        shopt -s globstar
+        sed -i 's/^const xev = @import("xev");$/const xev = @import("xev").Epoll;/' **/*.zig
+        shopt -u globstar
+      '';
+    });
     enableZshIntegration = true;
     settings = {
       theme = "catppuccin-mocha";
