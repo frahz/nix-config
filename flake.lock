@@ -365,11 +365,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1751165363,
-        "narHash": "sha256-IT/AaIQTkdHY6b/TBQciuffyfkJdWVf1XIUmSMyDylY=",
+        "lastModified": 1751552116,
+        "narHash": "sha256-ZokIZI00hHP/8d3sbYuYfPzt/rHsF9KuHLh6ysFifCo=",
         "owner": "frahz",
         "repo": "nvim-flake",
-        "rev": "20c535d6809ff0715fbe8008defc69fa4247d3cf",
+        "rev": "9ba85a7d81d932cb4dcb3aaba174a4665094bd20",
         "type": "github"
       },
       "original": {
