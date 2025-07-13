@@ -16,10 +16,10 @@
           tooltip-format = ''<tt><big>{calendar}</big></tt>'';
           calendar = {
             format = {
-              months = "<span color='#B1B946'>{}</span>";
-              days = "<span color='#E0CDA5'>{}</span>";
-              weekdays = "<span color='#E0CDA5'>{}</span>";
-              today = "<span color='#E0CDA5'>{}</span>";
+              months = "<span color='#f5bde6'>{}</span>";
+              days = "<span color='#F2F0E5'>{}</span>";
+              weekdays = "<span color='#F2F0E5'>{}</span>";
+              today = "<span color='#F2F0E5'>{}</span>";
             };
           };
           actions = {
@@ -61,7 +61,11 @@
           format = "{icon}";
           format-muted = "󰖁 ";
           format-icons = {
-            default = ["󰕿" "󰖀" " "];
+            default = [
+              "󰕿"
+              "󰖀"
+              "󰕾"
+            ];
           };
           tooltip-format = "{volume}%";
           on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
