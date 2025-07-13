@@ -14,12 +14,13 @@ in {
   programs.chromium = {
     enable = true;
     extensions = [
-      "cjpalhdlnbpafiamejdnhcphjbkeiagm" # uBlock Origin
+      # "cjpalhdlnbpafiamejdnhcphjbkeiagm" # uBlock Origin
+      "ddkjiahejlhfcafbddmgiahcphecmpfh" # uBlock Origin Lite
       "clngdbkpkpeebahjckkjfobafhncgmne" # stylus
       "nngceckbapebfimnlniiiahkandclblb" # Bitwarden
-      "fkagelmloambgokoeokbpihmgpkbgbfm" # Indie Wiki Buddy
       "pnidmkljnhbjfffciajlcpeldoljnidn" # Linkwarden
       "cdglnehniifkbagbbombnjghhcihifij" # Kagi Search
+      "aghfnjkcakhmadgdomlmlhhaocbkloab" # Theme
     ];
 
     # from: https://github.com/isabelroses/dotfiles/blob/main/modules/home/programs/chromium.nix
