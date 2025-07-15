@@ -3,7 +3,8 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   wayland.windowManager.hyprland.settings = {
     "$mainMod" = "SUPER";
     bind = [

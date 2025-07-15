@@ -1,5 +1,6 @@
-{config, ...}: {
-  sops.secrets.gitea-actions-runner = {};
+{ config, ... }:
+{
+  sops.secrets.gitea-actions-runner = { };
 
   services.gitea-actions-runner.instances.runner_1 = {
     enable = false;
@@ -21,7 +22,7 @@
         # Execute how many tasks concurrently at the same time.
         capacity = 2;
         # Extra environment variables to run jobs.
-        envs = {};
+        envs = { };
         # The timeout for a job to be finished.
         # Please note that the Gitea instance also has a timeout (3h by default) for the job.
         # So the job could be stopped by the Gitea instance if it's timeout is shorter than this.

@@ -1,5 +1,6 @@
-{pkgs, ...}: {
-  imports = [./services/greetd.nix];
+{ pkgs, ... }:
+{
+  imports = [ ./services/greetd.nix ];
 
   environment = {
     systemPackages = with pkgs; [

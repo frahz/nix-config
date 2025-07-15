@@ -1,6 +1,8 @@
-{config, ...}: let
+{ config, ... }:
+let
   cfg = config.media;
-in {
+in
+{
   services.jellyfin = {
     enable = true;
     openFirewall = true;

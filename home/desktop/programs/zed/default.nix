@@ -1,7 +1,11 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.zed-editor = {
     enable = true;
-    package = pkgs.zed-editor.fhsWithPackages (pkgs: [pkgs.zlib pkgs.openssl]);
+    package = pkgs.zed-editor.fhsWithPackages (pkgs: [
+      pkgs.zlib
+      pkgs.openssl
+    ]);
     extensions = [
       # langs
       "html"
@@ -69,11 +73,11 @@
       };
       languages = {
         Nix = {
-          language_servers = ["nil"];
+          language_servers = [ "nil" ];
           formatter = {
             external = {
-              command = "alejandra";
-              arguments = ["--quiet" "--"];
+              command = "nixfmt";
+              # arguments = ["--quiet" "--"];
             };
           };
         };

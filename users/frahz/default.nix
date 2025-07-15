@@ -2,12 +2,22 @@
   lib,
   pkgs,
   ...
-}: let
+}:
+let
   username = "frahz";
-in {
+in
+{
   users.users.${username} = {
     isNormalUser = true;
-    extraGroups = ["wheel" "networkmanager" "audio" "video" "lp" "docker" "immich"];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "audio"
+      "video"
+      "lp"
+      "docker"
+      "immich"
+    ];
     shell = pkgs.zsh;
     description = "frahz";
     uid = 1000;

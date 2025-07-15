@@ -2,16 +2,24 @@
   config,
   lib,
   ...
-}: {
-  imports = [];
+}:
+{
+  imports = [ ];
 
   boot = {
     initrd = {
-      availableKernelModules = ["xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod"];
-      kernelModules = [];
+      availableKernelModules = [
+        "xhci_pci"
+        "ahci"
+        "nvme"
+        "usb_storage"
+        "usbhid"
+        "sd_mod"
+      ];
+      kernelModules = [ ];
     };
-    kernelModules = ["kvm-intel"];
-    extraModulePackages = [];
+    kernelModules = [ "kvm-intel" ];
+    extraModulePackages = [ ];
   };
 
   fileSystems = {
@@ -29,7 +37,7 @@
     };
   };
 
-  swapDevices = [];
+  swapDevices = [ ];
 
   networking = {
     useDHCP = lib.mkDefault true;

@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.waybar = {
     enable = true;
     systemd.enable = true;
@@ -6,9 +7,13 @@
       mainBar = {
         position = "top";
         layer = "top";
-        modules-left = ["hyprland/workspaces"];
-        modules-center = [];
-        modules-right = ["tray" "group/group-applets" "clock"];
+        modules-left = [ "hyprland/workspaces" ];
+        modules-center = [ ];
+        modules-right = [
+          "tray"
+          "group/group-applets"
+          "clock"
+        ];
 
         clock = {
           format = "{:%I:%M %p | %D}";

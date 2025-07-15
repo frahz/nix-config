@@ -4,9 +4,11 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.container.linkwarden;
-in {
+in
+{
   options.container.linkwarden = {
     volumes = mkOption {
       type = with types; listOf str;
@@ -21,22 +23,24 @@ in {
 
   config = {
     networking.firewall = {
-      allowedTCPPorts = [3000];
-      allowedUDPPorts = [3000];
+      allowedTCPPorts = [ 3000 ];
+      allowedUDPPorts = [ 3000 ];
     };
 
     systemd.services.init-linkwarden-network = {
       description = "Create bridge for linkwarden";
-      after = ["network.target"];
-      wantedBy = ["multi-user.target"];
+      after = [ "network.target" ];
+      wantedBy = [ "multi-user.target" ];
 
       serviceConfig.Type = "oneshot";
-      script = let
-        docker = config.virtualisation.oci-containers.backend;
-        dockerBin = "${pkgs.${docker}}/bin/${docker}";
-      in ''
-        ${dockerBin} network inspect linkwarden-br >/dev/null 2>&1 || ${dockerBin} network create linkwarden-br
-      '';
+      script =
+        let
+          docker = config.virtualisation.oci-containers.backend;
+          dockerBin = "${pkgs.${docker}}/bin/${docker}";
+        in
+        ''
+          ${dockerBin} network inspect linkwarden-br >/dev/null 2>&1 || ${dockerBin} network create linkwarden-br
+        '';
     };
 
     virtualisation.oci-containers.containers.linkwarden = {
@@ -50,8 +54,8 @@ in {
       ports = [
         "3000:3000"
       ];
-      dependsOn = ["linkwarden_pg"];
-      extraOptions = ["--network=linkwarden-br"];
+      dependsOn = [ "linkwarden_pg" ];
+      extraOptions = [ "--network=linkwarden-br" ];
     };
 
     virtualisation.oci-containers.containers.linkwarden_pg = {
@@ -62,7 +66,7 @@ in {
         TZ = "America/Los_Angeles";
       };
       environmentFiles = cfg.env_files;
-      extraOptions = ["--network=linkwarden-br"];
+      extraOptions = [ "--network=linkwarden-br" ];
     };
   };
 }

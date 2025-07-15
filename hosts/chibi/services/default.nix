@@ -2,9 +2,11 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   cfg = config.homelab;
-in {
+in
+{
   imports = [
     ./adguardhome.nix
     ./caddy.nix

@@ -1,7 +1,9 @@
-{config, ...}: let
+{ config, ... }:
+let
   address = "0.0.0.0";
   port = 4533;
-in {
+in
+{
   services.navidrome = {
     enable = true;
     settings = {
@@ -13,7 +15,7 @@ in {
     openFirewall = true;
   };
 
-  sops.secrets.navidrome = {};
+  sops.secrets.navidrome = { };
   systemd.services.navidrome.serviceConfig.EnvironmentFile = config.sops.secrets.navidrome.path;
 
   services.caddy.virtualHosts."music.${config.homelab.domain}" = {

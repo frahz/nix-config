@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./hardware-configuration.nix
     ../../modules/fonts.nix
@@ -56,7 +57,7 @@
         variant = "";
       };
       # enable amdgpu xorg drivers
-      videoDrivers = ["amdgpu"];
+      videoDrivers = [ "amdgpu" ];
     };
 
     gvfs.enable = true;
@@ -91,7 +92,7 @@
     rtkit.enable = true;
     polkit.enable = true;
     soteria.enable = true;
-    pam.services.hyprlock = {};
+    pam.services.hyprlock = { };
   };
 
   hardware = {
@@ -126,9 +127,11 @@
   fileSystems."/home/frahz/sharing" = {
     device = "//chibi/sharing";
     fsType = "cifs";
-    options = let
-      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,user,users";
-    in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1000,gid=100"];
+    options =
+      let
+        automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,user,users";
+      in
+      [ "${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1000,gid=100" ];
   };
 
   networking = {
@@ -137,7 +140,10 @@
       dns = "systemd-resolved";
       # wifi.backend = "iwd";
     };
-    nameservers = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
+    nameservers = [
+      "1.1.1.1#one.one.one.one"
+      "1.0.0.1#one.one.one.one"
+    ];
     # Mullvad enable support: https://discourse.nixos.org/t/connected-to-mullvadvpn-but-no-internet-connection/35803/10?u=lion
     resolvconf.enable = false;
     # wireless = {
@@ -159,8 +165,11 @@
   services.resolved = {
     enable = true;
     dnssec = "allow-downgrade";
-    domains = ["~."];
-    fallbackDns = ["1.1.1.1" "8.8.8.8"];
+    domains = [ "~." ];
+    fallbackDns = [
+      "1.1.1.1"
+      "8.8.8.8"
+    ];
     dnsovertls = "true";
   };
 }

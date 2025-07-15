@@ -37,42 +37,45 @@
     };
   };
 
-  outputs = inputs @ {flake-parts, ...}:
-    flake-parts.lib.mkFlake {inherit inputs;} {
+  outputs =
+    inputs@{ flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         inputs.pre-commit-hooks.flakeModule
         ./home/profiles
         ./hosts
       ];
 
-      systems = ["x86_64-linux"];
+      systems = [ "x86_64-linux" ];
 
-      perSystem = {
-        config,
-        pkgs,
-        ...
-      }: {
-        pre-commit = {
-          check.enable = true;
-          settings = {
-            hooks = {
-              alejandra.enable = true;
-              statix.enable = true;
+      perSystem =
+        {
+          config,
+          pkgs,
+          ...
+        }:
+        {
+          pre-commit = {
+            check.enable = true;
+            settings = {
+              hooks = {
+                nixfmt-rfc-style.enable = true;
+                statix.enable = true;
+              };
             };
           };
-        };
 
-        devShells.default = pkgs.mkShell {
-          shellHook = config.pre-commit.installationScript;
-          packages = with pkgs; [
-            git
-            sops
-            alejandra
-            statix
-          ];
-        };
+          devShells.default = pkgs.mkShell {
+            shellHook = config.pre-commit.installationScript;
+            packages = with pkgs; [
+              config.formatter
+              git
+              sops
+              statix
+            ];
+          };
 
-        formatter = pkgs.alejandra;
-      };
+          formatter = pkgs.nixfmt-rfc-style;
+        };
     };
 }

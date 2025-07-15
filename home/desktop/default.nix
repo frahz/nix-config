@@ -1,9 +1,8 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   # patching jellyfin player to use xwayland because with normal wayland it looks weird
   jellyfin-media-player-wayland = pkgs.jellyfin-media-player.overrideAttrs (prevAttrs: {
-    nativeBuildInputs =
-      (prevAttrs.nativeBuildInputs or [])
-      ++ [pkgs.makeBinaryWrapper];
+    nativeBuildInputs = (prevAttrs.nativeBuildInputs or [ ]) ++ [ pkgs.makeBinaryWrapper ];
 
     postInstall =
       (prevAttrs.postInstall or "")
@@ -11,7 +10,8 @@
         wrapProgram $out/bin/jellyfinmediaplayer --set QT_QPA_PLATFORM xcb
       '';
   });
-in {
+in
+{
   imports = [
     ./programs
     ./services
@@ -58,9 +58,9 @@ in {
     mimeApps = {
       enable = true;
       defaultApplications = {
-        "inode/directory" = ["thunar.desktop"];
-        "x-scheme-handler/spotify" = ["spotify.desktop"];
-        "x-scheme-handler/discord" = ["vesktop.desktop"];
+        "inode/directory" = [ "thunar.desktop" ];
+        "x-scheme-handler/spotify" = [ "spotify.desktop" ];
+        "x-scheme-handler/discord" = [ "vesktop.desktop" ];
       };
     };
   };

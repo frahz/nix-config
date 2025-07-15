@@ -1,8 +1,10 @@
-{config, ...}: let
+{ config, ... }:
+let
   host = "0.0.0.0";
   port = 7576;
-in {
-  sops.secrets.glance = {};
+in
+{
+  sops.secrets.glance = { };
 
   services.caddy.virtualHosts.${config.homelab.domain} = {
     extraConfig = ''
@@ -378,33 +380,41 @@ in {
                 }
                 {
                   type = "group";
-                  widgets = let
-                    shared-properties = {
-                      collapse-after = 7;
-                      limit = 10;
-                      cache = "30m";
-                    };
-                  in [
-                    ({
-                        type = "hacker-news";
-                      }
-                      // shared-properties)
-                    ({
-                        type = "rss";
-                        feeds = [
-                          {
-                            url = "https://freshrss.iatze.cc/i/?a=rss&state=3";
-                            title = "FreshRSS";
-                          }
-                        ];
-                      }
-                      // shared-properties)
-                    ({
-                        type = "reddit";
-                        subreddit = "selfhosted";
-                      }
-                      // shared-properties)
-                  ];
+                  widgets =
+                    let
+                      shared-properties = {
+                        collapse-after = 7;
+                        limit = 10;
+                        cache = "30m";
+                      };
+                    in
+                    [
+                      (
+                        {
+                          type = "hacker-news";
+                        }
+                        // shared-properties
+                      )
+                      (
+                        {
+                          type = "rss";
+                          feeds = [
+                            {
+                              url = "https://freshrss.iatze.cc/i/?a=rss&state=3";
+                              title = "FreshRSS";
+                            }
+                          ];
+                        }
+                        // shared-properties
+                      )
+                      (
+                        {
+                          type = "reddit";
+                          subreddit = "selfhosted";
+                        }
+                        // shared-properties
+                      )
+                    ];
                 }
               ];
             }

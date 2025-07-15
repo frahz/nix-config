@@ -1,10 +1,15 @@
-{config, ...}: let
+{ config, ... }:
+let
   dns_port = 53;
   ui_port = 8053;
-in {
+in
+{
   networking.firewall = {
-    allowedTCPPorts = [dns_port ui_port];
-    allowedUDPPorts = [dns_port];
+    allowedTCPPorts = [
+      dns_port
+      ui_port
+    ];
+    allowedUDPPorts = [ dns_port ];
   };
   services.adguardhome = {
     enable = true;
@@ -20,9 +25,15 @@ in {
       ];
       dns = {
         port = dns_port;
-        bind_hosts = ["0.0.0.0"];
-        bootstrap_dns = ["1.1.1.1" "8.8.8.8"];
-        upstream_dns = ["1.1.1.1" "8.8.8.8"];
+        bind_hosts = [ "0.0.0.0" ];
+        bootstrap_dns = [
+          "1.1.1.1"
+          "8.8.8.8"
+        ];
+        upstream_dns = [
+          "1.1.1.1"
+          "8.8.8.8"
+        ];
         ratelimit = 100;
       };
       filters = [

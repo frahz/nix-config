@@ -1,4 +1,5 @@
-{config, ...}: {
+{ config, ... }:
+{
   services.sugoi.enable = true;
 
   services.caddy.virtualHosts."sugoi.${config.homelab.domain}" = {

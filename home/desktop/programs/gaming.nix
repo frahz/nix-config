@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     legendary-gl # epic games launcher
     mangohud # fps counter & vulkan overlay

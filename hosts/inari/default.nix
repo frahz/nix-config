@@ -3,7 +3,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware-configuration.nix
     ./services
@@ -33,7 +34,7 @@
   };
 
   nixpkgs.config.packageOverrides = pkgs: {
-    intel-vaapi-driver = pkgs.intel-vaapi-driver.override {enableHybridCodec = true;};
+    intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
   };
   hardware = {
     graphics = {
@@ -64,9 +65,9 @@
 
   # Secrets
   sops.secrets = {
-    tsauth-inari = {};
-    gluetun = {};
-    gitea = {};
+    tsauth-inari = { };
+    gluetun = { };
+    gitea = { };
   };
 
   # Services

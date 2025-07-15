@@ -19,19 +19,19 @@ buildHomeAssistantComponent rec {
 
   dependencies = [
     # python requirements, as specified in manifest.json
-    (home-assistant.python.pkgs.callPackage ./smartrent-py.nix {})
+    (home-assistant.python.pkgs.callPackage ./smartrent-py.nix { })
   ];
 
   # manual updates: `cd` to pkgsLinux directory and run
   # `nix-update hass-smartrent`
-  passthru.updateScript = nix-update-script {};
+  passthru.updateScript = nix-update-script { };
 
   meta = with lib; {
     # changelog, description, homepage, license, maintainers
     description = "Home Assistant Custom Component for SmartRent Locks, Thermostats, Sensors, and Switches";
     homepage = "https://github.com/ZacheryThomas/homeassistant-smartrent/";
     license = licenses.mit;
-    maintainers = with maintainers; [josephst];
+    maintainers = with maintainers; [ josephst ];
     changelog = "https://github.com/ZacheryThomas/homeassistant-smartrent/releases";
   };
 }

@@ -4,9 +4,11 @@
   pkgs,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.container.firefly;
-in {
+in
+{
   options.container.firefly = {
     volumes = mkOption {
       type = with types; listOf str;
@@ -27,22 +29,30 @@ in {
 
   config = {
     networking.firewall = {
-      allowedTCPPorts = [4040 4041];
-      allowedUDPPorts = [4040 4041];
+      allowedTCPPorts = [
+        4040
+        4041
+      ];
+      allowedUDPPorts = [
+        4040
+        4041
+      ];
     };
 
     systemd.services.init-firefly-network = {
       description = "Create bridge for firefly";
-      after = ["network.target"];
-      wantedBy = ["multi-user.target"];
+      after = [ "network.target" ];
+      wantedBy = [ "multi-user.target" ];
 
       serviceConfig.Type = "oneshot";
-      script = let
-        docker = config.virtualisation.oci-containers.backend;
-        dockerBin = "${pkgs.${docker}}/bin/${docker}";
-      in ''
-        ${dockerBin} network inspect firefly_iii >/dev/null 2>&1 || ${dockerBin} network create firefly_iii
-      '';
+      script =
+        let
+          docker = config.virtualisation.oci-containers.backend;
+          dockerBin = "${pkgs.${docker}}/bin/${docker}";
+        in
+        ''
+          ${dockerBin} network inspect firefly_iii >/dev/null 2>&1 || ${dockerBin} network create firefly_iii
+        '';
     };
 
     virtualisation.oci-containers.containers = {
@@ -57,8 +67,8 @@ in {
         ports = [
           "4040:8080"
         ];
-        dependsOn = ["firefly_db"];
-        extraOptions = ["--network=firefly_iii"];
+        dependsOn = [ "firefly_db" ];
+        extraOptions = [ "--network=firefly_iii" ];
       };
 
       firefly_db = {
@@ -69,7 +79,7 @@ in {
           TZ = "America/Los_Angeles";
         };
         environmentFiles = cfg.db_env;
-        extraOptions = ["--network=firefly_iii"];
+        extraOptions = [ "--network=firefly_iii" ];
       };
 
       firefly_importer = {
@@ -79,7 +89,7 @@ in {
         ports = [
           "4041:8080"
         ];
-        extraOptions = ["--network=firefly_iii"];
+        extraOptions = [ "--network=firefly_iii" ];
       };
     };
   };

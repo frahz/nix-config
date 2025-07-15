@@ -1,6 +1,8 @@
-{config, ...}: let
+{ config, ... }:
+let
   cfg = config.media;
-in {
+in
+{
   services.radarr = {
     enable = true;
     openFirewall = true;

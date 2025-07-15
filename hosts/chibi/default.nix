@@ -4,7 +4,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ./services
     ./hardware-configuration.nix
@@ -53,7 +54,7 @@
   };
 
   # Secrets
-  sops.secrets.raulyrs = {};
+  sops.secrets.raulyrs = { };
 
   # Services
   services = {
@@ -103,7 +104,7 @@
       pg_volumes = [
         "/mnt/kuki/containers/linkwarden/pg_data:/var/lib/postgresql/data"
       ];
-      env_files = [/mnt/kuki/containers/linkwarden/linkwarden.env];
+      env_files = [ /mnt/kuki/containers/linkwarden/linkwarden.env ];
     };
     freshrss = {
       volumes = [

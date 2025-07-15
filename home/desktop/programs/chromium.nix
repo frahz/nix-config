@@ -2,15 +2,16 @@
   lib,
   pkgs,
   ...
-}: let
-  inherit
-    (lib)
+}:
+let
+  inherit (lib)
     optionals
     concatLists
     concatMapStrings
     enableFeature
     ;
-in {
+in
+{
   programs.chromium = {
     enable = true;
     extensions = [

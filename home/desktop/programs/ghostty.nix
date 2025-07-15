@@ -2,7 +2,8 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+{
   programs.ghostty = {
     enable = true;
     # https://github.com/ghostty-org/ghostty/discussions/7720

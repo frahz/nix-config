@@ -3,7 +3,8 @@
   lib,
   config,
   ...
-}: let
+}:
+let
   inherit (lib.modules) mkAfter mkForce;
   inherit (lib.strings) removePrefix removeSuffix;
 
@@ -17,16 +18,18 @@
     hash = "sha256-et5luA3SI7iOcEIQ3CVIu0+eiLs8C/8mOitYlWQa/uI=";
     stripRoot = false;
   };
-in {
+in
+{
   networking.firewall.allowedTCPPorts = [
     config.services.forgejo.settings.server.HTTP_PORT
     config.services.forgejo.settings.server.SSH_PORT
   ];
 
   systemd.services.forgejo = {
-    preStart = let
-      inherit (config.services.forgejo) stateDir;
-    in
+    preStart =
+      let
+        inherit (config.services.forgejo) stateDir;
+      in
       mkAfter ''
         rm -rf ${stateDir}/custom/public/assets
         mkdir -p ${stateDir}/custom/public/assets
@@ -60,7 +63,7 @@ in {
       ui = {
         DEFAULT_THEME = "catppuccin-mocha-pink";
         THEMES = builtins.concatStringsSep "," (
-          ["auto,forgejo-auto,forgejo-dark,forgejo-light,arc-gree,gitea"]
+          [ "auto,forgejo-auto,forgejo-dark,forgejo-light,arc-gree,gitea" ]
           ++ (map (name: removePrefix "theme-" (removeSuffix ".css" name)) (
             # IFD, https://github.com/catppuccin/nix/pull/179
             builtins.attrNames (builtins.readDir theme)

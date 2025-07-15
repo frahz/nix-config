@@ -4,7 +4,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   imports = [
     ../users/frahz
     # TODO: make a default thing for these two
@@ -56,9 +57,7 @@
     };
   };
 
-  /*
-  networking.networkmanager.enable = true;
-  */
+  # networking.networkmanager.enable = true;
 
   hardware.enableRedistributableFirmware = lib.mkDefault true;
 

@@ -22,7 +22,7 @@ pkgs.rustPlatform.buildRustPackage rec {
     homepage = "https://git.iatze.cc/frahz/nemui";
     changelog = "https://git.iatze.cc/frahz/nemui/releases/tag/v${version}";
     license = licenses.mit;
-    maintainers = [];
+    maintainers = [ ];
     mainProgram = "nemui";
   };
 }

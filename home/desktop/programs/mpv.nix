@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.mpv = {
     enable = true;
     config = {
@@ -11,7 +12,7 @@
   };
   catppuccin.mpv.enable = true;
   xdg.mimeApps.defaultApplications = {
-    "audio/*" = ["mpv.desktop"];
-    "video/*" = ["mpv.dekstop"];
+    "audio/*" = [ "mpv.desktop" ];
+    "video/*" = [ "mpv.dekstop" ];
   };
 }

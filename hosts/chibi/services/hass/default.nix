@@ -2,13 +2,14 @@
   config,
   pkgs,
   ...
-}: {
+}:
+{
   sops.secrets."hass-secrets" = {
     sopsFile = ../../../../secrets/hass-secrets.yaml;
     owner = "hass";
     group = "hass";
     path = "${config.services.home-assistant.configDir}/secrets.yaml";
-    restartUnits = ["home-assistant.service"];
+    restartUnits = [ "home-assistant.service" ];
   };
   services.home-assistant = {
     enable = true;
@@ -26,7 +27,7 @@
     ];
 
     config = {
-      default_config = {};
+      default_config = { };
       homeassistant = {
         name = "Home";
         time_zone = "America/Los_Angeles";
@@ -89,8 +90,8 @@
       pkgs.hass-smartrent
     ];
 
-    extraPackages = python3Packages:
-      with python3Packages; [
+    extraPackages =
+      python3Packages: with python3Packages; [
         pyatv
       ];
   };
@@ -102,13 +103,15 @@
     "C ${config.services.home-assistant.configDir}/themes 0755 hass hass - ${pkgs.hass-catppuccin}/themes"
   ];
 
-  services.caddy.virtualHosts."home.${config.homelab.domain}" = let
-    cfg = config.services.home-assistant;
-  in {
-    extraConfig = ''
-      reverse_proxy http://localhost:${toString cfg.config.http.server_port}
-    '';
-  };
+  services.caddy.virtualHosts."home.${config.homelab.domain}" =
+    let
+      cfg = config.services.home-assistant;
+    in
+    {
+      extraConfig = ''
+        reverse_proxy http://localhost:${toString cfg.config.http.server_port}
+      '';
+    };
 
   networking.firewall = {
     allowedTCPPorts = [

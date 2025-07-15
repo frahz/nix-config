@@ -1,7 +1,9 @@
-{config, ...}: let
+{ config, ... }:
+let
   mediaDir = "/mnt/kuki/photos";
-in {
-  sops.secrets.immich = {};
+in
+{
+  sops.secrets.immich = { };
   services.immich = {
     enable = true;
     openFirewall = true;
@@ -15,15 +17,20 @@ in {
     ];
   };
 
-  users.users.immich.extraGroups = ["video" "render"];
+  users.users.immich.extraGroups = [
+    "video"
+    "render"
+  ];
 
-  services.caddy.virtualHosts."photos.iatze.cc" = let
-    cfg = config.services.immich;
-  in {
-    extraConfig = ''
-      reverse_proxy http://${cfg.host}:${toString cfg.port}
-    '';
-  };
+  services.caddy.virtualHosts."photos.iatze.cc" =
+    let
+      cfg = config.services.immich;
+    in
+    {
+      extraConfig = ''
+        reverse_proxy http://${cfg.host}:${toString cfg.port}
+      '';
+    };
 
   systemd.tmpfiles.rules = [
     "d ${mediaDir} 0775 immich immich - -"
@@ -32,6 +39,6 @@ in {
   # Workaround
   fileSystems."/var/lib/immich" = {
     device = mediaDir;
-    options = ["bind"];
+    options = [ "bind" ];
   };
 }

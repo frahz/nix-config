@@ -1,5 +1,6 @@
-{pkgs, ...}: {
-  home.packages = [pkgs.hyprpaper];
+{ pkgs, ... }:
+{
+  home.packages = [ pkgs.hyprpaper ];
 
   services.hyprpaper = {
     enable = true;

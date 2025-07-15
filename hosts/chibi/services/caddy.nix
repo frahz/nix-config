@@ -2,7 +2,8 @@
   config,
   pkgs,
   ...
-}: let
+}:
+let
   inherit (config.homelab) domain;
 
   chibi = {
@@ -48,12 +49,13 @@
       domain = "scrutiny";
     };
   };
-in {
+in
+{
   services.caddy = {
     enable = true;
     email = "me@frahz.dev";
     package = pkgs.caddy.withPlugins {
-      plugins = ["github.com/caddy-dns/porkbun@v0.3.0"];
+      plugins = [ "github.com/caddy-dns/porkbun@v0.3.0" ];
       hash = "sha256-wIM5CAdQedQL/kGEFb8GAxBJB4HtT/NXVDG2f4jECA4=";
     };
     globalConfig = ''
@@ -112,11 +114,17 @@ in {
     };
   };
 
-  sops.secrets.porkbun = {};
+  sops.secrets.porkbun = { };
   systemd.services.caddy.serviceConfig.EnvironmentFile = config.sops.secrets.porkbun.path;
 
   networking.firewall = {
-    allowedTCPPorts = [80 443];
-    allowedUDPPorts = [80 443];
+    allowedTCPPorts = [
+      80
+      443
+    ];
+    allowedUDPPorts = [
+      80
+      443
+    ];
   };
 }

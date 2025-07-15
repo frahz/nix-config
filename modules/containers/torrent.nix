@@ -3,13 +3,13 @@
   lib,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.container.torrent;
-in {
+in
+{
   options.container.torrent = {
-    /*
-    enable = mkEnableOption "qbittorent container";
-    */
+    # enable = mkEnableOption "qbittorent container";
     qb_volumes = mkOption {
       type = with types; listOf str;
     };
@@ -23,8 +23,15 @@ in {
 
   config = {
     networking.firewall = {
-      allowedTCPPorts = [8888 8080 26570];
-      allowedUDPPorts = [8080 26570];
+      allowedTCPPorts = [
+        8888
+        8080
+        26570
+      ];
+      allowedUDPPorts = [
+        8080
+        26570
+      ];
     };
 
     virtualisation.oci-containers.containers.gluetun = {
@@ -36,7 +43,7 @@ in {
         "8080:8080"
         "26570:26570"
       ];
-      environmentFiles = [cfg.vpn_info_file];
+      environmentFiles = [ cfg.vpn_info_file ];
       environment = {
         TZ = "America/Los_Angeles";
         VPN_SERVICE_PROVIDER = "airvpn";
@@ -59,8 +66,8 @@ in {
         PGID = "992"; # media
         WEB_UI_PORT = "8080";
       };
-      dependsOn = ["gluetun"];
-      extraOptions = ["--network=container:gluetun"];
+      dependsOn = [ "gluetun" ];
+      extraOptions = [ "--network=container:gluetun" ];
     };
   };
 }

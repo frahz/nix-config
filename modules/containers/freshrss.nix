@@ -3,9 +3,11 @@
   lib,
   ...
 }:
-with lib; let
+with lib;
+let
   cfg = config.container.freshrss;
-in {
+in
+{
   options.container.freshrss = {
     volumes = mkOption {
       type = with types; listOf str;
@@ -14,8 +16,8 @@ in {
 
   config = {
     networking.firewall = {
-      allowedTCPPorts = [9123];
-      allowedUDPPorts = [9123];
+      allowedTCPPorts = [ 9123 ];
+      allowedUDPPorts = [ 9123 ];
     };
 
     virtualisation.oci-containers.containers.freshrss = {

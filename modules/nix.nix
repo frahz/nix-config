@@ -1,6 +1,8 @@
-{pkgs, ...}: let
+{ pkgs, ... }:
+let
   overlay-local = import ../pkgs;
-in {
+in
+{
   nixpkgs = {
     overlays = [
       overlay-local
@@ -15,12 +17,18 @@ in {
     settings = {
       warn-dirty = false;
       auto-optimise-store = true;
-      experimental-features = ["nix-command" "flakes"];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       builders-use-substitutes = true;
       keep-derivations = true;
       keep-outputs = true;
-      allowed-users = ["@wheel"];
-      trusted-users = ["root" "@wheel"];
+      allowed-users = [ "@wheel" ];
+      trusted-users = [
+        "root"
+        "@wheel"
+      ];
       substituters = [
         "https://frahz-pkgs.cachix.org"
       ];

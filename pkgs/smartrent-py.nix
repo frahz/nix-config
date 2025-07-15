@@ -42,7 +42,7 @@ buildPythonPackage rec {
 
   doCheck = true;
 
-  pythonImportsCheck = ["smartrent"];
+  pythonImportsCheck = [ "smartrent" ];
 
   meta = with lib; {
     description = "Api for SmartRent locks, thermostats, moisture sensors and switches";

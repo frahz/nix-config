@@ -19,7 +19,7 @@ pkgs.rustPlatform.buildRustPackage rec {
   useFetchCargoVendor = true;
   cargoHash = "sha256-I2dVxRfx0IiXiiLy4ygx5gvtJrf+YHJ4P7Cvq51dIrU=";
 
-  nativeBuildInputs = [pkgs.pkg-config];
+  nativeBuildInputs = [ pkgs.pkg-config ];
   buildInputs = with pkgs; [
     gdk-pixbuf
     gobject-introspection

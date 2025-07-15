@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   gtk = {
     enable = true;
 
@@ -34,7 +35,7 @@
   catppuccin.gtk = {
     enable = true;
     size = "compact";
-    tweaks = ["rimless"];
+    tweaks = [ "rimless" ];
     icon.enable = true;
   };
 }

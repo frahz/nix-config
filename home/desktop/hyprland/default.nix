@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   imports = [
     ./config/binds.nix
     ./config/general.nix
@@ -33,7 +34,7 @@
     # TODO: move to uwsm cuz that seems to be a thing now?
     systemd = {
       enable = true;
-      variables = ["--all"];
+      variables = [ "--all" ];
       extraCommands = [
         "systemctl --user stop graphical-session.target"
         "systemctl --user start hyprland-session.target"

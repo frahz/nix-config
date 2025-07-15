@@ -2,9 +2,11 @@
   config,
   pkgs,
   ...
-}: let
+}:
+let
   inherit (config.programs) git;
-in {
+in
+{
   programs.jujutsu = {
     inherit (git) enable;
 
@@ -23,7 +25,11 @@ in {
           "--to"
           "@-"
         ];
-        ll = ["log" "-r" "::"];
+        ll = [
+          "log"
+          "-r"
+          "::"
+        ];
       };
 
       ui = {

@@ -2,10 +2,17 @@
   config,
   lib,
   ...
-}: let
+}:
+let
   cfg = config.media;
-in {
-  imports = [./jellyfin.nix ./kavita.nix ./radarr.nix ./sonarr.nix];
+in
+{
+  imports = [
+    ./jellyfin.nix
+    ./kavita.nix
+    ./radarr.nix
+    ./sonarr.nix
+  ];
 
   options.media = with lib; {
     storage = mkOption {
@@ -14,8 +21,8 @@ in {
     };
   };
   config = {
-    users.groups.media = {};
-    users.users.frahz.extraGroups = ["media"];
+    users.groups.media = { };
+    users.users.frahz.extraGroups = [ "media" ];
 
     systemd.tmpfiles.rules = [
       "d ${cfg.storage}/media 0770 - media - -"

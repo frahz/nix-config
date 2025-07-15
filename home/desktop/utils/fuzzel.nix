@@ -1,5 +1,6 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [bemoji];
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [ bemoji ];
   programs.fuzzel = {
     enable = true;
     settings = {
