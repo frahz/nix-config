@@ -35,7 +35,8 @@ let
             };
           };
         }
-      ] ++ extraModules;
+      ]
+      ++ extraModules;
     };
 in
 {
