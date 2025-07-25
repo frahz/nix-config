@@ -11,71 +11,46 @@ let
   raulyrs-module = inputs.raulyrs.nixosModules.default;
   catppuccin-module = inputs.catppuccin.nixosModules.catppuccin;
 
-  defaultModules = [
-    catppuccin-module
-    hm-module
-    sops-module
-  ];
+  mkNixosSystem =
+    name:
+    {
+      extraModules ? [ ],
+      homeProfile ? homeImports.default,
+      specialArgs ? { inherit inputs self; },
+    }:
+    inputs.nixpkgs.lib.nixosSystem {
+      inherit specialArgs;
+      modules = [
+        ./${name}
+        ./configuration.nix
+        catppuccin-module
+        hm-module
+        sops-module
+        {
+          home-manager = {
+            useGlobalPkgs = true;
+            extraSpecialArgs = specialArgs;
+            users.frahz = {
+              imports = homeProfile;
+            };
+          };
+        }
+      ] ++ extraModules;
+    };
 in
 {
-  flake.nixosConfigurations =
-    let
-      inherit (inputs.nixpkgs.lib) nixosSystem;
-
-      specialArgs = { inherit inputs self; };
-    in
-    {
-      chibi = nixosSystem {
-        inherit specialArgs;
-        modules = [
-          ./chibi
-          ./configuration.nix
-          raulyrs-module
-          sugoi-module
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              extraSpecialArgs = specialArgs;
-              users.frahz = {
-                imports = homeImports.default;
-              };
-            };
-          }
-        ] ++ defaultModules;
-      };
-
-      inari = nixosSystem {
-        inherit specialArgs;
-        modules = [
-          ./inari
-          ./configuration.nix
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              extraSpecialArgs = specialArgs;
-              users.frahz = {
-                imports = homeImports.default;
-              };
-            };
-          }
-        ] ++ defaultModules;
-      };
-
-      anmoku = nixosSystem {
-        inherit specialArgs;
-        modules = [
-          ./anmoku
-          ./configuration.nix
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              extraSpecialArgs = specialArgs;
-              users.frahz = {
-                imports = homeImports."frahz@desktop";
-              };
-            };
-          }
-        ] ++ defaultModules;
-      };
+  flake.nixosConfigurations = {
+    anmoku = mkNixosSystem "anmoku" {
+      homeProfile = homeImports."frahz@desktop";
     };
+
+    chibi = mkNixosSystem "chibi" {
+      extraModules = [
+        raulyrs-module
+        sugoi-module
+      ];
+    };
+
+    inari = mkNixosSystem "inari" { };
+  };
 }
