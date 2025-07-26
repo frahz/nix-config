@@ -1,7 +1,6 @@
 {
+  self,
   config,
-  inputs,
-  lib,
   pkgs,
   ...
 }:
@@ -54,7 +53,12 @@
   };
 
   # Secrets
-  sops.secrets.raulyrs = { };
+  sops.secrets = {
+    raulyrs = { };
+    "linkwarden-secrets" = {
+      sopsFile = "${self}/secrets/linkwarden-secrets.yaml";
+    };
+  };
 
   # Services
   services = {
@@ -98,18 +102,16 @@
   # Containers
   container = {
     linkwarden = {
-      volumes = [
-        "/mnt/kuki/containers/linkwarden/data:/data/data"
-      ];
-      pg_volumes = [
-        "/mnt/kuki/containers/linkwarden/pg_data:/var/lib/postgresql/data"
-      ];
-      env_files = [ /mnt/kuki/containers/linkwarden/linkwarden.env ];
+      enable = true;
+      dataDir = "/mnt/kuki/containers/linkwarden/data";
+      postgres = {
+        dataDir = "/mnt/kuki/containers/linkwarden/pg_data";
+      };
+      environmentFile = config.sops.secrets.linkwarden-secrets.path;
     };
     freshrss = {
-      volumes = [
-        "/mnt/kuki/containers/freshrss/config:/config"
-      ];
+      enable = true;
+      configDir = "/mnt/kuki/containers/freshrss/config";
     };
   };
 }

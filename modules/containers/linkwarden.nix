@@ -4,27 +4,70 @@
   pkgs,
   ...
 }:
-with lib;
 let
+  inherit (lib) mkIf mkOption mkEnableOption;
+  inherit (lib.types) str path nullOr;
+
   cfg = config.container.linkwarden;
 in
 {
   options.container.linkwarden = {
-    volumes = mkOption {
-      type = with types; listOf str;
+    enable = mkEnableOption "Enable the linkwarden service";
+    version = mkOption {
+      type = str;
+      default = "v2.9.3";
+      example = ''
+        The most recent version can be found here:
+        https://github.com/linkwarden/linkwarden/pkgs/container/linkwarden
+      '';
+      description = "The docker image version for linkwarden service";
     };
-    pg_volumes = mkOption {
-      type = with types; listOf str;
+    port = mkOption {
+      type = lib.types.port;
+      default = 3000;
+      description = "The port for linkwarden service";
     };
-    env_files = mkOption {
-      type = with types; listOf path;
+    dataDir = mkOption {
+      type = path;
+      description = ''
+        Directory for configuration for linkwarden service;
+      '';
+    };
+    postgres = {
+      version = mkOption {
+        type = str;
+        default = "16-alpine";
+        example = ''
+          The most recent version can be found here:
+          https://github.com/linkwarden/linkwarden/pkgs/container/linkwarden
+        '';
+        description = ''
+          The docker image version for postgres instance used by linkwarden service.
+        '';
+      };
+      dataDir = mkOption {
+        type = path;
+        description = ''
+          Data directory for postgresql instance used by linkwarden service.
+        '';
+      };
+    };
+    environmentFile = mkOption {
+      type = nullOr path;
+      default = null;
+      description = "The environment file to use for linkwarden";
+    };
+    network = mkOption {
+      type = str;
+      default = "linkwarden-br";
+      description = "Network name for linkwarden containers";
     };
   };
 
-  config = {
+  config = mkIf cfg.enable {
     networking.firewall = {
-      allowedTCPPorts = [ 3000 ];
-      allowedUDPPorts = [ 3000 ];
+      allowedTCPPorts = [ cfg.port ];
+      allowedUDPPorts = [ cfg.port ];
     };
 
     systemd.services.init-linkwarden-network = {
@@ -39,34 +82,42 @@ in
           dockerBin = "${pkgs.${docker}}/bin/${docker}";
         in
         ''
-          ${dockerBin} network inspect linkwarden-br >/dev/null 2>&1 || ${dockerBin} network create linkwarden-br
+          ${dockerBin} network inspect ${cfg.network} >/dev/null 2>&1 || ${dockerBin} network create ${cfg.network}
         '';
     };
 
     virtualisation.oci-containers.containers.linkwarden = {
       autoStart = true;
-      image = "ghcr.io/linkwarden/linkwarden:v2.9.3";
-      inherit (cfg) volumes;
+      image = "ghcr.io/linkwarden/linkwarden:${cfg.version}";
+      volumes = [
+        "${cfg.dataDir}:/data/data"
+      ];
       environment = {
         TZ = "America/Los_Angeles";
       };
-      environmentFiles = cfg.env_files;
+      environmentFiles = mkIf (cfg.environmentFile != null) [
+        cfg.environmentFile
+      ];
       ports = [
-        "3000:3000"
+        "${toString cfg.port}:3000"
       ];
       dependsOn = [ "linkwarden_pg" ];
-      extraOptions = [ "--network=linkwarden-br" ];
+      networks = [ cfg.network ];
     };
 
     virtualisation.oci-containers.containers.linkwarden_pg = {
       autoStart = true;
-      image = "postgres:16-alpine";
-      volumes = cfg.pg_volumes;
+      image = "postgres:${cfg.postgres.version}";
+      volumes = [
+        "${cfg.postgres.dataDir}:/var/lib/postgresql/data"
+      ];
       environment = {
         TZ = "America/Los_Angeles";
       };
-      environmentFiles = cfg.env_files;
-      extraOptions = [ "--network=linkwarden-br" ];
+      environmentFiles = mkIf (cfg.environmentFile != null) [
+        cfg.environmentFile
+      ];
+      networks = [ cfg.network ];
     };
   };
 }
