@@ -22,7 +22,7 @@ in
 
     virtualisation.oci-containers.containers.freshrss = {
       autoStart = true;
-      image = "lscr.io/linuxserver/freshrss:latest";
+      image = "lscr.io/linuxserver/freshrss:1.26.3-ls268";
       inherit (cfg) volumes;
       environment = {
         PUID = "1000";
