@@ -1,7 +1,8 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   imports = [
     ./terminal
+    inputs.catppuccin.homeModules.catppuccin
   ];
 
   programs.home-manager.enable = true;

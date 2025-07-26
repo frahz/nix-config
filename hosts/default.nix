@@ -1,10 +1,12 @@
 {
   self,
   inputs,
-  homeImports,
   ...
 }:
 let
+
+  homeImports = import "${self}/home/profiles";
+
   hm-module = inputs.home.nixosModules.home-manager;
   sops-module = inputs.sops-nix.nixosModules.default;
   sugoi-module = inputs.sugoi.nixosModules.default;
@@ -42,7 +44,7 @@ in
 {
   flake.nixosConfigurations = {
     anmoku = mkNixosSystem "anmoku" {
-      homeProfile = homeImports."frahz@desktop";
+      homeProfile = homeImports.anmoku;
     };
 
     chibi = mkNixosSystem "chibi" {

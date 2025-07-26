@@ -42,7 +42,6 @@
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
         inputs.pre-commit-hooks.flakeModule
-        ./home/profiles
         ./hosts
       ];
 
