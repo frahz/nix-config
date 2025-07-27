@@ -1,5 +1,6 @@
 {
   imports = [
+    ../base
     ./boot
     ./catppuccin.nix
     ./containers

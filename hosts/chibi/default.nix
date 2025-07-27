@@ -5,8 +5,8 @@
 }:
 {
   imports = [
-    ./services
     ./hardware-configuration.nix
+    ./services
   ];
 
   hardware = {
@@ -72,12 +72,12 @@
     };
   };
 
-  # Containers
   casa = {
     hardware = {
       cpu = "intel";
       gpu = "intel";
     };
+    # Containers
     containers = {
       linkwarden = {
         enable = true;
