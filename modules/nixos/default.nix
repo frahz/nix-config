@@ -7,6 +7,7 @@
     ./environment
     ./hardware
     ./misc.nix
+    ./services
     ./sops.nix
   ];
 }

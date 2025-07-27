@@ -10,7 +10,9 @@ in
     config = {
       allowUnfree = true;
       # allowAliases = false;
-      permittedInsecurePackages = [ ];
+      permittedInsecurePackages = [
+        "dotnet-runtime-6.0.36"
+      ];
     };
   };
 

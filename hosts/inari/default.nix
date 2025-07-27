@@ -47,22 +47,21 @@
     gitea = { };
   };
 
-  # Services
-  services = {
-    tailscale-autoconnect = {
-      enable = true;
-      authKeyFile = config.sops.secrets.tsauth-inari.path;
-    };
-
-    nemui.enable = true;
-  };
-
   casa = {
     hardware = {
       cpu = "intel";
       gpu = "intel";
     };
 
+    # Services
+    services = {
+      tailscale-autoconnect = {
+        enable = true;
+        authKeyFile = config.sops.secrets.tsauth-inari.path;
+      };
+
+      nemui.enable = true;
+    };
     # Containers
     containers = {
       torrent = {

@@ -8,7 +8,6 @@
 {
   imports = [
     ../users/frahz
-    ../modules/services
     ../modules/shell
   ];
 
@@ -28,7 +27,6 @@
       tokei
       wget
       lazydocker
-      tailscale
       tmux
     ];
     variables = {

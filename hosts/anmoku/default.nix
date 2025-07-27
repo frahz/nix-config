@@ -11,6 +11,7 @@
       cpu = "amd";
       gpu = "amd";
     };
+    services.tailscale.isClient = true;
   };
 
   environment.systemPackages = with pkgs; [
@@ -42,7 +43,6 @@
       alsa.support32Bit = true;
       pulse.enable = true;
     };
-    tailscale.useRoutingFeatures = "client";
     xserver = {
       enable = true;
       xkb = {
