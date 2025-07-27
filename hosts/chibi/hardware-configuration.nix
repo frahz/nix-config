@@ -4,24 +4,6 @@
   ...
 }:
 {
-  imports = [ ];
-
-  boot = {
-    initrd = {
-      availableKernelModules = [
-        "xhci_pci"
-        "ahci"
-        "nvme"
-        "usb_storage"
-        "usbhid"
-        "sd_mod"
-      ];
-      kernelModules = [ ];
-    };
-    kernelModules = [ "kvm-intel" ];
-    extraModulePackages = [ ];
-  };
-
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-uuid/2c69de82-1d9c-49bc-8402-d1fddadb4703";

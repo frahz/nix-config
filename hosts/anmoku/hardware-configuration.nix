@@ -4,29 +4,6 @@
   ...
 }:
 {
-  imports = [ ];
-
-  boot = {
-    initrd = {
-      availableKernelModules = [
-        "nvme"
-        "xhci_pci"
-        "ahci"
-        "thunderbolt"
-        "usbhid"
-        "usb_storage"
-        "sd_mod"
-      ];
-      # enable amdgpu kernel module
-      kernelModules = [ "amdgpu" ];
-    };
-    kernelModules = [
-      "kvm-amd"
-      "amdgpu"
-    ];
-    extraModulePackages = [ ];
-  };
-
   fileSystems."/" = {
     device = "/dev/disk/by-label/main";
     fsType = "btrfs";

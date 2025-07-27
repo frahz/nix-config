@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -7,17 +7,15 @@
   ];
 
   boot = {
-    loader = {
-      systemd-boot = {
-        enable = true;
-        configurationLimit = 10;
-      };
-      efi = {
-        canTouchEfiVariables = true;
-      };
-      timeout = 5;
+    initrd = {
+      availableKernelModules = [ "thunderbolt" ];
+      # enable amdgpu kernel module
+      kernelModules = [ "amdgpu" ];
     };
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelModules = [
+      "kvm-amd"
+      "amdgpu"
+    ];
   };
 
   environment.systemPackages = with pkgs; [

@@ -17,6 +17,8 @@ let
     inputs.nixpkgs.lib.nixosSystem {
       inherit specialArgs;
       modules = [
+        "${self}/modules/nixos"
+
         ./${name}
         ./configuration.nix
         inputs.catppuccin.nixosModules.catppuccin
