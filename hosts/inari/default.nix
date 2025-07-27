@@ -8,7 +8,7 @@
   imports = [
     ./hardware-configuration.nix
     ./services
-    ../../modules/containers/torrent.nix
+    ../../modules/containers
   ];
 
   boot = {
@@ -83,15 +83,16 @@
   # Containers
   container = {
     torrent = {
-      qb_volumes = [
-        "/mnt/mizu/torrents:/torrents"
-        "/mnt/mizu/containers/qbittorrent/config:/config"
-      ];
-      gluetun_volumes = [
-        "/mnt/mizu/containers/gluetun/config:/config"
-        "/mnt/mizu/containers/gluetun/servers.json:/gluetun/servers.json"
-      ];
-      vpn_info_file = config.sops.secrets.gluetun.path;
+      enable = true;
+      qbittorrent = {
+        configDir = "/mnt/mizu/containers/qbittorrent/config";
+        torrentDir = "/mnt/mizu/torrents";
+      };
+      gluetun = {
+        configDir = "/mnt/mizu/containers/gluetun/config";
+        serversFile = "/mnt/mizu/containers/gluetun/servers.json";
+        environmentFile = config.sops.secrets.gluetun.path;
+      };
     };
   };
 }

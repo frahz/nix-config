@@ -8,8 +8,7 @@
   imports = [
     ./services
     ./hardware-configuration.nix
-    ../../modules/containers/linkwarden.nix
-    ../../modules/containers/freshrss.nix
+    ../../modules/containers
   ];
 
   boot = {
