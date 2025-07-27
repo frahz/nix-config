@@ -311,11 +311,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1752917858,
-        "narHash": "sha256-KDnJvmWpggIbkI9pO1Bk5jqXlTz9+DhNpprm4bWpaDw=",
+        "lastModified": 1753589105,
+        "narHash": "sha256-5E0hkqCP+aCEWs5WfZ28KKAxu18KSK7ALOusgEwHdO8=",
         "owner": "frahz",
         "repo": "nvim-flake",
-        "rev": "4917d02843ae67c9d5e001bea16f77203f809215",
+        "rev": "64dc608e00f64e799d32da1f419fe160274d37c6",
         "type": "github"
       },
       "original": {
