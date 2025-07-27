@@ -21,9 +21,7 @@
 
   networking = {
     useDHCP = lib.mkDefault true;
-    hostName = "inari";
   };
 
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 }

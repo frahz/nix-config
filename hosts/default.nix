@@ -1,16 +1,18 @@
 {
+  lib,
   self,
   inputs,
   ...
 }:
 let
+  inherit (lib) mkDefault;
 
   homeImports = import "${self}/home/profiles";
 
   mkNixosSystem =
     name:
     {
-      system ? "x86_x64-linux",
+      system ? "x86_64-linux",
       extraModules ? [ ],
       homeProfile ? homeImports.default,
       specialArgs ? { inherit inputs self system; },
@@ -30,6 +32,10 @@ let
               imports = homeProfile;
             };
           };
+        }
+        {
+          networking.hostName = mkDefault name;
+          nixpkgs.hostPlatform = mkDefault system;
         }
       ]
       ++ extraModules;
