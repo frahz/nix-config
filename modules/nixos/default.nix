@@ -1,5 +1,6 @@
 {
   imports = [
     ./boot
+    ./sops.nix
   ];
 }
