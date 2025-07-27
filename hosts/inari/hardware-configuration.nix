@@ -37,15 +37,10 @@
     };
   };
 
-  swapDevices = [ ];
-
   networking = {
     useDHCP = lib.mkDefault true;
     hostName = "inari";
   };
-  # networking.interfaces.enp0s31f6.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp2s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp0s20f3.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";

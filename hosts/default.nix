@@ -7,12 +7,6 @@ let
 
   homeImports = import "${self}/home/profiles";
 
-  hm-module = inputs.home.nixosModules.home-manager;
-  sops-module = inputs.sops-nix.nixosModules.default;
-  sugoi-module = inputs.sugoi.nixosModules.default;
-  raulyrs-module = inputs.raulyrs.nixosModules.default;
-  catppuccin-module = inputs.catppuccin.nixosModules.catppuccin;
-
   mkNixosSystem =
     name:
     {
@@ -25,9 +19,9 @@ let
       modules = [
         ./${name}
         ./configuration.nix
-        catppuccin-module
-        hm-module
-        sops-module
+        inputs.catppuccin.nixosModules.catppuccin
+        inputs.home.nixosModules.home-manager
+        inputs.sops-nix.nixosModules.default
         {
           home-manager = {
             useGlobalPkgs = true;
@@ -49,8 +43,8 @@ in
 
     chibi = mkNixosSystem "chibi" {
       extraModules = [
-        raulyrs-module
-        sugoi-module
+        inputs.sugoi.nixosModules.default
+        inputs.raulyrs.nixosModules.default
       ];
     };
 

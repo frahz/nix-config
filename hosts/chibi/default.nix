@@ -39,10 +39,6 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    hugo
-  ];
-
   virtualisation = {
     oci-containers.backend = "docker";
     docker = {
