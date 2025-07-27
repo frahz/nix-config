@@ -7,10 +7,10 @@ let
   inherit (lib) mkIf mkOption mkEnableOption;
   inherit (lib.types) str path;
 
-  cfg = config.container.freshrss;
+  cfg = config.casa.containers.freshrss;
 in
 {
-  options.container.freshrss = {
+  options.casa.containers.freshrss = {
     enable = mkEnableOption "Enable the freshrss service";
     version = mkOption {
       type = str;

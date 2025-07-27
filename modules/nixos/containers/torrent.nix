@@ -11,10 +11,10 @@ let
     nullOr
     ;
 
-  cfg = config.container.torrent;
+  cfg = config.casa.containers.torrent;
 in
 {
-  options.container.torrent = {
+  options.casa.containers.torrent = {
     enable = mkEnableOption "enables torrenting(qbittorrent/gluetun) containers";
     qbittorrent = {
       version = mkOption {

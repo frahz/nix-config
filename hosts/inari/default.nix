@@ -8,7 +8,6 @@
   imports = [
     ./hardware-configuration.nix
     ./services
-    ../../modules/containers
   ];
 
   boot = {
@@ -69,7 +68,7 @@
   };
 
   # Containers
-  container = {
+  casa.containers = {
     torrent = {
       enable = true;
       qbittorrent = {

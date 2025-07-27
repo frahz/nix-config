@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf mkOption mkEnableOption;
   inherit (lib.types) str path nullOr;
 
-  cfg = config.container.linkwarden;
+  cfg = config.casa.containers.linkwarden;
 in
 {
-  options.container.linkwarden = {
+  options.casa.containers.linkwarden = {
     enable = mkEnableOption "Enable the linkwarden service";
     version = mkOption {
       type = str;

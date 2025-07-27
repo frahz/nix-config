@@ -8,7 +8,6 @@
   imports = [
     ./services
     ./hardware-configuration.nix
-    ../../modules/containers
   ];
 
   boot = {
@@ -85,7 +84,7 @@
   };
 
   # Containers
-  container = {
+  casa.containers = {
     linkwarden = {
       enable = true;
       dataDir = "/mnt/kuki/containers/linkwarden/data";
