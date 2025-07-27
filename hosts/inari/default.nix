@@ -11,8 +11,6 @@
   ];
 
   boot = {
-    kernelModules = [ "kvm-intel" ];
-
     swraid = {
       enable = true;
       mdadmConf = ''
@@ -23,19 +21,11 @@
     };
   };
 
-  # TODO: remove overlay and override inplace
-  nixpkgs.config.packageOverrides = pkgs: {
-    intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };
-  };
   hardware = {
     graphics = {
       # Hardware Accelerated Video
       enable = true;
       extraPackages = with pkgs; [
-        intel-media-driver
-        intel-vaapi-driver # previously vaapiIntel
-        vaapiVdpau
-        libvdpau-va-gl
         intel-compute-runtime # OpenCL filter support (hardware tonemapping and subtitle burn-in)
         vpl-gpu-rt
       ];
@@ -67,18 +57,25 @@
     nemui.enable = true;
   };
 
-  # Containers
-  casa.containers = {
-    torrent = {
-      enable = true;
-      qbittorrent = {
-        configDir = "/mnt/mizu/containers/qbittorrent/config";
-        torrentDir = "/mnt/mizu/torrents";
-      };
-      gluetun = {
-        configDir = "/mnt/mizu/containers/gluetun/config";
-        serversFile = "/mnt/mizu/containers/gluetun/servers.json";
-        environmentFile = config.sops.secrets.gluetun.path;
+  casa = {
+    hardware = {
+      cpu = "intel";
+      gpu = "intel";
+    };
+
+    # Containers
+    containers = {
+      torrent = {
+        enable = true;
+        qbittorrent = {
+          configDir = "/mnt/mizu/containers/qbittorrent/config";
+          torrentDir = "/mnt/mizu/torrents";
+        };
+        gluetun = {
+          configDir = "/mnt/mizu/containers/gluetun/config";
+          serversFile = "/mnt/mizu/containers/gluetun/servers.json";
+          environmentFile = config.sops.secrets.gluetun.path;
+        };
       };
     };
   };

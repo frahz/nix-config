@@ -15,9 +15,6 @@
     ../modules/shell
   ];
 
-  time.timeZone = "America/Los_Angeles";
-  i18n.defaultLocale = "en_US.UTF-8";
-
   environment = {
     systemPackages = with pkgs; [
       bat
@@ -43,21 +40,12 @@
     };
   };
 
-  catppuccin.flavor = "mocha";
-
-  console = {
-    font = "${pkgs.terminus_font}/share/consolefonts/ter-d24n.psf.gz";
-  };
-  catppuccin.tty.enable = true;
-
   services.openssh = {
     enable = true;
     settings = {
       PasswordAuthentication = true;
     };
   };
-
-  hardware.enableRedistributableFirmware = lib.mkDefault true;
 
   system.stateVersion = "23.11";
 }

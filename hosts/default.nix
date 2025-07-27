@@ -22,8 +22,6 @@ let
 
         ./${name}
         ./configuration.nix
-        inputs.catppuccin.nixosModules.catppuccin
-        inputs.home.nixosModules.home-manager
         {
           home-manager = {
             useGlobalPkgs = true;

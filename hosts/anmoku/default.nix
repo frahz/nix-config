@@ -6,16 +6,11 @@
     ../../modules/wayland
   ];
 
-  boot = {
-    initrd = {
-      availableKernelModules = [ "thunderbolt" ];
-      # enable amdgpu kernel module
-      kernelModules = [ "amdgpu" ];
+  casa = {
+    hardware = {
+      cpu = "amd";
+      gpu = "amd";
     };
-    kernelModules = [
-      "kvm-amd"
-      "amdgpu"
-    ];
   };
 
   environment.systemPackages = with pkgs; [
@@ -54,8 +49,6 @@
         layout = "us";
         variant = "";
       };
-      # enable amdgpu xorg drivers
-      videoDrivers = [ "amdgpu" ];
     };
 
     gvfs.enable = true;

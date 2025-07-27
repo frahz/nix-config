@@ -1,7 +1,6 @@
 {
   self,
   config,
-  pkgs,
   ...
 }:
 {
@@ -10,21 +9,11 @@
     ./hardware-configuration.nix
   ];
 
-  boot = {
-    kernelModules = [ "kvm-intel" ];
-  };
-
   hardware = {
     bluetooth.enable = true;
+    # Hardware Accelerated Video
     graphics = {
-      # Hardware Accelerated Video
       enable = true;
-      extraPackages = with pkgs; [
-        intel-media-driver
-        intel-vaapi-driver # previously vaapiIntel
-        vaapiVdpau
-        libvdpau-va-gl
-      ];
     };
   };
 
@@ -84,18 +73,24 @@
   };
 
   # Containers
-  casa.containers = {
-    linkwarden = {
-      enable = true;
-      dataDir = "/mnt/kuki/containers/linkwarden/data";
-      postgres = {
-        dataDir = "/mnt/kuki/containers/linkwarden/pg_data";
-      };
-      environmentFile = config.sops.secrets.linkwarden-secrets.path;
+  casa = {
+    hardware = {
+      cpu = "intel";
+      gpu = "intel";
     };
-    freshrss = {
-      enable = true;
-      configDir = "/mnt/kuki/containers/freshrss/config";
+    containers = {
+      linkwarden = {
+        enable = true;
+        dataDir = "/mnt/kuki/containers/linkwarden/data";
+        postgres = {
+          dataDir = "/mnt/kuki/containers/linkwarden/pg_data";
+        };
+        environmentFile = config.sops.secrets.linkwarden-secrets.path;
+      };
+      freshrss = {
+        enable = true;
+        configDir = "/mnt/kuki/containers/freshrss/config";
+      };
     };
   };
 }
