@@ -10,12 +10,13 @@ let
   mkNixosSystem =
     name:
     {
+      system ? "x86_x64-linux",
       extraModules ? [ ],
       homeProfile ? homeImports.default,
-      specialArgs ? { inherit inputs self; },
+      specialArgs ? { inherit inputs self system; },
     }:
     inputs.nixpkgs.lib.nixosSystem {
-      inherit specialArgs;
+      inherit system specialArgs;
       modules = [
         "${self}/modules/nixos"
 
