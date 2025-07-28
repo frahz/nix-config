@@ -14,8 +14,7 @@
     # dolphin-emu # general console
 
     # runtime
-    dotnet-runtime_6 # for running terraria manually, from binary
-    mono # general dotnet apps
+    # mono # general dotnet apps
     winetricks # wine helper utility
   ];
 }
