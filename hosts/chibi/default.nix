@@ -9,12 +9,6 @@
     ./services
   ];
 
-  hardware = {
-    bluetooth.enable = true;
-    # Hardware Accelerated Video
-    graphics.enable = true;
-  };
-
   virtualisation = {
     oci-containers.backend = "docker";
     docker = {
@@ -74,8 +68,12 @@
     hardware = {
       cpu = "intel";
       gpu = "intel";
+      enableHardwareAcceleration = true;
+      capabilities = {
+        bluetooth = true;
+      };
     };
-    # Containers
+    system.bluetooth.enable = true;
     containers = {
       linkwarden = {
         enable = true;

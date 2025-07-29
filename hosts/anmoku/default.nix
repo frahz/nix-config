@@ -10,7 +10,12 @@
     hardware = {
       cpu = "amd";
       gpu = "amd";
+      enableHardwareAcceleration = true;
+      capabilities = {
+        bluetooth = true;
+      };
     };
+    system.bluetooth.enable = true;
     services.tailscale.isClient = true;
   };
 
@@ -34,7 +39,6 @@
   };
 
   services = {
-    blueman.enable = true;
     flatpak.enable = true;
     pulseaudio.enable = false;
     pipewire = {
@@ -86,20 +90,14 @@
     pam.services.hyprlock = { };
   };
 
-  hardware = {
-    bluetooth.enable = true;
-
-    graphics = {
-      enable = true;
-      enable32Bit = true;
-      extraPackages = with pkgs; [
-        # vulkan
-        vulkan-tools
-        vulkan-loader
-        vulkan-validation-layers
-        vulkan-extension-layer
-      ];
-    };
+  hardware.graphics = {
+    extraPackages = with pkgs; [
+      # vulkan
+      vulkan-tools
+      vulkan-loader
+      vulkan-validation-layers
+      vulkan-extension-layer
+    ];
   };
 
   # SMB share, move to different location after

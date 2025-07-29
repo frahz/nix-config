@@ -21,9 +21,6 @@
     };
   };
 
-  # Hardware Accelerated Video
-  hardware.graphics.enable = true;
-
   virtualisation = {
     oci-containers.backend = "docker";
     docker = {
@@ -43,6 +40,10 @@
     hardware = {
       cpu = "intel";
       gpu = "intel";
+      enableHardwareAcceleration = true;
+      capabilities = {
+        bluetooth = true;
+      };
     };
     services = {
       tailscale-autoconnect = {
