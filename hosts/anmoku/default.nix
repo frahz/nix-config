@@ -90,16 +90,6 @@
     pam.services.hyprlock = { };
   };
 
-  hardware.graphics = {
-    extraPackages = with pkgs; [
-      # vulkan
-      vulkan-tools
-      vulkan-loader
-      vulkan-validation-layers
-      vulkan-extension-layer
-    ];
-  };
-
   # SMB share, move to different location after
   sops.secrets.smb-secrets = {
     path = "/etc/nixos/smb-secrets";
