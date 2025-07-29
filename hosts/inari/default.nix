@@ -21,16 +21,8 @@
     };
   };
 
-  hardware = {
-    graphics = {
-      # Hardware Accelerated Video
-      enable = true;
-      extraPackages = with pkgs; [
-        intel-compute-runtime # OpenCL filter support (hardware tonemapping and subtitle burn-in)
-        vpl-gpu-rt
-      ];
-    };
-  };
+  # Hardware Accelerated Video
+  hardware.graphics.enable = true;
 
   virtualisation = {
     oci-containers.backend = "docker";
@@ -52,8 +44,6 @@
       cpu = "intel";
       gpu = "intel";
     };
-
-    # Services
     services = {
       tailscale-autoconnect = {
         enable = true;
@@ -62,7 +52,6 @@
 
       nemui.enable = true;
     };
-    # Containers
     containers = {
       torrent = {
         enable = true;

@@ -12,9 +12,7 @@
   hardware = {
     bluetooth.enable = true;
     # Hardware Accelerated Video
-    graphics = {
-      enable = true;
-    };
+    graphics.enable = true;
   };
 
   virtualisation = {

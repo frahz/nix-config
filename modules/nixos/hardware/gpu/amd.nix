@@ -14,10 +14,18 @@ in
     # enable amdgpu xorg drivers
     services.xserver.videoDrivers = [ "amdgpu" ];
 
-    # enable amdgpu kernel module
-    boot = {
-      kernelModules = [ "amdgpu" ];
-      initrd.kernelModules = [ "amdgpu" ];
+    hardware = {
+      amdgpu = {
+        # enable amdgpu kernel module
+        initrd.enable = true;
+        # enables AMDVLK & OpenCL support
+        amdvlk = {
+          enable = true;
+          support32Bit.enable = true;
+        };
+        # disable for now, pulls in like 7 GB of stuff
+        opencl.enable = false;
+      };
     };
   };
 }

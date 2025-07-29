@@ -11,7 +11,7 @@ in
 {
   config = mkIf (cfg.gpu == "intel") {
     # i915 kernel module
-    # boot.initrd.kernelModules = [ "i915" ];
+    boot.initrd.kernelModules = [ "i915" ];
     # we enable modesetting since this is recommended for intel gpus
     # services.xserver.videoDrivers = [ "modesetting" ];
 
@@ -22,6 +22,8 @@ in
           libva-vdpau-driver
           intel-media-driver
           libvdpau-va-gl
+          intel-compute-runtime # OpenCL filter support (hardware tonemapping and subtitle burn-in)
+          vpl-gpu-rt
           ;
 
         intel-vaapi-driver = pkgs.intel-vaapi-driver.override { enableHybridCodec = true; };

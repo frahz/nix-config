@@ -92,16 +92,7 @@
     graphics = {
       enable = true;
       enable32Bit = true;
-      # enables AMDVLK & OpenCL support
       extraPackages = with pkgs; [
-        # opencl drivers
-        # rocm-opencl-icd
-        # rocm-opencl-runtime
-        amdvlk
-
-        # mesa
-        mesa
-
         # vulkan
         vulkan-tools
         vulkan-loader
