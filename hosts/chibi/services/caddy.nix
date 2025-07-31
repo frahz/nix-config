@@ -55,8 +55,8 @@ in
     enable = true;
     email = "me@frahz.dev";
     package = pkgs.caddy.withPlugins {
-      plugins = [ "github.com/caddy-dns/porkbun@v0.3.0" ];
-      hash = "sha256-wIM5CAdQedQL/kGEFb8GAxBJB4HtT/NXVDG2f4jECA4=";
+      plugins = [ "github.com/caddy-dns/porkbun@v0.3.1" ];
+      hash = "sha256-YZ4Bq0hfOJpa0C2lKipEY4fqwzJbEFM7ci5ys9S3uAo=";
     };
     globalConfig = ''
       acme_dns porkbun {
