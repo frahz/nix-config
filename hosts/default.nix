@@ -18,7 +18,7 @@ let
       specialArgs ? { inherit inputs self system; },
     }:
     inputs.nixpkgs.lib.nixosSystem {
-      inherit system specialArgs;
+      inherit specialArgs;
       modules = [
         "${self}/modules/nixos"
 
