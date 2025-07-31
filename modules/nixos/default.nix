@@ -9,5 +9,6 @@
     ./misc.nix
     ./services
     ./sops.nix
+    ./virtualisation.nix
   ];
 }

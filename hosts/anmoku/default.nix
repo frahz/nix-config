@@ -16,6 +16,7 @@
       };
     };
     system.bluetooth.enable = true;
+    virtualisation.enable = true;
     services.tailscale.isClient = true;
   };
 
@@ -74,14 +75,7 @@
     '';
   };
 
-  virtualisation = {
-    oci-containers.backend = "docker";
-    docker = {
-      enable = true;
-      enableOnBoot = false;
-      autoPrune.enable = true;
-    };
-  };
+  virtualisation.docker.enableOnBoot = false;
 
   security = {
     rtkit.enable = true;

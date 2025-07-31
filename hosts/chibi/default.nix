@@ -9,14 +9,6 @@
     ./services
   ];
 
-  virtualisation = {
-    oci-containers.backend = "docker";
-    docker = {
-      enable = true;
-      autoPrune.enable = true;
-    };
-  };
-
   # Secrets
   sops.secrets = {
     raulyrs = { };
@@ -74,6 +66,7 @@
       };
     };
     system.bluetooth.enable = true;
+    virtualisation.enable = true;
     containers = {
       linkwarden = {
         enable = true;

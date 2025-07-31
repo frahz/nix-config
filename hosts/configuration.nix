@@ -13,12 +13,10 @@
 
   environment = {
     systemPackages = with pkgs; [
-      bat
       ripgrep
       binutils
       coreutils
       killall
-      docker
       fd
       git
       btop
@@ -26,7 +24,6 @@
       neovim
       tokei
       wget
-      lazydocker
       tmux
     ];
     variables = {
