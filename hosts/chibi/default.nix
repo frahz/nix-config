@@ -57,6 +57,9 @@
   };
 
   casa = {
+    profiles = {
+      server.enable = true;
+    };
     hardware = {
       cpu = "intel";
       gpu = "intel";

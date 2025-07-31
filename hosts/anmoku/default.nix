@@ -2,11 +2,13 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/fonts.nix
     ../../modules/wayland
   ];
 
   casa = {
+    profiles = {
+      graphical.enable = true;
+    };
     hardware = {
       cpu = "amd";
       gpu = "amd";

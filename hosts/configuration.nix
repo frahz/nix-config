@@ -8,7 +8,6 @@
 {
   imports = [
     ../users/frahz
-    ../modules/shell
   ];
 
   environment = {

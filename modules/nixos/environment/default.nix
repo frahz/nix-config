@@ -1,5 +1,9 @@
 { lib, pkgs, ... }:
 {
+  imports = [
+    ./fonts.nix
+  ];
+
   console = {
     enable = lib.mkDefault true;
     font = "${pkgs.terminus_font}/share/consolefonts/ter-d24n.psf.gz";
