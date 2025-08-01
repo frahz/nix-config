@@ -5,6 +5,7 @@
     ./catppuccin.nix
     ./containers
     ./environment
+    ./gaming.nix
     ./hardware
     ./misc.nix
     ./networking

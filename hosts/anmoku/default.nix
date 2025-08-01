@@ -31,15 +31,6 @@
   programs = {
     adb.enable = true;
     hyprland.enable = true;
-
-    # gaming
-    gamemode.enable = true;
-    steam = {
-      enable = true;
-      extraCompatPackages = [
-        pkgs.proton-ge-bin.steamcompattool
-      ];
-    };
   };
 
   services = {
