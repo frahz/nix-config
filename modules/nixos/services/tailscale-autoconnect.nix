@@ -48,7 +48,7 @@ in
         fi
 
         # otherwise authenticate with tailscale
-        ${pkgs.tailscale}/bin/tailscale up --authkey file:${cfg.authKeyFile}
+        ${pkgs.tailscale}/bin/tailscale up --authkey file:${cfg.authKeyFile} --operator=frahz
       '';
     };
   };
