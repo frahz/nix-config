@@ -1,9 +1,4 @@
 {
-  lib,
-  config,
-  ...
-}:
-{
   fileSystems."/" = {
     device = "/dev/disk/by-label/main";
     fsType = "btrfs";
@@ -16,9 +11,5 @@
       "fmask=0022"
       "dmask=0022"
     ];
-  };
-
-  networking = {
-    useDHCP = lib.mkDefault true;
   };
 }

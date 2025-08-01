@@ -31,12 +31,5 @@
     };
   };
 
-  services.openssh = {
-    enable = true;
-    settings = {
-      PasswordAuthentication = true;
-    };
-  };
-
   system.stateVersion = "23.11";
 }

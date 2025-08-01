@@ -19,7 +19,9 @@
     };
     system.bluetooth.enable = true;
     virtualisation.enable = true;
-    services.tailscale.isClient = true;
+    networking = {
+      tailscale.isClient = true;
+    };
   };
 
   environment.systemPackages = with pkgs; [
@@ -101,41 +103,7 @@
   };
 
   networking = {
-    networkmanager = {
-      enable = true;
-      dns = "systemd-resolved";
-      # wifi.backend = "iwd";
-    };
-    nameservers = [
-      "1.1.1.1#one.one.one.one"
-      "1.0.0.1#one.one.one.one"
-    ];
     # Mullvad enable support: https://discourse.nixos.org/t/connected-to-mullvadvpn-but-no-internet-connection/35803/10?u=lion
     resolvconf.enable = false;
-    # wireless = {
-    #   iwd = {
-    #     enable = true;
-    #     settings = {
-    #       Settings.AutoConnect = true;
-    #       General = {
-    #         EnableNetworkConfiguration = true;
-    #       };
-    #       Network = {
-    #         EnableIPv6 = true;
-    #         RoutePriorityOffset = 300;
-    #       };
-    #     };
-    #  };
-    # };
-  };
-  services.resolved = {
-    enable = true;
-    dnssec = "allow-downgrade";
-    domains = [ "~." ];
-    fallbackDns = [
-      "1.1.1.1"
-      "8.8.8.8"
-    ];
-    dnsovertls = "true";
   };
 }

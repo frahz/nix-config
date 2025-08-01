@@ -8,10 +8,10 @@ let
   inherit (lib) mkIf mkOption mkEnableOption;
   inherit (lib.types) bool;
 
-  cfg = config.casa.services.tailscale;
+  cfg = config.casa.networking.tailscale;
 in
 {
-  options.casa.services.tailscale = {
+  options.casa.networking.tailscale = {
     enable = mkEnableOption "Enable tailscale services" // {
       default = true;
     };
