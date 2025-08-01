@@ -1,5 +1,6 @@
 { pkgs, ... }:
 {
+  home.packages = [ pkgs.glib ];
   gtk = {
     enable = true;
 

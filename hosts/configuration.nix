@@ -12,18 +12,12 @@
 
   environment = {
     systemPackages = with pkgs; [
-      ripgrep
       binutils
       coreutils
       killall
-      fd
-      git
-      btop
       jq
-      neovim
       tokei
       wget
-      tmux
     ];
     variables = {
       EDITOR = "nvim";

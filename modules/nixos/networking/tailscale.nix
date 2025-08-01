@@ -25,9 +25,6 @@ in
   };
 
   config = mkIf cfg.enable {
-
-    environment.systemPackages = [ pkgs.tailscale ];
-
     services.tailscale = {
       enable = true;
       package = pkgs.tailscale;

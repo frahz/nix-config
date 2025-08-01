@@ -2,7 +2,6 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../../modules/wayland
   ];
 
   casa = {
@@ -45,13 +44,6 @@
 
   services = {
     flatpak.enable = true;
-    pulseaudio.enable = false;
-    pipewire = {
-      enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
-      pulse.enable = true;
-    };
     xserver = {
       enable = true;
       xkb = {
@@ -59,10 +51,6 @@
         variant = "";
       };
     };
-
-    gvfs.enable = true;
-    tumbler.enable = true;
-    udisks2.enable = true;
 
     mullvad-vpn = {
       enable = true;
@@ -82,7 +70,6 @@
   virtualisation.docker.enableOnBoot = false;
 
   security = {
-    rtkit.enable = true;
     polkit.enable = true;
     soteria.enable = true;
     pam.services.hyprlock = { };
@@ -102,8 +89,7 @@
       [ "${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1000,gid=100" ];
   };
 
-  networking = {
-    # Mullvad enable support: https://discourse.nixos.org/t/connected-to-mullvadvpn-but-no-internet-connection/35803/10?u=lion
-    resolvconf.enable = false;
-  };
+  # Mullvad enable support: https://discourse.nixos.org/t/connected-to-mullvadvpn-but-no-internet-connection/35803/10?u=lion
+  networking.resolvconf.enable = false;
+
 }

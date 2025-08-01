@@ -11,6 +11,7 @@
     ./server.nix
     ./services
     ./sops.nix
+    ./system
     ./virtualisation.nix
   ];
 }

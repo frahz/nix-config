@@ -12,7 +12,7 @@
   # Secrets
   sops.secrets = {
     raulyrs = { };
-    "linkwarden-secrets" = {
+    linkwarden-secrets = {
       sopsFile = "${self}/secrets/linkwarden-secrets.yaml";
     };
   };
