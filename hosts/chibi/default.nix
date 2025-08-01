@@ -17,43 +17,9 @@
     };
   };
 
-  # Services
-  services = {
-    samba-wsdd = {
-      enable = true;
-      openFirewall = true;
-    };
-    samba = {
-      enable = true;
-      settings = {
-        "global" = {
-          "workgroup" = "WORKGROUP";
-          "server string" = "inari server";
-          "server role" = "standalone server";
-          "pam password change" = "yes";
-          "map to guest" = "bad user";
-          "usershare allow guests" = "yes";
-        };
-        "sharing" = {
-          path = "/mnt/kuki/sharing";
-          comment = "shared directory";
-          browseable = "yes";
-          "read only" = "no";
-          "inherit permissions" = "yes";
-        };
-        "music" = {
-          path = "/mnt/kuki/music";
-          comment = "shared directory";
-          browseable = "yes";
-          "read only" = "no";
-          "inherit permissions" = "yes";
-        };
-      };
-    };
-    raulyrs = {
-      enable = true;
-      environmentFile = config.sops.secrets.raulyrs.path;
-    };
+  services.raulyrs = {
+    enable = true;
+    environmentFile = config.sops.secrets.raulyrs.path;
   };
 
   casa = {
@@ -82,6 +48,19 @@
       freshrss = {
         enable = true;
         configDir = "/mnt/kuki/containers/freshrss/config";
+      };
+    };
+    services = {
+      samba = {
+        enable = true;
+        shares = {
+          sharing = {
+            path = "/mnt/kuki/sharing";
+          };
+          music = {
+            path = "/mnt/kuki/music";
+          };
+        };
       };
     };
   };
