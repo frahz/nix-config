@@ -1,7 +1,8 @@
+{ config, ... }:
 {
   # systemd DNS resolver daemon
   services.resolved = {
-    enable = true;
+    inherit (config.casa.profiles.graphical) enable;
     dnssec = "allow-downgrade";
     fallbackDns = [
       "1.1.1.1"

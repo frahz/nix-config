@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, config, ... }:
 {
   imports = [
     ./systemd.nix
@@ -16,7 +16,7 @@
     ];
 
     networkmanager = {
-      enable = true;
+      inherit (config.casa.profiles.graphical) enable;
       dns = "systemd-resolved";
       # wifi.backend = "iwd";
     };

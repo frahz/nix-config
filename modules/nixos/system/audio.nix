@@ -9,7 +9,6 @@ let
   isx86Linux = pkgs.stdenv.hostPlatform.isLinux && pkgs.stdenv.hostPlatform.isx86;
 in
 {
-
   config = mkIf config.casa.profiles.graphical.enable {
     services = {
       pipewire = {
