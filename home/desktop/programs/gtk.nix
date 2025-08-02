@@ -33,10 +33,6 @@
       gtk-enable-input-feedback-sounds=0
     '';
   };
-  catppuccin.gtk = {
-    enable = true;
-    size = "compact";
-    tweaks = [ "rimless" ];
-    icon.enable = true;
-  };
+
+  catppuccin.gtk.icon.enable = true;
 }
