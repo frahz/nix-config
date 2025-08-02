@@ -18,21 +18,15 @@ let
       specialArgs ? { inherit inputs self system; },
     }:
     inputs.nixpkgs.lib.nixosSystem {
-      inherit specialArgs;
+      # TODO: fix this workaround later
+      specialArgs = specialArgs // {
+        inherit homeProfile;
+      };
       modules = [
         "${self}/modules/nixos"
+        "${self}/users/frahz"
 
         ./${name}
-        ./configuration.nix
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            extraSpecialArgs = specialArgs;
-            users.frahz = {
-              imports = homeProfile;
-            };
-          };
-        }
         {
           networking.hostName = mkDefault name;
           nixpkgs.hostPlatform = mkDefault system;

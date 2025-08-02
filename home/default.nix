@@ -13,8 +13,6 @@
   };
 
   home = {
-    username = "frahz";
-    homeDirectory = "/home/frahz";
     packages = with pkgs; [
       fd
       ripgrep
@@ -23,7 +21,16 @@
       unrar
       gh
       dig
+      killall
+      jq
+      tokei
+      wget
     ];
+    sessionVariables = {
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+      TERMINAL = "ghostty";
+    };
     stateVersion = "23.11";
   };
 }
