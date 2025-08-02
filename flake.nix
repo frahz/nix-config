@@ -4,8 +4,10 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    home.url = "github:nix-community/home-manager";
-    home.inputs.nixpkgs.follows = "nixpkgs";
+    home = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     catppuccin.url = "github:catppuccin/nix";
 
@@ -16,21 +18,29 @@
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
 
     # fixes: https://github.com/the-argus/spicetify-nix/issues/48
-    spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-    spicetify-nix.inputs.nixpkgs.follows = "nixpkgs";
+    spicetify-nix = {
+      url = "github:Gerg-L/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    sops-nix.url = "github:Mic92/sops-nix";
-    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
-    pre-commit-hooks.url = "github:cachix/pre-commit-hooks.nix";
-    pre-commit-hooks.inputs.nixpkgs.follows = "nixpkgs";
+    pre-commit-hooks = {
+      url = "github:cachix/pre-commit-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    private-flake = {
+      url = "git+ssh://git@github.com/frahz/private-flake.git";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     raulyrs.url = "github:frahz/rauly.rs";
     sugoi.url = "github:frahz/sugoi";
     nvim-flake.url = "github:frahz/nvim-flake";
-
-    private-flake.url = "git+ssh://git@github.com/frahz/private-flake.git";
-
     tailray = {
       url = "github:frahz/tailray";
       inputs.nixpkgs.follows = "nixpkgs";
