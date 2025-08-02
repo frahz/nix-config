@@ -16,7 +16,6 @@ pkgs.rustPlatform.buildRustPackage rec {
     # fetchSubModules = true;
   };
 
-  useFetchCargoVendor = true;
   cargoHash = "sha256-I2dVxRfx0IiXiiLy4ygx5gvtJrf+YHJ4P7Cvq51dIrU=";
 
   nativeBuildInputs = [ pkgs.pkg-config ];
