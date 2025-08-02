@@ -1,9 +1,0 @@
-{
-  anmoku = [
-    ../.
-    ./anmoku.nix
-  ];
-  default = [
-    ../.
-  ];
-}

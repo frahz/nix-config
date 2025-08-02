@@ -3,7 +3,6 @@
   self,
   lib,
   pkgs,
-  homeProfile,
   ...
 }:
 {
@@ -11,9 +10,7 @@
     home-manager = {
       useGlobalPkgs = true;
       extraSpecialArgs = { inherit inputs self; };
-      users.frahz = {
-        imports = homeProfile;
-      };
+      users.frahz = ../../home;
     };
 
     users.users.frahz = {

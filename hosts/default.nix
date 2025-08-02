@@ -14,14 +14,11 @@ let
     {
       system ? "x86_64-linux",
       extraModules ? [ ],
-      homeProfile ? homeImports.default,
       specialArgs ? { inherit inputs self system; },
     }:
     inputs.nixpkgs.lib.nixosSystem {
       # TODO: fix this workaround later
-      specialArgs = specialArgs // {
-        inherit homeProfile;
-      };
+      inherit specialArgs;
       modules = [
         "${self}/modules/nixos"
         "${self}/users/frahz"
@@ -37,9 +34,7 @@ let
 in
 {
   flake.nixosConfigurations = {
-    anmoku = mkNixosSystem "anmoku" {
-      homeProfile = homeImports.anmoku;
-    };
+    anmoku = mkNixosSystem "anmoku" { };
 
     chibi = mkNixosSystem "chibi" {
       extraModules = [

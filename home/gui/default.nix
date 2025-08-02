@@ -1,0 +1,19 @@
+{
+  imports = [
+    ./alacritty.nix
+    ./chromium.nix
+    ./firefox.nix
+    ./fuzzel.nix
+    ./gaming.nix
+    ./ghostty.nix
+    ./hyprland
+    ./hyprlock.nix
+    ./imv.nix
+    ./mpv.nix
+    ./powermenu.nix
+    ./spicetify.nix
+    ./waybar
+    ./zathura.nix
+    ./zed.nix
+  ];
+}
