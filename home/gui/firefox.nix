@@ -39,11 +39,34 @@
         "toolkit.telemetry.coverage.opt-out" = true;
         "toolkit.coverage.opt-out" = true;
         "toolkit.coverage.endpoint.base" = "";
+        "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
         "experiments.supported" = false;
         "experiments.enabled" = false;
         "experiments.manifest.uri" = "";
         "browser.ping-centre.telemetry" = false;
       };
+      # from here: https://gist.github.com/getchoo/d5800dad41babc0f448c26c6b19116d5
+      userChrome = ''
+        /* Don't invert the color of tab groups when they're collapsed */
+        tab-group {
+        	--tab-group-color: var(--tab-group-color-invert) !important;
+        }
+
+        .tab-group-label {
+        	/* Don't change the text color or add an outline when tab groups are collapsed (makes the above usable) */
+        	tab-group[collapsed] > .tab-group-label-container > & {
+        		color: light-dark(var(--tab-group-color-pale), var(--tab-group-label-text-dark)) !important;
+        		outline: none !important;
+        	}
+
+        	/* Hide labels when vertical tabs sidebar isn't expanded */
+        	#tabbrowser-tabs[orient="vertical"]:not([expanded]) & {
+        		&::first-letter {
+        			font-size: 0px !important;
+        		}
+        	}
+        }
+      '';
     };
   };
 
