@@ -18,7 +18,7 @@
     networkmanager = {
       inherit (config.casa.profiles.graphical) enable;
       dns = "systemd-resolved";
-      # wifi.backend = "iwd";
+      wifi.backend = config.casa.networking.wirelessBackend;
     };
   };
 

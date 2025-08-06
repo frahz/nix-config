@@ -20,6 +20,7 @@
     virtualisation.enable = true;
     networking = {
       tailscale.isClient = true;
+      wirelessBackend = "iwd";
     };
   };
 
