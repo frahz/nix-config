@@ -40,8 +40,12 @@
 
     paquetes.url = "github:frahz/paquetes";
 
+    nvim-flake = {
+      url = "github:frahz/nvim-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     sugoi.url = "github:frahz/sugoi";
-    nvim-flake.url = "github:frahz/nvim-flake";
     tailray = {
       url = "github:frahz/tailray";
       inputs.nixpkgs.follows = "nixpkgs";

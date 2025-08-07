@@ -18,7 +18,7 @@
     gopls
     vscode-langservers-extracted
     htmx-lsp
-    # tailwindcss-language-server
+    tailwindcss-language-server
     svelte-language-server
     tinymist
     marksman
