@@ -29,7 +29,7 @@ in
 
     networking.wireless = {
       # wpa_supplicant
-      enable = wirelessBackend == "wpa_supplicant";
+      enable = config.casa.profiles.graphical.enable && wirelessBackend == "wpa_supplicant";
 
       extraConfig = ''
         update_config=1
