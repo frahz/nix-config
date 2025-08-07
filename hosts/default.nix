@@ -38,7 +38,7 @@ in
 
     chibi = mkNixosSystem "chibi" {
       extraModules = [
-        inputs.sugoi.nixosModules.default
+        inputs.paquetes.nixosModules.sugoi
         inputs.paquetes.nixosModules.raulyrs
       ];
     };

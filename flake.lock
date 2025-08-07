@@ -1,17 +1,5 @@
 {
   "nodes": {
-    "alpine-js-src": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-puJBvBaHVqKaKYCngvzz+Y8rUF99evd+UCtGuXd3YMY=",
-        "type": "file",
-        "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://cdn.jsdelivr.net/npm/alpinejs@3.14.9/dist/cdn.min.js"
-      }
-    },
     "apple-fonts": {
       "inputs": {
         "nixpkgs": "nixpkgs",
@@ -225,38 +213,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_5": {
-      "locked": {
-        "lastModified": 1753429684,
-        "narHash": "sha256-9h7+4/53cSfQ/uA3pSvCaBepmZaz/dLlLVJnbQ+SJjk=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "7fd36ee82c0275fb545775cc5e4d30542899511d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_6": {
-      "locked": {
-        "lastModified": 1744536153,
-        "narHash": "sha256-awS2zRgF4uTwrOKwwiJcByDzDOdo3Q1rPZbiHQg/N38=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "18dd725c29603f582cf1900e0d25f9f1063dbf11",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nvim-flake": {
       "inputs": {
         "mnw": "mnw",
@@ -295,11 +251,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1754548842,
-        "narHash": "sha256-opR8noI5JC5xnKE6v+j0txPK0xE2syxmw//TthaGETU=",
+        "lastModified": 1754551957,
+        "narHash": "sha256-t7e1zj4yl5t9DkjrngbLbpHw9ZRmMrhy9tvLyc9caz0=",
         "owner": "frahz",
         "repo": "paquetes",
-        "rev": "132edd6bec9918a5e1bd11606cd43d9d80a81b27",
+        "rev": "323a1a8b19c394a1ad4c6890825429a4a1c04333",
         "type": "github"
       },
       "original": {
@@ -363,26 +319,7 @@
         "private-flake": "private-flake",
         "sops-nix": "sops-nix",
         "spicetify-nix": "spicetify-nix",
-        "sugoi": "sugoi",
         "tailray": "tailray"
-      }
-    },
-    "rust-overlay": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_6"
-      },
-      "locked": {
-        "lastModified": 1753671061,
-        "narHash": "sha256-IU4eBWfe9h2QejJYST+EAlhg8a1H6mh9gbcmWgZ2/mQ=",
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "rev": "40065d17ee4dbec3ded8ca61236132aede843fab",
-        "type": "github"
-      },
-      "original": {
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "type": "github"
       }
     },
     "sf-arabic": {
@@ -507,26 +444,6 @@
       "original": {
         "owner": "Gerg-L",
         "repo": "spicetify-nix",
-        "type": "github"
-      }
-    },
-    "sugoi": {
-      "inputs": {
-        "alpine-js-src": "alpine-js-src",
-        "nixpkgs": "nixpkgs_5",
-        "rust-overlay": "rust-overlay"
-      },
-      "locked": {
-        "lastModified": 1753677069,
-        "narHash": "sha256-tk0KvETnGngLNoA1L4ZzKzpoKRfni3YHDRiaWcG+w+c=",
-        "owner": "frahz",
-        "repo": "sugoi",
-        "rev": "d7851788379eb990c49aa53c8530a0f3adf8d11c",
-        "type": "github"
-      },
-      "original": {
-        "owner": "frahz",
-        "repo": "sugoi",
         "type": "github"
       }
     },
