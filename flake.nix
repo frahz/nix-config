@@ -38,7 +38,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    raulyrs.url = "github:frahz/rauly.rs";
+    paquetes.url = "github:frahz/paquetes";
+
     sugoi.url = "github:frahz/sugoi";
     nvim-flake.url = "github:frahz/nvim-flake";
     tailray = {

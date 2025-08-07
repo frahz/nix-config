@@ -227,37 +227,21 @@
     },
     "nixpkgs_5": {
       "locked": {
-        "lastModified": 1751984180,
-        "narHash": "sha256-LwWRsENAZJKUdD3SpLluwDmdXY9F45ZEgCb0X+xgOL0=",
-        "owner": "NixOS",
+        "lastModified": 1754393734,
+        "narHash": "sha256-fbnmAwTQkuXHKBlcL5Nq1sMAzd3GFqCOQgEQw6Hy0Ak=",
+        "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "9807714d6944a957c2e036f84b0ff8caf9930bc0",
+        "rev": "a683adc19ff5228af548c6539dbc3440509bfed3",
         "type": "github"
       },
       "original": {
-        "owner": "NixOS",
-        "ref": "nixos-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
-    "nixpkgs_6": {
-      "locked": {
-        "lastModified": 1744536153,
-        "narHash": "sha256-awS2zRgF4uTwrOKwwiJcByDzDOdo3Q1rPZbiHQg/N38=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "18dd725c29603f582cf1900e0d25f9f1063dbf11",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
+        "owner": "nixos",
         "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }
     },
-    "nixpkgs_7": {
+    "nixpkgs_6": {
       "locked": {
         "lastModified": 1753429684,
         "narHash": "sha256-9h7+4/53cSfQ/uA3pSvCaBepmZaz/dLlLVJnbQ+SJjk=",
@@ -273,7 +257,7 @@
         "type": "github"
       }
     },
-    "nixpkgs_8": {
+    "nixpkgs_7": {
       "locked": {
         "lastModified": 1744536153,
         "narHash": "sha256-awS2zRgF4uTwrOKwwiJcByDzDOdo3Q1rPZbiHQg/N38=",
@@ -320,6 +304,24 @@
         "url": "https://devimages-cdn.apple.com/design/resources/download/NY.dmg"
       }
     },
+    "paquetes": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_5"
+      },
+      "locked": {
+        "lastModified": 1754548842,
+        "narHash": "sha256-opR8noI5JC5xnKE6v+j0txPK0xE2syxmw//TthaGETU=",
+        "owner": "frahz",
+        "repo": "paquetes",
+        "rev": "132edd6bec9918a5e1bd11606cd43d9d80a81b27",
+        "type": "github"
+      },
+      "original": {
+        "owner": "frahz",
+        "repo": "paquetes",
+        "type": "github"
+      }
+    },
     "pre-commit-hooks": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -362,25 +364,6 @@
         "url": "ssh://git@github.com/frahz/private-flake.git"
       }
     },
-    "raulyrs": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_5",
-        "rust-overlay": "rust-overlay"
-      },
-      "locked": {
-        "lastModified": 1752555208,
-        "narHash": "sha256-R9KjQYN6iPqU89M8TILHZooX1pUddTMn1wMrDe+Jlcw=",
-        "owner": "frahz",
-        "repo": "rauly.rs",
-        "rev": "ed7ad008106c772a298dd39c987e25b7d6ee78af",
-        "type": "github"
-      },
-      "original": {
-        "owner": "frahz",
-        "repo": "rauly.rs",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "apple-fonts": "apple-fonts",
@@ -389,9 +372,9 @@
         "home": "home",
         "nixpkgs": "nixpkgs_3",
         "nvim-flake": "nvim-flake",
+        "paquetes": "paquetes",
         "pre-commit-hooks": "pre-commit-hooks",
         "private-flake": "private-flake",
-        "raulyrs": "raulyrs",
         "sops-nix": "sops-nix",
         "spicetify-nix": "spicetify-nix",
         "sugoi": "sugoi",
@@ -400,25 +383,7 @@
     },
     "rust-overlay": {
       "inputs": {
-        "nixpkgs": "nixpkgs_6"
-      },
-      "locked": {
-        "lastModified": 1752374969,
-        "narHash": "sha256-Ky3ynEkJXih7mvWyt9DWoiSiZGqPeHLU1tlBU4b0mcc=",
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "rev": "75fb000638e6d0f57cb1e8b7a4550cbdd8c76f1d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "oxalica",
-        "repo": "rust-overlay",
-        "type": "github"
-      }
-    },
-    "rust-overlay_2": {
-      "inputs": {
-        "nixpkgs": "nixpkgs_8"
+        "nixpkgs": "nixpkgs_7"
       },
       "locked": {
         "lastModified": 1753671061,
@@ -562,8 +527,8 @@
     "sugoi": {
       "inputs": {
         "alpine-js-src": "alpine-js-src",
-        "nixpkgs": "nixpkgs_7",
-        "rust-overlay": "rust-overlay_2"
+        "nixpkgs": "nixpkgs_6",
+        "rust-overlay": "rust-overlay"
       },
       "locked": {
         "lastModified": 1753677069,
