@@ -12,7 +12,7 @@ in
 {
   # TODO: add more granularity later
   options.casa.virtualisation = {
-    enable = mkEnableOption "nemui daemon";
+    enable = mkEnableOption "enable virtualisation support";
   };
 
   config = mkIf cfg.enable {
