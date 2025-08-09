@@ -38,7 +38,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    paquetes.url = "github:frahz/paquetes";
+    paquetes = {
+      url = "github:frahz/paquetes";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nvim-flake = {
       url = "github:frahz/nvim-flake";

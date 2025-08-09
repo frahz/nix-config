@@ -197,22 +197,6 @@
         "type": "github"
       }
     },
-    "nixpkgs_4": {
-      "locked": {
-        "lastModified": 1754393734,
-        "narHash": "sha256-fbnmAwTQkuXHKBlcL5Nq1sMAzd3GFqCOQgEQw6Hy0Ak=",
-        "owner": "nixos",
-        "repo": "nixpkgs",
-        "rev": "a683adc19ff5228af548c6539dbc3440509bfed3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nixos",
-        "ref": "nixpkgs-unstable",
-        "repo": "nixpkgs",
-        "type": "github"
-      }
-    },
     "nvim-flake": {
       "inputs": {
         "mnw": "mnw",
@@ -248,14 +232,16 @@
     },
     "paquetes": {
       "inputs": {
-        "nixpkgs": "nixpkgs_4"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
-        "lastModified": 1754551957,
-        "narHash": "sha256-t7e1zj4yl5t9DkjrngbLbpHw9ZRmMrhy9tvLyc9caz0=",
+        "lastModified": 1754783293,
+        "narHash": "sha256-5jSJSOJ6eRe52QoNbTvvzfEkD49LcnMNUeR32oFekiU=",
         "owner": "frahz",
         "repo": "paquetes",
-        "rev": "323a1a8b19c394a1ad4c6890825429a4a1c04333",
+        "rev": "4213147e4b94dfd489349ee81f4c34004b9abefe",
         "type": "github"
       },
       "original": {
