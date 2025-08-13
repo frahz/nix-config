@@ -15,7 +15,7 @@ in
         tuigreet_session =
           let
             session = "Hyprland";
-            tuigreet = "${lib.getExe pkgs.greetd.tuigreet}";
+            tuigreet = "${lib.getExe pkgs.tuigreet}";
           in
           {
             command = "${tuigreet} --time --remember --cmd ${session}";
