@@ -1,6 +1,7 @@
 {
-  config,
   lib,
+  pkgs,
+  config,
   ...
 }:
 let
@@ -19,7 +20,7 @@ in
     qbittorrent = {
       version = mkOption {
         type = str;
-        default = "5.0.3-r0-ls375";
+        default = "5.1.2-r1-ls409";
         example = ''
           The most recent version can be found here:
           https://github.com/linuxserver/docker-qbittorrent/pkgs/container/qbittorrent
@@ -129,6 +130,7 @@ in
       volumes = [
         "${cfg.qbittorrent.configDir}:/config"
         "${cfg.qbittorrent.torrentDir}:/torrents"
+        "${pkgs.vuetorrent}/share/vuetorrent:/vuetorrent:ro"
       ];
       environment = {
         TZ = "America/Los_Angeles";
