@@ -5,6 +5,7 @@
     ./firmware.nix
     ./gpu
     ./graphics.nix
+    ./moondrop.nix
     ./options.nix
   ];
 }

@@ -7,8 +7,6 @@
 let
   inherit (lib) mkDefault;
 
-  homeImports = import "${self}/home/profiles";
-
   mkNixosSystem =
     name:
     {
