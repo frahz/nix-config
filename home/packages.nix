@@ -30,11 +30,12 @@ in
         anki-bin
         ffmpeg
 
-        miru
+        # miru
         vesktop
         obs-studio
         obsidian
         typst
+        libnotify
       ])
 
       (optionals (cfg.profiles.graphical.enable && isLinux) [
