@@ -16,6 +16,19 @@ in
     gtk = {
       enable = true;
 
+      theme = {
+        package = pkgs.colloid-gtk-theme.override {
+          colorVariants = [ "dark" ];
+          themeVariants = [ "default" ];
+          sizeVariants = [ "compact" ];
+          tweaks = [
+            "rimless"
+            "black"
+          ];
+        };
+        name = "Colloid-Dark-Compact";
+      };
+
       gtk4.extraConfig = {
         gtk-application-prefer-dark-theme = true;
         gtk-xft-antialias = 1;
