@@ -17,6 +17,10 @@ in
       "tile, class:^(Jellyfin Media Player)$"
 
       "minsize 600 400, class:^(com.gabm.satty)$"
+
+      "float, class:^(org.gnome.Calculator)$"
+      "float, class:^(org.pulseaudio.pavucontrol)$"
+      "float, title:^(mdrop)$"
     ];
   };
 }
