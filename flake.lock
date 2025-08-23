@@ -205,11 +205,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1754550272,
-        "narHash": "sha256-2mROvb138Lh5plKrCGWl2opaYRbw4kYzg/Djf5tjkXI=",
+        "lastModified": 1755984681,
+        "narHash": "sha256-25yYAsuHL3Gn5Y4Br8hPaN9OTRbdMXa5UcVbFJj8z00=",
         "owner": "frahz",
         "repo": "nvim-flake",
-        "rev": "be75bec0b1db353c8ced56c849171eca9afffd22",
+        "rev": "0202004654194daded63817357fb6c62e3d0b06e",
         "type": "github"
       },
       "original": {
