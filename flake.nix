@@ -4,6 +4,11 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    darwin = {
+      url = "github:nix-darwin/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -35,6 +40,7 @@
 
     private-flake = {
       url = "git+ssh://git@github.com/frahz/private-flake.git";
+      # url = "git+file:/Users/frahz/code/private-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -62,7 +68,10 @@
         ./hosts
       ];
 
-      systems = [ "x86_64-linux" ];
+      systems = [
+        "x86_64-linux"
+        "aarch64-darwin"
+      ];
 
       perSystem =
         {
@@ -86,6 +95,7 @@
             packages = with pkgs; [
               config.formatter
               git
+              nix-output-monitor
               sops
               statix
             ];

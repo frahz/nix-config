@@ -31,16 +31,32 @@ let
     };
 in
 {
-  flake.nixosConfigurations = {
-    anmoku = mkNixosSystem "anmoku" { };
+  flake = {
+    nixosConfigurations = {
+      anmoku = mkNixosSystem "anmoku" { };
 
-    chibi = mkNixosSystem "chibi" {
-      extraModules = [
-        inputs.paquetes.nixosModules.sugoi
-        inputs.paquetes.nixosModules.raulyrs
-      ];
+      chibi = mkNixosSystem "chibi" {
+        extraModules = [
+          inputs.paquetes.nixosModules.sugoi
+          inputs.paquetes.nixosModules.raulyrs
+        ];
+      };
+
+      inari = mkNixosSystem "inari" { };
     };
+    darwinConfigurations = {
+      kaze = inputs.darwin.lib.darwinSystem {
+        specialArgs = { inherit inputs self; };
+        modules = [
+          "${self}/modules/darwin"
+          "${self}/users/frahz"
 
-    inari = mkNixosSystem "inari" { };
+          ./kaze
+          {
+            nixpkgs.hostPlatform = mkDefault "aarch64-darwin";
+          }
+        ];
+      };
+    };
   };
 }

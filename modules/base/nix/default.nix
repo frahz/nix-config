@@ -1,7 +1,10 @@
-{ pkgs, ... }:
-{
-  imports = [ ./nh.nix ];
+{ lib, pkgs, ... }:
+let
+  inherit (pkgs.stdenv.hostPlatform) isLinux;
 
+  sudoers = if isLinux then "@wheel" else "@admin";
+in
+{
   config = {
     nix = {
       package = pkgs.lixPackageSets.latest.lix;
@@ -15,11 +18,8 @@
         builders-use-substitutes = true;
         keep-derivations = true;
         keep-outputs = true;
-        allowed-users = [ "@wheel" ];
-        trusted-users = [
-          "root"
-          "@wheel"
-        ];
+        allowed-users = [ sudoers ];
+        trusted-users = [ sudoers ];
         substituters = [
           "https://frahz-pkgs.cachix.org"
         ];

@@ -9,10 +9,13 @@
     ./hardware
     ./misc.nix
     ./networking
+    ./nh.nix
     ./server.nix
     ./services
     ./sops.nix
     ./system
     ./virtualisation.nix
   ];
+
+  system.stateVersion = "23.11";
 }
