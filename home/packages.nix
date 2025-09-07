@@ -69,12 +69,12 @@ in
         iwmenu
         bzmenu
 
-        (jellyfin-media-player.overrideAttrs (prev: {
-          nativeBuildInputs = (prev.nativeBuildInputs or [ ]) ++ [ makeBinaryWrapper ];
-          postInstall = (prev.postInstall or "") + ''
-            wrapProgram $out/bin/jellyfinmediaplayer --set QT_QPA_PLATFORM xcb
-          '';
-        }))
+        # (jellyfin-media-player.overrideAttrs (prev: {
+        #   nativeBuildInputs = (prev.nativeBuildInputs or [ ]) ++ [ makeBinaryWrapper ];
+        #   postInstall = (prev.postInstall or "") + ''
+        #     wrapProgram $out/bin/jellyfinmediaplayer --set QT_QPA_PLATFORM xcb
+        #   '';
+        # }))
 
       ])
     ];
