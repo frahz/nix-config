@@ -53,9 +53,9 @@
       master = {
         new_status = "master";
       };
-      gestures = {
-        workspace_swipe = false;
-      };
+      # gestures = {
+      #   workspace_swipe = false;
+      # };
       device = {
         name = "epic-mouse-v1";
         sensitivity = "-0.5";

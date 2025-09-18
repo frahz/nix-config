@@ -20,7 +20,9 @@
 
     # Do not follow nixpkgs as it takes forever to build each time
     # Does not matter anyway, it's just fonts
-    apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
+    # apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
+    # https://github.com/Lyndeno/apple-fonts.nix/pull/22
+    apple-fonts.url = "github:momo-p/apple-fonts.nix";
 
     # fixes: https://github.com/the-argus/spicetify-nix/issues/48
     spicetify-nix = {

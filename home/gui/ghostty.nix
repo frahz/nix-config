@@ -7,7 +7,7 @@
 
     enableZshIntegration = true;
     settings = {
-      theme = "catppuccin-mocha";
+      theme = "Catppuccin Mocha";
       font-family = "Berkeley Mono";
       font-style = "SemiCondensed";
       font-style-bold = "SemiBold SemiCondensed";
