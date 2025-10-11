@@ -16,6 +16,7 @@
       gtk-titlebar = false;
       window-padding-x = 4;
       window-padding-y = 4;
+      window-inherit-working-directory = false;
     };
   };
 }
