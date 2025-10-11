@@ -2,15 +2,15 @@
   stdenvNoCC,
   fetchFromGitHub,
 }:
-stdenvNoCC.mkDerivation {
+stdenvNoCC.mkDerivation rec {
   pname = "catppuccin-home-assistant";
-  version = "1.0.2-unstable-2025-04-15";
+  version = "2.1.0";
 
   src = fetchFromGitHub {
     owner = "catppuccin";
     repo = "home-assistant";
-    rev = "0277ab8a42751bcf97c49082e4b743ec32304571";
-    hash = "sha256-+pVH2Ee7xII6B+rR5tu/9XoRzYdhnWGFvEpBLpvkyI8=";
+    rev = "v${version}";
+    hash = "sha256-sO9xuFzeQpJ3CpzcFGGZhFU9BbhlmI/PQih56EkJuug=";
   };
 
   dontBuild = true;

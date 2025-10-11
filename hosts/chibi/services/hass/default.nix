@@ -92,7 +92,13 @@
 
     extraPackages =
       python3Packages: with python3Packages; [
+        aiohomekit
+        androidtvremote2
+        getmac
+        govee-ble
+        ibeacon-ble
         pyatv
+        python-otbr-api
       ];
   };
 
