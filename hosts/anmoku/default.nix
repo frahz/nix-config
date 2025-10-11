@@ -32,6 +32,10 @@
   programs = {
     adb.enable = true;
     hyprland.enable = true;
+    appimage = {
+      enable = true;
+      binfmt = true;
+    };
   };
 
   services = {
