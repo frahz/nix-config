@@ -54,7 +54,7 @@
 
         .tab-group-label {
         	/* Don't change the text color or add an outline when tab groups are collapsed (makes the above usable) */
-        	tab-group[collapsed] > .tab-group-label-container > & {
+        	tab-group[collapsed] > .tab-group-label-container & {
         		color: light-dark(var(--tab-group-color-pale), var(--tab-group-label-text-dark)) !important;
         		outline: none !important;
         	}
