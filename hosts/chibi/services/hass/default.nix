@@ -20,7 +20,7 @@
       "cast"
       "isal"
       "met"
-      "google_translate"
+      # "google_translate"
       "radio_browser"
       "homekit"
       "hue"
