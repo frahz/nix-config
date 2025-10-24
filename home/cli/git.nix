@@ -1,26 +1,31 @@
-_: {
-  programs.git = {
-    enable = true;
-    userName = "frahz";
-    userEmail = "me@frahz.dev";
-
+{
+  programs = {
     delta = {
       enable = true;
+      enableGitIntegration = true;
       options = {
         navigate = true;
         light = false;
         line-numbers = true;
       };
     };
+    git = {
+      enable = true;
 
-    extraConfig = {
-      core = {
-        editor = "nvim";
+      settings = {
+        user = {
+          name = "frahz";
+          email = "me@frahz.dev";
+        };
+        core = {
+          editor = "nvim";
+        };
+        merge.conflictstyle = "zdiff3";
+        diff.colorMoved = "default";
+        init.defaultBranch = "main";
       };
-      merge.conflictstyle = "zdiff3";
-      diff.colorMoved = "default";
-      init.defaultBranch = "main";
     };
   };
+
   catppuccin.delta.enable = true;
 }

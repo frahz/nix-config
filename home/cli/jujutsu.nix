@@ -11,10 +11,7 @@ in
     inherit (git) enable;
 
     settings = {
-      user = {
-        name = git.userName;
-        email = git.userEmail;
-      };
+      inherit (git.settings) user;
 
       aliases = {
         tug = [
