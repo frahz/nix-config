@@ -47,6 +47,7 @@ in
               concat(
                 separate(" ",
                   format_short_change_id_with_hidden_and_divergent_info(self),
+                  format_short_commit_id(self.commit_id()),
                   if(empty, label("empty", "(empty)")),
                   if(description,
                     description.first_line(),
@@ -55,11 +56,11 @@ in
                   bookmarks,
                   tags,
                   working_copies,
-                  if(git_head, label("git_head", "HEAD")),
+                  if(git_head, label("git_head", "git_head()")),
                   if(conflict, label("conflict", "conflict")),
                   if(config("ui.show-cryptographic-signatures").as_boolean(),
                     format_short_cryptographic_signature(signature)),
-                  if(!description && !empty, "\n" ++ diff.summary()),
+                  if((!description || current_working_copy) && !empty, "\n" ++ diff.summary()),
                 ) ++ "\n",
               ),
             )
