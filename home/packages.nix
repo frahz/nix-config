@@ -70,14 +70,6 @@ in
         hyprland-preview-share-picker
         iwmenu
         bzmenu
-
-        # (jellyfin-media-player.overrideAttrs (prev: {
-        #   nativeBuildInputs = (prev.nativeBuildInputs or [ ]) ++ [ makeBinaryWrapper ];
-        #   postInstall = (prev.postInstall or "") + ''
-        #     wrapProgram $out/bin/jellyfinmediaplayer --set QT_QPA_PLATFORM xcb
-        #   '';
-        # }))
-
       ])
     ];
 

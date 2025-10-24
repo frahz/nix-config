@@ -32,10 +32,6 @@
   programs = {
     adb.enable = true;
     hyprland.enable = true;
-    appimage = {
-      enable = true;
-      binfmt = true;
-    };
   };
 
   services = {
@@ -46,11 +42,6 @@
         layout = "us";
         variant = "";
       };
-    };
-
-    mullvad-vpn = {
-      enable = true;
-      package = pkgs.mullvad-vpn;
     };
   };
 
@@ -64,5 +55,4 @@
 
   # Mullvad enable support: https://discourse.nixos.org/t/connected-to-mullvadvpn-but-no-internet-connection/35803/10?u=lion
   networking.resolvconf.enable = false;
-
 }

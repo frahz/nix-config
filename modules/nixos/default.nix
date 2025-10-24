@@ -10,6 +10,7 @@
     ./misc.nix
     ./networking
     ./nh.nix
+    ./programs
     ./server.nix
     ./services
     ./sops.nix

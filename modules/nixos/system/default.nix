@@ -3,5 +3,6 @@
     ./audio.nix
     ./greetd.nix
     ./misc.nix
+    ./size.nix
   ];
 }

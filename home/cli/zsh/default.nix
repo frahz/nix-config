@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   ...
 }:
 {
@@ -23,13 +22,6 @@
       theme = "frahz";
     };
 
-    plugins = [
-      # {
-      #   name = "fzf-tab";
-      #   src = "${pkgs.zsh-fzf-tab}/share/fzf-tab";
-      # }
-    ];
-
     syntaxHighlighting = {
       enable = true;
     };
@@ -37,12 +29,5 @@
     shellAliases = {
       vim = "nvim";
     };
-
-    initContent = ''
-      # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
-      zstyle ':completion:*' menu no
-      # preview directory's content with exa when completing cd
-      zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls -hAF --color=always "$realpath"'
-    '';
   };
 }

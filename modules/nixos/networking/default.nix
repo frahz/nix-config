@@ -1,6 +1,7 @@
 { lib, config, ... }:
 {
   imports = [
+    ./mullvad.nix
     ./systemd.nix
     ./tailscale.nix
     ./wireless.nix

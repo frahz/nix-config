@@ -1,7 +1,10 @@
 {
   fonts = {
     enableDefaultPackages = false;
-    fontDir.enable = true;
+    fontDir = {
+      enable = true;
+      decompressFonts = true;
+    };
 
     fontconfig = {
       enable = true;
