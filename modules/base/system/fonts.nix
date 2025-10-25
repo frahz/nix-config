@@ -33,10 +33,6 @@
 
     inherit (pkgs.nerd-fonts) symbols-only;
 
-    inherit (inputs.apple-fonts.packages.${pkgs.stdenv.hostPlatform.system})
-      ny
-      ;
-
     inherit (inputs.private-flake.packages.${pkgs.stdenv.hostPlatform.system})
       berkeley-mono
       berkeley-mono-semi-condensed
