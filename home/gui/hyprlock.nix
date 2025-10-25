@@ -33,9 +33,6 @@ in
                 noise = 0.0117;
               }
             ];
-          general = {
-            grace = 2;
-          };
           input-field = [
             {
               monitor = mainMonitor;
@@ -51,9 +48,9 @@ in
               capslock_color = "rgb(eba0ac)";
               check_color = "rgb(f9e2af)";
               fail_color = "rgb(f38ba8)";
-              fail_text = ''<span font_family="Berkeley Mono">$FAIL <b>($ATTEMPTS)</b></span>'';
+              fail_text = ''<span font_family="Noto Sans">$FAIL <b>($ATTEMPTS)</b></span>'';
 
-              placeholder_text = ''<span font_family="Berkeley Mono"><b>Password...</b></span>'';
+              placeholder_text = ''<span font_family="Noto Sans"><b>Password...</b></span>'';
               swap_font_color = false;
               fade_on_empty = false;
               dots_size = 0.2;
@@ -71,7 +68,7 @@ in
                 cmd[update:1000] echo $(date +"%A, %B %-d")
               '';
               color = "rgb(a6adc8)";
-              font_family = "Berkeley Mono";
+              font_family = "Noto Sans";
               position = "0, -80";
               valign = "top";
               halign = "center";
@@ -82,7 +79,7 @@ in
                 cmd[update:1000] echo $(date +"%-I:%M")
               '';
               color = "rgb(a6adc8)";
-              font_family = "New York";
+              font_family = "Noto Serif Display";
               font_size = 120;
               position = "0, -100";
               valign = "top";
