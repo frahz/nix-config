@@ -10,26 +10,20 @@
       source-sans
       source-serif
 
-      dejavu_fonts
       inter
       roboto
 
       # Monospace
       jetbrains-mono
-      iosevka-bin
 
       noto-fonts
       noto-fonts-cjk-sans
 
       # Emojis
-      twitter-color-emoji
       noto-fonts-color-emoji
       material-icons
       material-design-icons
       ;
-    iosevka-slab = pkgs.iosevka-bin.override {
-      variant = "Slab";
-    };
 
     inherit (pkgs.nerd-fonts) symbols-only;
 
