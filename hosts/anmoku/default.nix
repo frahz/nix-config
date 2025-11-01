@@ -7,6 +7,7 @@
   casa = {
     profiles = {
       graphical.enable = true;
+      development.enable = true;
     };
     hardware = {
       cpu = "amd";

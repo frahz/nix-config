@@ -6,5 +6,6 @@ in
   options.casa.profiles = {
     graphical.enable = mkEnableOption "Graphical Interface";
     server.enable = mkEnableOption "Server";
+    development.enable = mkEnableOption "Development Tools";
   };
 }
