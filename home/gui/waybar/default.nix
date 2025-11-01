@@ -85,7 +85,7 @@ in
               ];
             };
             tooltip-format = "{volume}%";
-            on-click = "${pkgs.pavucontrol}/bin/pavucontrol";
+            on-click = "${lib.getExe pkgs.pavucontrol}";
           };
 
           network = {
@@ -94,6 +94,7 @@ in
             tooltip-format = "Connected to {essid} {ifname} via {gwaddr}";
             format-linked = "{ifname} (No IP)";
             format-disconnected = "󰖪 ";
+            on-click = "${lib.getExe pkgs.iwmenu} --launcher fuzzel";
           };
 
           "group/group-applets" = {
