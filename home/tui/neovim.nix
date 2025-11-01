@@ -14,7 +14,7 @@ in
   home.packages =
     with pkgs;
     concatLists [
-      [ inputs.nvim-flake.packages.${pkgs.system}.default ]
+      [ inputs.nvim-flake.packages.${pkgs.stdenv.hostPlatform.system}.default ]
 
       (optionals cfg.profiles.development.enable [
         # LSP stuff
