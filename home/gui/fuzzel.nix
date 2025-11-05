@@ -29,13 +29,13 @@ in
         };
         colors = {
           background = "000000ff";
-          text = "e0cda5ff";
+          text = "f2f0e5ff";
           prompt = "f5bde6ff";
-          input = "e0cda5ff";
+          input = "f2f0e5ff";
           match = "f5bde6ff";
           selection = "130f12ff";
           selection-match = "f5bde6ff";
-          selection-text = "e0cda5ff";
+          selection-text = "f2f0e5ff";
           border = "1b1b1dff";
         };
         border = {
