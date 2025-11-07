@@ -15,12 +15,13 @@ in
     home.packages = with pkgs; [
       legendary-gl # epic games launcher
       mangohud # fps counter & vulkan overlay
-      (lutris.override {
-        extraPkgs = pkgs: [
-          winetricks
-          wineWowPackages.full
-        ];
-      }) # alternative game launcher
+      # disable for now: https://github.com/NixOS/nixpkgs/issues/458830
+      # (lutris.override {
+      #   extraPkgs = pkgs: [
+      #     winetricks
+      #     wineWowPackages.full
+      #   ];
+      # }) # alternative game launcher
 
       # emulators
       # dolphin-emu # general console
