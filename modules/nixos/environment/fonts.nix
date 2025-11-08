@@ -19,7 +19,7 @@
           ];
         in
         {
-          monospace = [ "Berkeley Mono"] ++ symbols;
+          monospace = [ "Berkeley Mono" ] ++ symbols;
           serif = [ "Noto Serif" ] ++ symbols;
           sansSerif = [ "Inter" ] ++ symbols;
           emoji = symbols;

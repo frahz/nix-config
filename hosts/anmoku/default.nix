@@ -48,12 +48,6 @@
 
   virtualisation.docker.enableOnBoot = false;
 
-  security = {
-    polkit.enable = true;
-    soteria.enable = true;
-    pam.services.hyprlock = { };
-  };
-
   # Mullvad enable support: https://discourse.nixos.org/t/connected-to-mullvadvpn-but-no-internet-connection/35803/10?u=lion
   networking.resolvconf.enable = false;
 }

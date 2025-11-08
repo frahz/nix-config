@@ -11,6 +11,7 @@
     ./networking
     ./nh.nix
     ./programs
+    ./security.nix
     ./server.nix
     ./services
     ./sops.nix
