@@ -39,7 +39,7 @@ in
       ])
 
       (optionals (cfg.profiles.graphical.enable && isLinux) [
-        pavucontrol
+        pwvucontrol
         newsflash
         dconf
         xfce.thunar # file manager for now

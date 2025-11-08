@@ -19,7 +19,7 @@ in
       "minsize 600 400, class:^(com.gabm.satty)$"
 
       "float, class:^(org.gnome.Calculator)$"
-      "float, class:^(org.pulseaudio.pavucontrol)$"
+      "float, class:^(com.saivert.pwvucontrol)$"
       "float, title:^(mdrop)$"
     ];
   };

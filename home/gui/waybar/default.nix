@@ -85,7 +85,7 @@ in
               ];
             };
             tooltip-format = "{volume}%";
-            on-click = "${lib.getExe pkgs.pavucontrol}";
+            on-click = "${lib.getExe pkgs.pwvucontrol}";
           };
 
           network = {
