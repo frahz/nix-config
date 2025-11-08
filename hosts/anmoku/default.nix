@@ -18,7 +18,10 @@
       };
       moondrop.enable = true;
     };
-    system.bluetooth.enable = true;
+    system = {
+      boot.silentBoot = true;
+      bluetooth.enable = true;
+    };
     virtualisation.enable = true;
     networking = {
       tailscale.isClient = true;

@@ -5,8 +5,9 @@
   ...
 }:
 let
-  inherit (lib.options) mkOption literalExpression;
-  inherit (lib.types) raw listOf package;
+  inherit (lib.lists) optionals;
+  inherit (lib.options) mkEnableOption mkOption;
+  inherit (lib.types) raw;
 
   cfg = config.casa.system.boot;
 in
@@ -18,18 +19,13 @@ in
       defaultText = "pkgs.linuxPackages_latest";
       description = "The kernel to use for the system.";
     };
-    extraModulePackages = mkOption {
-      type = listOf package;
-      default = [ ];
-      example = literalExpression ''with config.boot.kernelPackages; [acpi_call]'';
-      description = "Extra kernel modules to be loaded.";
-    };
+    silentBoot = mkEnableOption ''
+      almost entirely silent boot process through `quiet` kernel parameter
+    '';
   };
 
   config = {
     boot = {
-      inherit (cfg) extraModulePackages;
-
       kernelPackages = cfg.kernel;
 
       loader = {
@@ -52,6 +48,25 @@ in
           "sd_mod"
         ];
       };
+
+      kernelParams = optionals cfg.silentBoot [
+        # tell the kernel to not be verbose, the voices are too loud
+        "quiet"
+
+        # kernel log message level
+        "loglevel=3" # 1: system is unusable | 3: error condition | 7: very verbose
+
+        # udev log message level
+        "udev.log_level=3"
+
+        # lower the udev log level to show only errors or worse
+        "rd.udev.log_level=3"
+
+        # disable systemd status messages
+        # rd prefix means systemd-udev will be used instead of initrd
+        "systemd.show_status=auto"
+        "rd.systemd.show_status=auto"
+      ];
     };
   };
 
