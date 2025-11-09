@@ -26,7 +26,6 @@
       "git.iatze.cc" = {
         hostname = "100.87.38.99";
         identityFile = "~/.ssh/id_ed25519";
-        port = 2222;
       };
       "github.com" = {
         hostname = "github.com";

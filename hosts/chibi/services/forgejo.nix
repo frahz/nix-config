@@ -1,6 +1,6 @@
 {
-  pkgs,
   lib,
+  pkgs,
   config,
   ...
 }:
@@ -8,7 +8,6 @@ let
   inherit (lib.modules) mkForce;
 
   httpPort = 3200;
-  sshPort = 2222;
   domain = "git.${config.homelab.domain}";
 
 in
@@ -23,36 +22,37 @@ in
     flavor = "mocha";
     accent = "pink";
   };
-
-  services.forgejo = {
-    enable = true;
-    package = pkgs.forgejo;
-    database.type = mkForce "postgres";
-    settings = {
-      DEFAULT.APP_NAME = "forgejo";
-      server = {
-        DOMAIN = domain;
-        ROOT_URL = "https://${domain}";
-        HTTP_PORT = httpPort;
-        START_SSH_SERVER = true;
-        BUILTIN_SSH_SERVER_USER = "git";
-        SSH_PORT = sshPort;
-        SSH_LISTEN_PORT = sshPort;
-      };
-      service = {
-        DISABLE_REGISTRATION = true;
-      };
-      session = {
-        COOKIE_SECURE = true;
-        # Sessions last for 1 weeks
-        SESSION_LIFE_TIME = 86400 * 7;
+  services = {
+    forgejo = {
+      enable = true;
+      package = pkgs.forgejo;
+      database.type = mkForce "postgres";
+      settings = {
+        DEFAULT.APP_NAME = "forgejo";
+        server = {
+          DOMAIN = domain;
+          ROOT_URL = "https://${domain}";
+          HTTP_PORT = httpPort;
+          BUILTIN_SSH_SERVER_USER = "git";
+          SSH_PORT = lib.head config.services.openssh.ports;
+        };
+        service = {
+          DISABLE_REGISTRATION = true;
+        };
+        session = {
+          COOKIE_SECURE = true;
+          # Sessions last for 1 weeks
+          SESSION_LIFE_TIME = 86400 * 7;
+        };
       };
     };
-  };
 
-  services.caddy.virtualHosts.${domain} = {
-    extraConfig = ''
-      reverse_proxy http://localhost:${toString httpPort}
-    '';
+    openssh.settings.AcceptEnv = "GIT_PROTOCOL";
+
+    caddy.virtualHosts.${domain} = {
+      extraConfig = ''
+        reverse_proxy http://localhost:${toString httpPort}
+      '';
+    };
   };
 }
