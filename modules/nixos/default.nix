@@ -14,6 +14,7 @@
     ./security.nix
     ./server.nix
     ./services
+    ./shares.nix
     ./sops.nix
     ./system
     ./virtualisation.nix

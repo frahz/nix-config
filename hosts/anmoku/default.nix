@@ -18,6 +18,7 @@
       };
       moondrop.enable = true;
     };
+    shares.enable = true;
     system = {
       boot.silentBoot = true;
       bluetooth.enable = true;
@@ -28,10 +29,6 @@
       wirelessBackend = "iwd";
     };
   };
-
-  environment.systemPackages = with pkgs; [
-    cifs-utils
-  ];
 
   programs = {
     adb.enable = true;
