@@ -14,7 +14,13 @@ in
   config = mkIf (cfg.profiles.graphical.enable && isLinux) {
     home.packages = with pkgs; [
       legendary-gl # epic games launcher
-      mangohud # fps counter & vulkan overlay
+      (pkgs.prismlauncher.override {
+        jdks = with pkgs; [
+          temurin-bin-8 # TODO: Maybe replace when `jdk8` isn't broken
+          jdk17
+          jdk21
+        ];
+      })
       # disable for now: https://github.com/NixOS/nixpkgs/issues/458830
       # (lutris.override {
       #   extraPkgs = pkgs: [
@@ -26,9 +32,11 @@ in
       # emulators
       # dolphin-emu # general console
 
-      # runtime
-      # mono # general dotnet apps
       winetricks # wine helper utility
     ];
+
+    programs = {
+      mangohud.enable = true;
+    };
   };
 }
