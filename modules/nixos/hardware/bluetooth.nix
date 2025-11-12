@@ -17,14 +17,23 @@ in
       default = true;
       description = "Whether or not the system has bluetooth support";
     };
-
-    system.bluetooth.enable = mkEnableOption "Should the device load bluetooth drivers and enable blueman";
+    system.bluetooth = {
+      enable = mkEnableOption "Should the device load bluetooth drivers and enable blueman";
+      experimental = mkEnableOption "Enable experimental features in Bluez";
+    };
   };
 
   config = mkIf sys.bluetooth.enable {
-    hardware.bluetooth.enable = true;
+    hardware.bluetooth = {
+      enable = true;
+      settings = {
+        General = {
+          Experimental = sys.bluetooth.experimental;
+        };
+      };
+    };
 
     # https://wiki.nixos.org/wiki/Bluetooth
-    services.blueman.enable = true;
+    services.blueman.enable = config.casa.profiles.graphical.enable;
   };
 }

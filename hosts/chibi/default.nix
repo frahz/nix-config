@@ -34,7 +34,10 @@
         bluetooth = true;
       };
     };
-    system.bluetooth.enable = true;
+    system.bluetooth = {
+      enable = true;
+      experimental = true;
+    };
     virtualisation.enable = true;
     containers = {
       linkwarden = {

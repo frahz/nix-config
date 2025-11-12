@@ -24,6 +24,7 @@
       "radio_browser"
       "homekit"
       "hue"
+      "zha"
     ];
 
     config = {
@@ -94,11 +95,15 @@
       python3Packages: with python3Packages; [
         aiohomekit
         androidtvremote2
+
+        # due to errors in UI
         getmac
         govee-ble
         ibeacon-ble
         pyatv
         python-otbr-api
+        kegtron-ble
+        samsungctl
       ];
   };
 
