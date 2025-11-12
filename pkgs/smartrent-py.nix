@@ -10,14 +10,14 @@
 }:
 buildPythonPackage rec {
   pname = "smartrent-py";
-  version = "v0.5.0";
+  version = "v0.5.2";
   pyproject = true;
 
   src = fetchFromGitHub {
     owner = "ZacheryThomas";
     repo = "smartrent-py";
     tag = version;
-    hash = "sha256-7ifRZ24SdK3pQnW22spC5t1mzAxzHq3j8PHEDTfFZdQ=";
+    hash = "sha256-UptzFqGpQtefvBE2X0ji1UvEOP8+f/E0w64XuVoVpSM=";
   };
 
   dependencies = [
