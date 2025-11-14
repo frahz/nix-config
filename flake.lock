@@ -270,8 +270,7 @@
         "pre-commit-hooks": "pre-commit-hooks",
         "private-flake": "private-flake",
         "sops-nix": "sops-nix",
-        "spicetify-nix": "spicetify-nix",
-        "tailray": "tailray"
+        "spicetify-nix": "spicetify-nix"
       }
     },
     "sops-nix": {
@@ -327,26 +326,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
-        "type": "github"
-      }
-    },
-    "tailray": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1743644832,
-        "narHash": "sha256-Aga1FBvRF2ddzH2hJOFbCaSu6PJ879MwFtAb4pJQPec=",
-        "owner": "frahz",
-        "repo": "tailray",
-        "rev": "6716fe6109fb104a5d84c728fb3e1659abaa184d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "frahz",
-        "repo": "tailray",
         "type": "github"
       }
     }

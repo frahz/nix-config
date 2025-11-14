@@ -49,11 +49,6 @@
       url = "github:frahz/nvim-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    tailray = {
-      url = "github:frahz/tailray";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs =

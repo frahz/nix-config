@@ -4,7 +4,7 @@
     ./mako.nix
     ./hypridle.nix
     ./hyprpaper.nix
-    ./tailray.nix
+    ./tailscale.nix
     ./udiskie.nix
   ];
 }
