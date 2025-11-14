@@ -43,7 +43,7 @@ in
         newsflash
         dconf
         xfce.thunar # file manager for now
-        feishin
+        # feishin
         gimp
         gnome-calculator
         grim
