@@ -18,7 +18,10 @@ in
       # thumbnails
       tumbler.enable = true;
 
-      dbus.enable = true;
+      dbus = {
+        enable = true;
+        implementation = "broker";
+      };
     };
   };
 }
