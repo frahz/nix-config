@@ -1,6 +1,7 @@
 {
   imports = [
     ./audio.nix
+    ./earlyoom.nix
     ./gnome.nix
     ./greetd.nix
     ./misc.nix
