@@ -91,6 +91,10 @@
       pkgs.hass-smartrent
     ];
 
+    customLovelaceModules = with pkgs.home-assistant-custom-lovelace-modules; [
+      apexcharts-card
+    ];
+
     extraPackages =
       python3Packages: with python3Packages; [
         aiohomekit
