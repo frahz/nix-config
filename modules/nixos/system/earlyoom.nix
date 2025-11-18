@@ -63,7 +63,6 @@ in
         freeMemKillThreshold = 2;
 
         extraArgs = [
-          "-g"
           "--avoid"
           "'^(${avoid})$'" # things that we want to avoid killing
           "--prefer"
