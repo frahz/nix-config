@@ -3,7 +3,7 @@
     ./blueman.nix
     ./mako.nix
     ./hypridle.nix
-    ./hyprpaper.nix
+    ./swww.nix
     ./tailscale.nix
     ./udiskie.nix
   ];
