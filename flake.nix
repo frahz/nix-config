@@ -34,9 +34,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    private-flake = {
-      url = "git+ssh://git@github.com/frahz/private-flake.git";
-      # url = "git+file:/Users/frahz/code/private-flake";
+    privado = {
+      url = "git+ssh://git@github.com/frahz/privado.git";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

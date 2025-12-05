@@ -27,7 +27,7 @@
 
     inherit (pkgs.nerd-fonts) symbols-only;
 
-    inherit (inputs.private-flake.packages.${pkgs.stdenv.hostPlatform.system})
+    inherit (inputs.privado.packages.${pkgs.stdenv.hostPlatform.system})
       berkeley-mono
       berkeley-mono-semi-condensed
       ;

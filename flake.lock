@@ -238,24 +238,24 @@
         "type": "github"
       }
     },
-    "private-flake": {
+    "privado": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1746926019,
-        "narHash": "sha256-vg3PrUHRQNKp8qAUZAQBqiycewHLFHP/i3w+rLWVoOw=",
+        "lastModified": 1764905364,
+        "narHash": "sha256-PnFNvvlGdya8dJxWDtfjE3eNCDtEwy6keEWx6Emqv+M=",
         "ref": "refs/heads/main",
-        "rev": "7777c23870ba532618bbb26aabdc7a22279a8c6b",
-        "revCount": 2,
+        "rev": "2b51d34a198f4fab991cf17433d316e1b706d528",
+        "revCount": 6,
         "type": "git",
-        "url": "ssh://git@github.com/frahz/private-flake.git"
+        "url": "ssh://git@github.com/frahz/privado.git"
       },
       "original": {
         "type": "git",
-        "url": "ssh://git@github.com/frahz/private-flake.git"
+        "url": "ssh://git@github.com/frahz/privado.git"
       }
     },
     "root": {
@@ -268,7 +268,7 @@
         "nvim-flake": "nvim-flake",
         "paquetes": "paquetes",
         "pre-commit-hooks": "pre-commit-hooks",
-        "private-flake": "private-flake",
+        "privado": "privado",
         "sops-nix": "sops-nix",
         "spicetify-nix": "spicetify-nix"
       }
