@@ -14,7 +14,7 @@ in
     enable = mkEnableOption "Enable the freshrss service";
     version = mkOption {
       type = str;
-      default = "1.26.3-ls268";
+      default = "1.27.1-ls288";
       example = ''
         The most recent version can be found here:
         https://github.com/linuxserver/docker-freshrss/pkgs/container/freshrss
