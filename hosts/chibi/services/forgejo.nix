@@ -33,7 +33,6 @@ in
           DOMAIN = domain;
           ROOT_URL = "https://${domain}";
           HTTP_PORT = httpPort;
-          BUILTIN_SSH_SERVER_USER = "git";
           SSH_PORT = lib.head config.services.openssh.ports;
         };
         service = {
