@@ -17,14 +17,14 @@ let
   # https://github.com/NixOS/nixpkgs/pull/464432
   vuetorrent = pkgs.vuetorrent.overrideAttrs (_: rec {
     pname = "vuetorrent";
-    version = "2.31.0";
+    version = "2.31.1";
     src = pkgs.fetchFromGitHub {
       owner = "VueTorrent";
       repo = "VueTorrent";
       tag = "v${version}";
-      hash = "sha256-jWoD54cO1Tq9b2k8ySWUWQohT4qE0rW9EVJLoPi8DTA=";
+      hash = "sha256-og+pmqs91wGkb4cFUbgqPInvNKw7WJuXBznt4BoWYZQ=";
     };
-    npmDepsHash = "sha256-/B/DMTH/5e9YNJ9rl+HTGkAX1KzOoBB1PD68Li2sAAw=";
+    npmDepsHash = "sha256-DKoOqOd7y8dfCGARlrB2kiOpMo3g1inMqfCTufWIJOI=";
     npmDeps = pkgs.fetchNpmDeps {
       inherit src;
       name = "${pname}-${version}-npm-deps";
