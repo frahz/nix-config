@@ -30,7 +30,6 @@ in
         anki-bin
         ffmpeg
 
-        # miru
         vesktop
         obs-studio
         obsidian

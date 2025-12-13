@@ -18,7 +18,6 @@
 
     flake-parts.url = "github:hercules-ci/flake-parts";
 
-    # fixes: https://github.com/the-argus/spicetify-nix/issues/48
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";

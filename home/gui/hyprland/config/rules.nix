@@ -29,6 +29,10 @@ in
       "center(1), class:^(com.saivert.pwvucontrol)$"
       "float, class:^(com.saivert.pwvucontrol)$"
       "size 40% 60%, class:^(com.saivert.pwvucontrol)$"
+
+      "center(1), initialTitle:(Bluetooth Devices)"
+      "float, initialTitle:(Bluetooth Devices)"
+      "size 40% 60%, initialTitle:(Bluetooth Devices)"
     ];
   };
 }
