@@ -22,6 +22,9 @@ in
         Whether the target host should utilize Tailscale client features
       '';
     };
+    exitNode = {
+      enable = mkEnableOption "Enable use as exit node";
+    };
   };
 
   config = mkIf cfg.enable {
@@ -30,7 +33,7 @@ in
       package = pkgs.tailscale;
       extraUpFlags = [ "--stateful-filtering=false" ];
       # TODO: change this to take actual username
-      extraSetFlags = [ "--operator=frahz" ];
+      extraSetFlags = [ "--operator=frahz" ] ++ lib.optional cfg.exitNode.enable "--advertise-exit-node";
       useRoutingFeatures = mkIf cfg.isClient "client";
     };
   };

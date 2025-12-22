@@ -39,6 +39,9 @@
       experimental = true;
     };
     virtualisation.enable = true;
+    networking.tailscale = {
+      exitNode.enable = true;
+    };
     containers = {
       linkwarden = {
         enable = true;
