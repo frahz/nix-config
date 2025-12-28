@@ -46,8 +46,6 @@ in
       };
     };
 
-    openssh.settings.AcceptEnv = "GIT_PROTOCOL";
-
     caddy.virtualHosts.${domain} = {
       extraConfig = ''
         reverse_proxy http://localhost:${toString httpPort}
