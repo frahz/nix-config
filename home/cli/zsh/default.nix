@@ -11,6 +11,7 @@
     enable = true;
     enableCompletion = true;
     autosuggestion.enable = true;
+    dotDir = "${config.xdg.configHome}/zsh";
 
     oh-my-zsh = {
       enable = true;
@@ -24,10 +25,6 @@
 
     syntaxHighlighting = {
       enable = true;
-    };
-
-    shellAliases = {
-      vim = "nvim";
     };
   };
 }
