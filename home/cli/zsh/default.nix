@@ -26,5 +26,9 @@
     syntaxHighlighting = {
       enable = true;
     };
+
+    shellAliases = {
+      vim = "nvim";
+    };
   };
 }
