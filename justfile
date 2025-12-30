@@ -12,7 +12,7 @@ update:
 # deploy config to server
 deploy host:
   nixos-rebuild switch \
-    --flake {{flake}}.#{{host}} \
+    --flake {{flake}}#{{host}} \
     --target-host {{host}} \
     --build-host {{host}} \
     {{args}} \
