@@ -44,7 +44,7 @@
     };
 
     nvim-flake = {
-      url = "github:frahz/nvim-flake";
+      url = "github:frahz/nvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
