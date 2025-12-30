@@ -84,6 +84,7 @@
             packages = with pkgs; [
               config.formatter
               git
+              just
               nix-output-monitor
               sops
               statix
