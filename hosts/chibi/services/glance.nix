@@ -2,11 +2,12 @@
 let
   host = "0.0.0.0";
   port = 7576;
+  rdomain = config.casa.profiles.server.domain;
 in
 {
   sops.secrets.glance = { };
 
-  services.caddy.virtualHosts.${config.homelab.domain} = {
+  services.caddy.virtualHosts.${rdomain} = {
     extraConfig = ''
       reverse_proxy http://${host}:${toString port}
     '';

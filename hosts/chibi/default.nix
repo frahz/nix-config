@@ -3,6 +3,9 @@
   config,
   ...
 }:
+let
+  cfg = config.casa.profiles.server;
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -24,7 +27,10 @@
 
   casa = {
     profiles = {
-      server.enable = true;
+      server = {
+        enable = true;
+        storage = "/mnt/kuki";
+      };
     };
     hardware = {
       cpu = "intel";
@@ -45,27 +51,21 @@
     containers = {
       linkwarden = {
         enable = true;
-        dataDir = "/mnt/kuki/containers/linkwarden/data";
-        postgres = {
-          dataDir = "/mnt/kuki/containers/linkwarden/pg_data";
-        };
+        dataDir = "${cfg.storage}/containers/linkwarden/data";
+        postgres.dataDir = "${cfg.storage}/containers/linkwarden/pg_data";
         environmentFile = config.sops.secrets.linkwarden-secrets.path;
       };
       freshrss = {
         enable = true;
-        configDir = "/mnt/kuki/containers/freshrss/config";
+        configDir = "${cfg.storage}/containers/freshrss/config";
       };
     };
     services = {
       samba = {
         enable = true;
         shares = {
-          sharing = {
-            path = "/mnt/kuki/sharing";
-          };
-          music = {
-            path = "/mnt/kuki/music";
-          };
+          sharing.path = "${cfg.storage}/sharing";
+          music.path = "${cfg.storage}/music";
         };
       };
     };

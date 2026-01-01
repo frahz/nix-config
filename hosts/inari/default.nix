@@ -2,6 +2,9 @@
   config,
   ...
 }:
+let
+  cfg = config.casa.profiles.server;
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -28,7 +31,10 @@
 
   casa = {
     profiles = {
-      server.enable = true;
+      server = {
+        enable = true;
+        storage = "/mnt/mizu";
+      };
     };
     hardware = {
       cpu = "intel";
@@ -51,12 +57,12 @@
       torrent = {
         enable = true;
         qbittorrent = {
-          configDir = "/mnt/mizu/containers/qbittorrent/config";
-          torrentDir = "/mnt/mizu/torrents";
+          configDir = "${cfg.storage}/containers/qbittorrent/config";
+          torrentDir = "${cfg.storage}/torrents";
         };
         gluetun = {
-          configDir = "/mnt/mizu/containers/gluetun/config";
-          serversFile = "/mnt/mizu/containers/gluetun/servers.json";
+          configDir = "${cfg.storage}/containers/gluetun/config";
+          serversFile = "${cfg.storage}/containers/gluetun/servers.json";
           environmentFile = config.sops.secrets.gluetun.path;
         };
       };

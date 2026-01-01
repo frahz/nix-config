@@ -3,7 +3,10 @@
   ...
 }:
 let
-  mediaDir = "/mnt/kuki/photos";
+  inherit (config.casa.profiles.server) domain storage;
+
+  cfg = config.services.immich;
+  mediaDir = "${storage}/photos";
 in
 {
   sops.secrets.immich = { };
@@ -27,15 +30,11 @@ in
     "render"
   ];
 
-  services.caddy.virtualHosts."photos.iatze.cc" =
-    let
-      cfg = config.services.immich;
-    in
-    {
-      extraConfig = ''
-        reverse_proxy http://${cfg.host}:${toString cfg.port}
-      '';
-    };
+  services.caddy.virtualHosts."photos.${domain}" = {
+    extraConfig = ''
+      reverse_proxy http://${cfg.host}:${toString cfg.port}
+    '';
+  };
 
   systemd.tmpfiles.rules = [
     "d ${mediaDir} 0775 immich immich - -"

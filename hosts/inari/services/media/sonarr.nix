@@ -1,6 +1,6 @@
 { config, ... }:
 let
-  cfg = config.media;
+  cfg = config.casa.profiles.server;
 in
 {
   services.sonarr = {

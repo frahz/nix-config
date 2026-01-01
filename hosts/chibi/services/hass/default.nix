@@ -3,6 +3,10 @@
   pkgs,
   ...
 }:
+let
+  rdomain = config.casa.profiles.server.domain;
+  cfg = config.services.home-assistant;
+in
 {
   sops.secrets."hass-secrets" = {
     sopsFile = ../../../../secrets/hass-secrets.yaml;
@@ -118,15 +122,11 @@
     "C ${config.services.home-assistant.configDir}/themes 0755 hass hass - ${pkgs.hass-catppuccin}/themes"
   ];
 
-  services.caddy.virtualHosts."home.${config.homelab.domain}" =
-    let
-      cfg = config.services.home-assistant;
-    in
-    {
-      extraConfig = ''
-        reverse_proxy http://localhost:${toString cfg.config.http.server_port}
-      '';
-    };
+  services.caddy.virtualHosts."home.${rdomain}" = {
+    extraConfig = ''
+      reverse_proxy http://localhost:${toString cfg.config.http.server_port}
+    '';
+  };
 
   networking.firewall = {
     allowedTCPPorts = [

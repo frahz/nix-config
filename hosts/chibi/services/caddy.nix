@@ -4,7 +4,7 @@
   ...
 }:
 let
-  inherit (config.homelab) domain;
+  inherit (config.casa.profiles.server) domain;
 
   chibi = {
     ip = "100.87.38.99";

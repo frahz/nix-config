@@ -8,8 +8,8 @@ let
   inherit (lib.modules) mkForce;
 
   httpPort = 3200;
-  domain = "git.${config.homelab.domain}";
-
+  rdomain = config.casa.profiles.server.domain;
+  domain = "git.${rdomain}";
 in
 {
   networking.firewall.allowedTCPPorts = [

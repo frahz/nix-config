@@ -2,6 +2,8 @@
 let
   dns_port = 53;
   ui_port = 8053;
+
+  rdomain = config.casa.profiles.server.domain;
 in
 {
   networking.firewall = {
@@ -59,7 +61,7 @@ in
     };
   };
 
-  services.caddy.virtualHosts."adguard.${config.homelab.domain}" = {
+  services.caddy.virtualHosts."adguard.${rdomain}" = {
     extraConfig = ''
       reverse_proxy http://localhost:${toString ui_port}
     '';
