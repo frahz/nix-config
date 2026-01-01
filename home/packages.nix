@@ -1,4 +1,5 @@
 {
+  inputs,
   lib,
   pkgs,
   osConfig,
@@ -64,11 +65,11 @@ in
           satty --filename "$FILENAME_IN" --output-filename "$FILENAME_OUT" --early-exit --copy-command "wl-copy"
           rm "$FILENAME_IN"
         '')
-        hayase
         hyprpicker
         hyprland-preview-share-picker
         iwmenu
         bzmenu
+        inputs.paquetes.packages.${pkgs.stdenv.hostPlatform.system}.hayase
       ])
     ];
 

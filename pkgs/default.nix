@@ -3,5 +3,4 @@ self: super: {
   smartrent-py = self.python3.pkgs.callPackage ./smartrent-py.nix { };
   hass-smartrent = self.home-assistant.python.pkgs.callPackage ./hass-smartrent.nix { };
   hass-catppuccin = self.callPackage ./hass-catppuccin.nix { };
-  hayase = self.callPackage ./hayase.nix { };
 }
