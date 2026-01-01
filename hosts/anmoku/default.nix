@@ -35,14 +35,11 @@
     hyprland.enable = true;
   };
 
-  services = {
-    flatpak.enable = true;
-    xserver = {
-      enable = true;
-      xkb = {
-        layout = "us";
-        variant = "";
-      };
+  services.xserver = {
+    enable = true;
+    xkb = {
+      layout = "us";
+      variant = "";
     };
   };
 
