@@ -1,39 +1,29 @@
 { lib, ... }:
 let
   inherit (lib) concatLists;
-  pip = "class:^(firefox)$, title:^(Firefox|Picture-in-Picture)$";
+  satty = "match:class ^(com.gabm.satty)$";
+  pip = "match:class ^(firefox)$, match:title ^(Firefox|Picture-in-Picture)$";
 
-  mkFloat = app: [
-    "center(1), ${app}"
-    "float, ${app}"
-    "size 40% 60%, ${app}"
-  ];
+  mkFloat = app: [ "center on, float on, size (monitor_w * 0.4) (monitor_h * 0.6), ${app}" ];
 in
 {
   wayland.windowManager.hyprland.settings = {
-    windowrulev2 = concatLists [
+    windowrule = concatLists [
       [
-        "suppressevent maximize, class:.*" # You'll probably like this.
+        "suppress_event maximize match:class .*"
 
-        # Firefox PiP
-        "float, ${pip}"
-        "pin, ${pip}"
-        "keepaspectratio, ${pip}"
+        "float on, size (monitor_w * 0.4) (monitor_h * 0.6), min_size 600 400, ${satty}"
+        "float on, pin on, keep_aspect_ratio on, ${pip}"
 
-        # Jellyfin running in XWayland
-        "tile, class:^(Jellyfin Media Player)$"
+        "tile on, match:class ^(Jellyfin Media Player)$"
 
-        "float, class:^(com.gabm.satty)$"
-        "size >40% >60%, class:^(com.gabm.satty)$"
-        "minsize 600 400, class:^(com.gabm.satty)$"
-
-        "float, class:^(org.gnome.Calculator)$"
-        "float, title:^(mdrop)$"
+        "float on, match:class ^(org.gnome.Calculator)$"
+        "float on, match:title ^(mdrop)$"
       ]
 
-      (mkFloat "initialTitle:(Open Files)")
-      (mkFloat "class:(com.saivert.pwvucontrol)")
-      (mkFloat "initialTitle:(Bluetooth Devices)")
+      (mkFloat "match:class (com.saivert.pwvucontrol)")
+      (mkFloat "match:initial_title (Open Files)")
+      (mkFloat "match:initial_title (Bluetooth Devices)")
     ];
   };
 }

@@ -7,7 +7,7 @@
 let
   inherit (lib) mkIf;
 
-  session = "Hyprland";
+  session = "start-hyprland";
 in
 {
   config = mkIf config.casa.profiles.graphical.enable {

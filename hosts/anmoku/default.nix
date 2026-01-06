@@ -30,10 +30,11 @@
     };
   };
 
-  programs = {
-    adb.enable = true;
-    hyprland.enable = true;
-  };
+  programs.hyprland.enable = true;
+
+  environment.systemPackages = [
+    pkgs.android-tools
+  ];
 
   services.xserver = {
     enable = true;
