@@ -32,10 +32,6 @@
 
   programs.hyprland.enable = true;
 
-  environment.systemPackages = [
-    pkgs.android-tools
-  ];
-
   services.xserver = {
     enable = true;
     xkb = {
