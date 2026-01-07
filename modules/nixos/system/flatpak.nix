@@ -11,6 +11,9 @@ in
   config = mkIf config.casa.profiles.graphical.enable {
     services.flatpak.enable = true;
 
-    environment.systemPackages = [ pkgs.bazaar pkgs.warehouse ];
+    environment.systemPackages = [
+      pkgs.bazaar
+      pkgs.warehouse
+    ];
   };
 }

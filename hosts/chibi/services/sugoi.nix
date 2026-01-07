@@ -1,7 +1,8 @@
 { config, ... }:
 let
   rdomain = config.casa.profiles.server.domain;
-in {
+in
+{
   services.sugoi.enable = true;
 
   services.caddy.virtualHosts."sugoi.${rdomain}" = {
