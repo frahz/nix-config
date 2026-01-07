@@ -32,14 +32,6 @@
 
   programs.hyprland.enable = true;
 
-  services.xserver = {
-    enable = true;
-    xkb = {
-      layout = "us";
-      variant = "";
-    };
-  };
-
   virtualisation.docker.enableOnBoot = false;
 
   # Mullvad enable support: https://discourse.nixos.org/t/connected-to-mullvadvpn-but-no-internet-connection/35803/10?u=lion
