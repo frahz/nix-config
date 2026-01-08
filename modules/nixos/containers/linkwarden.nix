@@ -1,12 +1,13 @@
 {
-  config,
+  self,
   lib,
+  config,
   pkgs,
   ...
 }:
 let
   inherit (lib) mkIf mkOption mkEnableOption;
-  inherit (lib.types) str path nullOr;
+  inherit (lib.types) str path;
 
   cfg = config.casa.containers.linkwarden;
 in
@@ -52,11 +53,6 @@ in
         '';
       };
     };
-    environmentFile = mkOption {
-      type = nullOr path;
-      default = null;
-      description = "The environment file to use for linkwarden";
-    };
     network = mkOption {
       type = str;
       default = "linkwarden-br";
@@ -65,6 +61,10 @@ in
   };
 
   config = mkIf cfg.enable {
+    sops.secrets.linkwarden-secrets = {
+      sopsFile = "${self}/secrets/linkwarden-secrets.yaml";
+    };
+
     networking.firewall = {
       allowedTCPPorts = [ cfg.port ];
       allowedUDPPorts = [ cfg.port ];
@@ -95,8 +95,8 @@ in
       environment = {
         TZ = "America/Los_Angeles";
       };
-      environmentFiles = mkIf (cfg.environmentFile != null) [
-        cfg.environmentFile
+      environmentFiles = [
+        config.sops.secrets.linkwarden-secrets.path
       ];
       ports = [
         "${toString cfg.port}:3000"
@@ -114,8 +114,8 @@ in
       environment = {
         TZ = "America/Los_Angeles";
       };
-      environmentFiles = mkIf (cfg.environmentFile != null) [
-        cfg.environmentFile
+      environmentFiles = [
+        config.sops.secrets.linkwarden-secrets.path
       ];
       networks = [ cfg.network ];
     };

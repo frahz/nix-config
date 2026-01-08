@@ -38,7 +38,6 @@ in
       chibi = mkNixosSystem "chibi" {
         extraModules = [
           inputs.paquetes.nixosModules.sugoi
-          inputs.paquetes.nixosModules.raulyrs
         ];
       };
 

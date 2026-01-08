@@ -1,5 +1,4 @@
 {
-  self,
   config,
   ...
 }:
@@ -11,19 +10,6 @@ in
     ./hardware-configuration.nix
     ./services
   ];
-
-  # Secrets
-  sops.secrets = {
-    raulyrs = { };
-    linkwarden-secrets = {
-      sopsFile = "${self}/secrets/linkwarden-secrets.yaml";
-    };
-  };
-
-  services.raulyrs = {
-    enable = true;
-    environmentFile = config.sops.secrets.raulyrs.path;
-  };
 
   casa = {
     profiles = {
@@ -53,7 +39,6 @@ in
         enable = true;
         dataDir = "${cfg.storage}/containers/linkwarden/data";
         postgres.dataDir = "${cfg.storage}/containers/linkwarden/pg_data";
-        environmentFile = config.sops.secrets.linkwarden-secrets.path;
       };
       freshrss = {
         enable = true;
@@ -61,6 +46,7 @@ in
       };
     };
     services = {
+      raulyrs.enable = true;
       samba = {
         enable = true;
         shares = {

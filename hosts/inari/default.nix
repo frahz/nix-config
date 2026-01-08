@@ -49,7 +49,6 @@ in
         enable = true;
         authKeyFile = config.sops.secrets.tsauth-inari.path;
       };
-
       nemui.enable = true;
     };
     virtualisation.enable = true;
