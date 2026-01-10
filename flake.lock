@@ -183,11 +183,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1767750573,
-        "narHash": "sha256-PjsokrfY9FSke+vwOBWh0wQ1GhIA4qKTcIjMc5PHZqY=",
+        "lastModified": 1768009849,
+        "narHash": "sha256-xhR4ws2c0nXT9PKnccH9M7T0A7owWor8VokdVb9Q2uo=",
         "owner": "frahz",
         "repo": "nvim",
-        "rev": "b8e1289a26267763458a4f0d332720fad087b87a",
+        "rev": "981a0fa8f33d11f7d2429610e96751ddf14e2350",
         "type": "github"
       },
       "original": {
@@ -203,11 +203,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1767938911,
-        "narHash": "sha256-Ud8DNZqFEpOVhf5hpRq3POKaelL1LALw83tKYB6iW4s=",
+        "lastModified": 1768012290,
+        "narHash": "sha256-6wlkYvfLRGzVXFTyliFs6O2C91xYzhA9YMNyekBCk7w=",
         "owner": "frahz",
         "repo": "paquetes",
-        "rev": "18ae3418257588ce927fdd44dbc8d088f8dbfcaa",
+        "rev": "cc2da225cca485d060df4448ad74d3d636e8dd1a",
         "type": "github"
       },
       "original": {
