@@ -25,6 +25,7 @@ in
         tokei
         wget
         killall
+        dix
       ]
 
       (optionals cfg.profiles.graphical.enable [

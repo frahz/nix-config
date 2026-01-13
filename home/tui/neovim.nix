@@ -34,6 +34,8 @@ in
         marksman
         # Formatters
         typstyle
+
+        websocat
       ])
     ];
 }
