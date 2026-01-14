@@ -22,6 +22,10 @@ buildHomeAssistantComponent rec {
     (home-assistant.python.pkgs.callPackage ./smartrent-py.nix { })
   ];
 
+  patches = [
+    ./0001-fix-deprecated-constant.patch
+  ];
+
   # manual updates: `cd` to pkgsLinux directory and run
   # `nix-update hass-smartrent`
   passthru.updateScript = nix-update-script { };
