@@ -108,6 +108,7 @@ in
         getmac
         govee-ble
         ibeacon-ble
+        oralb-ble
         pyatv
         python-otbr-api
         kegtron-ble
