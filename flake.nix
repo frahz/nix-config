@@ -28,11 +28,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    pre-commit-hooks = {
-      url = "github:cachix/pre-commit-hooks.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     privado = {
       url = "git+ssh://git@github.com/frahz/privado.git";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -53,7 +48,6 @@
     inputs@{ flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       imports = [
-        inputs.pre-commit-hooks.flakeModule
         ./hosts
       ];
 
@@ -69,18 +63,7 @@
           ...
         }:
         {
-          pre-commit = {
-            check.enable = true;
-            settings = {
-              hooks = {
-                nixfmt-rfc-style.enable = true;
-                statix.enable = true;
-              };
-            };
-          };
-
           devShells.default = pkgs.mkShell {
-            shellHook = config.pre-commit.installationScript;
             packages = with pkgs; [
               config.formatter
               git
