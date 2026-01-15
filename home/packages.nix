@@ -44,10 +44,11 @@ in
         newsflash
         dconf
         thunar # file manager for now
-        # feishin
+        feishin
         gimp
         gnome-calculator
         grim
+        jellyfin-desktop
         slurp
         satty
         wayfreeze
