@@ -5,9 +5,13 @@
   ...
 }:
 let
-  inherit (lib) mkIf;
+  inherit (lib) mkIf concatStringsSep;
 
-  session = "start-hyprland";
+  sessionData = config.services.displayManager.sessionData.desktops;
+  sessionPath = concatStringsSep ":" [
+    "${sessionData}/share/xsessions"
+    "${sessionData}/share/wayland-sessions"
+  ];
 in
 {
   config = mkIf config.casa.profiles.graphical.enable {
@@ -17,7 +21,7 @@ in
       settings = {
         default_session = {
           user = "greeter";
-          command = "${lib.getExe pkgs.tuigreet} --time --remember --cmd ${session}";
+          command = "${lib.getExe pkgs.tuigreet} --time --remember --sessions '${sessionPath}'";
         };
       };
     };
