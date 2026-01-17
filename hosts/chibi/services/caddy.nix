@@ -51,6 +51,7 @@ let
   };
 in
 {
+  sops.secrets.porkbun = { };
   services.caddy = {
     enable = true;
     email = "me@frahz.dev";
@@ -64,6 +65,7 @@ in
         api_secret_key {env.PORKBUN_API_SECRET_KEY}
       }
     '';
+    environmentFile = config.sops.secrets.porkbun.path;
 
     virtualHosts = {
       "${chibi.linkwarden.domain}.${domain}" = {
@@ -113,9 +115,6 @@ in
       };
     };
   };
-
-  sops.secrets.porkbun = { };
-  systemd.services.caddy.serviceConfig.EnvironmentFile = config.sops.secrets.porkbun.path;
 
   networking.firewall = {
     allowedTCPPorts = [

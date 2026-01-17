@@ -6,6 +6,7 @@ let
   port = 4533;
 in
 {
+  sops.secrets.navidrome = { };
   services.navidrome = {
     enable = true;
     settings = {
@@ -14,11 +15,9 @@ in
       MusicFolder = "${storage}/music";
       EnableInsightsCollector = false;
     };
+    environmentFile = config.sops.secrets.navidrome.path;
     openFirewall = true;
   };
-
-  sops.secrets.navidrome = { };
-  systemd.services.navidrome.serviceConfig.EnvironmentFile = config.sops.secrets.navidrome.path;
 
   services.caddy.virtualHosts."music.${domain}" = {
     extraConfig = ''
