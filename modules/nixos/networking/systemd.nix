@@ -3,12 +3,16 @@
   # systemd DNS resolver daemon
   services.resolved = {
     inherit (config.casa.profiles.graphical) enable;
-    dnssec = "allow-downgrade";
-    fallbackDns = [
-      "1.1.1.1"
-      "8.8.8.8"
-    ];
-    dnsovertls = "true";
+    settings = {
+      Resolve = {
+        DNSSEC = "allow-downgrade";
+        FallbackDNS = [
+          "1.1.1.1"
+          "8.8.8.8"
+        ];
+        DNSOverTLS = "true";
+      };
+    };
   };
   systemd = {
     # allow for the system to boot without waiting for the network interfaces are online
