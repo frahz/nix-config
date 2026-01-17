@@ -1,11 +1,13 @@
 {
   inputs,
+  self,
   lib,
   config,
   ...
 }:
 let
-  inherit (lib) mkIf mkEnableOption;
+  inherit (lib) mkIf;
+  inherit (self.lib) mkServiceOption;
 
   cfg = config.casa.services.nemui;
 in
@@ -14,9 +16,7 @@ in
     inputs.paquetes.nixosModules.nemui
   ];
 
-  options.casa.services.nemui = {
-    enable = mkEnableOption "nemui daemon";
-  };
+  options.casa.services.nemui = mkServiceOption "nemui" { };
 
   config = mkIf cfg.enable {
     services.nemui.enable = true;

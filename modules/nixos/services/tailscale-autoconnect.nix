@@ -1,18 +1,19 @@
 {
-  config,
+  self,
   lib,
   pkgs,
+  config,
   ...
 }:
 let
-  inherit (lib) mkIf mkOption mkEnableOption;
   inherit (lib.types) str;
+  inherit (lib) mkIf mkOption;
+  inherit (self.lib) mkServiceOption;
 
   cfg = config.casa.services.tailscale-autoconnect;
 in
 {
-  options.casa.services.tailscale-autoconnect = {
-    enable = mkEnableOption "tailscale-autoconnect oneshot service";
+  options.casa.services.tailscale-autoconnect = mkServiceOption "tailscale-autoconnect" { } // {
     authKeyFile = mkOption {
       type = str;
     };

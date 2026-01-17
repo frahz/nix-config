@@ -30,7 +30,7 @@ in
           clock = {
             format = "{:%I:%M %p | %D}";
             tooltip = "false";
-            tooltip-format = ''<tt><big>{calendar}</big></tt>'';
+            tooltip-format = "<tt><big>{calendar}</big></tt>";
             calendar = {
               format = {
                 months = "<span color='#f5bde6'>{}</span>";

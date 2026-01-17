@@ -35,11 +35,7 @@ in
     nixosConfigurations = {
       anmoku = mkNixosSystem "anmoku" { };
 
-      chibi = mkNixosSystem "chibi" {
-        extraModules = [
-          inputs.paquetes.nixosModules.sugoi
-        ];
-      };
+      chibi = mkNixosSystem "chibi" { };
 
       inari = mkNixosSystem "inari" { };
     };

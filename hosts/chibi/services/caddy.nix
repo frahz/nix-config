@@ -1,22 +1,9 @@
 {
   config,
-  pkgs,
   ...
 }:
 let
   inherit (config.casa.profiles.server) domain;
-
-  chibi = {
-    ip = "100.87.38.99";
-    freshrss = {
-      port = 9123;
-      domain = "freshrss";
-    };
-    linkwarden = {
-      port = 3000;
-      domain = "lw";
-    };
-  };
 
   inari = {
     ip = "100.68.202.4";
@@ -51,79 +38,42 @@ let
   };
 in
 {
-  sops.secrets.porkbun = { };
-  services.caddy = {
-    enable = true;
-    email = "me@frahz.dev";
-    package = pkgs.caddy.withPlugins {
-      plugins = [ "github.com/caddy-dns/porkbun@v0.3.1" ];
-      hash = "sha256-g/Nmi4X/qlqqjY/zoG90iyP5Y5fse6Akr8exG5Spf08=";
+  services.caddy.virtualHosts = {
+    "${inari.sonarr.domain}.${domain}" = {
+      extraConfig = ''
+        reverse_proxy http://${inari.ip}:${toString inari.sonarr.port}
+      '';
     };
-    globalConfig = ''
-      acme_dns porkbun {
-        api_key {env.PORKBUN_API_KEY}
-        api_secret_key {env.PORKBUN_API_SECRET_KEY}
-      }
-    '';
-    environmentFile = config.sops.secrets.porkbun.path;
-
-    virtualHosts = {
-      "${chibi.linkwarden.domain}.${domain}" = {
-        extraConfig = ''
-          reverse_proxy http://${chibi.ip}:${toString chibi.linkwarden.port}
-        '';
-      };
-      "${chibi.freshrss.domain}.${domain}" = {
-        extraConfig = ''
-          reverse_proxy http://${chibi.ip}:${toString chibi.freshrss.port}
-        '';
-      };
-      "${inari.sonarr.domain}.${domain}" = {
-        extraConfig = ''
-          reverse_proxy http://${inari.ip}:${toString inari.sonarr.port}
-        '';
-      };
-      "${inari.radarr.domain}.${domain}" = {
-        extraConfig = ''
-          reverse_proxy http://${inari.ip}:${toString inari.radarr.port}
-        '';
-      };
-      "${inari.jellyfin.domain}.${domain}" = {
-        extraConfig = ''
-          reverse_proxy http://${inari.ip}:${toString inari.jellyfin.port}
-        '';
-      };
-      "${inari.qbitorrent.domain}.${domain}" = {
-        extraConfig = ''
-          reverse_proxy http://${inari.ip}:${toString inari.qbitorrent.port}
-        '';
-      };
-      "${inari.jellyseerr.domain}.${domain}" = {
-        extraConfig = ''
-          reverse_proxy http://${inari.ip}:${toString inari.jellyseerr.port}
-        '';
-      };
-      "${inari.kavita.domain}.${domain}" = {
-        extraConfig = ''
-          reverse_proxy http://${inari.ip}:${toString inari.kavita.port}
-        '';
-      };
-      "${inari.scrutiny.domain}.${domain}" = {
-        extraConfig = ''
-          reverse_proxy http://${inari.ip}:${toString inari.scrutiny.port}
-        '';
-      };
+    "${inari.radarr.domain}.${domain}" = {
+      extraConfig = ''
+        reverse_proxy http://${inari.ip}:${toString inari.radarr.port}
+      '';
+    };
+    "${inari.jellyfin.domain}.${domain}" = {
+      extraConfig = ''
+        reverse_proxy http://${inari.ip}:${toString inari.jellyfin.port}
+      '';
+    };
+    "${inari.qbitorrent.domain}.${domain}" = {
+      extraConfig = ''
+        reverse_proxy http://${inari.ip}:${toString inari.qbitorrent.port}
+      '';
+    };
+    "${inari.jellyseerr.domain}.${domain}" = {
+      extraConfig = ''
+        reverse_proxy http://${inari.ip}:${toString inari.jellyseerr.port}
+      '';
+    };
+    "${inari.kavita.domain}.${domain}" = {
+      extraConfig = ''
+        reverse_proxy http://${inari.ip}:${toString inari.kavita.port}
+      '';
+    };
+    "${inari.scrutiny.domain}.${domain}" = {
+      extraConfig = ''
+        reverse_proxy http://${inari.ip}:${toString inari.scrutiny.port}
+      '';
     };
   };
 
-  networking.firewall = {
-    allowedTCPPorts = [
-      80
-      443
-    ];
-    allowedUDPPorts = [
-      80
-      443
-    ];
-  };
 }

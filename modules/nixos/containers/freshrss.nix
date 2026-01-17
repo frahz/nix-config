@@ -1,38 +1,39 @@
 {
-  config,
+  self,
   lib,
+  config,
   ...
 }:
 let
-  inherit (lib) mkIf mkOption mkEnableOption;
-  inherit (lib.types) str path;
+  inherit (lib) mkIf mkOption types;
+  inherit (self.lib) mkServiceOption;
 
   cfg = config.casa.containers.freshrss;
+  rdomain = config.networking.domain;
 in
 {
-  options.casa.containers.freshrss = {
-    enable = mkEnableOption "Enable the freshrss service";
-    version = mkOption {
-      type = str;
-      default = "1.27.1-ls288";
-      example = ''
-        The most recent version can be found here:
-        https://github.com/linuxserver/docker-freshrss/pkgs/container/freshrss
-      '';
-      description = "The docker image version for freshrss service";
+  options.casa.containers.freshrss =
+    mkServiceOption "freshrss" {
+      port = 9123;
+      domain = "freshrss.${rdomain}";
+    }
+    // {
+      version = mkOption {
+        type = types.str;
+        default = "1.27.1-ls288";
+        example = ''
+          The most recent version can be found here:
+          https://github.com/linuxserver/docker-freshrss/pkgs/container/freshrss
+        '';
+        description = "The docker image version for freshrss service";
+      };
+      configDir = mkOption {
+        type = types.path;
+        description = ''
+          Directory for configuration for freshrss service;
+        '';
+      };
     };
-    port = mkOption {
-      type = lib.types.port;
-      default = 9123;
-      description = "The port for freshrss service";
-    };
-    configDir = mkOption {
-      type = path;
-      description = ''
-        Directory for configuration for freshrss service;
-      '';
-    };
-  };
 
   config = mkIf cfg.enable {
     networking.firewall = {
@@ -54,6 +55,12 @@ in
       ports = [
         "${toString cfg.port}:80"
       ];
+    };
+
+    services.caddy.virtualHosts.${cfg.domain} = {
+      extraConfig = ''
+        reverse_proxy http://${cfg.host}:${toString cfg.port}
+      '';
     };
   };
 }

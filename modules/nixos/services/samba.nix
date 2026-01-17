@@ -1,6 +1,6 @@
 {
+  self,
   lib,
-  pkgs,
   config,
   ...
 }:
@@ -10,10 +10,10 @@ let
     mkIf
     mkOption
     mkDefault
-    mkEnableOption
     literalExpression
     ;
   inherit (lib.types) attrs;
+  inherit (self.lib) mkServiceOption;
 
   commonSettings = {
     "browseable" = "yes";
@@ -24,8 +24,7 @@ let
   cfg = config.casa.services.samba;
 in
 {
-  options.casa.services.samba = {
-    enable = mkEnableOption "samba shares";
+  options.casa.services.samba = mkServiceOption "samba" { } // {
     shares = mkOption {
       type = attrs;
       example = literalExpression ''
@@ -57,6 +56,5 @@ in
       }
       // mapAttrs (name: value: value // commonSettings) cfg.shares;
     };
-
   };
 }

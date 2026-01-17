@@ -1,11 +1,13 @@
 {
   inputs,
+  self,
   lib,
   config,
   ...
 }:
 let
-  inherit (lib) mkIf mkEnableOption;
+  inherit (lib) mkIf;
+  inherit (self.lib) mkServiceOption;
 
   cfg = config.casa.services.raulyrs;
 in
@@ -14,9 +16,7 @@ in
     inputs.paquetes.nixosModules.raulyrs
   ];
 
-  options.casa.services.raulyrs = {
-    enable = mkEnableOption "raulyrs discord bot";
-  };
+  options.casa.services.raulyrs = mkServiceOption "raulyrs" { };
 
   config = mkIf cfg.enable {
     sops.secrets.raulyrs = { };

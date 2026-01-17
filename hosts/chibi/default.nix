@@ -46,6 +46,19 @@ in
       };
     };
     services = {
+      adguardhome.enable = true;
+      caddy.enable = true;
+      forgejo.enable = true;
+      glance.enable = true;
+      home-assistant.enable = true;
+      immich = {
+        enable = true;
+        storagePath = cfg.storage;
+      };
+      navidrome = {
+        enable = true;
+        storagePath = cfg.storage;
+      };
       raulyrs.enable = true;
       samba = {
         enable = true;
@@ -54,6 +67,7 @@ in
           music.path = "${cfg.storage}/music";
         };
       };
+      sugoi.enable = true;
     };
   };
 }

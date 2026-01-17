@@ -30,6 +30,7 @@ in
         message = "Server profile is enabled but storage option is not set. Please set config.casa.profiles.server.storage";
       }
     ];
-  };
 
+    networking = { inherit (cfg.server) domain; };
+  };
 }

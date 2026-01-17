@@ -1,64 +1,64 @@
 {
   self,
   lib,
-  config,
   pkgs,
+  config,
   ...
 }:
 let
-  inherit (lib) mkIf mkOption mkEnableOption;
-  inherit (lib.types) str path;
+  inherit (lib) mkIf mkOption types;
+  inherit (self.lib) mkServiceOption;
 
   cfg = config.casa.containers.linkwarden;
+  rdomain = config.networking.domain;
 in
 {
-  options.casa.containers.linkwarden = {
-    enable = mkEnableOption "Enable the linkwarden service";
-    version = mkOption {
-      type = str;
-      default = "v2.9.3";
-      example = ''
-        The most recent version can be found here:
-        https://github.com/linkwarden/linkwarden/pkgs/container/linkwarden
-      '';
-      description = "The docker image version for linkwarden service";
-    };
-    port = mkOption {
-      type = lib.types.port;
-      default = 3000;
-      description = "The port for linkwarden service";
-    };
-    dataDir = mkOption {
-      type = path;
-      description = ''
-        Directory for configuration for linkwarden service;
-      '';
-    };
-    postgres = {
+  options.casa.containers.linkwarden =
+    mkServiceOption "linkwarden" {
+      port = 3000;
+      domain = "lw.${rdomain}";
+    }
+    // {
       version = mkOption {
-        type = str;
-        default = "16-alpine";
+        type = types.str;
+        default = "v2.9.3";
         example = ''
           The most recent version can be found here:
           https://github.com/linkwarden/linkwarden/pkgs/container/linkwarden
         '';
-        description = ''
-          The docker image version for postgres instance used by linkwarden service.
-        '';
+        description = "The docker image version for linkwarden service";
       };
       dataDir = mkOption {
-        type = path;
+        type = types.path;
         description = ''
-          Data directory for postgresql instance used by linkwarden service.
+          Directory for configuration for linkwarden service;
         '';
       };
+      postgres = {
+        version = mkOption {
+          type = types.str;
+          default = "16-alpine";
+          example = ''
+            The most recent version can be found here:
+            https://github.com/linkwarden/linkwarden/pkgs/container/linkwarden
+          '';
+          description = ''
+            The docker image version for postgres instance used by linkwarden service.
+          '';
+        };
+        dataDir = mkOption {
+          type = types.path;
+          description = ''
+            Data directory for postgresql instance used by linkwarden service.
+          '';
+        };
+      };
+      network = mkOption {
+        type = types.str;
+        default = "linkwarden-br";
+        description = "Network name for linkwarden containers";
+      };
     };
-    network = mkOption {
-      type = str;
-      default = "linkwarden-br";
-      description = "Network name for linkwarden containers";
-    };
-  };
 
   config = mkIf cfg.enable {
     sops.secrets.linkwarden-secrets = {
@@ -118,6 +118,12 @@ in
         config.sops.secrets.linkwarden-secrets.path
       ];
       networks = [ cfg.network ];
+    };
+
+    services.caddy.virtualHosts.${cfg.domain} = {
+      extraConfig = ''
+        reverse_proxy http://${cfg.host}:${toString cfg.port}
+      '';
     };
   };
 }
