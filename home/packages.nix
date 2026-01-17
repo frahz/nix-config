@@ -40,10 +40,10 @@ in
       ])
 
       (optionals (cfg.profiles.graphical.enable && isLinux) [
+        nautilus # file manager for now
         pwvucontrol
         newsflash
         dconf
-        thunar # file manager for now
         feishin
         gimp
         gnome-calculator

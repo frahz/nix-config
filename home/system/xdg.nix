@@ -13,7 +13,7 @@ in
     mimeApps = {
       inherit (cfg.profiles.graphical) enable;
       defaultApplications = {
-        "inode/directory" = [ "thunar.desktop" ];
+        "inode/directory" = [ "nautilus.desktop" ];
         "x-scheme-handler/spotify" = [ "spotify.desktop" ];
         "x-scheme-handler/discord" = [ "vesktop.desktop" ];
       };

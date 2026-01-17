@@ -25,7 +25,7 @@
       "$mainMod,       W, exec, firefox"
       "$mainMod Shift, W, exec, firefox --private-window"
 
-      "$mainMod, E, exec, thunar"
+      "$mainMod, E, exec, nautilus"
       "$mainMod Shift, C, exec, pkill hyprpicker || hyprpicker --autocopy --no-fancy --format=hex"
 
       # screenshot utilities
