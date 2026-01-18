@@ -54,7 +54,7 @@ in
           longitude = "!secret longitude";
         };
         http = {
-          port = cfg.port;
+          server_port = cfg.port;
           use_x_forwarded_for = true;
           trusted_proxies = [
             "100.87.38.99"
