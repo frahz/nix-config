@@ -21,6 +21,8 @@ in
 
     wayland.windowManager.hyprland = {
       enable = true;
+      package = null;
+      portalPackage = null;
       # TODO: move to uwsm cuz that seems to be a thing now?
       systemd = {
         enable = true;

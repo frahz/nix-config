@@ -13,7 +13,7 @@ in
     mimeApps = {
       inherit (cfg.profiles.graphical) enable;
       defaultApplications = {
-        "inode/directory" = [ "nautilus.desktop" ];
+        "inode/directory" = [ "org.gnome.Nautilus.desktop" ];
         "x-scheme-handler/spotify" = [ "spotify.desktop" ];
         "x-scheme-handler/discord" = [ "vesktop.desktop" ];
       };
