@@ -78,11 +78,11 @@
     },
     "mnw": {
       "locked": {
-        "lastModified": 1767030222,
-        "narHash": "sha256-kSvWF3Xt2HW9hmV5V7i8PqeWJIBUKmuKoHhOgj3Znzs=",
+        "lastModified": 1769269517,
+        "narHash": "sha256-SgZOSmsbJN+oPDVZyavctrkjQYDCWtoJ3uhlzQChb6s=",
         "owner": "Gerg-L",
         "repo": "mnw",
-        "rev": "75bb637454b0fbbb5ed652375a4bf7ffd28bcf6f",
+        "rev": "ee5e11d0d7f6a6cda68559c1a34b5392c3b1b1eb",
         "type": "github"
       },
       "original": {
@@ -146,11 +146,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1768009849,
-        "narHash": "sha256-xhR4ws2c0nXT9PKnccH9M7T0A7owWor8VokdVb9Q2uo=",
+        "lastModified": 1769573862,
+        "narHash": "sha256-VMYeL0gJiFfSvCzaTNaHc6sBHiPN/a2md1KebQPJVps=",
         "owner": "frahz",
         "repo": "nvim",
-        "rev": "981a0fa8f33d11f7d2429610e96751ddf14e2350",
+        "rev": "702c6a9e1aefe194fd4640c1edd892d5d5b1a1d1",
         "type": "github"
       },
       "original": {
