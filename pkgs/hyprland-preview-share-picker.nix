@@ -6,17 +6,17 @@
 }:
 pkgs.rustPlatform.buildRustPackage rec {
   pname = "hyprland-preview-share-picker";
-  version = "0.2.0";
+  version = "0.2.1";
 
   src = fetchFromGitHub {
     owner = "WhySoBad";
     repo = "hyprland-preview-share-picker";
     rev = "v${version}";
-    hash = "sha256-Ijp8pOqrrL4FLQ7yIfFrAUwe/8R82WcbP6XQhOsFwlw=";
+    hash = "sha256-LOHl7zCxTIDqHIZy8B/RZ76Phz/BKcdrNR4QhQkrcJA=";
     # fetchSubModules = true;
   };
 
-  cargoHash = "sha256-I2dVxRfx0IiXiiLy4ygx5gvtJrf+YHJ4P7Cvq51dIrU=";
+  cargoHash = "sha256-AqX9jKj7JLEx1SLefyaWYGbRdk0c3H/NDTIsZy6B6hY=";
 
   nativeBuildInputs = [ pkgs.pkg-config ];
   buildInputs = with pkgs; [
