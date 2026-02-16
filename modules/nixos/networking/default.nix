@@ -1,4 +1,7 @@
 { lib, config, ... }:
+let
+  inherit (lib) mkDefault mkIf;
+in
 {
   imports = [
     ./mullvad.nix
@@ -8,10 +11,10 @@
   ];
 
   networking = {
-    useDHCP = lib.mkDefault true;
+    useDHCP = mkDefault true;
 
     # DNS
-    nameservers = [
+    nameservers = mkIf (!(config ? wsl)) [
       "1.1.1.1"
       "1.0.0.1"
     ];

@@ -37,6 +37,12 @@ in
 
       chibi = mkNixosSystem "chibi" { };
 
+      desktop = mkNixosSystem "desktop" {
+        extraModules = [
+          "${self}/modules/wsl"
+        ];
+      };
+
       inari = mkNixosSystem "inari" { };
     };
     darwinConfigurations = {
