@@ -1,6 +1,7 @@
 {
   self,
   lib,
+  pkgs,
   config,
   ...
 }:
@@ -22,6 +23,10 @@ in
     sops.secrets.navidrome = { };
     services.navidrome = {
       enable = true;
+      # TODO: fix https://github.com/NixOS/nixpkgs/issues/481611
+      package = pkgs.navidrome.overrideDerivation (old: {
+        CGO_CFLAGS_ALLOW = "--define-prefix";
+      });
       settings = {
         Address = cfg.host;
         Port = cfg.port;
