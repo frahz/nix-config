@@ -46,7 +46,7 @@ in
     };
     services = {
       tailscale-autoconnect = {
-        enable = true;
+        enable = false;
         authKeyFile = config.sops.secrets.tsauth-inari.path;
       };
       nemui.enable = true;
