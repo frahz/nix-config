@@ -324,8 +324,8 @@ in
                         color = "267 84 81";
                         links = [
                           {
-                            title = "Proton Mail";
-                            url = "https://mail.proton.me/u/0/inbox";
+                            title = "Fastmail";
+                            url = "https://app.fastmail.com/mail/Inbox/?u=4b064054";
                           }
                           {
                             title = "GitHub";
