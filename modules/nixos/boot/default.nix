@@ -55,7 +55,7 @@ in
 
     })
 
-    ({
+    {
       boot = {
         kernelPackages = cfg.kernel;
 
@@ -94,7 +94,7 @@ in
           "rd.systemd.show_status=auto"
         ];
       };
-    })
+    }
   ];
 
 }

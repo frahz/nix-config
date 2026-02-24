@@ -22,9 +22,9 @@ in
   config = mkIf cfg.enable {
     sops.secrets.immich = { };
     services.immich = {
+      inherit (cfg) host;
       enable = true;
       openFirewall = true;
-      host = cfg.host;
       secretsFile = config.sops.secrets.immich.path;
       redis = {
         enable = true;
