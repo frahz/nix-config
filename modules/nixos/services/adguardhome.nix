@@ -74,6 +74,11 @@ in
       };
     };
 
+    services.resolved.settings.Resolve = {
+      DNS = [ "127.0.0.1" ];
+      DNSStubListener = "no";
+    };
+
     services.caddy.virtualHosts.${cfg.domain} = {
       extraConfig = ''
         reverse_proxy http://${cfg.host}:${toString cfg.port}

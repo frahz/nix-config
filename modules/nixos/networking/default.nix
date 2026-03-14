@@ -1,6 +1,6 @@
 { lib, config, ... }:
 let
-  inherit (lib) mkDefault mkIf;
+  inherit (lib) mkForce mkIf;
 in
 {
   imports = [
@@ -11,7 +11,8 @@ in
   ];
 
   networking = {
-    useDHCP = mkDefault true;
+    useDHCP = mkForce false;
+    useNetworkd = mkForce true;
 
     # DNS
     nameservers = mkIf (!(config ? wsl)) [
@@ -19,10 +20,11 @@ in
       "1.0.0.1"
     ];
 
+    # TODO: define networkd networks manually for server down the line
     networkmanager = {
-      inherit (config.casa.profiles.graphical) enable;
+      enable = true;
       dns = "systemd-resolved";
-      wifi.backend = config.casa.networking.wirelessBackend;
+      wifi.backend = "iwd";
     };
   };
 

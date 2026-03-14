@@ -2,12 +2,14 @@
 {
   # systemd DNS resolver daemon
   services.resolved = {
-    inherit (config.casa.profiles.graphical) enable;
+    enable = true;
+    # inherit (config.casa.profiles.graphical) enable;
     settings = {
       Resolve = {
         DNSSEC = "allow-downgrade";
         FallbackDNS = [
           "1.1.1.1"
+          "1.0.0.1"
           "8.8.8.8"
         ];
         DNSOverTLS = "true";
