@@ -24,6 +24,7 @@
         diff.colorMoved = "default";
         init.defaultBranch = "main";
       };
+      signing.format = null;
     };
   };
 
