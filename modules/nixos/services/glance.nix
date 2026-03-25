@@ -6,7 +6,7 @@
 }:
 let
   inherit (lib) mkIf;
-  inherit (self.lib) mkServiceOption;
+  inherit (self.lib) mkServiceOption mkSecret;
 
   cfg = config.casa.services.glance;
 in
@@ -18,7 +18,10 @@ in
   };
 
   config = mkIf cfg.enable {
-    sops.secrets.glance = { };
+    sops.secrets.glance = mkSecret {
+      file = "glance";
+      key = "env";
+    };
 
     services.caddy.virtualHosts.${cfg.domain} = {
       extraConfig = ''

@@ -7,7 +7,7 @@
 }:
 let
   inherit (lib) mkIf mkOption types;
-  inherit (self.lib) mkServiceOption;
+  inherit (self.lib) mkServiceOption mkSecret;
 
   cfg = config.casa.containers.linkwarden;
   rdomain = config.networking.domain;
@@ -61,8 +61,9 @@ in
     };
 
   config = mkIf cfg.enable {
-    sops.secrets.linkwarden-secrets = {
-      sopsFile = "${self}/secrets/linkwarden-secrets.yaml";
+    sops.secrets.linkwarden = mkSecret {
+      file = "linkwarden";
+      key = "env";
     };
 
     networking.firewall = {
@@ -96,7 +97,7 @@ in
         TZ = "America/Los_Angeles";
       };
       environmentFiles = [
-        config.sops.secrets.linkwarden-secrets.path
+        config.sops.secrets.linkwarden.path
       ];
       ports = [
         "${toString cfg.port}:3000"
@@ -115,7 +116,7 @@ in
         TZ = "America/Los_Angeles";
       };
       environmentFiles = [
-        config.sops.secrets.linkwarden-secrets.path
+        config.sops.secrets.linkwarden.path
       ];
       networks = [ cfg.network ];
     };

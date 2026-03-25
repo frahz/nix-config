@@ -7,7 +7,7 @@
 }:
 let
   inherit (lib) mkIf;
-  inherit (self.lib) mkServiceOption;
+  inherit (self.lib) mkServiceOption mkSecret;
 
   cfg = config.casa.services.raulyrs;
 in
@@ -19,7 +19,10 @@ in
   options.casa.services.raulyrs = mkServiceOption "raulyrs" { };
 
   config = mkIf cfg.enable {
-    sops.secrets.raulyrs = { };
+    sops.secrets.raulyrs = mkSecret {
+      file = "raulyrs";
+      key = "env";
+    };
 
     services.raulyrs = {
       enable = true;

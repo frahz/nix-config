@@ -7,7 +7,7 @@
 }:
 let
   inherit (lib) mkIf;
-  inherit (self.lib) mkServiceOption;
+  inherit (self.lib) mkServiceOption mkSecret;
 
   cfg = config.casa.services.home-assistant;
   rdomain = config.networking.domain;
@@ -19,13 +19,15 @@ in
   };
 
   config = mkIf cfg.enable {
-    sops.secrets."hass-secrets" = {
-      sopsFile = ../../../secrets/hass-secrets.yaml;
+    sops.secrets.home-assistant = mkSecret {
+      file = "home-assistant";
+      key = "env";
       owner = "hass";
       group = "hass";
       path = "${config.services.home-assistant.configDir}/secrets.yaml";
       restartUnits = [ "home-assistant.service" ];
     };
+
     services.home-assistant = {
       enable = true;
       openFirewall = true;

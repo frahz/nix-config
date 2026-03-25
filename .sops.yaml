@@ -1,7 +1,18 @@
 keys:
     - &frahz age1kzz4nsy6enrfqukh5a5tgarsnhsu3qsg2ztyaukty0g0dys4qdlqw6qjjf
+
+    - &chibi age18fkdpvhrgrq2dfm8shfgtpmch75h2dhsv92q5te06r0kcf9yjd0smjm57p
+    - &inari age1k2enp5dxt8u7accrwxndl62ds79x3940jn5t0urwa58dvqjkq5jse8vu52
 creation_rules:
     - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
       key_groups:
           - age:
               - *frahz
+              - *chibi
+              - *inari
+    - path_regex: secrets/services/[^/]+\.(yaml|json|env|ini)$
+      key_groups:
+          - age:
+              - *frahz
+              - *chibi
+              - *inari

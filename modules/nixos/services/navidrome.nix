@@ -1,13 +1,12 @@
 {
   self,
   lib,
-  pkgs,
   config,
   ...
 }:
 let
   inherit (lib) mkIf;
-  inherit (self.lib) mkServiceOption;
+  inherit (self.lib) mkServiceOption mkSecret;
 
   cfg = config.casa.services.navidrome;
   rdomain = config.networking.domain;
@@ -20,13 +19,12 @@ in
   };
 
   config = mkIf cfg.enable {
-    sops.secrets.navidrome = { };
+    sops.secrets.navidrome = mkSecret {
+      file = "navidrome";
+      key = "env";
+    };
     services.navidrome = {
       enable = true;
-      # TODO: fix https://github.com/NixOS/nixpkgs/issues/481611
-      package = pkgs.navidrome.overrideDerivation (old: {
-        CGO_CFLAGS_ALLOW = "--define-prefix";
-      });
       settings = {
         Address = cfg.host;
         Port = cfg.port;

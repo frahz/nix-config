@@ -6,7 +6,7 @@
 }:
 let
   inherit (lib) mkIf;
-  inherit (self.lib) mkServiceOption;
+  inherit (self.lib) mkServiceOption mkSecret;
 
   cfg = config.casa.services.immich;
   rdomain = config.networking.domain;
@@ -20,7 +20,10 @@ in
   };
 
   config = mkIf cfg.enable {
-    sops.secrets.immich = { };
+    sops.secrets.immich = mkSecret {
+      file = "immich";
+      key = "env";
+    };
     services.immich = {
       inherit (cfg) host;
       enable = true;

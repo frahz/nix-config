@@ -7,7 +7,7 @@
 }:
 let
   inherit (lib) mkIf;
-  inherit (self.lib) mkServiceOption;
+  inherit (self.lib) mkServiceOption mkSecret;
 
   cfg = config.casa.services.caddy;
 in
@@ -15,7 +15,10 @@ in
   options.casa.services.caddy = mkServiceOption "caddy" { };
 
   config = mkIf cfg.enable {
-    sops.secrets.porkbun = { };
+    sops.secrets.caddy-porkbun = mkSecret {
+      file = "caddy";
+      key = "porkbun";
+    };
 
     services.caddy = {
       enable = true;
@@ -30,7 +33,7 @@ in
           api_secret_key {env.PORKBUN_API_SECRET_KEY}
         }
       '';
-      environmentFile = config.sops.secrets.porkbun.path;
+      environmentFile = config.sops.secrets.caddy-porkbun.path;
     };
 
     networking.firewall = {
