@@ -13,24 +13,6 @@ let
     ;
 
   cfg = config.casa.containers.torrent;
-
-  # https://github.com/NixOS/nixpkgs/pull/464432
-  vuetorrent = pkgs.vuetorrent.overrideAttrs (_: rec {
-    pname = "vuetorrent";
-    version = "2.31.1";
-    src = pkgs.fetchFromGitHub {
-      owner = "VueTorrent";
-      repo = "VueTorrent";
-      tag = "v${version}";
-      hash = "sha256-og+pmqs91wGkb4cFUbgqPInvNKw7WJuXBznt4BoWYZQ=";
-    };
-    npmDepsHash = "sha256-DKoOqOd7y8dfCGARlrB2kiOpMo3g1inMqfCTufWIJOI=";
-    npmDeps = pkgs.fetchNpmDeps {
-      inherit src;
-      name = "${pname}-${version}-npm-deps";
-      hash = npmDepsHash;
-    };
-  });
 in
 {
   options.casa.containers.torrent = {
@@ -148,7 +130,7 @@ in
       volumes = [
         "${cfg.qbittorrent.configDir}:/config"
         "${cfg.qbittorrent.torrentDir}:/torrents"
-        "${vuetorrent}/share/vuetorrent:/vuetorrent:ro"
+        "${pkgs.vuetorrent}/share/vuetorrent:/vuetorrent:ro"
       ];
       environment = {
         TZ = "America/Los_Angeles";
