@@ -59,6 +59,7 @@ in
         enable = true;
         storagePath = cfg.storage;
       };
+      papra.enable = true;
       raulyrs.enable = true;
       samba = {
         enable = true;
