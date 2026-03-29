@@ -1,4 +1,5 @@
 {
+  self,
   lib,
   pkgs,
   config,
@@ -11,6 +12,7 @@ let
     path
     nullOr
     ;
+  inherit (self.lib) mkSecret;
 
   cfg = config.casa.containers.torrent;
 in
@@ -87,6 +89,11 @@ in
   };
 
   config = mkIf cfg.enable {
+    sops.secrets.gluetun = mkSecret {
+      file = "torrent";
+      key = "gluetun";
+    };
+
     networking.firewall = {
       allowedTCPPorts = [
         cfg.gluetun.port
@@ -111,7 +118,7 @@ in
         "${toString cfg.qbittorrent.webUiPort}:${toString cfg.qbittorrent.webUiPort}"
         "${toString cfg.qbittorrent.torrentPort}:${toString cfg.qbittorrent.torrentPort}"
       ];
-      environmentFiles = [ cfg.gluetun.environmentFile ];
+      environmentFiles = [ config.sops.secrets.gluetun.path ];
       environment = {
         TZ = "America/Los_Angeles";
         VPN_SERVICE_PROVIDER = "airvpn";

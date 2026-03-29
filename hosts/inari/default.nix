@@ -25,8 +25,6 @@ in
   # Secrets
   sops.secrets = {
     tsauth-inari = { };
-    gluetun = { };
-    gitea = { };
   };
 
   casa = {
@@ -62,7 +60,6 @@ in
         gluetun = {
           configDir = "${cfg.storage}/containers/gluetun/config";
           serversFile = "${cfg.storage}/containers/gluetun/servers.json";
-          environmentFile = config.sops.secrets.gluetun.path;
         };
       };
     };
