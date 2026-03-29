@@ -12,6 +12,5 @@
     ./raulyrs.nix
     ./samba.nix
     ./sugoi.nix
-    ./tailscale-autoconnect.nix
   ];
 }

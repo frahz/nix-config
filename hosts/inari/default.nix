@@ -22,11 +22,6 @@ in
     };
   };
 
-  # Secrets
-  sops.secrets = {
-    tsauth-inari = { };
-  };
-
   casa = {
     profiles = {
       server = {
@@ -43,10 +38,6 @@ in
       };
     };
     services = {
-      tailscale-autoconnect = {
-        enable = false;
-        authKeyFile = config.sops.secrets.tsauth-inari.path;
-      };
       nemui.enable = true;
     };
     virtualisation.enable = true;
