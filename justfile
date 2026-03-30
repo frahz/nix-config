@@ -1,5 +1,5 @@
 flake := env("NH_FLAKE", justfile_directory())
-args := "--sudo --ask-sudo-password --no-reexec --log-format internal-json"
+args := "--sudo --no-reexec --log-format internal-json"
 
 [private]
 default:

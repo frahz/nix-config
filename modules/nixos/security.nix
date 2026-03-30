@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (lib) mkIf getExe';
+  inherit (lib) mkDefault mkForce mkIf getExe';
 in
 {
   security = {
@@ -24,6 +24,16 @@ in
     };
 
     sudo = {
+      # WARNING: wheelNeedsPassword = false means wheel group can execute commands without a password
+      # this is especially useful if you are using --target-host option in nixos-rebuild switch
+      # however it's also a massive security flaw - which is why it should be replaced with the
+      # extraRules you will see below
+      wheelNeedsPassword = mkDefault false;
+
+      # only allow members of the wheel group to execute sudo
+      # by setting the executable’s permissions accordingly
+      execWheelOnly = mkForce true;
+
       extraRules = [
         {
           groups = [ "wheel" ];
