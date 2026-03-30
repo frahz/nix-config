@@ -7,24 +7,26 @@
 let
   inherit (lib) mkIf;
   inherit (self.lib) mkServiceOption;
+  inherit (config.casa.profiles.server) storage;
 
-  cfg = config.casa.services.scrutiny;
+  cfg = config.casa.services.radarr;
+
   rdomain = config.networking.domain;
 in
 {
-  options.casa.services.scrutiny = mkServiceOption "scrutiny" {
-    port = 9321;
-    domain = "scrutiny.${rdomain}";
+  options.casa.services.radarr = mkServiceOption "radarr" {
+    port = 7878;
+    domain = "radarr.${rdomain}";
   };
 
   config = mkIf cfg.enable {
-    services.scrutiny = {
+    services.radarr = {
       enable = true;
       openFirewall = true;
-      settings.web = {
-        listen.port = cfg.port;
-      };
-      collector.enable = true;
+      dataDir = "${storage}/containers/radarr/config";
+      user = "frahz";
+      group = "media";
+      settings.server = { inherit (cfg) port; };
     };
     services.caddy.virtualHosts.${cfg.domain} = {
       extraConfig = ''

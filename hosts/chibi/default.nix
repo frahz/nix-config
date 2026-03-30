@@ -9,7 +9,6 @@ in
 {
   imports = [
     ./hardware-configuration.nix
-    ./services
   ];
 
   casa = {

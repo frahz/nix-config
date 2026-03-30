@@ -6,87 +6,91 @@
   ...
 }:
 let
-  inherit (lib) mkIf mkOption mkEnableOption;
+  inherit (lib) mkIf mkOption;
   inherit (lib.types)
     str
     path
     nullOr
     ;
-  inherit (self.lib) mkSecret;
+  inherit (self.lib) mkServiceOption mkSecret;
 
   cfg = config.casa.containers.torrent;
+  rdomain = config.networking.domain;
 in
 {
-  options.casa.containers.torrent = {
-    enable = mkEnableOption "enables torrenting(qbittorrent/gluetun) containers";
-    qbittorrent = {
-      version = mkOption {
-        type = str;
-        default = "5.1.2-r1-ls409";
-        example = ''
-          The most recent version can be found here:
-          https://github.com/linuxserver/docker-qbittorrent/pkgs/container/qbittorrent
-        '';
-        description = "The docker image version for qbittorrent service";
+  options.casa.containers.torrent =
+    mkServiceOption "torrent" {
+      domain = "qb.${rdomain}";
+    }
+    // {
+      qbittorrent = {
+        version = mkOption {
+          type = str;
+          default = "5.1.2-r1-ls409";
+          example = ''
+            The most recent version can be found here:
+            https://github.com/linuxserver/docker-qbittorrent/pkgs/container/qbittorrent
+          '';
+          description = "The docker image version for qbittorrent service";
+        };
+        torrentPort = mkOption {
+          type = lib.types.port;
+          default = 26570;
+          description = "The torrenting port for qbittorrent service";
+        };
+        webUiPort = mkOption {
+          type = lib.types.port;
+          default = 8080;
+          description = "The web UI port for qbittorrent service";
+        };
+        configDir = mkOption {
+          type = path;
+          description = ''
+            Directory for configuration for qbittorrent service;
+          '';
+        };
+        torrentDir = mkOption {
+          type = path;
+          description = ''
+            Directory for torrents for qbittorrent service;
+          '';
+        };
       };
-      torrentPort = mkOption {
-        type = lib.types.port;
-        default = 26570;
-        description = "The torrenting port for qbittorrent service";
-      };
-      webUiPort = mkOption {
-        type = lib.types.port;
-        default = 8080;
-        description = "The web UI port for qbittorrent service";
-      };
-      configDir = mkOption {
-        type = path;
-        description = ''
-          Directory for configuration for qbittorrent service;
-        '';
-      };
-      torrentDir = mkOption {
-        type = path;
-        description = ''
-          Directory for torrents for qbittorrent service;
-        '';
+      gluetun = {
+        version = mkOption {
+          type = str;
+          default = "v3.40.0";
+          example = ''
+            The most recent version can be found here:
+            https://github.com/qdm12/gluetun/releases
+          '';
+          description = "The docker image version for gluetun service";
+        };
+        port = mkOption {
+          type = lib.types.port;
+          default = 8888;
+          description = "The torrenting port for gluetun service";
+        };
+        configDir = mkOption {
+          type = path;
+          description = ''
+            Directory for configuration for gluetun service
+          '';
+        };
+        serversFile = mkOption {
+          type = path;
+          description = ''
+            custom VPN servers list:
+            https://github.com/qdm12/gluetun-wiki/blob/main/setup/servers.md#update-the-vpn-servers-list
+          '';
+        };
+        environmentFile = mkOption {
+          type = nullOr path;
+          default = null;
+          description = "The environment file to use for gluetun";
+        };
       };
     };
-    gluetun = {
-      version = mkOption {
-        type = str;
-        default = "v3.40.0";
-        example = ''
-          The most recent version can be found here:
-          https://github.com/qdm12/gluetun/releases
-        '';
-        description = "The docker image version for gluetun service";
-      };
-      port = mkOption {
-        type = lib.types.port;
-        default = 8888;
-        description = "The torrenting port for gluetun service";
-      };
-      configDir = mkOption {
-        type = path;
-        description = ''
-          Directory for configuration for gluetun service
-        '';
-      };
-      serversFile = mkOption {
-        type = path;
-        description = ''
-          custom VPN servers list:
-          https://github.com/qdm12/gluetun-wiki/blob/main/setup/servers.md#update-the-vpn-servers-list
-        '';
-      };
-      environmentFile = mkOption {
-        type = nullOr path;
-        default = null;
-        description = "The environment file to use for gluetun";
-      };
-    };
-  };
 
   config = mkIf cfg.enable {
     sops.secrets.gluetun = mkSecret {
@@ -147,6 +151,12 @@ in
       };
       dependsOn = [ "gluetun" ];
       networks = [ "container:gluetun" ];
+    };
+
+    services.caddy.virtualHosts.${cfg.domain} = {
+      extraConfig = ''
+        reverse_proxy http://${cfg.host}:${toString cfg.qbittorrent.webUiPort}
+      '';
     };
   };
 }

@@ -8,7 +8,6 @@ in
 {
   imports = [
     ./hardware-configuration.nix
-    ./services
   ];
 
   boot = {
@@ -39,6 +38,7 @@ in
     };
     services = {
       caddy.enable = true;
+      media.enable = true;
       nemui.enable = true;
       scrutiny.enable = true;
     };

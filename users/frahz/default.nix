@@ -3,8 +3,12 @@
   self,
   lib,
   pkgs,
+  config,
   ...
 }:
+let
+  ifExists = config: groups: lib.filter (group: lib.hasAttr group config.users.groups) groups;
+in
 {
   config = {
     home-manager = {
@@ -26,12 +30,16 @@
       extraGroups = [
         "wheel"
         "nix"
+      ]
+      ++ ifExists config [
+        "network"
         "networkmanager"
         "audio"
         "video"
         "lp"
         "docker"
         "immich"
+        "media"
       ];
       uid = 1000;
     });

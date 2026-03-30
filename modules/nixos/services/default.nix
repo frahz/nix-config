@@ -6,12 +6,18 @@
     ./glance.nix
     ./hass.nix
     ./immich.nix
+    ./jellyfin.nix
+    ./kavita.nix
+    ./media.nix
     ./navidrome.nix
     ./nemui.nix
     ./papra.nix
+    ./radarr.nix
     ./raulyrs.nix
     ./samba.nix
     ./scrutiny.nix
+    ./seerr.nix
+    ./sonarr.nix
     ./sugoi.nix
   ];
 }

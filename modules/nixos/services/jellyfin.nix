@@ -7,25 +7,27 @@
 let
   inherit (lib) mkIf;
   inherit (self.lib) mkServiceOption;
+  inherit (config.casa.profiles.server) storage;
 
-  cfg = config.casa.services.scrutiny;
+  cfg = config.casa.services.jellyfin;
+
   rdomain = config.networking.domain;
 in
 {
-  options.casa.services.scrutiny = mkServiceOption "scrutiny" {
-    port = 9321;
-    domain = "scrutiny.${rdomain}";
+  options.casa.services.jellyfin = mkServiceOption "jellyfin" {
+    port = 8096;
+    domain = "jellyfin.${rdomain}";
   };
 
   config = mkIf cfg.enable {
-    services.scrutiny = {
+    services.jellyfin = {
       enable = true;
       openFirewall = true;
-      settings.web = {
-        listen.port = cfg.port;
-      };
-      collector.enable = true;
+      dataDir = "${storage}/containers/jellyfin";
+      user = "frahz";
+      group = "media";
     };
+
     services.caddy.virtualHosts.${cfg.domain} = {
       extraConfig = ''
         reverse_proxy http://${cfg.host}:${toString cfg.port}

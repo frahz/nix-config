@@ -70,7 +70,7 @@ in
                     title = "Media Requests";
                     cache = "20m";
                     options = {
-                      base-url = "https://jellyseerr.iatze.cc";
+                      base-url = "https://seerr.iatze.cc";
                       api-key = "\${JELLYSEERR_API_KEY}";
                       limit = 20;
                       collapse-after = 5;
@@ -119,7 +119,7 @@ in
                         | getResponse }}
 
                       {{ if ne $responseCall.Response.StatusCode 200 }}
-                        {{ template "errorMsg" "Could not fetch Jellyseerr API." }}
+                        {{ template "errorMsg" "Could not fetch seerr API." }}
                       {{ else }}
                         {{ $response = $responseCall.JSON.Array "results" }}
                         <ul class="list list-gap-14 collapsible-container" data-collapse-after="{{ $collapseAfter }}">
@@ -272,9 +272,9 @@ in
                         icon = "di:radarr";
                       }
                       {
-                        title = "jellyseerr";
-                        url = "https://jellyseerr.iatze.cc";
-                        icon = "di:jellyseerr";
+                        title = "seerr";
+                        url = "https://seerr.iatze.cc";
+                        icon = "di:seerr";
                       }
                       {
                         title = "kavita";
