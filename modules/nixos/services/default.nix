@@ -11,6 +11,7 @@
     ./papra.nix
     ./raulyrs.nix
     ./samba.nix
+    ./scrutiny.nix
     ./sugoi.nix
   ];
 }

@@ -38,7 +38,9 @@ in
       };
     };
     services = {
+      caddy.enable = true;
       nemui.enable = true;
+      scrutiny.enable = true;
     };
     virtualisation.enable = true;
     containers = {

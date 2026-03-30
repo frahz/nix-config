@@ -31,10 +31,6 @@ let
       port = 8989;
       domain = "sonarr";
     };
-    scrutiny = {
-      port = 9321;
-      domain = "scrutiny";
-    };
   };
 in
 {
@@ -67,11 +63,6 @@ in
     "${inari.kavita.domain}.${domain}" = {
       extraConfig = ''
         reverse_proxy http://${inari.ip}:${toString inari.kavita.port}
-      '';
-    };
-    "${inari.scrutiny.domain}.${domain}" = {
-      extraConfig = ''
-        reverse_proxy http://${inari.ip}:${toString inari.scrutiny.port}
       '';
     };
   };
