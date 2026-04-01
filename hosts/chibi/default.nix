@@ -1,4 +1,5 @@
 {
+  pkgs,
   config,
   ...
 }:
@@ -26,9 +27,15 @@ in
         bluetooth = true;
       };
     };
-    system.bluetooth = {
-      enable = true;
-      experimental = true;
+    system = {
+      boot = {
+        # https://lore.kernel.org/linux-bluetooth/actZBr+wqcABY5mt@lan/T/#rd05678c4a124450ba8bf95ead213d27248a9de9b
+        kernel = pkgs.linuxPackages_6_18;
+      };
+      bluetooth = {
+        enable = true;
+        experimental = true;
+      };
     };
     virtualisation.enable = true;
     networking.tailscale = {
