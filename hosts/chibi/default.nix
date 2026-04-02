@@ -33,7 +33,7 @@ in
         kernel = pkgs.linuxPackages_6_18;
       };
       bluetooth = {
-        enable = true;
+        enable = false;
         experimental = true;
       };
     };
