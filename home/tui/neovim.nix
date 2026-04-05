@@ -20,8 +20,8 @@ in
         # LSP stuff
         libclang
         nil
-        nodePackages.bash-language-server
-        nodePackages.typescript-language-server
+        bash-language-server
+        typescript-language-server
         pyright
         rust-analyzer
         lua-language-server
