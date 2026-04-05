@@ -36,6 +36,10 @@ in
         bluetooth = true;
       };
     };
+    networking = {
+      enable = true;
+      interfaces."10-lan" = "enp0s31f6";
+    };
     services = {
       caddy.enable = true;
       media.enable = true;

@@ -37,8 +37,12 @@ in
       };
     };
     virtualisation.enable = true;
-    networking.tailscale = {
-      exitNode.enable = true;
+    networking = {
+      enable = true;
+      interfaces."10-lan" = "enp1s0";
+      tailscale = {
+        exitNode.enable = true;
+      };
     };
     containers = {
       linkwarden = {

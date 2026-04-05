@@ -4,6 +4,7 @@ let
 in
 {
   imports = [
+    ./interfaces.nix
     ./mullvad.nix
     ./systemd.nix
     ./tailscale.nix
@@ -20,9 +21,8 @@ in
       "1.0.0.1"
     ];
 
-    # TODO: define networkd networks manually for server down the line
     networkmanager = {
-      enable = true;
+      enable = !config.casa.profiles.server.enable;
       dns = "systemd-resolved";
       wifi.backend = "iwd";
     };
