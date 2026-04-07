@@ -26,7 +26,7 @@ in
       qbittorrent = {
         version = mkOption {
           type = str;
-          default = "5.1.2-r1-ls409";
+          default = "5.1.4-r2-ls448";
           example = ''
             The most recent version can be found here:
             https://github.com/linuxserver/docker-qbittorrent/pkgs/container/qbittorrent
@@ -59,7 +59,7 @@ in
       gluetun = {
         version = mkOption {
           type = str;
-          default = "v3.40.0";
+          default = "v3.41.1";
           example = ''
             The most recent version can be found here:
             https://github.com/qdm12/gluetun/releases
