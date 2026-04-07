@@ -20,7 +20,7 @@ in
     // {
       version = mkOption {
         type = types.str;
-        default = "1.27.1-ls288";
+        default = "1.28.1-ls301";
         example = ''
           The most recent version can be found here:
           https://github.com/linuxserver/docker-freshrss/pkgs/container/freshrss

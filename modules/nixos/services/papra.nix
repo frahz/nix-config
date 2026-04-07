@@ -20,7 +20,7 @@ in
     // {
       version = mkOption {
         type = types.str;
-        default = "26.3.0-rootless";
+        default = "26.4.0-rootless";
         example = ''
           The most recent version can be found here:
           https://github.com/papra-hq/papra/pkgs/container/papra
