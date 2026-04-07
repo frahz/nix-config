@@ -7,7 +7,7 @@ let
   cfg = osConfig.casa;
 in
 {
-  services.swww = {
+  services.awww = {
     enable = cfg.profiles.graphical.enable && pkgs.stdenv.hostPlatform.isLinux;
   };
 }
