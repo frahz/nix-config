@@ -444,15 +444,16 @@ in
                   }
                   {
                     type = "twitch-channels";
+                    collapse-after = 3;
                     channels = [
-                      "theprimeagen"
+                      "hyoon"
                       "s0mcs"
                       "tarik"
-                      "Ottomated"
-                      "hyoon"
                       "zanderfps"
+                      "Ottomated"
                       "tenz"
                       "xeppaa"
+                      "theprimeagen"
                     ];
                   }
                   {
@@ -470,6 +471,15 @@ in
                         symbol = "NVDA";
                         name = "NVIDIA";
                       }
+                    ];
+                  }
+                  {
+                    type = "releases";
+                    repositories = [
+                      "papra-hq/papra"
+                      "linuxserver/docker-freshrss"
+                      "linuxserver/docker-qbittorrent"
+                      "qdm12/gluetun"
                     ];
                   }
                 ];
