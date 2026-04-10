@@ -50,6 +50,7 @@ in
     fileSystems."/var/lib/immich" = {
       device = mediaDir;
       options = [ "bind" ];
+      fsType = "none";
     };
 
     services.caddy.virtualHosts.${cfg.domain} = {
