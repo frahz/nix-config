@@ -18,6 +18,7 @@
     ./scrutiny.nix
     ./seerr.nix
     ./sonarr.nix
+    ./slskd.nix
     ./sugoi.nix
   ];
 }

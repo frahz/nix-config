@@ -78,6 +78,7 @@ in
           music.path = "${cfg.storage}/music";
         };
       };
+      slskd.enable = true;
       sugoi.enable = true;
     };
   };
