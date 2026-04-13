@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (lib) mkIf;
+  inherit (lib) mkIf mkForce;
   inherit (self.lib) mkServiceOption mkSecret;
   inherit (config.casa.profiles.server) storage;
 
@@ -49,6 +49,11 @@ in
       };
 
     };
+    systemd.services.slskd.serviceConfig = {
+      Umask = "0002";
+      # ReadOnlyPaths = mkForce [ ];
+    };
+
     services.caddy.virtualHosts.${cfg.domain} = {
       extraConfig = ''
         reverse_proxy http://${cfg.host}:${toString cfg.port}
