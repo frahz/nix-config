@@ -5,7 +5,12 @@
   ...
 }:
 let
-  inherit (lib) mkDefault mkForce mkIf getExe';
+  inherit (lib)
+    mkDefault
+    mkForce
+    mkIf
+    getExe'
+    ;
 in
 {
   security = {

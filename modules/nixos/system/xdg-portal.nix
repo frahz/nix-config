@@ -14,7 +14,10 @@ in
     xdgOpenUsePortal = true;
 
     config.common = {
-      default = [ "hyprland" "gtk" ];
+      default = [
+        "hyprland"
+        "gtk"
+      ];
 
       "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
     };

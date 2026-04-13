@@ -29,7 +29,7 @@ in
     services.adguardhome = {
       enable = true;
       openFirewall = true;
-      port = cfg.port;
+      inherit (cfg) port;
       settings = {
         theme = "dark";
         users = [

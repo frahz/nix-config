@@ -14,7 +14,7 @@ in
   options.casa.services.glance = mkServiceOption "glance" {
     host = "0.0.0.0";
     port = 7576;
-    domain = config.networking.domain;
+    inherit (config.networking) domain;
   };
 
   config = mkIf cfg.enable {

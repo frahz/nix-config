@@ -10,21 +10,19 @@ let
 
   cfg = config.casa.networking;
 
-  mkNetwork =
-    _: name:
-    {
-      matchConfig.Name = name;
-      networkConfig = {
-        DHCP = "ipv4";
-        IPv6AcceptRA = true;
-      };
-      linkConfig.RequiredForOnline = "routable";
-      dhcpV4Config = {
-        RouteMetric = 100;
-        UseDNS = true;
-        UseRoutes = true;
-      };
+  mkNetwork = _: name: {
+    matchConfig.Name = name;
+    networkConfig = {
+      DHCP = "ipv4";
+      IPv6AcceptRA = true;
     };
+    linkConfig.RequiredForOnline = "routable";
+    dhcpV4Config = {
+      RouteMetric = 100;
+      UseDNS = true;
+      UseRoutes = true;
+    };
+  };
 in
 {
   options.casa.networking = {

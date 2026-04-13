@@ -31,7 +31,7 @@ in
       };
 
       gtk4 = {
-        theme = config.gtk.theme;
+        inherit (config.gtk) theme;
         extraConfig = {
           gtk-application-prefer-dark-theme = true;
           gtk-xft-antialias = 1;

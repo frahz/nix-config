@@ -9,7 +9,7 @@ let
   inherit (self.lib) mkServiceOption mkSecret;
 
   cfg = config.casa.services.kavita;
-  storage = config.casa.profiles.server.storage;
+  inherit (config.casa.profiles.server) storage;
 
   rdomain = config.networking.domain;
 in
