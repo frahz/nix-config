@@ -50,7 +50,7 @@ in
 
     };
     systemd.services.slskd.serviceConfig = {
-      Umask = "0002";
+      UMask = "0002";
       # ReadOnlyPaths = mkForce [ ];
     };
 
