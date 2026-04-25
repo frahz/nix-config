@@ -7,6 +7,7 @@ in
     defaultPackages = mkForce [ ];
   };
   programs = {
+    command-not-found.enable = mkForce false;
     nano.enable = false;
     less = {
       enable = mkForce false;

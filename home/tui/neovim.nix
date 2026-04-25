@@ -18,22 +18,24 @@ in
 
       (optionals cfg.profiles.development.enable [
         # LSP stuff
-        libclang
-        nil
         bash-language-server
-        typescript-language-server
+        gopls
+        htmx-lsp
+        lua-language-server
+        libclang
+        marksman
+        nil
         pyright
         rust-analyzer
-        lua-language-server
-        gopls
-        vscode-langservers-extracted
-        htmx-lsp
-        tailwindcss-language-server
         svelte-language-server
+        tailwindcss-language-server
         tinymist
-        marksman
+        typescript-language-server
+        vscode-langservers-extracted
+
         # Formatters
         typstyle
+        nixfmt
 
         websocat
       ])
