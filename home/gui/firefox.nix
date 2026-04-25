@@ -2,6 +2,7 @@
 {
   programs.firefox = {
     inherit (osConfig.casa.profiles.graphical) enable;
+    configPath = ".mozilla/firefox";
     policies = {
       DisablePocket = true;
       PasswordManagerEnable = false;
