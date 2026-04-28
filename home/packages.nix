@@ -32,7 +32,6 @@ in
         anki-bin
         ffmpeg
 
-        vesktop
         obs-studio
         obsidian
         typst

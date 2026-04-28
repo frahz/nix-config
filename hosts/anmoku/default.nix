@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -23,16 +23,31 @@
       boot.silentBoot = true;
       bluetooth.enable = true;
     };
-    virtualisation.enable = true;
+    virtualisation = {
+      enable = true;
+      enableOnBoot = false;
+    };
     networking = {
       tailscale.isClient = true;
     };
   };
 
-  programs.hyprland.enable = true;
-
-  virtualisation.docker.enableOnBoot = false;
-
-  # Mullvad enable support: https://discourse.nixos.org/t/connected-to-mullvadvpn-but-no-internet-connection/35803/10?u=lion
-  networking.resolvconf.enable = false;
+  programs = {
+    firejail = {
+      enable = true;
+      wrappedBinaries = {
+        vesktop = {
+          executable = "${lib.getExe pkgs.vesktop}";
+          desktop = "${pkgs.vesktop}/share/applications/vesktop.desktop";
+          extraArgs = [
+            "--net=wlan0"
+            "--noprofile"
+          ];
+        };
+      };
+    };
+    hyprland = {
+      enable = true;
+    };
+  };
 }
