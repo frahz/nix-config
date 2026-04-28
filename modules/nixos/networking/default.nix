@@ -15,6 +15,8 @@ in
     useDHCP = mkForce false;
     useNetworkd = mkForce true;
 
+    nftables.enable = true;
+
     # DNS
     nameservers = mkIf (!(config ? wsl)) [
       "1.1.1.1"
