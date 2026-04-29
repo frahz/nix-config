@@ -10,10 +10,11 @@ let
   cfg = config.casa.virtualisation;
 in
 {
-  # TODO: add more granularity later
   options.casa.virtualisation = {
     enable = mkEnableOption "enable virtualisation support";
-    enableOnBoot = mkEnableOption "enable dockere on boot";
+    enableOnBoot = mkEnableOption "enable docker on boot" // {
+      default = true;
+    };
   };
 
   config = mkIf cfg.enable {
