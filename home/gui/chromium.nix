@@ -1,4 +1,5 @@
 {
+  inputs,
   lib,
   pkgs,
   osConfig,
@@ -13,6 +14,10 @@ let
     ;
 in
 {
+  home.packages = optionals osConfig.casa.profiles.graphical.enable [
+    inputs.paquetes.packages.${pkgs.stdenv.hostPlatform.system}.helium
+  ];
+
   programs.chromium = {
     inherit (osConfig.casa.profiles.graphical) enable;
     extensions = [
