@@ -23,6 +23,7 @@ in
       enable = true;
       package = null;
       portalPackage = null;
+      configType = "hyprlang";
       # TODO: move to uwsm cuz that seems to be a thing now?
       systemd = {
         enable = true;

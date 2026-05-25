@@ -13,8 +13,8 @@
       "$mainMod, V, togglefloating,"
       "$mainMod, F, fullscreen,"
       "$mainMod, M, exit,"
-      "$mainMod, P, pseudo," # dwindle
-      "$mainMod, J, togglesplit," # dwindle
+      # "$mainMod, P, pseudo," # dwindle
+      # "$mainMod, J, togglesplit," # dwindle
 
       "Alt, Space, exec, fuzzel"
       "$mainMod, period, exec, BEMOJI_PICKER_CMD='${lib.getExe config.programs.fuzzel.package} --dmenu' bemoji"

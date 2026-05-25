@@ -36,7 +36,6 @@ in
     # https://wiki.nixos.org/wiki/Bluetooth
     services.blueman = {
       inherit (config.casa.profiles.graphical) enable;
-      withApplet = false;
     };
   };
 }
