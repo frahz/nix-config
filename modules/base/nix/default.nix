@@ -8,6 +8,10 @@ in
   config = {
     nix = {
       package = pkgs.lixPackageSets.latest.lix;
+
+      # disable usage of nix channels
+      channel.enable = false;
+
       settings = {
         warn-dirty = false;
         auto-optimise-store = true;
