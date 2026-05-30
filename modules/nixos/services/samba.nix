@@ -44,6 +44,7 @@ in
 
     services.samba = {
       enable = true;
+      openFirewall = true;
       settings = {
         global = {
           workgroup = mkDefault "WORKGROUP";
