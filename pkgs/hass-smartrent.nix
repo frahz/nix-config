@@ -19,7 +19,7 @@ buildHomeAssistantComponent rec {
 
   dependencies = [
     # python requirements, as specified in manifest.json
-    (home-assistant.python.pkgs.callPackage ./smartrent-py.nix { })
+    (home-assistant.python3Packages.callPackage ./smartrent-py.nix { })
   ];
 
   patches = [
