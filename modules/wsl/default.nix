@@ -51,7 +51,10 @@ in
       pkgs.wsl-open
     ];
 
-    catppuccin.enable = mkForce false;
+    catppuccin = {
+      autoEnable = mkForce false;
+      enable = true;
+    };
 
     # TODO: create headless profile
     # we don't need fonts on a server

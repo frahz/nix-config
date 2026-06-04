@@ -4,6 +4,8 @@
 
   config = {
     catppuccin = {
+      autoEnable = false;
+      enable = true;
       flavor = "mocha";
     };
 
