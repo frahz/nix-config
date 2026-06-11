@@ -105,10 +105,6 @@ in
         "scene ui" = "!include scenes.yaml";
       };
 
-      customComponents = [
-        pkgs.hass-smartrent
-      ];
-
       customLovelaceModules = with pkgs.home-assistant-custom-lovelace-modules; [
         apexcharts-card
       ];
