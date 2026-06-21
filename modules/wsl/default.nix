@@ -51,6 +51,11 @@ in
       pkgs.wsl-open
     ];
 
+    hardware = {
+      enableRedistributableFirmware = mkForce false;
+      wirelessRegulatoryDatabase = mkForce false;
+    };
+
     catppuccin = {
       autoEnable = mkForce false;
       enable = true;
