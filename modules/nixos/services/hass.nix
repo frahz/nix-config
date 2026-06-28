@@ -127,6 +127,11 @@ in
         ];
     };
 
+    services.matterjs-server = {
+      enable = true;
+      bluetoothSupport = true;
+    };
+
     # prevent home-assistant fail to load when UI automations aren't defined yet
     systemd.tmpfiles.rules = [
       "f ${config.services.home-assistant.configDir}/automations.yaml 0755 hass hass"
