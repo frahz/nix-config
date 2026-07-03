@@ -20,8 +20,16 @@ in
           "flakes"
         ];
         builders-use-substitutes = true;
+
+        log-lines = 35;
+
+        keep-going = true;
         keep-derivations = true;
         keep-outputs = true;
+
+        # use xdg base directories for all the nix things
+        use-xdg-base-directories = true;
+
         allowed-users = [ sudoers ];
         trusted-users = [ sudoers ];
         substituters = [
