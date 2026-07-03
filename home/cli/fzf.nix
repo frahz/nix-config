@@ -7,8 +7,10 @@ in
     enable = true;
     enableZshIntegration = true;
     defaultCommand = find;
-    fileWidgetCommand = find;
-    fileWidgetOptions = [ "--preview 'bat --plain --number --color=always {}'" ];
+    fileWidget = {
+      command = find;
+      options = [ "--preview 'bat --plain --number --color=always {}'" ];
+    };
   };
   catppuccin.fzf.enable = true;
 }
