@@ -25,6 +25,7 @@ in
         tokei
         wget
         killall
+        typst
         dix
       ]
 
@@ -34,7 +35,6 @@ in
 
         obs-studio
         obsidian
-        typst
         libnotify
       ])
 
