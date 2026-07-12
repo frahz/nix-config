@@ -26,7 +26,10 @@ in
     networkmanager = {
       enable = !config.casa.profiles.server.enable;
       dns = "systemd-resolved";
-      wifi.backend = "iwd";
+      wifi = {
+        backend = "iwd";
+        powersave = false;
+      };
     };
   };
 
