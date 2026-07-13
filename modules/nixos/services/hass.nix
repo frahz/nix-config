@@ -37,6 +37,7 @@ in
         "cast"
         "isal"
         "met"
+        "mqtt"
         # "google_translate"
         "radio_browser"
         "homekit"
@@ -105,8 +106,13 @@ in
         "scene ui" = "!include scenes.yaml";
       };
 
+      customComponents = with pkgs.home-assistant-custom-components; [
+        valetudo
+      ];
+
       customLovelaceModules = with pkgs.home-assistant-custom-lovelace-modules; [
         apexcharts-card
+        valetudo-map-card
       ];
 
       extraPackages =
@@ -125,6 +131,24 @@ in
           samsungctl
           xiaomi-ble
         ];
+    };
+
+    services.mosquitto = {
+      enable = true;
+      persistence = true;
+      listeners = [
+        {
+          address = "0.0.0.0";
+          port = 1883;
+          omitPasswordAuth = true;
+          settings.allow_anonymous = true;
+          acl = [
+            "topic readwrite valetudo/#"
+            "topic readwrite homeassistant/#"
+            "topic readwrite homie/#"
+          ];
+        }
+      ];
     };
 
     services.matterjs-server = {
@@ -147,6 +171,7 @@ in
 
     networking.firewall = {
       allowedTCPPorts = [
+        1883  # MQTT/ Valetudo
         21063 # Homekit
         21064 # Homekit
         21065 # Homekit
