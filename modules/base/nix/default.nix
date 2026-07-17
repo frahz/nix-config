@@ -1,8 +1,16 @@
-{ lib, pkgs, ... }:
+{
+  inputs,
+  lib,
+  pkgs,
+  ...
+}:
 let
+  inherit (lib.attrsets) filterAttrs attrValues mapAttrs;
+  inherit (lib.types) isType;
   inherit (pkgs.stdenv.hostPlatform) isLinux;
 
   sudoers = if isLinux then "@wheel" else "@admin";
+  flakeInputs = filterAttrs (name: value: (isType "flake" value) && (name != "self")) inputs;
 in
 {
   config = {
@@ -11,6 +19,12 @@ in
 
       # disable usage of nix channels
       channel.enable = false;
+
+      # Pin registry and NIX_PATH to inputs nixpkgs
+      # https://github.com/getchoo/borealis/blob/52da5ea4eaaddb5f8b1dc32c1dcefbfda68a52fc/modules/shared/mixins/nix.nix#L44
+      # https://github.com/isabelroses/dotfiles/blob/acdb74a1fedd1b1dfce303e8ee285a7a884ac7fe/modules/base/nix/registry.nix
+      registry = mapAttrs (_: flake: { inherit flake; }) flakeInputs;
+      nixPath = attrValues (mapAttrs (k: v: "${k}=flake:${v.outPath}") flakeInputs);
 
       settings = {
         warn-dirty = false;
