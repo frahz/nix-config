@@ -27,6 +27,7 @@ in
     }
     // (lib.optionalAttrs (!pkgs.stdenv.hostPlatform.isDarwin) {
       isNormalUser = true;
+      hashedPassword = "$y$j9T$9gxI055R7psXRIf5HwNap.$E7Tpc7hDHltIEa94IorTGsQw9/fgEKRgry6I1OiabK4";
       extraGroups = [
         "wheel"
         "nix"
@@ -43,5 +44,10 @@ in
       ];
       uid = 1000;
     });
+
+    users.users.root = lib.mkIf (!pkgs.stdenv.hostPlatform.isDarwin) {
+      inherit (config.users.users.frahz) hashedPassword;
+    };
   };
+
 }
