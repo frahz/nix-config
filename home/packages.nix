@@ -17,25 +17,27 @@ in
     with pkgs;
     concatLists [
       [
-        yt-dlp
         unzip
         unrar
         dig
         jq
-        tokei
         wget
         killall
-        typst
         dix
       ]
 
       (optionals cfg.profiles.graphical.enable [
         anki-bin
         ffmpeg
-
         obs-studio
         obsidian
         libnotify
+        yt-dlp
+      ])
+
+      (optionals cfg.profiles.development.enable [
+        typst
+        tokei
       ])
 
       (optionals (cfg.profiles.graphical.enable && isLinux) [
