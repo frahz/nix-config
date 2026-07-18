@@ -6,6 +6,7 @@
     ./gnome.nix
     ./greetd.nix
     ./misc.nix
+    ./modern.nix
     ./size.nix
     ./xdg-portal.nix
   ];
