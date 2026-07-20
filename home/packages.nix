@@ -27,9 +27,9 @@ in
       ]
 
       (optionals cfg.profiles.graphical.enable [
-        anki-bin
+        # anki-bin
         ffmpeg
-        obs-studio
+        # obs-studio
         obsidian
         libnotify
         yt-dlp
@@ -46,7 +46,7 @@ in
         newsflash
         dconf
         feishin
-        gimp
+        # gimp
         gnome-calculator
         grim
         jellyfin-desktop

@@ -16,9 +16,9 @@ in
       legendary-gl # epic games launcher
       (pkgs.prismlauncher.override {
         jdks = with pkgs; [
-          temurin-bin-8 # TODO: Maybe replace when `jdk8` isn't broken
+          # temurin-bin-8 # TODO: Maybe replace when `jdk8` isn't broken
           jdk17
-          jdk21
+          # jdk21
         ];
       })
       # disable for now: https://github.com/NixOS/nixpkgs/issues/458830
@@ -36,7 +36,7 @@ in
     ];
 
     programs = {
-      mangohud.enable = true;
+      mangohud.enable = false;
     };
   };
 }
