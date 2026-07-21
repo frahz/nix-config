@@ -8,6 +8,7 @@
     ./misc.nix
     ./modern.nix
     ./size.nix
+    ./tools.nix
     ./xdg-portal.nix
   ];
 }
