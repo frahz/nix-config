@@ -163,15 +163,22 @@ in
       "C ${config.services.home-assistant.configDir}/themes 0755 hass hass - ${pkgs.hass-catppuccin}/themes"
     ];
 
-    services.caddy.virtualHosts.${cfg.domain} = {
-      extraConfig = ''
-        reverse_proxy http://${cfg.host}:${toString cfg.port}
-      '';
+    services.caddy.virtualHosts = {
+      ${cfg.domain} = {
+        extraConfig = ''
+          reverse_proxy http://${cfg.host}:${toString cfg.port}
+        '';
+      };
+      "valetudo.${rdomain}" = {
+        extraConfig = ''
+          reverse_proxy http://192.168.1.128:80
+        '';
+      };
     };
 
     networking.firewall = {
       allowedTCPPorts = [
-        1883  # MQTT/ Valetudo
+        1883 # MQTT/ Valetudo
         21063 # Homekit
         21064 # Homekit
         21065 # Homekit
