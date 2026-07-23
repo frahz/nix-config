@@ -27,7 +27,9 @@ in
       sonarr.enable = true;
     };
 
-    users.groups.media = { };
+    users.groups.media = {
+      gid = 997;
+    };
 
     # TODO: use genAttrs
     systemd.tmpfiles.settings."media-dirs" =

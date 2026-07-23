@@ -93,6 +93,13 @@ in
     };
 
   config = mkIf cfg.enable {
+    assertions = [
+      {
+        assertion = config.casa.services.media.enable;
+        message = "The torrent container requires casa.services.media.enable.";
+      }
+    ];
+
     sops.secrets.gluetun = mkSecret {
       file = "torrent";
       key = "gluetun";
@@ -145,8 +152,8 @@ in
       ];
       environment = {
         TZ = "America/Los_Angeles";
-        PUID = "1000";
-        PGID = "992"; # media
+        PUID = toString config.users.users.frahz.uid;
+        PGID = toString config.users.groups.media.gid; # media
         WEB_UI_PORT = toString cfg.qbittorrent.webUiPort;
       };
       dependsOn = [ "gluetun" ];
