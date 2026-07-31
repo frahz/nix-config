@@ -23,6 +23,10 @@
         hostname = "100.68.202.4";
         identityFile = "~/.ssh/id_ed25519_servers";
       };
+      "shintaku" = {
+        hostname = "141.148.191.92";
+        identityFile = "~/.ssh/id_ed25519_servers";
+      };
       "git.iatze.cc" = {
         hostname = "100.87.38.99";
         identityFile = "~/.ssh/id_ed25519";

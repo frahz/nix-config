@@ -8,5 +8,6 @@
     ./graphics.nix
     ./moondrop.nix
     ./options.nix
+    ./oracle.nix
   ];
 }

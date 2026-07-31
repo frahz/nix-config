@@ -44,6 +44,10 @@ in
       };
 
       inari = mkNixosSystem "inari" { };
+
+      shintaku = mkNixosSystem "shintaku" {
+        system = "aarch64-linux";
+      };
     };
     darwinConfigurations = {
       kaze = inputs.darwin.lib.darwinSystem {
