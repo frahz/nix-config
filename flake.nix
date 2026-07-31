@@ -80,6 +80,7 @@
               nix-output-monitor
               sops
               statix
+              ssh-to-age
             ];
           };
 
