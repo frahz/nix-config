@@ -11,6 +11,7 @@ in
     ./hardware-configuration.nix
   ];
 
+
   casa = {
     profiles = {
       server = {
@@ -82,4 +83,6 @@ in
       sugoi.enable = true;
     };
   };
+
+  system.stateVersion = "23.11";
 }
