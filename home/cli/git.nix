@@ -1,32 +1,35 @@
+{ lib, osConfig, ... }:
 {
-  programs = {
-    delta = {
-      enable = true;
-      enableGitIntegration = true;
-      options = {
-        navigate = true;
-        light = false;
-        line-numbers = true;
+  config = lib.mkIf osConfig.casa.profiles.development.enable {
+    programs = {
+      delta = {
+        enable = true;
+        enableGitIntegration = true;
+        options = {
+          navigate = true;
+          light = false;
+          line-numbers = true;
+        };
       };
-    };
-    git = {
-      enable = true;
+      git = {
+        enable = true;
 
-      settings = {
-        user = {
-          name = "frahz";
-          email = "me@frahz.dev";
+        settings = {
+          user = {
+            name = "frahz";
+            email = "me@frahz.dev";
+          };
+          core = {
+            editor = "nvim";
+          };
+          merge.conflictstyle = "zdiff3";
+          diff.colorMoved = "default";
+          init.defaultBranch = "main";
         };
-        core = {
-          editor = "nvim";
-        };
-        merge.conflictstyle = "zdiff3";
-        diff.colorMoved = "default";
-        init.defaultBranch = "main";
+        signing.format = null;
       };
-      signing.format = null;
     };
+
+    catppuccin.delta.enable = true;
   };
-
-  catppuccin.delta.enable = true;
 }
