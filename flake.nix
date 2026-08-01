@@ -2,7 +2,7 @@
   description = "le nix config";
 
   inputs = {
-    nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
+    nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst";
 
     darwin = {
       url = "github:nix-darwin/nix-darwin";
