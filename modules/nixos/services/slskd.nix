@@ -38,7 +38,7 @@ in
           ip_address = cfg.host;
         };
 
-        permissions.file.mode = 775;
+        transfers.download.destination.permissions.mode = 775;
 
         directories = {
           incomplete = "${cfg.storagePath}/downloads/music";
