@@ -37,5 +37,6 @@ pkgs.rustPlatform.buildRustPackage rec {
     homepage = "https://github.com/WhySoBad/hyprland-preview-share-picker";
     license = lib.licenses.mit;
     platforms = lib.platforms.linux;
+    mainProgram = "hyprland-preview-share-picker";
   };
 }
