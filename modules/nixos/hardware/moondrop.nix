@@ -1,5 +1,5 @@
 {
-  inputs,
+  inputs',
   lib,
   pkgs,
   config,
@@ -13,7 +13,7 @@ let
     flatten
     ;
 
-  paq = inputs.paquetes.packages.${pkgs.stdenv.hostPlatform.system};
+  paq = inputs'.paquetes.packages;
 
   cfg = config.casa.hardware.moondrop;
 in

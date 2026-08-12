@@ -1,5 +1,5 @@
 {
-  inputs,
+  inputs',
   lib,
   pkgs,
   osConfig,
@@ -14,7 +14,7 @@ in
 {
   config = mkIf (cfg.profiles.graphical.enable && isLinux) {
     home.packages = [
-      inputs.paquetes.packages.${pkgs.stdenv.hostPlatform.system}.helium
+      inputs'.paquetes.packages.helium
     ];
 
     programs.chromium = {

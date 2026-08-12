@@ -1,5 +1,5 @@
 {
-  inputs,
+  inputs',
   lib,
   pkgs,
   ...
@@ -27,7 +27,7 @@
 
     inherit (pkgs.nerd-fonts) symbols-only;
 
-    inherit (inputs.privado.packages.${pkgs.stdenv.hostPlatform.system})
+    inherit (inputs'.privado.packages)
       berkeley-mono
       berkeley-mono-semi-condensed
       ;

@@ -1,5 +1,5 @@
 {
-  inputs,
+  inputs',
   lib,
   pkgs,
   osConfig,
@@ -72,7 +72,7 @@ in
         hyprland-preview-share-picker
         iwmenu
         bzmenu
-        inputs.paquetes.packages.${pkgs.stdenv.hostPlatform.system}.hayase
+        inputs'.paquetes.packages.hayase
       ])
     ];
 

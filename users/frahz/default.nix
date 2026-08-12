@@ -1,5 +1,6 @@
 {
   inputs,
+  inputs',
   self,
   lib,
   pkgs,
@@ -13,7 +14,7 @@ in
   config = {
     home-manager = {
       useGlobalPkgs = true;
-      extraSpecialArgs = { inherit inputs self; };
+      extraSpecialArgs = { inherit inputs inputs' self; };
       users.frahz = ../../home;
     };
 
