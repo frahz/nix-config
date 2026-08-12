@@ -17,7 +17,7 @@ let
     withSystem system (
       { inputs', ... }:
       inputs.nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs inputs' self system; };
+        specialArgs = { inherit inputs inputs' self; };
         modules = [
           "${self}/modules/nixos"
           "${self}/users/frahz"
