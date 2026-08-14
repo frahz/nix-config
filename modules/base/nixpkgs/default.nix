@@ -28,6 +28,11 @@ in
                 "tests/test_time_on_io_idle.py::test_stepping_with_no_limit"
               ];
             });
+            nanoemoji = pythonPrev.nanoemoji.overridePythonAttrs (old: {
+              src = old.src.override {
+                hash = "sha256-FysyKC01XBnRiur5RR9fcsTxQqE8x0JJHSoe3q6JtKc=";
+              };
+            });
           })
         ];
       })
