@@ -1,5 +1,16 @@
 { lib, ... }:
 {
+  boot = {
+    swraid = {
+      enable = true;
+      mdadmConf = ''
+        HOMEHOST <system>
+        MAILADDR root
+        ARRAY /dev/md/yanai:0 metadata=1.2 name=yanai:0 UUID=dbb1c332:9130b9ad:e2d8640b:7a533ded
+      '';
+    };
+  };
+
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-uuid/793aa3c1-d841-48f1-a615-177f90abc503";
