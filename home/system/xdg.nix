@@ -23,12 +23,17 @@ in
 
   home.sessionVariables = {
     CODEX_HOME = "${config.xdg.configHome}/codex";
+    GNUPGHOME = "${config.xdg.dataHome}/gnupg";
+    GOPATH = "${config.xdg.dataHome}/go";
+    GOMODCACHE = "${config.xdg.cacheHome}/go/pkg/mod";
     # Node.js configuration
     # https://nodejs.org/api/repl.html#environment-variable-options
     NODE_REPL_HISTORY = "${config.xdg.stateHome}/node_repl_history";
     NPM_CONFIG_CACHE = "${config.xdg.cacheHome}/npm";
     NPM_CONFIG_TMP = "$XDG_RUNTIME_DIR/npm";
     NPM_CONFIG_USERCONFIG = "${config.xdg.configHome}/npm/config";
+    CARGO_HOME = "${config.xdg.dataHome}/cargo";
+    RUSTUP_HOME = "${config.xdg.dataHome}/rustup";
   };
 
   xdg.configFile = {
