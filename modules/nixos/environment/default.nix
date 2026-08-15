@@ -5,6 +5,7 @@ in
 {
   imports = [
     ./fonts.nix
+    ./hjem.nix
     ./wayland.nix
   ];
 

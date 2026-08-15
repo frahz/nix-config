@@ -74,23 +74,23 @@
         "type": "github"
       }
     },
-    "home": {
+    "hjem": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1786656209,
-        "narHash": "sha256-ybGtuwGKTUCefKYsplzvw4xcCqznto0c7BaiQhgILtA=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "c554d3441f725537854e877519f01cbd60680174",
+        "lastModified": 1785929776,
+        "narHash": "sha256-qwppDYdtxqtDpI1iSp7bs8prOJ0KQSvhJchfROD04f0=",
+        "owner": "feel-co",
+        "repo": "hjem",
+        "rev": "b610953d0c56da6b28fd39c21bd193b88e91341c",
         "type": "github"
       },
       "original": {
-        "owner": "nix-community",
-        "repo": "home-manager",
+        "owner": "feel-co",
+        "repo": "hjem",
         "type": "github"
       }
     },
@@ -224,7 +224,7 @@
         "catppuccin": "catppuccin",
         "darwin": "darwin",
         "flake-parts": "flake-parts",
-        "home": "home",
+        "hjem": "hjem",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs",
         "nvim-flake": "nvim-flake",

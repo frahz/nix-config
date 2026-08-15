@@ -18,6 +18,7 @@
       };
       moondrop.enable = true;
     };
+    programs.hyprland.enable = true;
     shares.enable = true;
     system = {
       boot.silentBoot = true;
@@ -45,9 +46,6 @@
           ];
         };
       };
-    };
-    hyprland = {
-      enable = true;
     };
   };
 

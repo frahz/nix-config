@@ -104,8 +104,67 @@ let
     }
     // args';
 
+  # Adapted from Home Manager's Hyprland renderer, via Hjem Rum.
+  # https://github.com/snugnug/hjem-rum/blob/5b60842e8f76ae5e818b502f874c469a92930d42/modules/lib/generators/hypr.nix
+  toHyprconf =
+    {
+      attrs,
+      indentLevel ? 0,
+      importantPrefixes ? lib.lists.singleton "$",
+    }:
+    let
+      inherit (builtins)
+        all
+        isAttrs
+        isList
+        removeAttrs
+        ;
+      inherit (lib.attrsets) filterAttrs mapAttrsToList;
+      inherit (lib.generators) toKeyValue;
+      inherit (lib.lists) foldl replicate;
+      inherit (lib.strings)
+        concatMapStringsSep
+        concatStrings
+        concatStringsSep
+        hasPrefix
+        ;
+
+      initialIndent = concatStrings (replicate indentLevel "  ");
+
+      render =
+        indent: values:
+        let
+          sections = filterAttrs (_: value: isAttrs value || (isList value && all isAttrs value)) values;
+
+          renderSection =
+            name: section:
+            if isList section then
+              concatMapStringsSep "\n" (value: renderSection name value) section
+            else
+              ''
+                ${indent}${name} {
+                ${render "  ${indent}" section}${indent}}
+              '';
+
+          renderFields = toKeyValue {
+            listsAsDuplicateKeys = true;
+            inherit indent;
+          };
+
+          allFields = filterAttrs (_: value: !(isAttrs value || (isList value && all isAttrs value))) values;
+          isImportant =
+            name: _: foldl (found: prefix: found || hasPrefix prefix name) false importantPrefixes;
+          importantFields = filterAttrs isImportant allFields;
+          fields = removeAttrs allFields (mapAttrsToList (name: _: name) importantFields);
+        in
+        renderFields importantFields
+        + concatStringsSep "\n" (mapAttrsToList renderSection sections)
+        + renderFields fields;
+    in
+    render initialIndent attrs;
+
   casaLib = lib.fixedPoints.makeExtensible (final: {
-    inherit mkServiceOption mkSecret;
+    inherit mkServiceOption mkSecret toHyprconf;
   });
 in
 {

@@ -1,5 +1,4 @@
-{ inputs, ... }:
+{ inputs, lib, ... }:
 {
-
-  imports = [ inputs.home.nixosModules.home-manager ];
+  imports = lib.lists.singleton inputs.hjem.nixosModules.default;
 }

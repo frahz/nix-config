@@ -1,16 +1,16 @@
 {
+  config,
   lib,
   pkgs,
-  config,
   ...
 }:
 let
   inherit (lib) mkDefault;
+  inherit (lib.lists) singleton;
 in
 {
   xdg.portal = {
     enable = mkDefault config.casa.profiles.graphical.enable;
-
     xdgOpenUsePortal = true;
 
     config.common = {
@@ -18,10 +18,9 @@ in
         "hyprland"
         "gtk"
       ];
-
-      "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+      "org.freedesktop.impl.portal.Secret" = singleton "gnome-keyring";
     };
 
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = singleton pkgs.xdg-desktop-portal-gtk;
   };
 }

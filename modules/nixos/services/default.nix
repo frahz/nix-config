@@ -2,6 +2,7 @@
   imports = [
     ./adguardhome.nix
     ./caddy.nix
+    ./desktop.nix
     ./forgejo.nix
     ./glance.nix
     ./hass.nix

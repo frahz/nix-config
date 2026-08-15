@@ -1,7 +1,5 @@
 {
   inputs,
-  inputs',
-  self,
   lib,
   pkgs,
   config,
@@ -12,10 +10,14 @@ let
 in
 {
   config = {
-    home-manager = {
-      useGlobalPkgs = true;
-      extraSpecialArgs = { inherit inputs inputs' self; };
-      users.frahz = ../../home;
+    hjem = {
+      extraModules = [ inputs.spicetify-nix.hjemModules.default ];
+      users.frahz = {
+        enable = true;
+        user = "frahz";
+        directory = config.users.users.frahz.home;
+        clobberFiles = true;
+      };
     };
 
     users.users.frahz = {

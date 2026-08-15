@@ -6,9 +6,18 @@
 }:
 let
   inherit (lib) mkIf;
+  inherit (lib.lists) singleton;
 in
 {
   config = mkIf config.casa.profiles.graphical.enable {
+    hjem.users.frahz.packages = builtins.attrValues {
+      inherit (pkgs) legendary-gl winetricks;
+
+      prismlauncher = pkgs.prismlauncher.override {
+        jdks = singleton pkgs.jdk17;
+      };
+    };
+
     programs = {
       gamemode = {
         enable = true;
@@ -27,9 +36,7 @@ in
       };
       steam = {
         enable = true;
-        extraCompatPackages = [
-          pkgs.proton-ge-bin.steamcompattool
-        ];
+        extraCompatPackages = singleton pkgs.proton-ge-bin.steamcompattool;
         gamescopeSession.enable = true;
       };
     };

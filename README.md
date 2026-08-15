@@ -3,10 +3,11 @@
 Personal configuration for NixOS Desktop and homelab.
 
 ## Directories
-- home - personalized home-manager module
-- hosts - Hosts configuration with machine specific configs
-- modules - NixOS config modules
-- users - user information
+
+- `hosts` - host-specific configuration
+- `modules/hjem` - shared Linux and Darwin Hjem configuration
+- `modules/nixos` - NixOS system modules with co-located Linux Hjem configuration
+- `users` - user accounts and Hjem profile wiring
 
 ## Credits
 
