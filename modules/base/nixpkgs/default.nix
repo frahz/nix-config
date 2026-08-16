@@ -9,25 +9,6 @@ in
       (final: prev: {
         pythonPackagesExtensions = prev.pythonPackagesExtensions ++ [
           (pythonFinal: pythonPrev: {
-            looptime = pythonPrev.looptime.overridePythonAttrs (old: {
-              disabledTestPaths = [
-                # Time-based tests that fail pretty predictably on darwin but pass on linux
-                "tests/test_chronometers.py::test_readme_example"
-                "tests/test_chronometers.py::test_duration_resets_on_reuse"
-                "tests/test_chronometers.py::test_conversion_to_float"
-                "tests/test_chronometers.py::test_sync_context_manager"
-                "tests/test_chronometers.py::test_async_context_manager"
-                "tests/test_plugin.py::test_fixture_chronometer"
-                "tests/test_time_moves.py::test_real_time_is_ignored"
-                "tests/test_time_moves.py::test_timeout_does_happen_according_to_schedule"
-                "tests/test_time_moves.py::test_timeout_doesnt_happen_before_entered_the_code"
-                "tests/test_time_moves.py::test_end_of_time_reached"
-                "tests/test_time_on_executors.py::test_with_sleep"
-                "tests/test_time_on_io_idle.py::test_end_of_time"
-                "tests/test_time_on_io_idle.py::test_no_idle_configured"
-                "tests/test_time_on_io_idle.py::test_stepping_with_no_limit"
-              ];
-            });
             nanoemoji = pythonPrev.nanoemoji.overridePythonAttrs (old: {
               src = old.src.override {
                 hash = "sha256-FysyKC01XBnRiur5RR9fcsTxQqE8x0JJHSoe3q6JtKc=";
