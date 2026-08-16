@@ -20,7 +20,7 @@ in
     ];
     config = {
       allowUnfree = true;
-      # allowAliases = false;
+      allowAliases = false;
       permittedInsecurePackages = [ ];
     };
   };
