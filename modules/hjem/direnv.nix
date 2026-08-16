@@ -1,7 +1,8 @@
 { lib, pkgs, ... }:
 let
   inherit (lib.lists) singleton;
-in {
+in
+{
   hjem.users.frahz = {
     packages = singleton pkgs.direnv;
     extraDependencies = singleton pkgs.nix-direnv;
