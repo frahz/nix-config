@@ -31,6 +31,5 @@ in
     };
 
     environment.systemPackages = [ pkgs.intel-gpu-tools ];
-
   };
 }

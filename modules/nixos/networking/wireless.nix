@@ -13,7 +13,6 @@
         Settings = {
           AutoConnect = true;
         };
-
         Network = {
           EnableIPv6 = true;
           RoutePriorityOffset = 300;

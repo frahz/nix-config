@@ -17,7 +17,7 @@ in
   config = mkIf cfg.enableHardwareAcceleration {
     hardware.graphics = {
       enable = true;
-      enable32Bit =  config.casa.profiles.graphical.enable && isx86Linux;
+      enable32Bit = config.casa.profiles.graphical.enable && isx86Linux;
     };
   };
 }

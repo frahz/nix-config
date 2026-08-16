@@ -22,7 +22,6 @@ in
       gamemode = {
         enable = true;
         enableRenice = true;
-
         settings = {
           general = {
             softrealtime = "auto";

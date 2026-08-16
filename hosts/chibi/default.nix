@@ -11,7 +11,6 @@ in
     ./hardware-configuration.nix
   ];
 
-
   casa = {
     profiles = {
       server = {

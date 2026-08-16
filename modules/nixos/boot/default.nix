@@ -6,7 +6,6 @@
 }:
 let
   inherit (lib)
-    mkDefault
     mkForce
     mkIf
     mkMerge
@@ -66,7 +65,6 @@ in
 
         initrd = {
           systemd.enable = true;
-
           availableKernelModules = [
             "xhci_pci"
             "ahci"

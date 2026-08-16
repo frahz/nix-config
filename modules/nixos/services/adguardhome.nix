@@ -6,6 +6,7 @@
 }:
 let
   inherit (lib) mkIf;
+  inherit (lib.lists) singleton;
   inherit (self.lib) mkServiceOption;
 
   cfg = config.casa.services.adguardhome;
@@ -32,12 +33,10 @@ in
       inherit (cfg) port;
       settings = {
         theme = "dark";
-        users = [
-          {
-            name = "frahz";
-            password = "$2a$04$QfS54PuYCPt1veli1xX75erTSovYT9x7g.NFsnq9O3r53WTXqHoBy";
-          }
-        ];
+        users = singleton {
+          name = "frahz";
+          password = "$2a$04$QfS54PuYCPt1veli1xX75erTSovYT9x7g.NFsnq9O3r53WTXqHoBy";
+        };
         dns = {
           port = dns_port;
           bind_hosts = [ "0.0.0.0" ];

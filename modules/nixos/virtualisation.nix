@@ -6,6 +6,7 @@
 }:
 let
   inherit (lib) mkIf mkEnableOption;
+  inherit (lib.lists) singleton;
 
   cfg = config.casa.virtualisation;
 in
@@ -18,7 +19,6 @@ in
   };
 
   config = mkIf cfg.enable {
-
     virtualisation = {
       oci-containers.backend = "docker";
       docker = {
@@ -27,10 +27,7 @@ in
         autoPrune.enable = true;
       };
     };
-
-    environment.systemPackages = [
-      pkgs.lazydocker
-    ];
+    environment.systemPackages = singleton pkgs.lazydocker;
   };
 
 }

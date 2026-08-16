@@ -1,4 +1,4 @@
-{ inputs, config, ... }:
+{ inputs, ... }:
 {
   imports = [ inputs.catppuccin.nixosModules.catppuccin ];
 

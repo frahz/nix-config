@@ -1,4 +1,3 @@
-{ config, ... }:
 {
   # systemd DNS resolver daemon
   services.resolved = {

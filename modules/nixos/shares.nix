@@ -6,6 +6,7 @@
 }:
 let
   inherit (lib) mkIf mkEnableOption;
+  inherit (lib.lists) singleton;
 
   cfg = config.casa.shares;
 in
@@ -37,9 +38,7 @@ in
       path = "/etc/nixos/smb-secrets";
     };
 
-    environment.systemPackages = with pkgs; [
-      cifs-utils
-    ];
+    environment.systemPackages = singleton pkgs.cifs-utils;
 
     fileSystems =
       let

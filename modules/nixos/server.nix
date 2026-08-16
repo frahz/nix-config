@@ -1,6 +1,6 @@
 { lib, config, ... }:
 let
-  inherit (lib) mkIf mapAttrs mkForce;
+  inherit (lib) mkIf mkForce;
 in
 {
   config = mkIf config.casa.profiles.server.enable {

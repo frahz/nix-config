@@ -5,7 +5,7 @@
   ...
 }:
 {
-  fonts.packages = lib.attrValues {
+  fonts.packages = builtins.attrValues {
     inherit (pkgs)
       source-sans
       source-serif

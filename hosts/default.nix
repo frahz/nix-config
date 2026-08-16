@@ -36,17 +36,13 @@ in
   flake = {
     nixosConfigurations = {
       anmoku = mkNixosSystem "anmoku" { };
-
       chibi = mkNixosSystem "chibi" { };
-
       desktop = mkNixosSystem "desktop" {
         extraModules = [
           "${self}/modules/wsl"
         ];
       };
-
       inari = mkNixosSystem "inari" { };
-
       shintaku = mkNixosSystem "shintaku" {
         system = "aarch64-linux";
       };

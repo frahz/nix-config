@@ -1,7 +1,6 @@
 {
   inputs',
   lib,
-  pkgs,
   config,
   ...
 }:
@@ -9,8 +8,7 @@ let
   inherit (lib)
     mkEnableOption
     mkIf
-    optionals
-    flatten
+    optional
     ;
 
   paq = inputs'.paquetes.packages;
@@ -23,12 +21,10 @@ in
   };
 
   config = mkIf cfg.enable {
-    environment.systemPackages = flatten [
+    environment.systemPackages = [
       paq.mdrop-cli
-      (optionals config.casa.profiles.graphical.enable [
-        paq.mdrop-gui
-      ])
-    ];
+    ]
+    ++ optional config.casa.profiles.graphical.enable paq.mdrop-gui;
 
     services.udev.extraRules = ''
       # Moondrop DAC
@@ -39,6 +35,5 @@ in
       ACTION=="add" SUBSYSTEM=="pci" ATTR{vendor}=="0x1022" ATTR{device}=="0x161d" ATTR{power/wakeup}="disabled"
       ACTION=="add" SUBSYSTEM=="pci" ATTR{vendor}=="0x1022" ATTR{device}=="0x161e" ATTR{power/wakeup}="disabled"
     '';
-
   };
 }
