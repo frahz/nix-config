@@ -96,6 +96,8 @@ hl.bind(mainMod .. " + SHIFT + S", hl.dsp.exec_cmd("screenshot-edit"))
 hl.bind("ALT + Tab", hl.dsp.window.cycle_next())
 hl.bind("ALT + SHIFT + Tab", hl.dsp.window.cycle_next({ next = false }))
 
+hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))
+
 hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
