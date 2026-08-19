@@ -80,6 +80,7 @@ in
         "gh/config.yml" = {
           generator = (pkgs.formats.yaml { }).generate "gh-config.yml";
           value = {
+            version = "1";
             git_protocol = "ssh";
             prompt = "enabled";
           };
