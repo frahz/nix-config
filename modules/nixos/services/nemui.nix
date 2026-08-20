@@ -19,6 +19,9 @@ in
   options.casa.services.nemui = mkServiceOption "nemui" { };
 
   config = mkIf cfg.enable {
-    services.nemui.enable = true;
+    services.nemui = {
+      enable = true;
+      openFirewall = true;
+    };
   };
 }
