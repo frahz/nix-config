@@ -33,21 +33,21 @@
     };
   };
 
-  programs = {
-    firejail = {
-      enable = true;
-      wrappedBinaries = {
-        vesktop = {
-          executable = "${lib.getExe pkgs.vesktop}";
-          desktop = "${pkgs.vesktop}/share/applications/vesktop.desktop";
-          extraArgs = [
-            "--net=wlan0"
-            "--noprofile"
-          ];
-        };
-      };
-    };
-  };
+  # programs = {
+  #   firejail = {
+  #     enable = true;
+  #     wrappedBinaries = {
+  #       vesktop = {
+  #         executable = "${lib.getExe pkgs.vesktop}";
+  #         desktop = "${pkgs.vesktop}/share/applications/vesktop.desktop";
+  #         extraArgs = [
+  #           "--net=wlan0"
+  #           "--noprofile"
+  #         ];
+  #       };
+  #     };
+  #   };
+  # };
 
   system.stateVersion = "23.11";
 }

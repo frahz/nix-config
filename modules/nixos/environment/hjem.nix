@@ -47,6 +47,7 @@ in
           pwvucontrol
           satty
           slurp
+          vesktop
           wayfreeze
           wl-clipboard
           yt-dlp
