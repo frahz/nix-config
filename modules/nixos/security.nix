@@ -20,7 +20,6 @@ in
 
     pam = mkIf config.casa.profiles.graphical.enable {
       services = {
-        hyprlock = { };
         greetd = {
           enableGnomeKeyring = true;
           gnupg.enable = true;

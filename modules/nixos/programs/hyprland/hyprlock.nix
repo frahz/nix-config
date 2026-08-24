@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   self,
   ...
 }:
@@ -64,13 +63,10 @@ let
 in
 {
   config = lib.mkIf cfg.enable {
-    hjem.users.frahz = {
-      packages = lib.lists.singleton pkgs.hyprlock;
-
-      xdg.config.files."hypr/hyprlock.conf" = {
-        generator = attrs: toHyprconf { inherit attrs; };
-        value = settings;
-      };
+    hjem.users.frahz.xdg.config.files."hypr/hyprlock.conf" = {
+      generator = attrs: toHyprconf { inherit attrs; };
+      value = settings;
     };
+    programs.hyprlock.enable = true;
   };
 }

@@ -43,7 +43,7 @@ in
 
           local cursorSize = ${toLua "22"}
           local fuzzel = ${toLua (lib.getExe pkgs.fuzzel)}
-          local hyprlock = ${toLua (lib.getExe pkgs.hyprlock)}
+          local hyprlock = ${toLua (lib.getExe config.programs.hyprlock.package)}
 
         ''
         + builtins.readFile ./config.lua;
