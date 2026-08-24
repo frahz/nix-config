@@ -65,21 +65,42 @@ in
           Path=frahz
         '';
         ".mozilla/firefox/frahz/user.js".text = userJs + "\n";
-        ".mozilla/firefox/frahz/chrome/userChrome.css".text = ''
-          /* Don't invert the color of tab groups when they're collapsed */
-          tab-group {
-            --tab-group-color: var(--tab-group-color-invert) !important;
-          }
-
+        ".mozilla/firefox/frahz/chrome/userChrome.css".text = /* css */ ''
           .tab-group-label {
+            /* Don't change the text color or add an outline when tab groups are collapsed (makes the above usable) */
             tab-group[collapsed] > .tab-group-label-container & {
-              color: light-dark(var(--tab-group-color-pale), var(--tab-group-label-text-dark)) !important;
+              /* Don't invert the color of tab groups when they're collapsed */
+              background-color: var(--tab-group-color) !important;
+              color: light-dark(
+                var(--tab-group-color-pale),
+                var(--tab-group-label-text-dark)
+              ) !important;
               outline: none !important;
             }
 
+            /* Hide labels when vertical tabs sidebar isn't expanded */
             #tabbrowser-tabs[orient="vertical"]:not([expanded]) & {
               &::first-letter {
                 font-size: 0px !important;
+              }
+            }
+          }
+
+          /* Don't invert the color of tab groups when shown as suggestion in url bar */
+          .urlbarView-row[has-action]:is(
+            [type="switchtab"],
+            [type="remotetab"],
+            [type="clipboard"]
+          ) > .urlbarView-row-inner
+            > .urlbarView-no-wrap
+            > .urlbarView-action.urlbarView-tabGroup {
+            background-color: var(--tab-group-color) !important;
+          }
+
+          @media not -moz-pref("browser.nova.enabled") {
+            .urlbarView-action-btn {
+              &[data-action^="tabgroup-"] {
+                background-color: var(--tab-group-color) !important;
               }
             }
           }
