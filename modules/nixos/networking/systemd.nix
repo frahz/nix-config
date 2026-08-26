@@ -5,13 +5,14 @@
     # inherit (config.casa.profiles.graphical) enable;
     settings = {
       Resolve = {
+        DNSOverTLS = "true";
         DNSSEC = "allow-downgrade";
         FallbackDNS = [
           "1.1.1.1"
           "1.0.0.1"
           "8.8.8.8"
         ];
-        DNSOverTLS = "true";
+        LLMNR = false;
       };
     };
   };

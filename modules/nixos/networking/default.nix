@@ -33,11 +33,18 @@ in
     };
   };
 
-  # SSH
-  services.openssh = {
-    enable = true;
-    settings = {
-      PasswordAuthentication = false;
+  services = {
+    openssh = {
+      enable = true;
+      settings = {
+        PasswordAuthentication = false;
+      };
+    };
+    avahi = {
+      enable = config.casa.profiles.graphical.enable;
+      nssmdns4 = false;
+      nssmdns6 = false;
+      openFirewall = true;
     };
   };
 }

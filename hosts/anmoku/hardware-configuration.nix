@@ -13,5 +13,10 @@
         "dmask=0022"
       ];
     };
+
   };
+
+  networking.firewall.extraInputRules = ''
+    iifname "wlan0" ip saddr 192.168.1.226 meta l4proto tcp accept
+  '';
 }
