@@ -59,7 +59,7 @@ in
       gluetun = {
         version = mkOption {
           type = str;
-          default = "v3.41.1";
+          default = "v3.41.3";
           example = ''
             The most recent version can be found here:
             https://github.com/qdm12/gluetun/releases
@@ -122,7 +122,7 @@ in
       image = "qmcgaw/gluetun:${cfg.gluetun.version}";
       volumes = [
         "${cfg.gluetun.configDir}:/config"
-        "${cfg.gluetun.serversFile}:/gluetun/servers.json"
+        # "${cfg.gluetun.serversFile}:/gluetun/servers.json"
       ];
       ports = [
         "${toString cfg.gluetun.port}:${toString cfg.gluetun.port}/tcp"
