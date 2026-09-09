@@ -9,6 +9,7 @@
     ./fzf.nix
     ./packages.nix
     ./ripgrep.nix
+    ./slop.nix
     ./ssh.nix
     ./tmux.nix
     ./xdg.nix
