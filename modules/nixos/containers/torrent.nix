@@ -106,15 +106,8 @@ in
     };
 
     networking.firewall = {
-      allowedTCPPorts = [
-        cfg.gluetun.port
-        cfg.qbittorrent.torrentPort
-        cfg.qbittorrent.webUiPort
-      ];
-      allowedUDPPorts = [
-        cfg.qbittorrent.torrentPort
-        cfg.qbittorrent.webUiPort
-      ];
+      allowedTCPPorts = [ cfg.qbittorrent.torrentPort ];
+      allowedUDPPorts = [ cfg.qbittorrent.torrentPort ];
     };
 
     virtualisation.oci-containers.containers.gluetun = {
@@ -122,11 +115,9 @@ in
       image = "qmcgaw/gluetun:${cfg.gluetun.version}";
       volumes = [
         "${cfg.gluetun.configDir}:/config"
-        # "${cfg.gluetun.serversFile}:/gluetun/servers.json"
       ];
       ports = [
-        "${toString cfg.gluetun.port}:${toString cfg.gluetun.port}/tcp"
-        "${toString cfg.qbittorrent.webUiPort}:${toString cfg.qbittorrent.webUiPort}"
+        "${cfg.host}:${toString cfg.qbittorrent.webUiPort}:${toString cfg.qbittorrent.webUiPort}"
         "${toString cfg.qbittorrent.torrentPort}:${toString cfg.qbittorrent.torrentPort}"
       ];
       environmentFiles = [ config.sops.secrets.gluetun.path ];
@@ -155,6 +146,7 @@ in
         PUID = toString config.users.users.frahz.uid;
         PGID = toString config.users.groups.media.gid; # media
         WEB_UI_PORT = toString cfg.qbittorrent.webUiPort;
+        TORRENTING_PORT = toString cfg.qbittorrent.torrentPort;
       };
       dependsOn = [ "gluetun" ];
       networks = [ "container:gluetun" ];

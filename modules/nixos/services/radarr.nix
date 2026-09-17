@@ -22,7 +22,6 @@ in
   config = mkIf cfg.enable {
     services.radarr = {
       enable = true;
-      openFirewall = true;
       dataDir = "${storage}/containers/radarr/config";
       user = "frahz";
       group = "media";

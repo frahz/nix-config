@@ -21,15 +21,11 @@ in
 
   config = mkIf cfg.enable {
     networking.firewall = {
-      allowedTCPPorts = [
-        dns_port
-        cfg.port
-      ];
+      allowedTCPPorts = [ dns_port ];
       allowedUDPPorts = [ dns_port ];
     };
     services.adguardhome = {
       enable = true;
-      openFirewall = true;
       inherit (cfg) port;
       settings = {
         theme = "dark";

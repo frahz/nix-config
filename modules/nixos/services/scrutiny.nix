@@ -20,7 +20,6 @@ in
   config = mkIf cfg.enable {
     services.scrutiny = {
       enable = true;
-      openFirewall = true;
       settings.web = {
         listen.port = cfg.port;
       };

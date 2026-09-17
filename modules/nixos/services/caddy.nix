@@ -34,17 +34,7 @@ in
         }
       '';
       environmentFile = config.sops.secrets.caddy-porkbun.path;
-    };
-
-    networking.firewall = {
-      allowedTCPPorts = [
-        80
-        443
-      ];
-      allowedUDPPorts = [
-        80
-        443
-      ];
+      openFirewall = true;
     };
   };
 }

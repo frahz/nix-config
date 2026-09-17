@@ -32,7 +32,6 @@ in
         EnableInsightsCollector = false;
       };
       environmentFile = config.sops.secrets.navidrome.path;
-      openFirewall = true;
     };
     services.caddy.virtualHosts.${cfg.domain} = {
       extraConfig = ''

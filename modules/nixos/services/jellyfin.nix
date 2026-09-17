@@ -22,7 +22,6 @@ in
   config = mkIf cfg.enable {
     services.jellyfin = {
       enable = true;
-      openFirewall = true;
       dataDir = "${storage}/containers/jellyfin";
       user = "frahz";
       group = "media";

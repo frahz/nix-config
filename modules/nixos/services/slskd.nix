@@ -5,7 +5,7 @@
   ...
 }:
 let
-  inherit (lib) mkIf mkForce;
+  inherit (lib) mkIf;
   inherit (self.lib) mkServiceOption mkSecret;
   inherit (config.casa.profiles.server) storage;
 
@@ -27,7 +27,6 @@ in
     };
     services.slskd = {
       enable = true;
-      openFirewall = true;
       group = "users";
 
       environmentFile = config.sops.secrets.slskd.path;

@@ -20,7 +20,6 @@ in
   config = mkIf cfg.enable {
     services.seerr = {
       enable = true;
-      openFirewall = true;
       inherit (cfg) port;
     };
 

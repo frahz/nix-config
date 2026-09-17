@@ -66,11 +66,6 @@ in
       key = "env";
     };
 
-    networking.firewall = {
-      allowedTCPPorts = [ cfg.port ];
-      allowedUDPPorts = [ cfg.port ];
-    };
-
     systemd.services.init-linkwarden-network = {
       description = "Create bridge for linkwarden";
       after = [ "network.target" ];
@@ -100,7 +95,7 @@ in
         config.sops.secrets.linkwarden.path
       ];
       ports = [
-        "${toString cfg.port}:3000"
+        "${cfg.host}:${toString cfg.port}:3000"
       ];
       dependsOn = [ "linkwarden_pg" ];
       networks = [ cfg.network ];

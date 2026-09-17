@@ -31,7 +31,6 @@ in
 
     services.glance = {
       enable = true;
-      openFirewall = true;
       environmentFile = config.sops.secrets.glance.path;
       settings = {
         server = {

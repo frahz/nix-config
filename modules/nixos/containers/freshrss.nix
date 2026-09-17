@@ -36,11 +36,6 @@ in
     };
 
   config = mkIf cfg.enable {
-    networking.firewall = {
-      allowedTCPPorts = [ cfg.port ];
-      allowedUDPPorts = [ cfg.port ];
-    };
-
     virtualisation.oci-containers.containers.freshrss = {
       autoStart = true;
       image = "lscr.io/linuxserver/freshrss:${cfg.version}";
@@ -53,7 +48,7 @@ in
         TZ = "America/Los_Angeles";
       };
       ports = [
-        "${toString cfg.port}:80"
+        "${cfg.host}:${toString cfg.port}:80"
       ];
     };
 

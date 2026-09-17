@@ -27,7 +27,6 @@ in
     services.immich = {
       inherit (cfg) host;
       enable = true;
-      openFirewall = true;
       secretsFile = config.sops.secrets.immich.path;
       redis = {
         enable = true;

@@ -20,7 +20,6 @@ in
 
   config = mkIf cfg.enable {
     networking.firewall.allowedTCPPorts = [
-      config.services.forgejo.settings.server.HTTP_PORT
       config.services.forgejo.settings.server.SSH_PORT
     ];
 
