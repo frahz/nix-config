@@ -241,16 +241,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1789546704,
-        "narHash": "sha256-h5SiwB5jAhOYhrPp1TThtJa0ObyV923hV5q34Y+5Iww=",
-        "owner": "c2fc2f",
+        "lastModified": 1789691124,
+        "narHash": "sha256-k+I+R6uwHX3VcJ7326qLV6vCahZUgsVl+i8sSU/Stxk=",
+        "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "81630c5d814c38e6bf7b23888b53d8dad595e228",
+        "rev": "1e73e8f7176d65e1b55e324de099bbfff4b2c574",
         "type": "github"
       },
       "original": {
-        "owner": "c2fc2f",
-        "ref": "buildGo126Module",
+        "owner": "Mic92",
         "repo": "sops-nix",
         "type": "github"
       }
