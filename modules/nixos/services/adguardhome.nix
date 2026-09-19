@@ -5,79 +5,95 @@
   ...
 }:
 let
-  inherit (lib) mkIf;
-  inherit (lib.lists) singleton;
+  inherit (lib) mkIf mkOption;
   inherit (self.lib) mkServiceOption;
 
   cfg = config.casa.services.adguardhome;
+  lanInterface = config.casa.networking.interfaces."10-lan" or "";
   rdomain = config.networking.domain;
-  dns_port = 53;
 in
 {
-  options.casa.services.adguardhome = mkServiceOption "adguardhome" {
-    port = 8053;
-    domain = "adguard.${rdomain}";
-  };
+  options.casa.services.adguardhome =
+    mkServiceOption "adguardhome" {
+      port = 8053;
+      domain = "adguard.${rdomain}";
+    }
+    // {
+      dnsPort = mkOption {
+        type = lib.types.port;
+        default = 53;
+        description = "The torrenting port for qbittorrent service";
+      };
+
+    };
 
   config = mkIf cfg.enable {
-    networking.firewall = {
-      allowedTCPPorts = [ dns_port ];
-      allowedUDPPorts = [ dns_port ];
-    };
-    services.adguardhome = {
-      enable = true;
-      inherit (cfg) port;
-      settings = {
-        theme = "dark";
-        users = singleton {
-          name = "frahz";
-          password = "$2a$04$QfS54PuYCPt1veli1xX75erTSovYT9x7g.NFsnq9O3r53WTXqHoBy";
-        };
-        dns = {
-          port = dns_port;
-          bind_hosts = [ "0.0.0.0" ];
-          bootstrap_dns = [
-            "1.1.1.1"
-            "8.8.8.8"
+    assertions = [
+      {
+        assertion = lanInterface != "";
+        message = "Home Assistant requires casa.networking.interfaces.\"10-lan\" to identify its LAN interface.";
+      }
+    ];
+
+    networking.firewall.interfaces = lib.genAttrs [ lanInterface "tailscale0" ] (_: {
+      allowedTCPPorts = [ cfg.dnsPort ];
+      allowedUDPPorts = [ cfg.dnsPort ];
+    });
+
+    services = {
+      adguardhome = {
+        enable = true;
+        inherit (cfg) port;
+        settings = {
+          theme = "dark";
+          auth_attempts = 5;
+          block_auth_min = 15;
+          dns = {
+            port = cfg.dnsPort;
+            bind_hosts = [ "0.0.0.0" ];
+            bootstrap_dns = [
+              "1.1.1.1"
+              "8.8.8.8"
+            ];
+            upstream_dns = [
+              "1.1.1.1"
+              "8.8.8.8"
+            ];
+            ratelimit = 100;
+          };
+          filters = [
+            {
+              name = "AdGuard DNS filter";
+              url = "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt";
+              enabled = true;
+              id = 1;
+            }
+            {
+              name = "AdAway Default Blocklist";
+              url = "https://adaway.org/hosts.txt";
+              enabled = true;
+              id = 2;
+            }
+            {
+              name = "OISD Blocklist Big";
+              url = "https://big.oisd.nl";
+              enabled = true;
+              id = 3;
+            }
           ];
-          upstream_dns = [
-            "1.1.1.1"
-            "8.8.8.8"
-          ];
-          ratelimit = 100;
         };
-        filters = [
-          {
-            name = "AdGuard DNS filter";
-            url = "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt";
-            enabled = true;
-            id = 1;
-          }
-          {
-            name = "AdAway Default Blocklist";
-            url = "https://adaway.org/hosts.txt";
-            enabled = true;
-            id = 2;
-          }
-          {
-            name = "OISD Blocklist Big";
-            url = "https://big.oisd.nl";
-            enabled = true;
-            id = 3;
-          }
-        ];
       };
-    };
 
-    services.resolved.settings.Resolve = {
-      DNS = [ "127.0.0.1" ];
-      DNSStubListener = "no";
-    };
+      resolved.settings.Resolve = {
+        DNS = [ "127.0.0.1" ];
+        DNSStubListener = "no";
+      };
 
-    services.caddy.virtualHosts.${cfg.domain} = {
-      extraConfig = ''
-        reverse_proxy http://${cfg.host}:${toString cfg.port}
-      '';
+      caddy.virtualHosts.${cfg.domain} = {
+        extraConfig = ''
+          reverse_proxy http://${cfg.host}:${toString cfg.port}
+        '';
+      };
     };
   };
 }
