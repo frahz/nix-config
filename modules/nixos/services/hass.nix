@@ -11,6 +11,7 @@ let
   inherit (self.lib) mkServiceOption mkSecret;
 
   cfg = config.casa.services.home-assistant;
+  lanInterface = config.casa.networking.interfaces."10-lan" or "";
   rdomain = config.networking.domain;
 in
 {
@@ -20,13 +21,32 @@ in
   };
 
   config = mkIf cfg.enable {
-    sops.secrets.home-assistant = mkSecret {
-      file = "home-assistant";
-      key = "env";
-      owner = "hass";
-      group = "hass";
-      path = "${config.services.home-assistant.configDir}/secrets.yaml";
-      restartUnits = [ "home-assistant.service" ];
+    assertions = [
+      {
+        assertion = lanInterface != "";
+        message = "Home Assistant requires casa.networking.interfaces.\"10-lan\" to identify its LAN interface.";
+      }
+    ];
+
+    sops.secrets = {
+      home-assistant = mkSecret {
+        file = "home-assistant";
+        key = "env";
+        owner = "hass";
+        group = "hass";
+        path = "${config.services.home-assistant.configDir}/secrets.yaml";
+        restartUnits = [ "home-assistant.service" ];
+      };
+      mqtt-home-assistant-password = mkSecret {
+        file = "home-assistant";
+        key = "mqtt-home-assistant-password";
+        restartUnits = [ "mosquitto.service" ];
+      };
+      mqtt-valetudo-password = mkSecret {
+        file = "home-assistant";
+        key = "mqtt-valetudo-password";
+        restartUnits = [ "mosquitto.service" ];
+      };
     };
 
     services.home-assistant = {
@@ -56,6 +76,7 @@ in
           latitude = "!secret latitude";
           longitude = "!secret longitude";
         };
+        # TODO: remove down the line due to HA deprecating for some reason
         http = {
           server_port = cfg.port;
           use_x_forwarded_for = true;
@@ -139,16 +160,33 @@ in
     services.mosquitto = {
       enable = true;
       persistence = true;
+      # TODO: convert to two listeners so that home-assistant can use localhost
+      #       instead of LAN IP
       listeners = singleton {
-        address = "0.0.0.0";
         port = 1883;
-        omitPasswordAuth = true;
-        settings.allow_anonymous = true;
-        acl = [
-          "topic readwrite valetudo/#"
-          "topic readwrite homeassistant/#"
-          "topic readwrite homie/#"
-        ];
+        settings = {
+          allow_anonymous = false;
+          bind_interface = lanInterface;
+          max_connections = 16;
+        };
+        users = {
+          homeassistant = {
+            passwordFile = config.sops.secrets.mqtt-home-assistant-password.path;
+            acl = [
+              "readwrite valetudo/#"
+              "read homeassistant/#"
+              "read homie/#"
+            ];
+          };
+          valetudo = {
+            passwordFile = config.sops.secrets.mqtt-valetudo-password.path;
+            acl = [
+              "readwrite valetudo/#"
+              "write homeassistant/#"
+              "readwrite homie/#"
+            ];
+          };
+        };
       };
     };
 
@@ -177,7 +215,7 @@ in
       };
     };
 
-    networking.firewall = {
+    networking.firewall.interfaces.${lanInterface} = {
       allowedTCPPorts = [
         1883 # MQTT/ Valetudo
         21063 # Homekit
