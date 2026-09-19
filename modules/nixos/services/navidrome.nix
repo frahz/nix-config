@@ -13,7 +13,6 @@ let
 in
 {
   options.casa.services.navidrome = mkServiceOption "navidrome" {
-    host = "0.0.0.0";
     port = 4533;
     domain = "music.${rdomain}";
   };

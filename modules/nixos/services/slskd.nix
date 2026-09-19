@@ -14,7 +14,6 @@ let
 in
 {
   options.casa.services.slskd = mkServiceOption "slskd" {
-    host = "0.0.0.0";
     port = 3018;
     domain = "soulseek.${rdomain}";
     storagePath = storage;

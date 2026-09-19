@@ -14,7 +14,6 @@ let
 in
 {
   options.casa.services.immich = mkServiceOption "immich" {
-    host = "0.0.0.0";
     port = 2283;
     domain = "photos.${rdomain}";
   };

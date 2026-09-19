@@ -15,7 +15,6 @@ let
 in
 {
   options.casa.services.kavita = mkServiceOption "kavita" {
-    host = "0.0.0.0";
     port = 5000;
     domain = "kavita.${rdomain}";
   };
@@ -32,7 +31,10 @@ in
       enable = true;
       dataDir = "${storage}/containers/kavita";
       tokenKeyFile = config.sops.secrets.kavita.path;
-      settings.Port = cfg.port;
+      settings = {
+        Port = cfg.port;
+        IpAddresses = cfg.host;
+      };
     };
 
     services.caddy.virtualHosts.${cfg.domain} = {

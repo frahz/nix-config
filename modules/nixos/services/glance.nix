@@ -12,7 +12,6 @@ let
 in
 {
   options.casa.services.glance = mkServiceOption "glance" {
-    host = "0.0.0.0";
     port = 7576;
     inherit (config.networking) domain;
   };

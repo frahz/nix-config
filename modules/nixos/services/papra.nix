@@ -60,7 +60,7 @@ in
         APP_BASE_URL = "https://${cfg.domain}";
       };
       ports = [
-        "127.0.0.1:${toString cfg.port}:1221"
+        "${cfg.host}:${toString cfg.port}:1221"
       ];
     };
 
