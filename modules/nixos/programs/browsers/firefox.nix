@@ -46,6 +46,35 @@ in
         NoDefaultBookmarks = true;
         OfferToSaveLogins = false;
         PasswordManagerEnable = false;
+        SearchEngines = {
+          Default = "Kagi";
+          Add = [
+            {
+              Name = "nixpkgs packages";
+              URLTemplate = "https://search.nixos.org/packages?channel=unstable&query={searchTerms}";
+              IconURL = "https://wiki.nixos.org/favicon.ico";
+              Alias = "@np";
+            }
+            {
+              Name = "NixOS options";
+              URLTemplate = "https://search.nixos.org/options?channel=unstable&query={searchTerms}";
+              IconURL = "https://wiki.nixos.org/favicon.ico";
+              Alias = "@no";
+            }
+            {
+              Name = "NixOS Wiki";
+              URLTemplate = "https://wiki.nixos.org/w/index.php?search={searchTerms}";
+              IconURL = "https://wiki.nixos.org/favicon.ico";
+              Alias = "@nw";
+            }
+            {
+              Name = "noogle";
+              URLTemplate = "https://noogle.dev/q?term={searchTerms}";
+              IconURL = "https://noogle.dev/favicon.png";
+              Alias = "@ng";
+            }
+          ];
+        };
       };
     };
 
