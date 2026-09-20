@@ -59,6 +59,21 @@ in
               "1.1.1.1"
               "8.8.8.8"
             ];
+
+            private_networks = [
+              "100.64.0.0/10"
+              "fd7a:115c:a1e0::/48"
+
+              "192.168.0.0/16"
+              "10.0.0.0/8"
+              "172.16.0.0/12"
+            ];
+
+            use_private_ptr_resolvers = true;
+            local_ptr_upstreams = [
+              "100.100.100.100"
+            ];
+
             ratelimit = 100;
           };
           filters = [
