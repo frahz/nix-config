@@ -11,6 +11,7 @@
     profiles = {
       server = {
         enable = true;
+        domain = "frahz.dev";
         storage = "/var/lib";
       };
       oracle.enable = true;
@@ -25,6 +26,10 @@
       fail2ban.enable = true;
       interfaces."10-lan" = "enp0s6";
       tailscale = { };
+    };
+    services = {
+      caddy.enable = true;
+      pocket-id.enable = true;
     };
   };
 

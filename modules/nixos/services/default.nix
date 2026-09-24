@@ -13,6 +13,7 @@
     ./navidrome.nix
     ./nemui.nix
     ./papra.nix
+    ./pocket-id.nix
     ./radarr.nix
     ./raulyrs.nix
     ./samba.nix
