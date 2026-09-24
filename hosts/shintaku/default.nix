@@ -22,6 +22,7 @@
     system.boot.kernel = pkgs.linuxPackages_6_18;
     networking = {
       enable = true;
+      fail2ban.enable = true;
       interfaces."10-lan" = "enp0s6";
       tailscale = { };
     };

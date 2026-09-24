@@ -4,6 +4,7 @@ let
 in
 {
   imports = [
+    ./fail2ban.nix
     ./interfaces.nix
     ./mullvad.nix
     ./systemd.nix
@@ -38,6 +39,9 @@ in
       enable = true;
       settings = {
         PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
+        AuthenticationMethods = "publickey";
+        UsePAM = false;
       };
     };
     avahi = {
