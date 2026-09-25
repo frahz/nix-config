@@ -9,6 +9,49 @@ let
   inherit (self.lib) mkServiceOption mkSecret;
 
   cfg = config.casa.services.glance;
+  rdomain = config.networking.domain;
+
+  mkSite = title: domain: icon: {
+    inherit title icon;
+    url = "https://${domain}";
+  };
+
+  serviceMonitors = [
+    {
+      title = "Applications";
+      sites = [
+        (mkSite "Forgejo" "git.${rdomain}" "di:forgejo")
+        (mkSite "FreshRSS" "freshrss.${rdomain}" "di:freshrss")
+        (mkSite "Home Assistant" "home.${rdomain}" "di:home-assistant")
+        (mkSite "Linkwarden" "lw.${rdomain}" "di:linkwarden.png")
+        (mkSite "Papra" "documents.${rdomain}" "di:papra")
+        (mkSite "Valetudo" "valetudo.${rdomain}" "di:valetudo")
+      ];
+    }
+    {
+      title = "Media";
+      sites = [
+        (mkSite "Jellyfin" "jellyfin.${rdomain}" "di:jellyfin")
+        (mkSite "Kavita" "kavita.${rdomain}" "di:kavita")
+        (mkSite "qBittorrent" "qb.${rdomain}" "di:qbittorrent")
+        (mkSite "Radarr" "radarr.${rdomain}" "di:radarr")
+        (mkSite "Seerr" "seerr.${rdomain}" "di:seerr")
+        (mkSite "Navidrome" "music.${rdomain}" "di:navidrome")
+        (mkSite "slskd" "soulseek.${rdomain}" "di:slskd")
+        (mkSite "Sonarr" "sonarr.${rdomain}" "di:sonarr")
+        (mkSite "Immich" "photos.${rdomain}" "di:immich")
+      ];
+    }
+    {
+      title = "Infrastructure";
+      sites = [
+        (mkSite "AdGuard Home" "adguard.${rdomain}" "di:adguard-home")
+        (mkSite "Pocket ID" "id.frahz.dev" "di:pocket-id")
+        (mkSite "Scrutiny" "scrutiny.${rdomain}" "di:scrutiny")
+        # (mkSite "Sugoi" "sugoi.${rdomain}" "https://sugoi.${rdomain}/assets/favicon.webp")
+      ];
+    }
+  ];
 in
 {
   options.casa.services.glance = mkServiceOption "glance" {
@@ -34,6 +77,7 @@ in
       settings = {
         server = {
           inherit (cfg) host port;
+          proxied = true;
         };
         branding = {
           hide-footer = true;
@@ -58,17 +102,16 @@ in
                   {
                     type = "dns-stats";
                     service = "adguard";
-                    url = "https://adguard.iatze.cc";
+                    url = "https://adguard.${rdomain}";
                     username = "frahz";
                     password = "\${ADGUARD_PASSWORD}";
                   }
-                  # TODO: add media-requests widget here: https://github.com/glanceapp/glance/pull/345
                   {
                     type = "custom-api";
                     title = "Media Requests";
                     cache = "20m";
                     options = {
-                      base-url = "https://seerr.iatze.cc";
+                      base-url = "https://seerr.${rdomain}";
                       api-key = "\${JELLYSEERR_API_KEY}";
                       limit = 20;
                       collapse-after = 5;
@@ -122,11 +165,8 @@ in
                         {{ $response = $responseCall.JSON.Array "results" }}
                         <ul class="list list-gap-14 collapsible-container" data-collapse-after="{{ $collapseAfter }}">
                             {{ range $response }}
-                              {{ $id := .Int "id" }}
-                              {{ $status := .Int "status" }}
                               {{ $type := .String "type" }}
 
-                              {{ $mediaId := .Int "media.id" }}
                               {{ $mediaTmdbId := .Int "media.tmdbId" }}
                               {{ $mediaStatus := .Int "media.status" }}
                               {{ $mediaType := .String "media.mediaType" }}
@@ -135,11 +175,9 @@ in
 
                               {{ $userDisplayName := .String "requestedBy.displayName" }}
                               {{ $userId := .Int "requestedBy.id" }}
-                              {{ $userAvatar := .String "requestedBy.Avatar" }}
                               {{ $userLink := printf "%s/users/%d" $baseURL $userId }}
 
                               {{ $itemName := "" }}
-                              {{ $itemBackdropPath := "" }}
                               {{ $itemPosterPath := "" }}
                               {{ $itemAirDate := "" }}
                               {{ $itemInfoUrl := printf "%s/api/v1/%s/%d" $baseURL $mediaType $mediaTmdbId }}
@@ -153,7 +191,6 @@ in
                                 | getResponse }}
 
                               {{ if eq $infoCall.Response.StatusCode 200 }}
-                                {{ $itemBackdropPath = $infoCall.JSON.String "backdropPath" }}
                                 {{ $itemPosterPath = $infoCall.JSON.String "posterPath" }}
                                 {{ $popoverSummary = $infoCall.JSON.String "overview" }}
                                 {{ $genres = $infoCall.JSON.Array "genres" }}
@@ -232,205 +269,127 @@ in
               }
               {
                 size = "full";
-                widgets = [
-                  {
-                    type = "monitor";
-                    title = "Services";
-                    style = "dynamic-columns-experimental";
-                    cache = "30m";
-                    sites = [
-                      {
-                        title = "jellyfin";
-                        url = "https://jellyfin.iatze.cc";
-                        icon = "di:jellyfin";
-                      }
-                      {
-                        title = "scrutiny";
-                        url = "https://scrutiny.iatze.cc";
-                        icon = "di:scrutiny";
-                      }
-                      {
-                        title = "sonarr";
-                        url = "https://sonarr.iatze.cc";
-                        icon = "di:sonarr";
-                      }
-                      {
-                        title = "forgejo";
-                        url = "https://git.iatze.cc";
-                        icon = "di:forgejo";
-                      }
-                      {
-                        title = "adguard";
-                        url = "https://adguard.iatze.cc";
-                        icon = "di:adguard-home";
-                      }
-                      {
-                        title = "radarr";
-                        url = "https://radarr.iatze.cc";
-                        icon = "di:radarr";
-                      }
-                      {
-                        title = "seerr";
-                        url = "https://seerr.iatze.cc";
-                        icon = "di:seerr";
-                      }
-                      {
-                        title = "kavita";
-                        url = "https://kavita.iatze.cc";
-                        icon = "di:kavita";
-                      }
-                      {
-                        title = "freshrss";
-                        url = "https://freshrss.iatze.cc";
-                        icon = "di:freshrss";
-                      }
-                      {
-                        title = "qbittorrent";
-                        url = "https://qb.iatze.cc";
-                        icon = "di:qbittorrent";
-                      }
-                      {
-                        title = "linkwarden";
-                        url = "https://lw.iatze.cc";
-                        icon = "di:linkwarden.png";
-                      }
-                      {
-                        title = "navidrome";
-                        url = "https://music.iatze.cc";
-                        icon = "di:navidrome";
-                      }
-                      {
-                        title = "home-assistant";
-                        url = "https://home.iatze.cc";
-                        icon = "di:home-assistant";
-                      }
-                      {
-                        title = "immich";
-                        url = "https://photos.iatze.cc";
-                        icon = "di:immich";
-                      }
-                      {
-                        title = "sugoi";
-                        url = "https://sugoi.iatze.cc";
-                        icon = "https://sugoi.iatze.cc/assets/favicon.webp";
-                      }
-                    ];
-                  }
-                  {
-                    type = "bookmarks";
-                    style = "dynamic-columns-experimental";
-                    groups = [
-                      {
-                        title = "Main";
-                        color = "267 84 81";
-                        links = [
-                          {
-                            title = "Fastmail";
-                            url = "https://app.fastmail.com/mail/Inbox/?u=4b064054";
-                          }
-                          {
-                            title = "GitHub";
-                            url = "https://github.com";
-                          }
-                          {
-                            title = "FotMob";
-                            url = "https://fotmob.com";
-                          }
-                          {
-                            title = "AniList";
-                            url = "https://anilist.co/home";
-                          }
-                        ];
-                      }
-                      {
-                        title = "Entertainment";
-                        color = "316 72 86";
-                        links = [
-                          {
-                            title = "Crunchyroll";
-                            url = "https://www.crunchyroll.com/watchlist";
-                          }
-                          {
-                            title = "Paramount";
-                            url = "https://www.paramountplus.com";
-                          }
-                          {
-                            title = "Peacock";
-                            url = "https://www.peacocktv.com";
-                          }
-                          {
-                            title = "MangaDex";
-                            url = "https://mangadex.org";
-                          }
-                        ];
-                      }
-                      {
-                        title = "Other";
-                        color = "23 92 75";
-                        links = [
-                          {
-                            title = "Mastodon";
-                            url = "https://phanpy.social/";
-                          }
-                          {
-                            title = "Bluesky";
-                            url = "https://bsky.app";
-                          }
-                          {
-                            title = "Claude";
-                            url = "https://claude.ai/";
-                          }
-                          {
-                            title = "SeaDex";
-                            url = "https://releases.moe/";
-                          }
-                          {
-                            title = "Sneedex";
-                            url = "https://sneedex.moe/";
-                          }
-                        ];
-                      }
-                    ];
-                  }
-                  {
-                    type = "group";
-                    widgets =
-                      let
-                        shared-properties = {
-                          collapse-after = 7;
-                          limit = 10;
-                          cache = "30m";
-                        };
-                      in
-                      [
-                        (
-                          {
-                            type = "hacker-news";
-                          }
-                          // shared-properties
-                        )
-                        (
-                          {
-                            type = "rss";
-                            feeds = [
-                              {
-                                url = "https://freshrss.iatze.cc/i/?a=rss&state=3";
-                                title = "FreshRSS";
-                              }
-                            ];
-                          }
-                          // shared-properties
-                        )
-                        (
-                          {
-                            type = "reddit";
-                            subreddit = "selfhosted";
-                          }
-                          // shared-properties
-                        )
+                widgets =
+                  builtins.map (
+                    monitor:
+                    {
+                      inherit (monitor) title sites;
+                      type = "monitor";
+                      cache = "5m";
+                    }
+                    // lib.optionalAttrs (monitor ? style) { inherit (monitor) style; }
+                  ) serviceMonitors
+                  ++ [
+                    {
+                      type = "bookmarks";
+                      groups = [
+                        {
+                          title = "Main";
+                          color = "267 84 81";
+                          links = [
+                            {
+                              title = "Fastmail";
+                              url = "https://app.fastmail.com/mail/Inbox/?u=4b064054";
+                            }
+                            {
+                              title = "GitHub";
+                              url = "https://github.com";
+                            }
+                            {
+                              title = "FotMob";
+                              url = "https://fotmob.com";
+                            }
+                            {
+                              title = "AniList";
+                              url = "https://anilist.co/home";
+                            }
+                          ];
+                        }
+                        {
+                          title = "Entertainment";
+                          color = "316 72 86";
+                          links = [
+                            {
+                              title = "Crunchyroll";
+                              url = "https://www.crunchyroll.com/watchlist";
+                            }
+                            {
+                              title = "Paramount";
+                              url = "https://www.paramountplus.com";
+                            }
+                            {
+                              title = "Peacock";
+                              url = "https://www.peacocktv.com";
+                            }
+                            {
+                              title = "MangaDex";
+                              url = "https://mangadex.org";
+                            }
+                          ];
+                        }
+                        {
+                          title = "Other";
+                          color = "23 92 75";
+                          links = [
+                            {
+                              title = "Sugoi";
+                              url = "https://sugoi.${rdomain}";
+                            }
+                            {
+                              title = "Bluesky";
+                              url = "https://bsky.app";
+                            }
+                            {
+                              title = "Claude";
+                              url = "https://claude.ai/";
+                            }
+                            {
+                              title = "SeaDex";
+                              url = "https://releases.moe/";
+                            }
+                          ];
+                        }
                       ];
-                  }
-                ];
+                    }
+                    {
+                      type = "group";
+                      widgets =
+                        let
+                          shared-properties = {
+                            collapse-after = 6;
+                            limit = 10;
+                            cache = "30m";
+                          };
+                        in
+                        [
+                          (
+                            {
+                              type = "hacker-news";
+                            }
+                            // shared-properties
+                          )
+                          (
+                            {
+                              type = "rss";
+                              feeds = [
+                                {
+                                  url = "https://freshrss.${rdomain}/i/?a=rss&state=3";
+                                  title = "FreshRSS";
+                                }
+                              ];
+                            }
+                            // shared-properties
+                          )
+                          (
+                            {
+                              type = "reddit";
+                              subreddit = "selfhosted";
+                            }
+                            // shared-properties
+                          )
+                        ];
+                    }
+                  ];
               }
               {
                 size = "small";
@@ -456,7 +415,7 @@ in
                   }
                   {
                     type = "markets";
-                    stocks = [
+                    markets = [
                       {
                         symbol = "SPY";
                         name = "S&P 500";
