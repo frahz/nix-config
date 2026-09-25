@@ -199,7 +199,7 @@ in
     systemd.tmpfiles.rules = [
       "f ${config.services.home-assistant.configDir}/automations.yaml 0755 hass hass"
       "f ${config.services.home-assistant.configDir}/scenes.yaml 0755 hass hass"
-      "C ${config.services.home-assistant.configDir}/themes 0755 hass hass - ${pkgs.hass-catppuccin}/themes"
+      "C ${config.services.home-assistant.configDir}/themes 0755 hass hass - ${pkgs.home-assistant-themes.catppuccin}/themes"
     ];
 
     services.caddy.virtualHosts = {
