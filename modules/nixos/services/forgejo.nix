@@ -52,6 +52,9 @@ in
         };
       };
 
+      # needed for git pushes to work
+      openssh.settings.UsePAM = mkForce true;
+
       caddy.virtualHosts.${cfg.domain} = {
         extraConfig = ''
           reverse_proxy http://localhost:${toString cfg.port}
