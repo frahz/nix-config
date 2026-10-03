@@ -12,6 +12,7 @@ in
     GNUPGHOME = "${home}/.local/share/gnupg";
     GOMODCACHE = "${home}/.cache/go/pkg/mod";
     GOPATH = "${home}/.local/share/go";
+    _JAVA_OPTIONS = "-Djava.util.prefs.userRoot=${home}/.config/java";
     NODE_REPL_HISTORY = "${home}/.local/state/node_repl_history";
     NPM_CONFIG_CACHE = "${home}/.cache/npm";
     NPM_CONFIG_TMP = "$XDG_RUNTIME_DIR/npm";
