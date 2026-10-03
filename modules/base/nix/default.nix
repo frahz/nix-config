@@ -24,7 +24,6 @@ in
       # https://github.com/getchoo/borealis/blob/52da5ea4eaaddb5f8b1dc32c1dcefbfda68a52fc/modules/shared/mixins/nix.nix#L44
       # https://github.com/isabelroses/dotfiles/blob/acdb74a1fedd1b1dfce303e8ee285a7a884ac7fe/modules/base/nix/registry.nix
       registry = mapAttrs (_: flake: { inherit flake; }) flakeInputs;
-      nixPath = attrValues (mapAttrs (k: v: "${k}=flake:${v.outPath}") flakeInputs);
 
       settings = {
         warn-dirty = false;
@@ -34,6 +33,8 @@ in
           "flakes"
         ];
         builders-use-substitutes = true;
+
+        nix-path = attrValues (mapAttrs (k: v: "${k}=flake:${v.outPath}") flakeInputs);
 
         log-lines = 35;
 
