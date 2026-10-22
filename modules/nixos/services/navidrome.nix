@@ -29,6 +29,7 @@ in
         Port = cfg.port;
         MusicFolder = "${cfg.storagePath}/music";
         EnableInsightsCollector = false;
+        EnableGravatar = true;
       };
       environmentFile = config.sops.secrets.navidrome.path;
     };
