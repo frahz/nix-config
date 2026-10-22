@@ -1,4 +1,16 @@
-{ inputs, ... }:
+{
+  inputs,
+  inputs',
+  pkgs,
+  ...
+}:
+let
+  catppuccinSources = inputs'.catppuccin.packages.overrideScope (
+    _final: _prev: {
+      whiskers = pkgs.catppuccin-whiskers;
+    }
+  );
+in
 {
   imports = [ inputs.catppuccin.nixosModules.catppuccin ];
 
@@ -7,6 +19,7 @@
       autoEnable = false;
       enable = true;
       flavor = "mocha";
+      sources = catppuccinSources;
     };
 
     # replaces catppuccin.tty
