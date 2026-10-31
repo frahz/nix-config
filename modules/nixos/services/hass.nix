@@ -165,7 +165,7 @@ in
       listeners = singleton {
         port = 1883;
         settings = {
-          allow_anonymous = false;
+          listener_allow_anonymous = false;
           bind_interface = lanInterface;
           max_connections = 16;
         };
