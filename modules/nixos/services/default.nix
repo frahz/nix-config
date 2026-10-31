@@ -10,6 +10,7 @@
     ./jellyfin.nix
     ./kavita.nix
     ./media.nix
+    ./miniflux.nix
     ./navidrome.nix
     ./nemui.nix
     ./papra.nix

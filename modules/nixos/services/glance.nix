@@ -21,7 +21,7 @@ let
       title = "Applications";
       sites = [
         (mkSite "Forgejo" "git.${rdomain}" "di:forgejo")
-        (mkSite "FreshRSS" "freshrss.${rdomain}" "di:freshrss")
+        (mkSite "Miniflux" "rss.${rdomain}" "di:miniflux")
         (mkSite "Home Assistant" "home.${rdomain}" "di:home-assistant")
         (mkSite "Linkwarden" "lw.${rdomain}" "di:linkwarden.png")
         (mkSite "Papra" "documents.${rdomain}" "di:papra")

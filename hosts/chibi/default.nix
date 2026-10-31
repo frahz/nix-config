@@ -65,6 +65,7 @@ in
         enable = true;
         storagePath = cfg.storage;
       };
+      miniflux.enable = true;
       navidrome = {
         enable = true;
         storagePath = cfg.storage;
