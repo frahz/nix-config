@@ -43,9 +43,9 @@ in
     services = {
       adguardhome = {
         enable = true;
-        inherit (cfg) port;
         settings = {
           theme = "dark";
+          http.address = "${cfg.host}:${toString cfg.port}";
           auth_attempts = 5;
           block_auth_min = 15;
           dns = {
