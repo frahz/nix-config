@@ -5,29 +5,17 @@
   ...
 }:
 let
-  inherit (lib) mkIf mkOption types;
+  inherit (lib) mkIf;
   inherit (self.lib) mkServiceOption mkSecret;
 
   cfg = config.casa.services.papra;
   rdomain = config.networking.domain;
 in
 {
-  options.casa.services.papra =
-    mkServiceOption "papra" {
-      port = 1221;
-      domain = "documents.${rdomain}";
-    }
-    // {
-      version = mkOption {
-        type = types.str;
-        default = "26.4.0-rootless";
-        example = ''
-          The most recent version can be found here:
-          https://github.com/papra-hq/papra/pkgs/container/papra
-        '';
-        description = "The docker image version for papra service";
-      };
-    };
+  options.casa.services.papra = mkServiceOption "papra" {
+    port = 1221;
+    domain = "documents.${rdomain}";
+  };
 
   config = mkIf cfg.enable {
     sops.secrets.papra = mkSecret {
@@ -35,33 +23,27 @@ in
       key = "env";
     };
 
-    users.users.papra = {
-      isSystemUser = true;
-      group = "papra";
-      home = "/var/lib/papra";
-      createHome = false;
-    };
-    users.groups.papra = { };
-
-    systemd.tmpfiles.rules = [
-      "d /var/lib/papra 0750 papra papra -"
-    ];
-
-    virtualisation.oci-containers.containers.papra = {
-      autoStart = true;
-      image = "ghcr.io/papra-hq/papra:${cfg.version}";
-      volumes = [
-        "/var/lib/papra:/app/app-data"
-      ];
-      user = "${toString config.users.users.papra.uid}:${toString config.users.groups.papra.gid}";
+    services.papra = {
+      enable = true;
       environmentFiles = [ config.sops.secrets.papra.path ];
       environment = {
+        NODE_ENV = "production";
         TZ = "America/Los_Angeles";
         APP_BASE_URL = "https://${cfg.domain}";
+        SERVER_HOSTNAME = cfg.host;
+        PORT = cfg.port;
+        # Keep the data layout previously mounted at /app/app-data in the container.
+        DATABASE_URL = "file:/var/lib/papra/db/db.sqlite";
+        DOCUMENT_STORAGE_FILESYSTEM_ROOT = "/var/lib/papra/documents";
+        PAPRA_CONFIG_DIR = "/var/lib/papra";
       };
-      ports = [
-        "${cfg.host}:${toString cfg.port}:1221"
-      ];
+    };
+
+    systemd.tmpfiles.settings."10-papra" = {
+      "/var/lib/papra/db".d = {
+        mode = "0700";
+        inherit (config.services.papra) user group;
+      };
     };
 
     services.caddy.virtualHosts.${cfg.domain} = {
