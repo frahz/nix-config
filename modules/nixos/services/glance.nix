@@ -370,18 +370,6 @@ in
                           )
                           (
                             {
-                              type = "rss";
-                              feeds = [
-                                {
-                                  url = "https://freshrss.${rdomain}/i/?a=rss&state=3";
-                                  title = "FreshRSS";
-                                }
-                              ];
-                            }
-                            // shared-properties
-                          )
-                          (
-                            {
                               type = "reddit";
                               subreddit = "selfhosted";
                             }
@@ -434,7 +422,6 @@ in
                     type = "releases";
                     repositories = [
                       "papra-hq/papra"
-                      "linuxserver/docker-freshrss"
                       "linuxserver/docker-qbittorrent"
                       "qdm12/gluetun"
                     ];
