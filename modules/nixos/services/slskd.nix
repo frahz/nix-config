@@ -20,17 +20,6 @@ in
   };
 
   config = mkIf cfg.enable {
-    assertions = [
-      {
-        assertion = builtins.compareVersions config.services.slskd.package.version "0.26.1" <= 0;
-        message = ''
-          slskd is newer than 0.26.1: remove the mutex workaround (XDG_RUNTIME_DIR,
-          RuntimeDirectory, and RuntimeDirectoryMode) and this assertion.
-          Fixed upstream in 0.26.2: https://github.com/slskd/slskd/pull/1893
-        '';
-      }
-    ];
-
     sops.secrets.slskd = mkSecret {
       file = "slskd";
       key = "env";
@@ -58,15 +47,9 @@ in
       };
 
     };
-    systemd.services.slskd = {
-      # .NET's user-scoped mutex needs a writable runtime directory.
-      # Upstream fix: https://github.com/slskd/slskd/pull/1893
-      environment.XDG_RUNTIME_DIR = "/run/slskd";
-      serviceConfig = {
-        RuntimeDirectory = "slskd";
-        RuntimeDirectoryMode = "0700";
-        UMask = "0002";
-      };
+
+    systemd.services.slskd.serviceConfig = {
+      UMask = "0002";
     };
 
     services.caddy.virtualHosts.${cfg.domain} = {
