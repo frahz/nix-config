@@ -5,32 +5,21 @@
   ...
 }:
 let
-  inherit (lib) mkIf mkOption types;
+  inherit (lib) mkIf;
   inherit (self.lib) mkServiceOption mkSecret;
 
   cfg = config.casa.services.miniflux;
   rdomain = config.networking.domain;
 in
 {
-  options.casa.services.miniflux =
-    mkServiceOption "miniflux" {
-      port = 9124;
-      domain = "rss.${rdomain}";
-    }
-    // {
-      oidc = {
-        clientId = mkOption {
-          type = types.str;
-          default = "78ac739b-232c-451a-aaa3-461ac0917102";
-          description = "The Pocket ID client ID for Miniflux";
-        };
-        discoveryEndpoint = mkOption {
-          type = types.str;
-          default = "https://id.frahz.dev";
-          description = "The OIDC issuer URL, without .well-known/openid-configuration";
-        };
-      };
+  options.casa.services.miniflux = mkServiceOption "miniflux" {
+    port = 9124;
+    domain = "rss.${rdomain}";
+    oidc = {
+      clientId = "78ac739b-232c-451a-aaa3-461ac0917102";
+      discoveryEndpoint = "https://id.frahz.dev";
     };
+  };
 
   config = mkIf cfg.enable {
     sops.secrets.miniflux = mkSecret {

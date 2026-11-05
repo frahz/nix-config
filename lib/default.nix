@@ -10,11 +10,12 @@ let
     # Arguments
 
     - [name]: The name of the service
+    - [oidc]: Optional OIDC defaults for the service
 
     # Type
 
     ```
-    mkServiceOption :: String -> (Int -> String -> String -> AttrSet) -> AttrSet
+    mkServiceOption :: String -> AttrSet -> AttrSet
     ```
   */
   mkServiceOption =
@@ -24,6 +25,7 @@ let
       host ? "127.0.0.1",
       domain ? "",
       storagePath ? "/var/lib",
+      oidc ? null,
     }:
     {
       enable = mkEnableOption "Enable the ${name} service";
@@ -51,6 +53,20 @@ let
         type = str;
         default = storagePath;
         description = "The storage location for ${name}";
+      };
+    }
+    // lib.optionalAttrs (oidc != null) {
+      oidc = {
+        clientId = mkOption {
+          type = str;
+          default = oidc.clientId or "";
+          description = "The OIDC client ID for ${name}";
+        };
+        discoveryEndpoint = mkOption {
+          type = str;
+          default = oidc.discoveryEndpoint or "";
+          description = "The OIDC issuer URL, without .well-known/openid-configuration";
+        };
       };
     };
 
