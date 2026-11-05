@@ -32,6 +32,7 @@ in
       dataDir = "${cfg.storagePath}/linkding";
       environmentFile = config.sops.secrets.linkding.path;
       settings = {
+        TZ = config.time.timeZone;
         LD_ENABLE_OIDC = "True";
         LD_DISABLE_LOGIN_FORM = "True";
         LD_CSRF_TRUSTED_ORIGINS = "https://${cfg.domain}";
