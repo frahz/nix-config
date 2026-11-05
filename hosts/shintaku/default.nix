@@ -29,6 +29,10 @@
     };
     services = {
       caddy.enable = true;
+      linkding = {
+        enable = true;
+        domain = "links.iatze.cc";
+      };
       pocket-id.enable = true;
     };
   };

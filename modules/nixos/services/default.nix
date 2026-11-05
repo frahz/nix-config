@@ -9,6 +9,7 @@
     ./immich.nix
     ./jellyfin.nix
     ./kavita.nix
+    ./linkding.nix
     ./media.nix
     ./miniflux.nix
     ./navidrome.nix
